@@ -10,3 +10,12 @@ Features for FHA Demo
   
 - Improve UI for importing profiles
 
+- menu: Add FHIR
+  -- Profile (StructreDefinition)
+  -- Extension
+  
+- UI for export
+  -- refresh workspace and open generated profile in XML editor
+
+- 
+

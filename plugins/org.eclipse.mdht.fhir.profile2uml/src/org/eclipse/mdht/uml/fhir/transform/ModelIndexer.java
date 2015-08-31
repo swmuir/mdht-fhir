@@ -16,8 +16,6 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.mdht.uml.fhir.FHIRPackage;
 import org.eclipse.mdht.uml.fhir.StructureDefinition;
 import org.eclipse.mdht.uml.fhir.ValueSet;
 import org.eclipse.uml2.uml.Class;
@@ -65,34 +63,70 @@ public class ModelIndexer implements ModelConstants {
 		return definedTypes.contains(typeName);
 	}
 
-	public boolean isResourceType(Classifier classifier) {
+	public boolean isCoreResourceType(Classifier classifier) {
 		// TODO also test that classifier is subclass of Resource
-		return isResourceType(classifier.getName());
+		return isCoreResourceType(classifier.getName());
 	}
 
-	public boolean isResourceType(String typeName) {
+	public boolean isCoreResourceType(String typeName) {
 		return resourceTypes.contains(typeName);
 	}
 
-	public boolean isDataType(Classifier classifier) {
+	public boolean isCoreDataType(Classifier classifier) {
 		// TODO also test that classifier is subclass of DataType
-		return isDataType(classifier.getName());
+		return isCoreDataType(classifier.getName());
 	}
 
-	public boolean isDataType(String typeName) {
+	public boolean isCoreDataType(String typeName) {
 		return dataTypes.contains(typeName);
+	}
+
+	public boolean isKindOfDataType(Classifier classifier) {
+		boolean isDataType = isCoreDataType(classifier);
+		for (Classifier parent : classifier.allParents()) {
+			if (isDataType) {
+				break;
+			}
+			isDataType = isCoreDataType(parent);
+		}
+		return isDataType;
+	}
+
+	public boolean isKindOfResource(Classifier classifier) {
+		boolean isResource = isCoreResourceType(classifier);
+		for (Classifier parent : classifier.allParents()) {
+			if (isResource) {
+				break;
+			}
+			isResource = isCoreResourceType(parent);
+		}
+		return isResource;
+	}
+	
+	/**
+	 * Classifier is subclass of a FHIR defined-type.
+	 */
+	public boolean isProfile(Classifier classifier) {
+		return !isDefinedType(classifier);
+	}
+
+	/**
+	 * Classifier is subclass of a FHIR Extension type.
+	 */
+	public boolean isExtension(Classifier classifier) {
+		return FhirModelUtil.isSubclassOf(classifier, EXTENSION_CLASS_NAME);
 	}
 
 	public void indexMembers(Package umlPackage) {
 		for (NamedElement member : umlPackage.getMembers()) {
 			if (member instanceof Class) {
-				StructureDefinition structureDefinition = getStructureDefinition((Class)member);
+				StructureDefinition structureDefinition = FhirModelUtil.getStructureDefinition((Class)member);
 				if (structureDefinition != null) {
 					addElement(structureDefinition);
 				}
 			}
 			else if (member instanceof Enumeration) {
-				ValueSet valueSet = getValueSet((Enumeration)member);
+				ValueSet valueSet = FhirModelUtil.getValueSet((Enumeration)member);
 				if (valueSet != null) {
 					addElement(valueSet);
 				}
@@ -114,11 +148,6 @@ public class ModelIndexer implements ModelConstants {
 				structureDefinitionUriMap.put(structureDefinition.getUri(), baseClass);
 			}
 		}
-	}
-
-	private StructureDefinition getStructureDefinition(Class umlClass) {
-		return (StructureDefinition) EcoreUtil.getObjectByType(
-				umlClass.getStereotypeApplications(), FHIRPackage.eINSTANCE.getStructureDefinition());
 	}
 
 	public void addElement(ValueSet valueSet) {
@@ -145,11 +174,6 @@ public class ModelIndexer implements ModelConstants {
 				}
 			}
 		}
-	}
-
-	private ValueSet getValueSet(Enumeration umlEnum) {
-		return (ValueSet) EcoreUtil.getObjectByType(
-				umlEnum.getStereotypeApplications(), FHIRPackage.eINSTANCE.getValueSet());
 	}
 
 }

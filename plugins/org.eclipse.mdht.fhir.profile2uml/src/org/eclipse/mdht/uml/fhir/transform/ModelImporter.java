@@ -387,13 +387,13 @@ public class ModelImporter implements ModelConstants {
 			packageName = PACKAGE_NAME_EXTENSIONS;
 		}
 		else if (StructureDefinitionKindList.DATATYPE == structureKind) {
-			if (modelIndexer.isDataType(structureDef.getName().getValue())) {
+			if (modelIndexer.isCoreDataType(structureDef.getName().getValue())) {
 				packageName = PACKAGE_NAME_DATATYPES;
 				primitiveType = getPrimitiveType(structureDef.getName().getValue());
 			}
 		}
 		else if (StructureDefinitionKindList.RESOURCE == structureKind) {
-			if (modelIndexer.isResourceType(structureDef.getName().getValue())) {
+			if (modelIndexer.isCoreResourceType(structureDef.getName().getValue())) {
 				packageName = PACKAGE_NAME_RESOURCES;
 			}
 		}
@@ -615,10 +615,10 @@ public class ModelImporter implements ModelConstants {
 			}
 			else if (typeList.size() > 1) {
 				// All types must be same kind, some elements mix Resource and CodeableConcept
-				if (allSubclassOf(typeList, RESOURCE_CLASS_NAME)) {
+				if (FhirModelUtil.allSubclassOf(typeList, RESOURCE_CLASS_NAME)) {
 					propertyType = resourceClass;
 				}
-				else if (allSubclassOf(typeList, DATATYPE_CLASS_NAME)) {
+				else if (FhirModelUtil.allSubclassOf(typeList, DATATYPE_CLASS_NAME)) {
 					propertyType = dataTypeClass;
 				}
 				else {
@@ -629,7 +629,7 @@ public class ModelImporter implements ModelConstants {
 			
 			// Create the UML Property
 			// if this is an Extension element and 'name' is specified, use as Property name
-			if (elementDef.getName() != null && propertyType != null && isSubclassOf(propertyType, "Extension")) {
+			if (elementDef.getName() != null && propertyType != null && modelIndexer.isExtension(propertyType)) {
 				propertyName = elementDef.getName().getValue();
 			}
 			Property property = ownerClass.createOwnedAttribute(propertyName, propertyType);
@@ -710,11 +710,11 @@ public class ModelImporter implements ModelConstants {
 			
 			// Add constraints
 			for (ElementDefinitionConstraint constraint : elementDef.getConstraint()) {
-				Class context = ownerClass;
-				if (property.getType().getOwner() instanceof Class) {
-					// This is a context element definition for a nested class
-					context = (Class) property.getType();
-				}
+//				Class context = ownerClass;
+//				if (FhirModelUtil.hasNestedType(property)) {
+//					// This is a context element definition for a nested class
+//					context = (Class) property.getType();
+//				}
 				addConstraint(property, constraint);
 			}
 		}
@@ -920,38 +920,13 @@ public class ModelImporter implements ModelConstants {
 		return ownerClass;
 	}
 
-	private boolean allSubclassOf(List<Classifier> typeList, String parentName) {
-		for (Classifier classifier : typeList) {
-			boolean foundIt = false;
-			for (Classifier parent : classifier.allParents()) {
-				if (parentName.equals(parent.getName())) {
-					foundIt = true;
-					break;
-				}
-			}
-			if (!foundIt) {
-				return false;
-			}
-		}
-		return true;
-	}
-
-	private boolean isSubclassOf(Classifier umlClass, String parentName) {
-		for (Classifier parent : umlClass.allParents()) {
-			if (parentName.equals(parent.getName())) {
-				return true;
-			}
-		}
-		return false;
-	}
-
 	/**
 	 * Association if property type is a subclass of DomainResource, or type is a nested class.
 	 */
 	private boolean isAssociation(Property property) {
 		if (property.getType() instanceof Classifier 
-				&& (isSubclassOf((Classifier)property.getType(), RESOURCE_CLASS_NAME) 
-						|| isSubclassOf((Classifier)property.getType(), BACKBONE_ELEMENT_CLASS_NAME))) {
+				&& (FhirModelUtil.isSubclassOf((Classifier)property.getType(), RESOURCE_CLASS_NAME) 
+						|| FhirModelUtil.isSubclassOf((Classifier)property.getType(), BACKBONE_ELEMENT_CLASS_NAME))) {
 			return true;
 		}
 		
@@ -969,7 +944,7 @@ public class ModelImporter implements ModelConstants {
 			association.getMemberEnds().add(targetProp);
 			
 			// associations to nested classes must be composite
-			if (targetProp.getType().getOwner() instanceof Class) {
+			if (FhirModelUtil.hasNestedType(targetProp)) {
 				targetProp.setAggregation(AggregationKind.COMPOSITE_LITERAL);
 			}
 		}

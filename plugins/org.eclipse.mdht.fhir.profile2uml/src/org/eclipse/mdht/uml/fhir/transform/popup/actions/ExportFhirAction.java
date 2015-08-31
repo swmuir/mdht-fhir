@@ -41,8 +41,10 @@ import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.uml2.uml.Class;
+import org.eclipse.uml2.uml.Package;
 import org.hl7.fhir.StructureDefinition;
 import org.hl7.fhir.util.FhirResourceFactoryImpl;
+import org.openhealthtools.mdht.uml.common.util.UMLUtil;
 
 public class ExportFhirAction implements IObjectActionDelegate {
 	
@@ -77,6 +79,10 @@ public class ExportFhirAction implements IObjectActionDelegate {
 	 */
 	public void run(IAction action) {
 		IContainer profileFolder = getProfileFolder();
+
+		Package model = UMLUtil.getTopPackage(umlClass);
+		ModelExporter umlExporter = new ModelExporter();
+		umlExporter.indexContents(model);
 		
 		try {
 			TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(umlClass);
@@ -84,7 +90,6 @@ public class ExportFhirAction implements IObjectActionDelegate {
 				@Override
 				protected IStatus doExecute(IProgressMonitor monitor, IAdaptable info) {
 					if (profileFolder != null) {
-						ModelExporter umlExporter = new ModelExporter();
 						StructureDefinition structureDef = umlExporter.createStrucureDefinition(umlClass);
 
 						String structureId = structureDef.getId().getValue();

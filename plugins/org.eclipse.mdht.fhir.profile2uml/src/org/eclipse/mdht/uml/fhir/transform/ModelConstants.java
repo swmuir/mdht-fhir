@@ -13,13 +13,19 @@ package org.eclipse.mdht.uml.fhir.transform;
 
 public interface ModelConstants {
 
+	public static final String UML_LIBRARIES_PATH = "org.eclipse.uml2.uml.resources/libraries/";
+	public static final String XML_PRIMITIVE_TYPES_LIBRARY = UML_LIBRARIES_PATH + "XMLPrimitiveTypes.library.uml";
+	
 	public static final String FHIR_STRUCTURE_URI_BASE = "http://hl7.org/fhir/StructureDefinition/";
 	public static final String FHIR_VALUESET_URI_BASE = "http://hl7.org/fhir/ValueSet/";
 	public static final String MDHT_STRUCTURE_URI_BASE = "http://eclipse.org/mdht/fhir/StructureDefinition/";
+	public static final String MDHT_VALUESET_URI_BASE = "http://eclipse.org/mdht/fhir/ValueSet/";
 
 	public static final String ELEMENT_CLASS_NAME = "Element";
 	public static final String BACKBONE_ELEMENT_CLASS_NAME = "BackboneElement";
 	public static final String RESOURCE_CLASS_NAME = "Resource";
+	public static final String EXTENSION_CLASS_NAME = "Extension";
+	public static final String REFERENCE_CLASS_NAME = "Reference";
 	
 	// Non-specification class Base, abstract parent for Element and Resource, using MDHT_STRUCTURE_URI_BASE
 	public static final String BASE_CLASS_NAME = "Base";
@@ -27,9 +33,6 @@ public interface ModelConstants {
 	// Non-specification class DataType, abstract parent for all 'datatype' StructureDefinitions, using MDHT_STRUCTURE_URI_BASE
 	public static final String DATATYPE_CLASS_NAME = "DataType";
 
-	public static final String UML_LIBRARIES_PATH = "org.eclipse.uml2.uml.resources/libraries/";
-	public static final String XML_PRIMITIVE_TYPES_LIBRARY = UML_LIBRARIES_PATH + "XMLPrimitiveTypes.library.uml";
-	
 	//TODO Make this a variable preference setting
 	public static final String TERMINOLOGY_SERVER = "http://fhir-dev.healthintersections.com.au/open/";
 	
@@ -49,7 +52,7 @@ public interface ModelConstants {
 	/*
 	 * Extension URIs
 	 */
-	public static final String EXTENSION_EXPLICIT_TYPE_NAME = "http://hl7.org/fhir/StructureDefinition/structuredefinition-explicit-type-name";
-	public static final String EXTENSION_FMM = "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm";
+	public static final String EXTENSION_EXPLICIT_TYPE_NAME = FHIR_STRUCTURE_URI_BASE + "structuredefinition-explicit-type-name";
+	public static final String EXTENSION_FMM = FHIR_STRUCTURE_URI_BASE + "structuredefinition-fmm";
 	
 }
