@@ -54,6 +54,16 @@
             id="org.eclipse.mdht.uml.fhir.ui.commands.category.edit"
             name="FHIR Model Editing"
             description="Commands for editing FHIR profile definitions in UML models."/>
+            
+      <command
+            id="org.eclipse.mdht.uml.fhir.ui.commands.addImplementationGuide"
+            name="%addFHIR.ImplementationGuide.label"
+            categoryId="org.eclipse.mdht.uml.fhir.ui.commands.category.edit"/>
+      <command
+            id="org.eclipse.mdht.uml.fhir.ui.commands.addPackage"
+            name="%addFHIR.Package.label"
+            categoryId="org.eclipse.mdht.uml.fhir.ui.commands.category.edit"/>
+            
       <command
             id="org.eclipse.mdht.uml.fhir.ui.commands.addStructureDefinitionResource"
             name="%addFHIR.StructureDefinition.resource.label"
@@ -70,6 +80,49 @@
             id="org.eclipse.mdht.uml.fhir.ui.commands.addValueSet"
             name="%addFHIR.ValueSet.label"
             categoryId="org.eclipse.mdht.uml.fhir.ui.commands.category.edit"/>
+            
+      <command
+            id="org.eclipse.mdht.uml.fhir.ui.commands.addElementDefinition"
+            name="%addFHIR.ElementDefinition.label"
+            categoryId="org.eclipse.mdht.uml.fhir.ui.commands.category.edit"/>
+      <command
+            id="org.eclipse.mdht.uml.fhir.ui.commands.addExtensionUse"
+            name="%addFHIR.Extension.use.label"
+            categoryId="org.eclipse.mdht.uml.fhir.ui.commands.category.edit"/>
+      <command
+            id="org.eclipse.mdht.uml.fhir.ui.commands.addSlice"
+            name="%addFHIR.Slice.label"
+            categoryId="org.eclipse.mdht.uml.fhir.ui.commands.category.edit"/>
+            
+      <command
+            id="org.eclipse.mdht.uml.fhir.ui.commands.addConstraint"
+            name="%addFHIR.Constraint.label"
+            categoryId="org.eclipse.mdht.uml.fhir.ui.commands.category.edit"/>
+            
+      <command
+            categoryId="org.eclipse.mdht.uml.fhir.ui.commands.category.edit"
+            id="org.eclipse.mdht.uml.fhir.ui.commands.addComment"
+            name="%addFHIR.Comment.label">
+         <commandParameter
+               id="org.eclipse.mdht.uml.fhir.ui.commandParameter.commentType"
+               name="commentType"
+               optional="true">
+         </commandParameter>
+      </command>
+      <!--
+      <command
+            id="org.eclipse.mdht.uml.fhir.ui.commands.addDescriptionComment"
+            name="%addFHIR.Comment.description.label"
+            categoryId="org.eclipse.mdht.uml.fhir.ui.commands.category.edit"/>
+      <command
+            id="org.eclipse.mdht.uml.fhir.ui.commands.addShortDescriptionComment"
+            name="%addFHIR.Comment.short.description.label"
+            categoryId="org.eclipse.mdht.uml.fhir.ui.commands.category.edit"/>
+      <command
+            id="org.eclipse.mdht.uml.fhir.ui.commands.addRequirementsComment"
+            name="%addFHIR.Comment.requirements.label"
+            categoryId="org.eclipse.mdht.uml.fhir.ui.commands.category.edit"/>
+      -->
             
       <command
             id="org.eclipse.mdht.uml.fhir.ui.commands.importDefinitions"
@@ -92,11 +145,13 @@
                commandId="org.eclipse.mdht.uml.fhir.ui.commands.addPackage"
                label="%addFHIR.Package.label"
                icon="icons/uml-type/Package.gif">
+            <visibleWhen checkEnabled="true"/>
          </command>
          <command
                commandId="org.eclipse.mdht.uml.fhir.ui.commands.addImplementationGuide"
                label="%addFHIR.ImplementationGuide.label"
                icon="icons/uml-type/Package.gif">
+            <visibleWhen checkEnabled="true"/>
          </command>
       </menuContribution>
    </extension>
@@ -137,16 +192,19 @@
                commandId="org.eclipse.mdht.uml.fhir.ui.commands.addElementDefinition"
                label="%addFHIR.ElementDefinition.label"
                icon="icons/fhir-type/icon_element.gif">
+            <visibleWhen checkEnabled="true"/>
          </command>
          <command
                commandId="org.eclipse.mdht.uml.fhir.ui.commands.addExtensionUse"
                label="%addFHIR.Extension.use.label"
                icon="icons/fhir-type/icon_extension.png">
+            <visibleWhen checkEnabled="true"/>
          </command>
          <command
                commandId="org.eclipse.mdht.uml.fhir.ui.commands.addSlice"
                label="%addFHIR.Slice.label"
                icon="icons/fhir-type/icon_slice.png">
+            <visibleWhen checkEnabled="true"/>
          </command>
       </menuContribution>
       
@@ -156,30 +214,51 @@
                commandId="org.eclipse.mdht.uml.fhir.ui.commands.addConstraint"
                label="%addFHIR.Constraint.label"
                icon="icons/uml-type/Constraint.gif">
+            <visibleWhen checkEnabled="true"/>
          </command>
       </menuContribution>
       
       <menuContribution
             locationURI="popup:org.eclipse.mdht.uml.fhir.ui.menu.addFHIR?endof=comment">
          <command
-               commandId="org.eclipse.mdht.uml.fhir.ui.commands.addDefinitionComment"
+               commandId="org.eclipse.mdht.uml.fhir.ui.commands.addComment"
                label="%addFHIR.Comment.definition.label"
                icon="icons/uml-type/Comment.gif">
+            <visibleWhen checkEnabled="true"/>
+            <parameter
+                  name="org.eclipse.mdht.uml.fhir.ui.commandParameter.commentType"
+                  value="Definition">
+            </parameter>
          </command>
          <command
-               commandId="org.eclipse.mdht.uml.fhir.ui.commands.addDescriptionComment"
+               commandId="org.eclipse.mdht.uml.fhir.ui.commands.addComment"
                label="%addFHIR.Comment.description.label"
                icon="icons/uml-type/Comment.gif">
+            <visibleWhen checkEnabled="true"/>
+            <parameter
+                  name="org.eclipse.mdht.uml.fhir.ui.commandParameter.commentType"
+                  value="Description">
+            </parameter>
          </command>
          <command
-               commandId="org.eclipse.mdht.uml.fhir.ui.commands.addShortDescriptionComment"
+               commandId="org.eclipse.mdht.uml.fhir.ui.commands.addComment"
                label="%addFHIR.Comment.short.description.label"
                icon="icons/uml-type/Comment.gif">
+            <visibleWhen checkEnabled="true"/>
+            <parameter
+                  name="org.eclipse.mdht.uml.fhir.ui.commandParameter.commentType"
+                  value="ShortDescription">
+            </parameter>
          </command>
          <command
-               commandId="org.eclipse.mdht.uml.fhir.ui.commands.addRequirementsComment"
+               commandId="org.eclipse.mdht.uml.fhir.ui.commands.addComment"
                label="%addFHIR.Comment.requirements.label"
                icon="icons/uml-type/Comment.gif">
+            <visibleWhen checkEnabled="true"/>
+            <parameter
+                  name="org.eclipse.mdht.uml.fhir.ui.commandParameter.commentType"
+                  value="Requirements">
+            </parameter>
          </command>
       </menuContribution>
       
@@ -208,7 +287,39 @@
    -->
    <extension
          point="org.eclipse.ui.handlers">
-      <!-- UML Package -->
+      <!-- UML Package commands -->
+      <handler
+            commandId="org.eclipse.mdht.uml.fhir.ui.commands.addImplementationGuide"
+            class="org.eclipse.mdht.uml.fhir.ui.handlers.NotImplementedHandler">
+         <activeWhen>
+            <and>
+               <count value="1"/>
+               <iterate>
+                  <and>
+                     <test property="org.eclipse.mdht.uml.fhir.ui.ecore.eclass" value="uml:Package"/>
+                     <test property="org.eclipse.mdht.uml.fhir.ui.ecore.hasProfile" 
+                           value="http://www.eclipse.org/mdht/schema/profile/fhir"/>
+                  </and>
+               </iterate>
+            </and>
+         </activeWhen>
+      </handler>
+      <handler
+            commandId="org.eclipse.mdht.uml.fhir.ui.commands.addPackage"
+            class="org.eclipse.mdht.uml.fhir.ui.handlers.NotImplementedHandler">
+         <activeWhen>
+            <and>
+               <count value="1"/>
+               <iterate>
+                  <and>
+                     <test property="org.eclipse.mdht.uml.fhir.ui.ecore.eclass" value="uml:Package"/>
+                     <test property="org.eclipse.mdht.uml.fhir.ui.ecore.hasProfile" 
+                           value="http://www.eclipse.org/mdht/schema/profile/fhir"/>
+                  </and>
+               </iterate>
+            </and>
+         </activeWhen>
+      </handler>
       <handler
             commandId="org.eclipse.mdht.uml.fhir.ui.commands.addStructureDefinitionResource"
             class="org.eclipse.mdht.uml.fhir.ui.handlers.AddStructureDefinitionHandler">
@@ -243,7 +354,7 @@
       </handler>
       <handler
             commandId="org.eclipse.mdht.uml.fhir.ui.commands.addExtensionDefinition"
-            class="org.eclipse.mdht.uml.fhir.ui.handlers.AddExtensionDefinitionHandler">
+            class="org.eclipse.mdht.uml.fhir.ui.handlers.NotImplementedHandler">
          <activeWhen>
             <and>
                <count value="1"/>
@@ -259,7 +370,7 @@
       </handler>
       <handler
             commandId="org.eclipse.mdht.uml.fhir.ui.commands.addValueSet"
-            class="org.eclipse.mdht.uml.fhir.ui.handlers.AddValueSetHandler">
+            class="org.eclipse.mdht.uml.fhir.ui.handlers.NotImplementedHandler">
          <activeWhen>
             <and>
                <count value="1"/>
@@ -274,6 +385,104 @@
          </activeWhen>
       </handler>
       
+      <!-- UML Class commands -->
+      <handler
+            commandId="org.eclipse.mdht.uml.fhir.ui.commands.addElementDefinition"
+            class="org.eclipse.mdht.uml.fhir.ui.handlers.NotImplementedHandler">
+         <activeWhen>
+            <and>
+               <count value="1"/>
+               <iterate>
+                  <and>
+                     <test property="org.eclipse.mdht.uml.fhir.ui.ecore.eclass" value="uml:Class"/>
+                     <test property="org.eclipse.mdht.uml.fhir.ui.ecore.hasStereotype" 
+                           value="FHIR::StructureDefinition"/>
+                  </and>
+               </iterate>
+            </and>
+         </activeWhen>
+      </handler>
+      <handler
+            commandId="org.eclipse.mdht.uml.fhir.ui.commands.addExtensionUse"
+            class="org.eclipse.mdht.uml.fhir.ui.handlers.NotImplementedHandler">
+         <activeWhen>
+            <and>
+               <count value="1"/>
+               <iterate>
+                  <and>
+                     <test property="org.eclipse.mdht.uml.fhir.ui.ecore.eclass" value="uml:Class"/>
+                     <test property="org.eclipse.mdht.uml.fhir.ui.ecore.hasStereotype" 
+                           value="FHIR::StructureDefinition"/>
+                  </and>
+               </iterate>
+            </and>
+         </activeWhen>
+      </handler>
+      <handler
+            commandId="org.eclipse.mdht.uml.fhir.ui.commands.addSlice"
+            class="org.eclipse.mdht.uml.fhir.ui.handlers.NotImplementedHandler">
+         <activeWhen>
+            <and>
+               <count value="1"/>
+               <iterate>
+                  <and>
+                     <test property="org.eclipse.mdht.uml.fhir.ui.ecore.eclass" value="uml:Class"/>
+                     <test property="org.eclipse.mdht.uml.fhir.ui.ecore.hasStereotype" 
+                           value="FHIR::StructureDefinition"/>
+                  </and>
+               </iterate>
+            </and>
+         </activeWhen>
+      </handler>
+      
+      <handler
+            commandId="org.eclipse.mdht.uml.fhir.ui.commands.addConstraint"
+            class="org.eclipse.mdht.uml.fhir.ui.handlers.NotImplementedHandler">
+         <activeWhen>
+            <and>
+               <count value="1"/>
+               <iterate>
+                  <or>
+                  <and>
+                     <test property="org.eclipse.mdht.uml.fhir.ui.ecore.eclass" value="uml:Class"/>
+                     <test property="org.eclipse.mdht.uml.fhir.ui.ecore.hasStereotype" 
+                           value="FHIR::StructureDefinition"/>
+                  </and>
+                  <and>
+                     <test property="org.eclipse.mdht.uml.fhir.ui.ecore.eclass" value="uml:Property"/>
+                     <test property="org.eclipse.mdht.uml.fhir.ui.ecore.hasStereotype" 
+                           value="FHIR::ElementDefinition"/>
+                  </and>
+                  </or>
+               </iterate>
+            </and>
+         </activeWhen>
+      </handler>
+      <handler
+            commandId="org.eclipse.mdht.uml.fhir.ui.commands.addComment"
+            class="org.eclipse.mdht.uml.fhir.ui.handlers.AddCommentHandler">
+         <activeWhen>
+            <and>
+               <count value="1"/>
+               <iterate>
+                  <or>
+                  <and>
+                     <test property="org.eclipse.mdht.uml.fhir.ui.ecore.eclass" value="uml:Class"/>
+                     <test property="org.eclipse.mdht.uml.fhir.ui.ecore.hasStereotype" 
+                           value="FHIR::StructureDefinition"/>
+                  </and>
+                  <and>
+                     <test property="org.eclipse.mdht.uml.fhir.ui.ecore.eclass" value="uml:Property"/>
+                     <test property="org.eclipse.mdht.uml.fhir.ui.ecore.hasStereotype" 
+                           value="FHIR::ElementDefinition"/>
+                  </and>
+                  </or>
+               </iterate>
+            </and>
+         </activeWhen>
+      </handler>
+      
+      <!-- Import/Export handlers -->
       <handler
             commandId="org.eclipse.mdht.uml.fhir.ui.commands.importDefinitions"
             class="org.eclipse.mdht.uml.fhir.ui.handlers.ImportFhirHandler">
@@ -290,8 +499,6 @@
             </and>
          </activeWhen>
       </handler>
-      
-      <!-- UML Class -->
       <handler
             commandId="org.eclipse.mdht.uml.fhir.ui.commands.exportDefinitions"
             class="org.eclipse.mdht.uml.fhir.ui.handlers.ExportFhirHandler">
