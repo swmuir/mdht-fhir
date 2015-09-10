@@ -17,5 +17,5 @@ Features for FHA Demo
 - UI for export
   -- refresh workspace and open generated profile in XML editor
 
-- 
+- Show annotation icon, using FHIR icons
 

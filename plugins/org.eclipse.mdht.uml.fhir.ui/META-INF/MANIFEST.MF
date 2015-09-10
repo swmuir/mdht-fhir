@@ -6,12 +6,22 @@ Bundle-Version: 0.5.0.qualifier
 Bundle-Activator: org.eclipse.mdht.uml.fhir.ui.Activator
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Require-Bundle: org.eclipse.ui,
- org.eclipse.core.runtime,
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.ui,
+ org.eclipse.ui.ide,
  org.eclipse.emf,
+ org.eclipse.emf.common.ui,
  org.eclipse.uml2.uml,
+ org.eclipse.emf.workspace,
+ org.eclipse.emf.transaction,
  org.openhealthtools.mdht.uml.common,
- org.eclipse.mdht.uml.fhir
+ org.eclipse.mdht.uml.fhir,
+ org.eclipse.mdht.fhir.xsd,
+ org.eclipse.mdht.uml.fhir.transform,
+ org.openhealthtools.mdht.uml.common.ui,
+ org.openhealthtools.mdht.uml.ui,
+ org.eclipse.core.expressions,
+ org.eclipse.gmf.runtime.notation
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: org.eclipse.mdht.uml.fhir.ui.notation

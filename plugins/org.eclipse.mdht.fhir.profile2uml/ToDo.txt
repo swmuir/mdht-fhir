@@ -105,10 +105,17 @@ Model Mapping
 
 - Import ElementDef mapping
 
-CHANGES IN SEPT RELEASE
 
-- Change StructureDefinition.type, add StructureDefinition.constrainedType
-http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemEdit&tracker_id=677&tracker_item_id=6079
+---------------------------------------------------
+EXPORT FHIR
+
+- ElementDefinition name, if not in stereotype and if name is redefined (Extensions)
+
+- ValueSet binding
+
+- Constraints
+
+- Comments
 
 ---------------------------------------------------
 COMPLETED

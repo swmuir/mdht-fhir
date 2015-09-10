@@ -6,4 +6,315 @@
       		 class="org.eclipse.mdht.uml.fhir.ui.notation.FHIRAnnotationProvider"/>
    </extension>
 
+   <extension
+         point="org.eclipse.core.expressions.propertyTesters">
+      <propertyTester
+            class="org.eclipse.mdht.uml.fhir.ui.internal.expressions.ECoreTester"
+            id="org.eclipse.mdht.uml.fhir.ui.ecorePropertyTester"
+            namespace="org.eclipse.mdht.uml.fhir.ui.ecore"
+            properties="eclass, umlType, umlStrictType, hasProfile, hasStereotype"
+            type="java.lang.Object">
+      </propertyTester>
+   </extension>
+   
+   <!--
+      Sub-menu definitions
+   -->
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="popup:org.eclipse.ui.popup.any?before=group.new">
+         <menu
+               id="org.eclipse.mdht.uml.fhir.ui.menu.addFHIR"
+               label="%addFHIR.label">
+            <separator name="property" visible="true"/>
+            <separator name="classifier" visible="true"/>
+            <separator name="package" visible="true"/>
+            <separator name="constraint" visible="true"/>
+            <separator name="comment" visible="true"/>
+         </menu>
+      </menuContribution>
+      <menuContribution
+            locationURI="popup:org.eclipse.ui.popup.any?endof=group.port">
+         <menu
+               id="org.eclipse.mdht.uml.fhir.ui.menu.portFHIR"
+               label="%portFHIR.label">
+            <separator name="import" visible="false"/>
+            <separator name="export" visible="false"/>
+         </menu>
+      </menuContribution>
+   </extension>
+   
+   <!--
+      Command definitions
+   -->
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            id="org.eclipse.mdht.uml.fhir.ui.commands.category.edit"
+            name="FHIR Model Editing"
+            description="Commands for editing FHIR profile definitions in UML models."/>
+      <command
+            id="org.eclipse.mdht.uml.fhir.ui.commands.addStructureDefinitionResource"
+            name="%addFHIR.StructureDefinition.resource.label"
+            categoryId="org.eclipse.mdht.uml.fhir.ui.commands.category.edit"/>
+      <command
+            id="org.eclipse.mdht.uml.fhir.ui.commands.addStructureDefinitionDataType"
+            name="%addFHIR.StructureDefinition.datatype.label"
+            categoryId="org.eclipse.mdht.uml.fhir.ui.commands.category.edit"/>
+      <command
+            id="org.eclipse.mdht.uml.fhir.ui.commands.addExtensionDefinition"
+            name="%addFHIR.Extension.definition.label"
+            categoryId="org.eclipse.mdht.uml.fhir.ui.commands.category.edit"/>
+      <command
+            id="org.eclipse.mdht.uml.fhir.ui.commands.addValueSet"
+            name="%addFHIR.ValueSet.label"
+            categoryId="org.eclipse.mdht.uml.fhir.ui.commands.category.edit"/>
+            
+      <command
+            id="org.eclipse.mdht.uml.fhir.ui.commands.importDefinitions"
+            name="%importFHIR.label"
+            categoryId="org.eclipse.mdht.uml.fhir.ui.commands.category.edit"/>
+      <command
+            id="org.eclipse.mdht.uml.fhir.ui.commands.exportDefinitions"
+            name="%exportFHIR.label"
+            categoryId="org.eclipse.mdht.uml.fhir.ui.commands.category.edit"/>
+   </extension>
+   
+   <!--
+      Command menu contributions
+   -->
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="popup:org.eclipse.mdht.uml.fhir.ui.menu.addFHIR?endof=package">
+         <command
+               commandId="org.eclipse.mdht.uml.fhir.ui.commands.addPackage"
+               label="%addFHIR.Package.label"
+               icon="icons/uml-type/Package.gif">
+         </command>
+         <command
+               commandId="org.eclipse.mdht.uml.fhir.ui.commands.addImplementationGuide"
+               label="%addFHIR.ImplementationGuide.label"
+               icon="icons/uml-type/Package.gif">
+         </command>
+      </menuContribution>
+   </extension>
+      
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="popup:org.eclipse.mdht.uml.fhir.ui.menu.addFHIR?endof=classifier">
+         <command
+               commandId="org.eclipse.mdht.uml.fhir.ui.commands.addStructureDefinitionResource"
+               label="%addFHIR.StructureDefinition.resource.label"
+               icon="icons/fhir-type/icon_profile.png">
+            <visibleWhen checkEnabled="true"/>
+         </command>
+         <command
+               commandId="org.eclipse.mdht.uml.fhir.ui.commands.addStructureDefinitionDataType"
+               label="%addFHIR.StructureDefinition.datatype.label"
+               icon="icons/fhir-type/icon_profile.png">
+            <visibleWhen checkEnabled="true"/>
+         </command>
+         <command
+               commandId="org.eclipse.mdht.uml.fhir.ui.commands.addExtensionDefinition"
+               label="%addFHIR.Extension.definition.label"
+               icon="icons/fhir-type/icon_extension_complex.png">
+            <visibleWhen checkEnabled="true"/>
+         </command>
+         <command
+               commandId="org.eclipse.mdht.uml.fhir.ui.commands.addValueSet"
+               label="%addFHIR.ValueSet.label"
+               icon="icons/uml-type/Enumeration.gif">
+            <visibleWhen checkEnabled="true"/>
+         </command>
+      </menuContribution>
+      
+      <menuContribution
+            locationURI="popup:org.eclipse.mdht.uml.fhir.ui.menu.addFHIR?endof=property">
+         <command
+               commandId="org.eclipse.mdht.uml.fhir.ui.commands.addElementDefinition"
+               label="%addFHIR.ElementDefinition.label"
+               icon="icons/fhir-type/icon_element.gif">
+         </command>
+         <command
+               commandId="org.eclipse.mdht.uml.fhir.ui.commands.addExtensionUse"
+               label="%addFHIR.Extension.use.label"
+               icon="icons/fhir-type/icon_extension.png">
+         </command>
+         <command
+               commandId="org.eclipse.mdht.uml.fhir.ui.commands.addSlice"
+               label="%addFHIR.Slice.label"
+               icon="icons/fhir-type/icon_slice.png">
+         </command>
+      </menuContribution>
+      
+      <menuContribution
+            locationURI="popup:org.eclipse.mdht.uml.fhir.ui.menu.addFHIR?endof=constraint">
+         <command
+               commandId="org.eclipse.mdht.uml.fhir.ui.commands.addConstraint"
+               label="%addFHIR.Constraint.label"
+               icon="icons/uml-type/Constraint.gif">
+         </command>
+      </menuContribution>
+      
+      <menuContribution
+            locationURI="popup:org.eclipse.mdht.uml.fhir.ui.menu.addFHIR?endof=comment">
+         <command
+               commandId="org.eclipse.mdht.uml.fhir.ui.commands.addDefinitionComment"
+               label="%addFHIR.Comment.definition.label"
+               icon="icons/uml-type/Comment.gif">
+         </command>
+         <command
+               commandId="org.eclipse.mdht.uml.fhir.ui.commands.addDescriptionComment"
+               label="%addFHIR.Comment.description.label"
+               icon="icons/uml-type/Comment.gif">
+         </command>
+         <command
+               commandId="org.eclipse.mdht.uml.fhir.ui.commands.addShortDescriptionComment"
+               label="%addFHIR.Comment.short.description.label"
+               icon="icons/uml-type/Comment.gif">
+         </command>
+         <command
+               commandId="org.eclipse.mdht.uml.fhir.ui.commands.addRequirementsComment"
+               label="%addFHIR.Comment.requirements.label"
+               icon="icons/uml-type/Comment.gif">
+         </command>
+      </menuContribution>
+      
+      <menuContribution
+            locationURI="popup:org.eclipse.mdht.uml.fhir.ui.menu.portFHIR?endof=import">
+         <command
+               commandId="org.eclipse.mdht.uml.fhir.ui.commands.importDefinitions"
+               label="%importFHIR.label"
+               icon="icons/fhir-type/icon_resource.png">
+            <visibleWhen checkEnabled="true"/>
+         </command>
+      </menuContribution>
+      <menuContribution
+            locationURI="popup:org.eclipse.mdht.uml.fhir.ui.menu.portFHIR?endof=export">
+         <command
+               commandId="org.eclipse.mdht.uml.fhir.ui.commands.exportDefinitions"
+               label="%exportFHIR.label"
+               icon="icons/fhir-type/icon_resource.png">
+            <visibleWhen checkEnabled="true"/>
+         </command>
+      </menuContribution>
+   </extension>
+   
+   <!--
+      Handlers
+   -->
+   <extension
+         point="org.eclipse.ui.handlers">
+      <!-- UML Package -->
+      <handler
+            commandId="org.eclipse.mdht.uml.fhir.ui.commands.addStructureDefinitionResource"
+            class="org.eclipse.mdht.uml.fhir.ui.handlers.AddStructureDefinitionHandler">
+         <activeWhen>
+            <and>
+               <count value="1"/>
+               <iterate>
+                  <and>
+                     <test property="org.eclipse.mdht.uml.fhir.ui.ecore.eclass" value="uml:Package"/>
+                     <test property="org.eclipse.mdht.uml.fhir.ui.ecore.hasProfile" 
+                           value="http://www.eclipse.org/mdht/schema/profile/fhir"/>
+                  </and>
+               </iterate>
+            </and>
+         </activeWhen>
+      </handler>
+      <handler
+            commandId="org.eclipse.mdht.uml.fhir.ui.commands.addStructureDefinitionDataType"
+            class="org.eclipse.mdht.uml.fhir.ui.handlers.AddStructureDefinitionHandler">
+         <activeWhen>
+            <and>
+               <count value="1"/>
+               <iterate>
+                  <and>
+                     <test property="org.eclipse.mdht.uml.fhir.ui.ecore.eclass" value="uml:Package"/>
+                     <test property="org.eclipse.mdht.uml.fhir.ui.ecore.hasProfile" 
+                           value="http://www.eclipse.org/mdht/schema/profile/fhir"/>
+                  </and>
+               </iterate>
+            </and>
+         </activeWhen>
+      </handler>
+      <handler
+            commandId="org.eclipse.mdht.uml.fhir.ui.commands.addExtensionDefinition"
+            class="org.eclipse.mdht.uml.fhir.ui.handlers.AddExtensionDefinitionHandler">
+         <activeWhen>
+            <and>
+               <count value="1"/>
+               <iterate>
+                  <and>
+                     <test property="org.eclipse.mdht.uml.fhir.ui.ecore.eclass" value="uml:Package"/>
+                     <test property="org.eclipse.mdht.uml.fhir.ui.ecore.hasProfile" 
+                           value="http://www.eclipse.org/mdht/schema/profile/fhir"/>
+                  </and>
+               </iterate>
+            </and>
+         </activeWhen>
+      </handler>
+      <handler
+            commandId="org.eclipse.mdht.uml.fhir.ui.commands.addValueSet"
+            class="org.eclipse.mdht.uml.fhir.ui.handlers.AddValueSetHandler">
+         <activeWhen>
+            <and>
+               <count value="1"/>
+               <iterate>
+                  <and>
+                     <test property="org.eclipse.mdht.uml.fhir.ui.ecore.eclass" value="uml:Package"/>
+                     <test property="org.eclipse.mdht.uml.fhir.ui.ecore.hasProfile" 
+                           value="http://www.eclipse.org/mdht/schema/profile/fhir"/>
+                  </and>
+               </iterate>
+            </and>
+         </activeWhen>
+      </handler>
+      
+      <handler
+            commandId="org.eclipse.mdht.uml.fhir.ui.commands.importDefinitions"
+            class="org.eclipse.mdht.uml.fhir.ui.handlers.ImportFhirHandler">
+         <activeWhen>
+            <and>
+               <count value="1"/>
+               <iterate>
+                  <and>
+                     <test property="org.eclipse.mdht.uml.fhir.ui.ecore.eclass" value="uml:Package"/>
+                     <test property="org.eclipse.mdht.uml.fhir.ui.ecore.hasProfile" 
+                           value="http://www.eclipse.org/mdht/schema/profile/fhir"/>
+                  </and>
+               </iterate>
+            </and>
+         </activeWhen>
+      </handler>
+      
+      <!-- UML Class -->
+      <handler
+            commandId="org.eclipse.mdht.uml.fhir.ui.commands.exportDefinitions"
+            class="org.eclipse.mdht.uml.fhir.ui.handlers.ExportFhirHandler">
+         <activeWhen>
+            <and>
+               <count value="1"/>
+               <iterate>
+                  <or>
+                  <and>
+                     <test property="org.eclipse.mdht.uml.fhir.ui.ecore.eclass" value="uml:Class"/>
+                     <test property="org.eclipse.mdht.uml.fhir.ui.ecore.hasStereotype" 
+                           value="FHIR::StructureDefinition"/>
+                  </and>
+                  <and>
+                     <test property="org.eclipse.mdht.uml.fhir.ui.ecore.eclass" value="uml:Enumeration"/>
+                     <test property="org.eclipse.mdht.uml.fhir.ui.ecore.hasStereotype" 
+                           value="FHIR::ValueSet"/>
+                  </and>
+                  </or>
+               </iterate>
+            </and>
+         </activeWhen>
+      </handler>
+   </extension>
+   
 </plugin>

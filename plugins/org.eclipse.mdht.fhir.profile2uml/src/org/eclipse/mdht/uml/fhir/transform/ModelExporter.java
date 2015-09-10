@@ -12,7 +12,13 @@
 package org.eclipse.mdht.uml.fhir.transform;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
+
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.XMLGregorianCalendar;
 
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.mdht.uml.fhir.FHIRPackage;
@@ -61,6 +67,8 @@ public class ModelExporter implements ModelConstants {
 		
 		structureDef.setId(createFhirId(id));
 		structureDef.setUrl(createFhirUri(uri));
+		structureDef.setStatus(createFhirCode("draft"));
+		structureDef.setDate(createFhirDateTimeNow());
 		structureDef.setPublisher(createFhirString(publisher));
 
 		if (structureDefStereotype.getName() != null) {
@@ -342,6 +350,26 @@ public class ModelExporter implements ModelConstants {
 		org.hl7.fhir.Code fhirCode = FhirFactory.eINSTANCE.createCode();
 		fhirCode.setValue(value);
 		return fhirCode;
+	}
+
+	private org.hl7.fhir.DateTime createFhirDateTime(XMLGregorianCalendar value) {
+		org.hl7.fhir.DateTime fhirDate = FhirFactory.eINSTANCE.createDateTime();
+		fhirDate.setValue(value);
+		return fhirDate;
+	}
+
+	private org.hl7.fhir.DateTime createFhirDateTimeNow() {
+		try {
+			GregorianCalendar cal = new GregorianCalendar();
+			cal.setTime(new Date());
+			XMLGregorianCalendar xmlCal = DatatypeFactory.newInstance().newXMLGregorianCalendar(cal);
+			return createFhirDateTime(xmlCal);
+			
+		} catch (DatatypeConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 }
