@@ -11,10 +11,12 @@
  *******************************************************************************/
 package org.eclipse.mdht.uml.fhir.ui.handlers;
 
+import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.jface.dialogs.InputDialog;
 import org.eclipse.jface.window.Window;
 import org.eclipse.mdht.uml.fhir.FHIRPackage;
 import org.eclipse.mdht.uml.fhir.StructureDefinition;
+import org.eclipse.mdht.uml.fhir.transform.FhirModelUtil;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Element;
@@ -26,12 +28,18 @@ import org.openhealthtools.mdht.uml.common.util.UMLUtil;
 
 public class AddStructureDefinitionHandler extends AddUMLClassHandler {
 
+	private static final String HAS_BASE_TYPES_PARAMETER = "org.eclipse.mdht.uml.fhir.ui.commandParameter.hasBaseTypes";
+	private static final String NOT_BASE_TYPES_PARAMETER = "org.eclipse.mdht.uml.fhir.ui.commandParameter.notBaseTypes";
+
 	@Override
-	protected String getClassName(IWorkbenchPart activePart) {
+	protected String getClassName(ExecutionEvent event, IWorkbenchPart activePart) {
 		String className = null;
 
+		String hasBaseTypeNames = event.getParameter(HAS_BASE_TYPES_PARAMETER);
+		String baseTypeLabel = (hasBaseTypeNames != null) ? " for " + hasBaseTypeNames : "";
+
 		InputDialog inputDialog = new InputDialog(
-			activePart.getSite().getShell(), "New Structure Definition", "Enter profile name", "", null);
+			activePart.getSite().getShell(), "New Profile" + baseTypeLabel, "Enter profile name", "", null);
 		if (inputDialog.open() == Window.OK) {
 			className = inputDialog.getValue();
 		}
@@ -39,17 +47,46 @@ public class AddStructureDefinitionHandler extends AddUMLClassHandler {
 	}
 
 	@Override
-	protected Class selectSuperClass(Class newClass, IWorkbenchPart activePart) {
+	protected Class selectSuperClass(Class newClass, ExecutionEvent event, IWorkbenchPart activePart) {
 		// select a structure definition
 		Profile fhirProfile = org.eclipse.uml2.uml.util.UMLUtil.getProfile(FHIRPackage.eINSTANCE.getStructureDefinition().getEPackage(), newClass);
 		if (fhirProfile == null) {
 			return null;
 		}
+
+		String hasBaseTypeNames = event.getParameter(HAS_BASE_TYPES_PARAMETER);
+		String notBaseTypeNames = event.getParameter(NOT_BASE_TYPES_PARAMETER);
 		
 		Stereotype structureDefStereotype = fhirProfile.getOwnedStereotype(org.eclipse.mdht.uml.fhir.FHIRPackage.eINSTANCE.getStructureDefinition().getName());
 		IElementFilter filter = new IElementFilter() {
 			public boolean accept(Element element) {
-				return (element instanceof Class) && element.isStereotypeApplied(structureDefStereotype);
+				boolean hasStereotype =  (element instanceof Class) && element.isStereotypeApplied(structureDefStereotype);
+				boolean hasBaseType = true;
+				boolean notBaseType = true;
+				
+				if (hasStereotype && hasBaseTypeNames != null) {
+					hasBaseType = false;
+					String[] names = hasBaseTypeNames.split(",| ");
+					for (int i = 0; i < names.length; i++) {
+						boolean isKindOf = FhirModelUtil.isKindOf((Class)element, names[i]);
+						if (isKindOf) {
+							hasBaseType = true;
+							break;
+						}
+					}
+				}
+				if (hasStereotype && hasBaseType && notBaseTypeNames != null) {
+					String[] names = notBaseTypeNames.split(",| ");
+					for (int i = 0; i < names.length; i++) {
+						boolean isKindOf = FhirModelUtil.isKindOf((Class)element, names[i]);
+						if (isKindOf) {
+							notBaseType = false;
+							break;
+						}
+					}
+				}
+				
+				return hasStereotype && hasBaseType && notBaseType;
 			}
 		};
 
@@ -60,12 +97,12 @@ public class AddStructureDefinitionHandler extends AddUMLClassHandler {
 	}
 
 	@Override
-	protected void addProperties(Class newClass, Class superClass, IWorkbenchPart activePart) {
-		super.addProperties(newClass, superClass, activePart);
+	protected void addProperties(Class newClass, Class superClass, ExecutionEvent event, IWorkbenchPart activePart) {
+		super.addProperties(newClass, superClass, event, activePart);
 	}
 
 	@Override
-	protected void postProcess(Class newClass) {
+	protected void postProcess(Class newClass, ExecutionEvent event, IWorkbenchPart activePart) {
 		Profile fhirUmlProfile = org.eclipse.uml2.uml.util.UMLUtil.getProfile(
 				org.eclipse.mdht.uml.fhir.FHIRPackage.eINSTANCE.getStructureDefinition().getEPackage(), newClass);
 		if (fhirUmlProfile != null) {

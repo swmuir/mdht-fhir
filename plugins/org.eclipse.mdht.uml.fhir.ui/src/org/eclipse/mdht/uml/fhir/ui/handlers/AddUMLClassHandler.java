@@ -57,7 +57,7 @@ public class AddUMLClassHandler extends AbstractHandler {
 			@Override
 			protected IStatus doExecute(IProgressMonitor monitor, IAdaptable info) {
 				// prompt for new class name
-				String className = getClassName(activePart);
+				String className = getClassName(event, activePart);
 				if (className == null || className.length() == 0) {
 					return Status.CANCEL_STATUS;
 				}
@@ -71,14 +71,14 @@ public class AddUMLClassHandler extends AbstractHandler {
 					((Class) selectedElement).getNestedClassifiers().add(newClass);
 				}
 
-				Class superClass = selectSuperClass(newClass, activePart);
+				Class superClass = selectSuperClass(newClass, event, activePart);
 				if (superClass != null) {
 					newClass.createGeneralization(superClass);
 				}
 
-				addProperties(newClass, superClass, activePart);
+				addProperties(newClass, superClass, event, activePart);
 
-				postProcess(newClass);
+				postProcess(newClass, event, activePart);
 
 				// TODO this does not select in CommonNavigator. maybe need a refresh first?
 				if (activePart instanceof ISetSelectionTarget) {
@@ -98,8 +98,9 @@ public class AddUMLClassHandler extends AbstractHandler {
 	/**
 	 * Subclass may override to customize domain-specific processing.
 	 * Default is to open dialog containing all available classes.
+	 * @throws ExecutionException 
 	 */
-	protected String getClassName(IWorkbenchPart activePart) {
+	protected String getClassName(ExecutionEvent event, IWorkbenchPart activePart) {
 		String className = null;
 
 		InputDialog inputDialog = new InputDialog(
@@ -116,7 +117,7 @@ public class AddUMLClassHandler extends AbstractHandler {
 	 * 
 	 * @param new class
 	 */
-	protected Class selectSuperClass(Class newClass, IWorkbenchPart activePart) {
+	protected Class selectSuperClass(Class newClass, ExecutionEvent event, IWorkbenchPart activePart) {
 		Class superClass = (Class) DialogLaunchUtil.chooseElement(
 			new GeneralizationTypeFilter(newClass), UMLUtil.getTopPackage(newClass), activePart.getSite().getShell(),
 			"Class Selection", "Select base class (Cancel for none):");
@@ -130,7 +131,7 @@ public class AddUMLClassHandler extends AbstractHandler {
 	 * 
 	 * @param new class
 	 */
-	protected void addProperties(Class newClass, Class superClass, IWorkbenchPart activePart) {
+	protected void addProperties(Class newClass, Class superClass, ExecutionEvent event, IWorkbenchPart activePart) {
 		if (superClass != null) {
 			// prompt for selection of redefined properties
 			// TODO customize dialog title and prompt
@@ -145,7 +146,7 @@ public class AddUMLClassHandler extends AbstractHandler {
 	 * 
 	 * @param new class
 	 */
-	protected void postProcess(Class newClass) {
+	protected void postProcess(Class newClass, ExecutionEvent event, IWorkbenchPart activePart) {
 		// do nothing by default
 	}
 

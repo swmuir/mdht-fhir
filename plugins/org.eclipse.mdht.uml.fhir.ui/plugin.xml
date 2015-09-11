@@ -65,9 +65,19 @@
             categoryId="org.eclipse.mdht.uml.fhir.ui.commands.category.edit"/>
             
       <command
-            id="org.eclipse.mdht.uml.fhir.ui.commands.addStructureDefinitionResource"
-            name="%addFHIR.StructureDefinition.resource.label"
-            categoryId="org.eclipse.mdht.uml.fhir.ui.commands.category.edit"/>
+            id="org.eclipse.mdht.uml.fhir.ui.commands.addStructureDefinition"
+            name="%addFHIR.StructureDefinition.label"
+            categoryId="org.eclipse.mdht.uml.fhir.ui.commands.category.edit">
+         <commandParameter
+               id="org.eclipse.mdht.uml.fhir.ui.commandParameter.hasBaseTypes"
+               name="hasBaseTypes"
+               optional="true"/>
+         <commandParameter
+               id="org.eclipse.mdht.uml.fhir.ui.commandParameter.notBaseTypes"
+               name="notBaseTypes"
+               optional="true"/>
+      </command>
+      <!--
       <command
             id="org.eclipse.mdht.uml.fhir.ui.commands.addStructureDefinitionDataType"
             name="%addFHIR.StructureDefinition.datatype.label"
@@ -76,6 +86,8 @@
             id="org.eclipse.mdht.uml.fhir.ui.commands.addExtensionDefinition"
             name="%addFHIR.Extension.definition.label"
             categoryId="org.eclipse.mdht.uml.fhir.ui.commands.category.edit"/>
+      -->
+      
       <command
             id="org.eclipse.mdht.uml.fhir.ui.commands.addValueSet"
             name="%addFHIR.ValueSet.label"
@@ -142,14 +154,14 @@
       <menuContribution
             locationURI="popup:org.eclipse.mdht.uml.fhir.ui.menu.addFHIR?endof=package">
          <command
-               commandId="org.eclipse.mdht.uml.fhir.ui.commands.addPackage"
-               label="%addFHIR.Package.label"
+               commandId="org.eclipse.mdht.uml.fhir.ui.commands.addImplementationGuide"
+               label="%addFHIR.ImplementationGuide.label"
                icon="icons/uml-type/Package.gif">
             <visibleWhen checkEnabled="true"/>
          </command>
          <command
-               commandId="org.eclipse.mdht.uml.fhir.ui.commands.addImplementationGuide"
-               label="%addFHIR.ImplementationGuide.label"
+               commandId="org.eclipse.mdht.uml.fhir.ui.commands.addPackage"
+               label="%addFHIR.Package.label"
                icon="icons/uml-type/Package.gif">
             <visibleWhen checkEnabled="true"/>
          </command>
@@ -161,23 +173,36 @@
       <menuContribution
             locationURI="popup:org.eclipse.mdht.uml.fhir.ui.menu.addFHIR?endof=classifier">
          <command
-               commandId="org.eclipse.mdht.uml.fhir.ui.commands.addStructureDefinitionResource"
+               commandId="org.eclipse.mdht.uml.fhir.ui.commands.addStructureDefinition"
                label="%addFHIR.StructureDefinition.resource.label"
                icon="icons/fhir-type/icon_profile.png">
             <visibleWhen checkEnabled="true"/>
+            <parameter
+                  name="org.eclipse.mdht.uml.fhir.ui.commandParameter.hasBaseTypes"
+                  value="DomainResource"/>
          </command>
          <command
-               commandId="org.eclipse.mdht.uml.fhir.ui.commands.addStructureDefinitionDataType"
+               commandId="org.eclipse.mdht.uml.fhir.ui.commands.addStructureDefinition"
                label="%addFHIR.StructureDefinition.datatype.label"
                icon="icons/fhir-type/icon_profile.png">
             <visibleWhen checkEnabled="true"/>
+            <parameter
+                  name="org.eclipse.mdht.uml.fhir.ui.commandParameter.hasBaseTypes"
+                  value="DataType"/>
+            <parameter
+                  name="org.eclipse.mdht.uml.fhir.ui.commandParameter.notBaseTypes"
+                  value="Extension | BackboneElement"/>
          </command>
          <command
-               commandId="org.eclipse.mdht.uml.fhir.ui.commands.addExtensionDefinition"
+               commandId="org.eclipse.mdht.uml.fhir.ui.commands.addStructureDefinition"
                label="%addFHIR.Extension.definition.label"
                icon="icons/fhir-type/icon_extension_complex.png">
             <visibleWhen checkEnabled="true"/>
+            <parameter
+                  name="org.eclipse.mdht.uml.fhir.ui.commandParameter.hasBaseTypes"
+                  value="Extension"/>
          </command>
+         
          <command
                commandId="org.eclipse.mdht.uml.fhir.ui.commands.addValueSet"
                label="%addFHIR.ValueSet.label"
@@ -321,7 +346,7 @@
          </activeWhen>
       </handler>
       <handler
-            commandId="org.eclipse.mdht.uml.fhir.ui.commands.addStructureDefinitionResource"
+            commandId="org.eclipse.mdht.uml.fhir.ui.commands.addStructureDefinition"
             class="org.eclipse.mdht.uml.fhir.ui.handlers.AddStructureDefinitionHandler">
          <activeWhen>
             <and>
@@ -336,6 +361,7 @@
             </and>
          </activeWhen>
       </handler>
+      <!--
       <handler
             commandId="org.eclipse.mdht.uml.fhir.ui.commands.addStructureDefinitionDataType"
             class="org.eclipse.mdht.uml.fhir.ui.handlers.AddStructureDefinitionHandler">
@@ -368,6 +394,7 @@
             </and>
          </activeWhen>
       </handler>
+      -->
       <handler
             commandId="org.eclipse.mdht.uml.fhir.ui.commands.addValueSet"
             class="org.eclipse.mdht.uml.fhir.ui.handlers.NotImplementedHandler">
