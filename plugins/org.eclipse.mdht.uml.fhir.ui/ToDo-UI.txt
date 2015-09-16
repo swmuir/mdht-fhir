@@ -1,0 +1,42 @@
+FHIR UI Tooling
+=========================================================
+
+- Terminology browsing
+  -- ???
+
+- Preferences Page
+  -- Servers
+     -- Patient Server
+     -- Data Server
+     -- Registry Server
+     -- Terminology Server
+  -- Output folder for generated profiles
+   
+- Commands
+  -- Deploy to Server
+     -- context menu on profile class, generate and deploy
+     
+- UML Table Editor
+  -- FHIR icons in Annotation column
+     -- See http://hl7-fhir.github.io/formats.html#table
+  -- Description column
+     -- Add getDescription() to notation extension point
+
+- 0..0 multiplicity
+  -- display strike-through font for class attribute in table, and in SubClass dialog list
+  -- strike-through font in dynagram
+
+- Dynagram option to collapse shared associations by default
+  -- New menu: Expand References (true by default)
+     --- use to collapse Resource associations
+  -- Add to default preferences
+  
+- Improve UI for importing profiles
+
+- UI Add Extension
+  -- auto add 'uri' and 'value[x]', do not prompt
+  -- prompt for fixed extension URI (default to HL7 base + name.toLowerCase()
+  -- prompt for context type(s)
+
+- UI Add Extension Use
+  -- filter for extensions where context includes constrainedType
