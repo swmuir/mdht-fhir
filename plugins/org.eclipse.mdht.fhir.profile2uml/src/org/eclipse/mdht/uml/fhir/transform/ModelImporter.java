@@ -52,6 +52,7 @@ import org.hl7.fhir.ElementDefinitionBinding;
 import org.hl7.fhir.ElementDefinitionConstraint;
 import org.hl7.fhir.ElementDefinitionType;
 import org.hl7.fhir.Extension;
+import org.hl7.fhir.Id;
 import org.hl7.fhir.StructureDefinition;
 import org.hl7.fhir.StructureDefinitionKindList;
 import org.hl7.fhir.Uri;
@@ -70,7 +71,7 @@ public class ModelImporter implements ModelConstants {
 	
 	// key = id, value = DomainResource
 	private Map<String,DomainResource> bundleMap = new HashMap<String,DomainResource>();
-	
+
 	private IContainer fhirProfileFolder;
 	
 	private Package model;
@@ -237,6 +238,7 @@ public class ModelImporter implements ModelConstants {
 	}
 
 	public void importBundle(Bundle bundle) {
+		bundleMap.clear();
 		TreeIterator<?> iterator = EcoreUtil.getAllContents(Collections.singletonList(bundle));
 
 		// map all resources in the bundle, to allow forward references
@@ -403,7 +405,10 @@ public class ModelImporter implements ModelConstants {
 		String profileClassName = structureDef.getId().getValue();
 		boolean isAbstract = structureDef.getAbstract().isValue();
 		profileClass = kindPackage.createOwnedClass(profileClassName, isAbstract);
-		
+
+		Map<String,Constraint> constraintMap = new HashMap<String,Constraint>();
+		createConstraints(profileClass, structureDef, constraintMap);
+
 		Profile fhirUmlProfile = UMLUtil.getProfile(org.eclipse.mdht.uml.fhir.FHIRPackage.eINSTANCE.getTypeChoice().getEPackage(), profileClass);
 		if (fhirUmlProfile != null) {
 			org.eclipse.mdht.uml.fhir.StructureDefinition structureDefStereotype = (org.eclipse.mdht.uml.fhir.StructureDefinition) UMLUtil.safeApplyStereotype(profileClass, fhirUmlProfile.getOwnedStereotype(org.eclipse.mdht.uml.fhir.FHIRPackage.eINSTANCE.getStructureDefinition().getName()));
@@ -531,9 +536,14 @@ public class ModelImporter implements ModelConstants {
 
 				addComments(profileClass, elementDef);
 
-				// Add profile element constraints
-				for (ElementDefinitionConstraint constraint : elementDef.getConstraint()) {
-					addConstraint(profileClass, constraint);
+				// Find UML Constraint and add property to constrainedElements list.
+				for (ElementDefinitionConstraint fhirConstraint : elementDef.getConstraint()) {
+					if (fhirConstraint.getKey() != null) {
+						Constraint umlConstraint = constraintMap.get(fhirConstraint.getKey().getValue());
+						if (umlConstraint != null) {
+							umlConstraint.getConstrainedElements().add(profileClass);
+						}
+					}
 				}
 				
 				// don't create a Property for profile element
@@ -708,14 +718,25 @@ public class ModelImporter implements ModelConstants {
 				addTypeChoice(property, typeList);
 			}
 			
-			// Add constraints
-			for (ElementDefinitionConstraint constraint : elementDef.getConstraint()) {
-//				Class context = ownerClass;
-//				if (FhirModelUtil.hasNestedType(property)) {
-//					// This is a context element definition for a nested class
-//					context = (Class) property.getType();
-//				}
-				addConstraint(property, constraint);
+			// Find UML Constraint and add property to constrainedElements list.
+			for (ElementDefinitionConstraint fhirConstraint : elementDef.getConstraint()) {
+				if (fhirConstraint.getKey() != null) {
+					Constraint umlConstraint = constraintMap.get(fhirConstraint.getKey().getValue());
+					if (umlConstraint != null) {
+						umlConstraint.getConstrainedElements().add(property);
+					}
+				}
+			}
+			for (Id conditionId : elementDef.getCondition()) {
+				String key = conditionId.getValue();
+				Constraint umlConstraint = constraintMap.get(key);
+				
+				if (umlConstraint != null) {
+					umlConstraint.getConstrainedElements().add(property);
+				}
+				else {
+					System.err.println("Cannot resolve condition reference: " + key + " in: " + property.getQualifiedName());
+				}
 			}
 		}
 		
@@ -987,25 +1008,41 @@ public class ModelImporter implements ModelConstants {
 		}
 	}
 	
-	private void addConstraint(Element constrainedElement, ElementDefinitionConstraint fhirConstraint) {
-		Constraint umlConstraint = null;
+	private void createConstraints(Class profileClass, StructureDefinition structureDef, Map<String,Constraint> constraintMap) {
+		// iterate over differential elements to find all constraint definitions
+		TreeIterator<?> iterator = EcoreUtil.getAllContents(Collections.singletonList(structureDef.getDifferential()));
 
-		if (constrainedElement instanceof Namespace) {
-			umlConstraint = ((Namespace) constrainedElement).createOwnedRule(null);
-		} else if (constrainedElement.getOwner() instanceof Namespace) {
-			Namespace ns = (Namespace) constrainedElement.getOwner();
-			umlConstraint = ns.createOwnedRule(null);
+		while (iterator != null && iterator.hasNext()) {
+			Object child = iterator.next();
+			if (child instanceof ElementDefinitionConstraint) {
+				ElementDefinitionConstraint fhirConstraint = (ElementDefinitionConstraint) child;
+				if (fhirConstraint.getKey() != null) {
+					Constraint umlConstraint = addConstraint(profileClass, fhirConstraint);
+					String key = fhirConstraint.getKey().getValue();
+					constraintMap.put(key, umlConstraint);
+				}
+				else {
+					System.err.println("ElementDefinitionConstraint entry missing key, " + fhirConstraint);
+				}
+				iterator.prune();
+			}
 		}
-		if (constrainedElement != null) {
-			umlConstraint.getConstrainedElements().add(constrainedElement);
-		}
+	}
+	
+	private Constraint addConstraint(Namespace owner, ElementDefinitionConstraint fhirConstraint) {
+		Constraint umlConstraint = owner.createOwnedRule(null);
 		
 		if (fhirConstraint.getKey() != null) {
-			umlConstraint.setName(fhirConstraint.getKey().getValue());
+			String key = fhirConstraint.getKey().getValue();
+			umlConstraint.setName(key);
 		}
-
+		
 		if (fhirConstraint.getRequirements() != null) {
-			umlConstraint.createOwnedComment().setBody(fhirConstraint.getRequirements().getValue());
+			Comment comment = umlConstraint.createOwnedComment();
+			comment.setBody(fhirConstraint.getRequirements().getValue());
+
+			Profile fhirProfile = UMLUtil.getProfile(org.eclipse.mdht.uml.fhir.FHIRPackage.eINSTANCE.getTypeChoice().getEPackage(), owner);
+			UMLUtil.safeApplyStereotype(comment, fhirProfile.getOwnedStereotype(org.eclipse.mdht.uml.fhir.FHIRPackage.eINSTANCE.getRequirements().getName()));
 		}
 		
 		OpaqueExpression spec = (OpaqueExpression) umlConstraint.createSpecification(
@@ -1045,6 +1082,8 @@ public class ModelImporter implements ModelConstants {
 				}
 			}
 		}
+		
+		return umlConstraint;
 	}
 	
 }

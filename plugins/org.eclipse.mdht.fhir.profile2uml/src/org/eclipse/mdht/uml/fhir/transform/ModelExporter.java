@@ -14,30 +14,47 @@ package org.eclipse.mdht.uml.fhir.transform;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.mdht.uml.fhir.FHIRPackage;
 import org.eclipse.mdht.uml.fhir.TypeChoice;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Classifier;
+import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.Constraint;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.NamedElement;
+import org.eclipse.uml2.uml.OpaqueExpression;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.Property;
+import org.hl7.fhir.BindingStrength;
+import org.hl7.fhir.BindingStrengthList;
+import org.hl7.fhir.ConstraintSeverity;
+import org.hl7.fhir.ConstraintSeverityList;
 import org.hl7.fhir.ElementDefinition;
+import org.hl7.fhir.ElementDefinitionBinding;
+import org.hl7.fhir.ElementDefinitionConstraint;
 import org.hl7.fhir.ElementDefinitionType;
 import org.hl7.fhir.FhirFactory;
 import org.hl7.fhir.Id;
+import org.hl7.fhir.Markdown;
+import org.hl7.fhir.Reference;
 import org.hl7.fhir.StructureDefinition;
 import org.hl7.fhir.StructureDefinitionDifferential;
 import org.hl7.fhir.StructureDefinitionKind;
 import org.hl7.fhir.StructureDefinitionKindList;
 import org.hl7.fhir.Uri;
+import org.openhealthtools.mdht.uml.validation.Diagnostic;
+import org.openhealthtools.mdht.uml.validation.ValidationPackage;
 
 public class ModelExporter implements ModelConstants {
 
@@ -54,6 +71,9 @@ public class ModelExporter implements ModelConstants {
 			System.err.println("Skipping class without <<StructureDefinition>>");
 			return null;
 		}
+
+		// This map is used at end to create FHIR constraints and condition references.
+		Map<NamedElement,ElementDefinition> elementMap = new HashMap<NamedElement,ElementDefinition>();
 		
 		StructureDefinition structureDef = FhirFactory.eINSTANCE.createStructureDefinition();
 		structureDef.setAbstract(createFhirBoolean(umlClass.isAbstract()));
@@ -107,6 +127,15 @@ public class ModelExporter implements ModelConstants {
 		if (modelIndexer.isExtension(umlClass)) {
 			
 		}
+
+		String description = getComment(umlClass, FHIRPackage.eINSTANCE.getDescription());
+		if (description != null) {
+			structureDef.setDescription(createFhirString(description));
+		}
+		String requirements = getComment(umlClass, FHIRPackage.eINSTANCE.getRequirements());
+		if (requirements != null) {
+			structureDef.setRequirements(createFhirString(requirements));
+		}
 		
 		// Add differential ElementDefinitions
 		StructureDefinitionDifferential differential = FhirFactory.eINSTANCE.createStructureDefinitionDifferential();
@@ -125,20 +154,27 @@ public class ModelExporter implements ModelConstants {
 		ElementDefinitionType elementDefType = FhirFactory.eINSTANCE.createElementDefinitionType();
 		elementDefType.setCode(createFhirCode(constrainedType.getName()));
 		elementDef.getType().add(elementDefType);
+		elementMap.put(umlClass, elementDef);
 
 		// Add element definition for each Property
-		addElementDefinitions(umlClass, differential);
+		addElementDefinitions(umlClass, differential, elementMap);
+		
+		//TODO if only constrainedElement is a Class, add to first profile elementDef
+		addConstraints(umlClass, elementMap);
 		
 		return structureDef;
 	}
 	
-	private void addElementDefinitions(Class umlClass, StructureDefinitionDifferential differential) {
+	private void addElementDefinitions(Class umlClass, StructureDefinitionDifferential differential,
+			Map<NamedElement,ElementDefinition> elementMap) {
 		for (Property property : umlClass.getOwnedAttributes()) {
 			ElementDefinition elementDef = createElementDefinition(property);
 			differential.getElement().add(elementDef);
-			// only if type is nested in this class, not nested class inherited from superclass.
+			elementMap.put(property, elementDef);
+			
+			// Recursive, only if type is nested in this class, not nested class inherited from superclass.
 			if (FhirModelUtil.hasNestedType(property) && property.getType().getOwner() == umlClass) {
-				addElementDefinitions((Class) property.getType(), differential);
+				addElementDefinitions((Class) property.getType(), differential, elementMap);
 			}
 		}
 	}
@@ -170,6 +206,12 @@ public class ModelExporter implements ModelConstants {
 			}
 		}
 		
+		// Add value set binding
+		ElementDefinitionBinding binding = createBinding(property);
+		if (binding != null) {
+			elementDef.setBinding(binding);
+		}
+
 		// Add other element metadata
 		if (elementDefStereotype != null) {
 			if (elementDefStereotype.getId() != null) {
@@ -188,25 +230,88 @@ public class ModelExporter implements ModelConstants {
 				elementDef.setMustSupport(createFhirBoolean(elementDefStereotype.getMustSupport()));
 			}
 		}
+
+		String shortDescription = getComment(property, FHIRPackage.eINSTANCE.getShortDescription());
+		if (shortDescription != null) {
+			elementDef.setShort(createFhirString(shortDescription));
+		}
+		String definition = getComment(property, FHIRPackage.eINSTANCE.getDefinition());
+		if (definition != null) {
+			elementDef.setDefinition(createMarkdown(definition));
+		}
+		String requirements = getComment(property, FHIRPackage.eINSTANCE.getRequirements());
+		if (requirements != null) {
+			elementDef.setRequirements(createMarkdown(requirements));
+		}
+		String comments = getComment(property, FHIRPackage.eINSTANCE.getComments());
+		if (comments != null) {
+			elementDef.setComments(createMarkdown(comments));
+		}
 		
 		return elementDef;
 	}
 
-	private String getPathOLD(Property property) {
-		StringBuffer qname = new StringBuffer(property.getName());
-		Element container = property.getOwner();
-		while (container instanceof NamedElement) {
-			if (container instanceof Package) {
-				break;
+	private void addConstraints(Class umlClass, Map<NamedElement,ElementDefinition> elementMap) {
+		for (Constraint umlConstraint : umlClass.getOwnedRules()) {
+			boolean isFirst = true;
+			for (Element element : umlConstraint.getConstrainedElements()) {
+				ElementDefinition elementDef = elementMap.get(element);
+				if (elementDef != null) {
+					if (isFirst) {
+						isFirst = false;
+						ElementDefinitionConstraint fhirConstraint = FhirFactory.eINSTANCE.createElementDefinitionConstraint();
+						elementDef.getConstraint().add(fhirConstraint);
+						fhirConstraint.setKey(createFhirId(umlConstraint.getName()));
+
+						String xpath = null;
+						if (umlConstraint.getSpecification() instanceof OpaqueExpression) {
+							OpaqueExpression spec = (OpaqueExpression) umlConstraint.getSpecification();
+							int index = 0;
+							for (String lang : spec.getLanguages()) {
+								if ("XPath".equals(lang)) {
+									xpath = spec.getBodies().get(index);
+									break;
+								}
+								index++;
+							}
+						}
+						if (xpath != null) {
+							fhirConstraint.setXpath(createFhirString(xpath));
+						}
+
+						Diagnostic diagnostic = (Diagnostic) EcoreUtil.getObjectByType(
+							umlConstraint.getStereotypeApplications(), ValidationPackage.Literals.DIAGNOSTIC);
+						if (diagnostic != null) {
+							if (diagnostic.getMessage() != null) {
+								fhirConstraint.setHuman(createFhirString(diagnostic.getMessage()));
+							}
+							if (diagnostic.getSeverity() != null) {
+								ConstraintSeverityList fhirSeverityList = ConstraintSeverityList.get(diagnostic.getSeverity().getName());
+								if (fhirSeverityList != null) {
+									ConstraintSeverity fhirSeverity = FhirFactory.eINSTANCE.createConstraintSeverity();
+									fhirSeverity.setValue(fhirSeverityList);
+									fhirConstraint.setSeverity(fhirSeverity);
+								}
+							}
+						}
+						
+						// Requirements comment
+						String requirements = getComment(umlConstraint, FHIRPackage.eINSTANCE.getRequirements());
+						if (requirements != null) {
+							fhirConstraint.setRequirements(createFhirString(requirements));
+						}
+						
+					}
+					else {
+						// create 'condition' reference
+						elementDef.getCondition().add(createFhirId(umlConstraint.getName()));
+					}
+				}
+				else {
+					System.err.println("Cannot find ElementDefinition for: " + element);
+				}
 			}
-			qname.insert(0, ".");
-			qname.insert(0, ((NamedElement) container).getName());
-			container = container.getOwner();
 		}
-		
-		String path = qname.toString();
-		
-		return path;
 	}
 
 	private String getPath(Property property) {
@@ -315,6 +420,52 @@ public class ModelExporter implements ModelConstants {
 		
 		return coreProperty;
 	}
+
+	private ElementDefinitionBinding createBinding(Property property) {
+		ElementDefinitionBinding binding = null;
+		
+		org.eclipse.mdht.uml.fhir.ValueSetBinding bindingStereotype = 
+				(org.eclipse.mdht.uml.fhir.ValueSetBinding) EcoreUtil.getObjectByType(
+						property.getStereotypeApplications(), FHIRPackage.eINSTANCE.getValueSetBinding());
+		if (bindingStereotype != null) {
+			binding = FhirFactory.eINSTANCE.createElementDefinitionBinding();
+			if (bindingStereotype.getStrength() != null) {
+				BindingStrength strength = FhirFactory.eINSTANCE.createBindingStrength();
+				strength.setValue(BindingStrengthList.get(bindingStereotype.getStrength().getName()));
+				binding.setStrength(strength);
+			}
+			
+			if (bindingStereotype.getValueSetReference() != null) {
+				Reference reference = FhirFactory.eINSTANCE.createReference();
+				reference.setReference(createFhirString(bindingStereotype.getValueSetReference()));
+				binding.setValueSetReference(reference);
+			}
+			
+			if (bindingStereotype.getValueSetUri() != null) {
+				binding.setValueSetUri(createFhirUri(bindingStereotype.getValueSetUri()));
+			}
+
+			if (bindingStereotype.getDescription() != null) {
+				binding.setDescription(createFhirString(bindingStereotype.getDescription()));
+			}
+		}
+		
+		return binding;
+	}
+
+	private String getComment(Element element, EClass eClass) {
+		String text = null;
+		for (Comment comment : element.getOwnedComments()) {
+			EObject stereotype = (EObject) EcoreUtil.getObjectByType(
+					comment.getStereotypeApplications(), eClass);
+			if (stereotype != null && stereotype.eClass().equals(eClass)) {
+				text = comment.getBody();
+				break;
+			}
+		}
+		
+		return text;
+	}
 	
 	private Id createFhirId(String value) {
 		Id id = FhirFactory.eINSTANCE.createId();
@@ -332,6 +483,12 @@ public class ModelExporter implements ModelConstants {
 		org.hl7.fhir.String fhirString = FhirFactory.eINSTANCE.createString();
 		fhirString.setValue(value);
 		return fhirString;
+	}
+
+	private Markdown createMarkdown(String value) {
+		Markdown markdown = FhirFactory.eINSTANCE.createMarkdown();
+		markdown.setValue(value);
+		return markdown;
 	}
 
 	private org.hl7.fhir.Boolean createFhirBoolean(boolean value) {
@@ -362,6 +519,7 @@ public class ModelExporter implements ModelConstants {
 		try {
 			GregorianCalendar cal = new GregorianCalendar();
 			cal.setTime(new Date());
+			//TODO only YYYY-MM-DD
 			XMLGregorianCalendar xmlCal = DatatypeFactory.newInstance().newXMLGregorianCalendar(cal);
 			return createFhirDateTime(xmlCal);
 			
@@ -372,4 +530,9 @@ public class ModelExporter implements ModelConstants {
 		}
 	}
 
+	private Reference createReference(Property property) {
+		Reference reference = FhirFactory.eINSTANCE.createReference();
+		// TODO
+		return reference;
+	}
 }

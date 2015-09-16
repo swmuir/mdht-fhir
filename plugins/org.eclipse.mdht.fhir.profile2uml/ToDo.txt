@@ -1,4 +1,5 @@
-Importing core model:
+Import/Export FHIR
+=========================================================
 
 BUGS and ISSUES:
 - Slicing property name must be unique
@@ -47,19 +48,6 @@ Model Mapping
   -- If nested class, display all inherited, but not from base resource
      --- how to determine if a class is base resource (from reference model)?
 
-***- Add "Description" column to table editor
-  -- default, first sentence of first comment
-  -- FHIR annotation provider: short 
-  -->> generalize Value column, "Value or Description"
-  
-- Icons (annotation column icon?)
-  -- See http://hl7-fhir.github.io/formats.html#table
-
-- Dynagram
-  -- New menu: Expand References (true by default)
-     --- use to collapse Resource associations
-  -- Add to default preferences
-
 - Import profiles: prompt user to select profile file or folder (all)
   -- filter by file name regex?  e.g. *daf*
 
@@ -68,10 +56,6 @@ Model Mapping
   -- include any constraint profiles referenced by another, e.g. Age
   
 - Use DITA to publish FHIR model as Help plugin
-
-- 0..0 multiplicity
-  -- display strike-through font for class attribute
-  -- strike-through font in dynagram
 
 - Add XML serialization metadata on import, e.g. ElementDefinition <representation value="xmlAttr"/>
 
@@ -90,6 +74,9 @@ Model Mapping
   -- condition: refers to another Constraint key
      -- In text: Invariant affects this element
      -- Research UML Constraint constrainedElement.  Can I have all "affected" properties in constrainedElement list?
+  -- condition == Constraint.constrainedElements()
+     -- can UML constraintedElements list refer to properties not owned by the context namespace (different class)?
+     -- find referenced UML Constraint, add current Property to constrainedElements() list
 
 - Slicing, used in Conformance
   -- property subsetting in UML
@@ -99,6 +86,7 @@ Model Mapping
 
 - Extension
   -- contextType and context(s)
+  -- fixed values, for 'uri'
   -- test extensions embedded within extensions, e.g. adverseevent-qicore-cause, or condition-dueTo
 
 - Import operations
@@ -111,34 +99,4 @@ EXPORT FHIR
 
 - ElementDefinition name, if not in stereotype and if name is redefined (Extensions)
 
-- ValueSet binding
-
 - Constraints
-
-- Comments
-
----------------------------------------------------
-COMPLETED
-
-- Abstract mother of all classes: Base
-- Abstract mother of all data types: Type extends Element
-
-- Add annotation UI, display TypeChoice
-
-- Constraint profile
-  -- ElementDef type is optional, not necessarily a new nested type
-     -- If no type, look for redefined/subsetted property and use its type
-     -- e.g. prohibited elements; slicing discriminator element (extension)
-     
-- Submit bug on Conformance.rest.interaction
-  -- ISSUE: ValueSet.codeSystem.concept
-     --- 'name' already set to "concept" for node reuse
-     --- ConceptDefinition name in spec diagram
-     
-- Import value sets, assign binding constraint
-  -- first iteration: use existing terminology profile and UI
-  
-- Constraint classes for boolean, code, date, dateTime, decimal, etc.
-     
-- Duplicate constraint and extension classes: date; many extensions, e.g. procedurerequest-qicore-appropriatenessScore
-     

@@ -87,5 +87,4 @@ public class FhirModelUtil {
 		}
 		return true;
 	}
-
 }

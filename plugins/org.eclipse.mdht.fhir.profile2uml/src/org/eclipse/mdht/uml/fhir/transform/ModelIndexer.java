@@ -20,6 +20,7 @@ import org.eclipse.mdht.uml.fhir.StructureDefinition;
 import org.eclipse.mdht.uml.fhir.ValueSet;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Classifier;
+import org.eclipse.uml2.uml.Constraint;
 import org.eclipse.uml2.uml.Enumeration;
 import org.eclipse.uml2.uml.EnumerationLiteral;
 import org.eclipse.uml2.uml.NamedElement;
@@ -38,7 +39,10 @@ public class ModelIndexer implements ModelConstants {
 
 //	private Map<String,Class> structureDefinitionNameMap = new HashMap<String,Class>();
 	private Map<String,Class> structureDefinitionUriMap = new HashMap<String,Class>();
-	
+
+	// key = Constraint qualified name, value = UML Constraint
+	private Map<String,Constraint> constraintMap = new HashMap<String,Constraint>();
+
 	/*
 	 * Reference by name can be used only for members of 'defined-types' value set.
 	 * Add FHIR_STRUCTURE_URI_BASE prefix and redirect to structureDefinitionUriMap.
@@ -131,6 +135,9 @@ public class ModelIndexer implements ModelConstants {
 					addElement(valueSet);
 				}
 			}
+			else if (member instanceof Constraint) {
+				addElement((Constraint)member);
+			}
 			else if (member instanceof Package) {
 				indexMembers((Package)member);
 			}
@@ -147,6 +154,12 @@ public class ModelIndexer implements ModelConstants {
 			if (structureDefinition.getUri() != null) {
 				structureDefinitionUriMap.put(structureDefinition.getUri(), baseClass);
 			}
+		}
+	}
+
+	public void addElement(Constraint constraint) {
+		if (constraint.getName() != null) {
+			constraintMap.put(constraint.getQualifiedName(), constraint);
 		}
 	}
 
