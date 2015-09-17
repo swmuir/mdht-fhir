@@ -9,7 +9,7 @@ package org.hl7.fhir;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * The details of a Healthcare Service available at a location.
+ * The details of a healthcare service available at a location.
  * <!-- end-model-doc -->
  *
  * <p>

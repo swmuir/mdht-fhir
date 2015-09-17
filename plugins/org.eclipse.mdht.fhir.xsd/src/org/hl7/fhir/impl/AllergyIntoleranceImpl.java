@@ -20,9 +20,10 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.hl7.fhir.AllergyIntolerance;
 import org.hl7.fhir.AllergyIntoleranceCategory;
 import org.hl7.fhir.AllergyIntoleranceCriticality;
-import org.hl7.fhir.AllergyIntoleranceEvent;
+import org.hl7.fhir.AllergyIntoleranceReaction;
 import org.hl7.fhir.AllergyIntoleranceStatus;
 import org.hl7.fhir.AllergyIntoleranceType;
+import org.hl7.fhir.Annotation;
 import org.hl7.fhir.CodeableConcept;
 import org.hl7.fhir.DateTime;
 import org.hl7.fhir.FhirPackage;
@@ -38,6 +39,7 @@ import org.hl7.fhir.Reference;
  * </p>
  * <ul>
  *   <li>{@link org.hl7.fhir.impl.AllergyIntoleranceImpl#getIdentifier <em>Identifier</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.AllergyIntoleranceImpl#getOnset <em>Onset</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.AllergyIntoleranceImpl#getRecordedDate <em>Recorded Date</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.AllergyIntoleranceImpl#getRecorder <em>Recorder</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.AllergyIntoleranceImpl#getPatient <em>Patient</em>}</li>
@@ -48,8 +50,8 @@ import org.hl7.fhir.Reference;
  *   <li>{@link org.hl7.fhir.impl.AllergyIntoleranceImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.AllergyIntoleranceImpl#getCategory <em>Category</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.AllergyIntoleranceImpl#getLastOccurence <em>Last Occurence</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.AllergyIntoleranceImpl#getComment <em>Comment</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.AllergyIntoleranceImpl#getEvent <em>Event</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.AllergyIntoleranceImpl#getNote <em>Note</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.AllergyIntoleranceImpl#getReaction <em>Reaction</em>}</li>
  * </ul>
  *
  * @generated
@@ -64,6 +66,16 @@ public class AllergyIntoleranceImpl extends DomainResourceImpl implements Allerg
 	 * @ordered
 	 */
 	protected EList<Identifier> identifier;
+
+	/**
+	 * The cached value of the '{@link #getOnset() <em>Onset</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOnset()
+	 * @generated
+	 * @ordered
+	 */
+	protected DateTime onset;
 
 	/**
 	 * The cached value of the '{@link #getRecordedDate() <em>Recorded Date</em>}' containment reference.
@@ -166,24 +178,24 @@ public class AllergyIntoleranceImpl extends DomainResourceImpl implements Allerg
 	protected DateTime lastOccurence;
 
 	/**
-	 * The cached value of the '{@link #getComment() <em>Comment</em>}' containment reference.
+	 * The cached value of the '{@link #getNote() <em>Note</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getComment()
+	 * @see #getNote()
 	 * @generated
 	 * @ordered
 	 */
-	protected org.hl7.fhir.String comment;
+	protected Annotation note;
 
 	/**
-	 * The cached value of the '{@link #getEvent() <em>Event</em>}' containment reference list.
+	 * The cached value of the '{@link #getReaction() <em>Reaction</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getEvent()
+	 * @see #getReaction()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<AllergyIntoleranceEvent> event;
+	protected EList<AllergyIntoleranceReaction> reaction;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -214,6 +226,49 @@ public class AllergyIntoleranceImpl extends DomainResourceImpl implements Allerg
 			identifier = new EObjectContainmentEList<Identifier>(Identifier.class, this, FhirPackage.ALLERGY_INTOLERANCE__IDENTIFIER);
 		}
 		return identifier;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DateTime getOnset() {
+		return onset;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetOnset(DateTime newOnset, NotificationChain msgs) {
+		DateTime oldOnset = onset;
+		onset = newOnset;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ALLERGY_INTOLERANCE__ONSET, oldOnset, newOnset);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOnset(DateTime newOnset) {
+		if (newOnset != onset) {
+			NotificationChain msgs = null;
+			if (onset != null)
+				msgs = ((InternalEObject)onset).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ALLERGY_INTOLERANCE__ONSET, null, msgs);
+			if (newOnset != null)
+				msgs = ((InternalEObject)newOnset).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ALLERGY_INTOLERANCE__ONSET, null, msgs);
+			msgs = basicSetOnset(newOnset, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ALLERGY_INTOLERANCE__ONSET, newOnset, newOnset));
 	}
 
 	/**
@@ -651,8 +706,8 @@ public class AllergyIntoleranceImpl extends DomainResourceImpl implements Allerg
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public org.hl7.fhir.String getComment() {
-		return comment;
+	public Annotation getNote() {
+		return note;
 	}
 
 	/**
@@ -660,11 +715,11 @@ public class AllergyIntoleranceImpl extends DomainResourceImpl implements Allerg
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetComment(org.hl7.fhir.String newComment, NotificationChain msgs) {
-		org.hl7.fhir.String oldComment = comment;
-		comment = newComment;
+	public NotificationChain basicSetNote(Annotation newNote, NotificationChain msgs) {
+		Annotation oldNote = note;
+		note = newNote;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ALLERGY_INTOLERANCE__COMMENT, oldComment, newComment);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ALLERGY_INTOLERANCE__NOTE, oldNote, newNote);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -675,18 +730,18 @@ public class AllergyIntoleranceImpl extends DomainResourceImpl implements Allerg
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setComment(org.hl7.fhir.String newComment) {
-		if (newComment != comment) {
+	public void setNote(Annotation newNote) {
+		if (newNote != note) {
 			NotificationChain msgs = null;
-			if (comment != null)
-				msgs = ((InternalEObject)comment).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ALLERGY_INTOLERANCE__COMMENT, null, msgs);
-			if (newComment != null)
-				msgs = ((InternalEObject)newComment).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ALLERGY_INTOLERANCE__COMMENT, null, msgs);
-			msgs = basicSetComment(newComment, msgs);
+			if (note != null)
+				msgs = ((InternalEObject)note).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ALLERGY_INTOLERANCE__NOTE, null, msgs);
+			if (newNote != null)
+				msgs = ((InternalEObject)newNote).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ALLERGY_INTOLERANCE__NOTE, null, msgs);
+			msgs = basicSetNote(newNote, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ALLERGY_INTOLERANCE__COMMENT, newComment, newComment));
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ALLERGY_INTOLERANCE__NOTE, newNote, newNote));
 	}
 
 	/**
@@ -694,11 +749,11 @@ public class AllergyIntoleranceImpl extends DomainResourceImpl implements Allerg
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<AllergyIntoleranceEvent> getEvent() {
-		if (event == null) {
-			event = new EObjectContainmentEList<AllergyIntoleranceEvent>(AllergyIntoleranceEvent.class, this, FhirPackage.ALLERGY_INTOLERANCE__EVENT);
+	public EList<AllergyIntoleranceReaction> getReaction() {
+		if (reaction == null) {
+			reaction = new EObjectContainmentEList<AllergyIntoleranceReaction>(AllergyIntoleranceReaction.class, this, FhirPackage.ALLERGY_INTOLERANCE__REACTION);
 		}
-		return event;
+		return reaction;
 	}
 
 	/**
@@ -711,6 +766,8 @@ public class AllergyIntoleranceImpl extends DomainResourceImpl implements Allerg
 		switch (featureID) {
 			case FhirPackage.ALLERGY_INTOLERANCE__IDENTIFIER:
 				return ((InternalEList<?>)getIdentifier()).basicRemove(otherEnd, msgs);
+			case FhirPackage.ALLERGY_INTOLERANCE__ONSET:
+				return basicSetOnset(null, msgs);
 			case FhirPackage.ALLERGY_INTOLERANCE__RECORDED_DATE:
 				return basicSetRecordedDate(null, msgs);
 			case FhirPackage.ALLERGY_INTOLERANCE__RECORDER:
@@ -731,10 +788,10 @@ public class AllergyIntoleranceImpl extends DomainResourceImpl implements Allerg
 				return basicSetCategory(null, msgs);
 			case FhirPackage.ALLERGY_INTOLERANCE__LAST_OCCURENCE:
 				return basicSetLastOccurence(null, msgs);
-			case FhirPackage.ALLERGY_INTOLERANCE__COMMENT:
-				return basicSetComment(null, msgs);
-			case FhirPackage.ALLERGY_INTOLERANCE__EVENT:
-				return ((InternalEList<?>)getEvent()).basicRemove(otherEnd, msgs);
+			case FhirPackage.ALLERGY_INTOLERANCE__NOTE:
+				return basicSetNote(null, msgs);
+			case FhirPackage.ALLERGY_INTOLERANCE__REACTION:
+				return ((InternalEList<?>)getReaction()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -749,6 +806,8 @@ public class AllergyIntoleranceImpl extends DomainResourceImpl implements Allerg
 		switch (featureID) {
 			case FhirPackage.ALLERGY_INTOLERANCE__IDENTIFIER:
 				return getIdentifier();
+			case FhirPackage.ALLERGY_INTOLERANCE__ONSET:
+				return getOnset();
 			case FhirPackage.ALLERGY_INTOLERANCE__RECORDED_DATE:
 				return getRecordedDate();
 			case FhirPackage.ALLERGY_INTOLERANCE__RECORDER:
@@ -769,10 +828,10 @@ public class AllergyIntoleranceImpl extends DomainResourceImpl implements Allerg
 				return getCategory();
 			case FhirPackage.ALLERGY_INTOLERANCE__LAST_OCCURENCE:
 				return getLastOccurence();
-			case FhirPackage.ALLERGY_INTOLERANCE__COMMENT:
-				return getComment();
-			case FhirPackage.ALLERGY_INTOLERANCE__EVENT:
-				return getEvent();
+			case FhirPackage.ALLERGY_INTOLERANCE__NOTE:
+				return getNote();
+			case FhirPackage.ALLERGY_INTOLERANCE__REACTION:
+				return getReaction();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -789,6 +848,9 @@ public class AllergyIntoleranceImpl extends DomainResourceImpl implements Allerg
 			case FhirPackage.ALLERGY_INTOLERANCE__IDENTIFIER:
 				getIdentifier().clear();
 				getIdentifier().addAll((Collection<? extends Identifier>)newValue);
+				return;
+			case FhirPackage.ALLERGY_INTOLERANCE__ONSET:
+				setOnset((DateTime)newValue);
 				return;
 			case FhirPackage.ALLERGY_INTOLERANCE__RECORDED_DATE:
 				setRecordedDate((DateTime)newValue);
@@ -820,12 +882,12 @@ public class AllergyIntoleranceImpl extends DomainResourceImpl implements Allerg
 			case FhirPackage.ALLERGY_INTOLERANCE__LAST_OCCURENCE:
 				setLastOccurence((DateTime)newValue);
 				return;
-			case FhirPackage.ALLERGY_INTOLERANCE__COMMENT:
-				setComment((org.hl7.fhir.String)newValue);
+			case FhirPackage.ALLERGY_INTOLERANCE__NOTE:
+				setNote((Annotation)newValue);
 				return;
-			case FhirPackage.ALLERGY_INTOLERANCE__EVENT:
-				getEvent().clear();
-				getEvent().addAll((Collection<? extends AllergyIntoleranceEvent>)newValue);
+			case FhirPackage.ALLERGY_INTOLERANCE__REACTION:
+				getReaction().clear();
+				getReaction().addAll((Collection<? extends AllergyIntoleranceReaction>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -841,6 +903,9 @@ public class AllergyIntoleranceImpl extends DomainResourceImpl implements Allerg
 		switch (featureID) {
 			case FhirPackage.ALLERGY_INTOLERANCE__IDENTIFIER:
 				getIdentifier().clear();
+				return;
+			case FhirPackage.ALLERGY_INTOLERANCE__ONSET:
+				setOnset((DateTime)null);
 				return;
 			case FhirPackage.ALLERGY_INTOLERANCE__RECORDED_DATE:
 				setRecordedDate((DateTime)null);
@@ -872,11 +937,11 @@ public class AllergyIntoleranceImpl extends DomainResourceImpl implements Allerg
 			case FhirPackage.ALLERGY_INTOLERANCE__LAST_OCCURENCE:
 				setLastOccurence((DateTime)null);
 				return;
-			case FhirPackage.ALLERGY_INTOLERANCE__COMMENT:
-				setComment((org.hl7.fhir.String)null);
+			case FhirPackage.ALLERGY_INTOLERANCE__NOTE:
+				setNote((Annotation)null);
 				return;
-			case FhirPackage.ALLERGY_INTOLERANCE__EVENT:
-				getEvent().clear();
+			case FhirPackage.ALLERGY_INTOLERANCE__REACTION:
+				getReaction().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -892,6 +957,8 @@ public class AllergyIntoleranceImpl extends DomainResourceImpl implements Allerg
 		switch (featureID) {
 			case FhirPackage.ALLERGY_INTOLERANCE__IDENTIFIER:
 				return identifier != null && !identifier.isEmpty();
+			case FhirPackage.ALLERGY_INTOLERANCE__ONSET:
+				return onset != null;
 			case FhirPackage.ALLERGY_INTOLERANCE__RECORDED_DATE:
 				return recordedDate != null;
 			case FhirPackage.ALLERGY_INTOLERANCE__RECORDER:
@@ -912,10 +979,10 @@ public class AllergyIntoleranceImpl extends DomainResourceImpl implements Allerg
 				return category != null;
 			case FhirPackage.ALLERGY_INTOLERANCE__LAST_OCCURENCE:
 				return lastOccurence != null;
-			case FhirPackage.ALLERGY_INTOLERANCE__COMMENT:
-				return comment != null;
-			case FhirPackage.ALLERGY_INTOLERANCE__EVENT:
-				return event != null && !event.isEmpty();
+			case FhirPackage.ALLERGY_INTOLERANCE__NOTE:
+				return note != null;
+			case FhirPackage.ALLERGY_INTOLERANCE__REACTION:
+				return reaction != null && !reaction.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

@@ -9,7 +9,7 @@ package org.hl7.fhir;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Primarily used for identification and definition of Medication, but also covers ingredients and packaging.
+ * This resource is primarily used for the identification and definition of a medication. It covers the ingredients and the packaging for a medication.
  * If the element is present, it must have either a @value, an @id, or extensions
  * <!-- end-model-doc -->
  *
@@ -20,7 +20,6 @@ package org.hl7.fhir;
  *   <li>{@link org.hl7.fhir.Medication#getCode <em>Code</em>}</li>
  *   <li>{@link org.hl7.fhir.Medication#getIsBrand <em>Is Brand</em>}</li>
  *   <li>{@link org.hl7.fhir.Medication#getManufacturer <em>Manufacturer</em>}</li>
- *   <li>{@link org.hl7.fhir.Medication#getKind <em>Kind</em>}</li>
  *   <li>{@link org.hl7.fhir.Medication#getProduct <em>Product</em>}</li>
  *   <li>{@link org.hl7.fhir.Medication#getPackage <em>Package</em>}</li>
  * </ul>
@@ -107,32 +106,6 @@ public interface Medication extends DomainResource {
 	 * @generated
 	 */
 	void setManufacturer(Reference value);
-
-	/**
-	 * Returns the value of the '<em><b>Kind</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Medications are either a single administrable product or a package that contains one or more products.
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Kind</em>' containment reference.
-	 * @see #setKind(MedicationKind)
-	 * @see org.hl7.fhir.FhirPackage#getMedication_Kind()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='kind' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	MedicationKind getKind();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.Medication#getKind <em>Kind</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Kind</em>' containment reference.
-	 * @see #getKind()
-	 * @generated
-	 */
-	void setKind(MedicationKind value);
 
 	/**
 	 * Returns the value of the '<em><b>Product</b></em>' containment reference.

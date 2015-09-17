@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Thu, Aug 20, 2015 14:13+0000 for FHIR v0.5.0 
+  Generated on Wed, Sep 16, 2015 13:28+0000 for FHIR v1.0.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -51,7 +51,7 @@
         <xs:sequence>
           <xs:element name="identifier" minOccurs="0" maxOccurs="unbounded" type="Identifier">
             <xs:annotation>
-              <xs:documentation xml:lang="en">This records identifiers associated with this question set that are defined by business processed and/ or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation).</xs:documentation>
+              <xs:documentation xml:lang="en">This records identifiers associated with this question set that are defined by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation).</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="version" minOccurs="0" maxOccurs="1" type="string">
@@ -186,6 +186,11 @@
               <xs:documentation xml:lang="en">Reference to a valueset containing the a list of codes representing permitted answers for the question.</xs:documentation>
            </xs:annotation>
           </xs:element>
+          <xs:element name="option" minOccurs="0" maxOccurs="unbounded" type="Coding">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">For a &quot;choice&quot; question, identifies one of the permitted answers for the question.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
           <xs:element name="group" type="Questionnaire.Group" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation>
               <xs:documentation xml:lang="en">Nested group, containing nested question for this question. The order of groups within the question is relevant.</xs:documentation>
@@ -216,7 +221,7 @@
   </xs:simpleType>
   <xs:complexType name="QuestionnaireStatus">
     <xs:annotation>
-      <xs:documentation xml:lang="en">Lifecycle status of the questionnaire</xs:documentation>
+      <xs:documentation xml:lang="en">Lifecycle status of the questionnaire.</xs:documentation>
       <xs:documentation xml:lang="en">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
@@ -229,57 +234,57 @@
     <xs:restriction base="xs:string">
       <xs:enumeration value="boolean">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Answer is a yes/no answer</xs:documentation>
+          <xs:documentation xml:lang="en">Answer is a yes/no answer.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="decimal">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Answer is a floating point number</xs:documentation>
+          <xs:documentation xml:lang="en">Answer is a floating point number.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="integer">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Answer is an integer</xs:documentation>
+          <xs:documentation xml:lang="en">Answer is an integer.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="date">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Answer is a date</xs:documentation>
+          <xs:documentation xml:lang="en">Answer is a date.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="dateTime">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Answer is a date and time</xs:documentation>
+          <xs:documentation xml:lang="en">Answer is a date and time.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="instant">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Answer is a system timestamp</xs:documentation>
+          <xs:documentation xml:lang="en">Answer is a system timestamp.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="time">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Answer is a time (hour/minute/second) independent of date</xs:documentation>
+          <xs:documentation xml:lang="en">Answer is a time (hour/minute/second) independent of date.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="string">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Answer is a short (few words to short sentence) free-text entry</xs:documentation>
+          <xs:documentation xml:lang="en">Answer is a short (few words to short sentence) free-text entry.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="text">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Answer is a long (potentially multi-paragram) free-text entry (still captured as a string)</xs:documentation>
+          <xs:documentation xml:lang="en">Answer is a long (potentially multi-paragraph) free-text entry (still captured as a string).</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="url">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Answer is a url (website, FTP site, etc.)</xs:documentation>
+          <xs:documentation xml:lang="en">Answer is a url (website, FTP site, etc.).</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="choice">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Answer is a Coding drawn from a list of options</xs:documentation>
+          <xs:documentation xml:lang="en">Answer is a Coding drawn from a list of options.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="open-choice">
@@ -294,19 +299,19 @@
       </xs:enumeration>
       <xs:enumeration value="reference">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Answer is a reference to another resource (practitioner, organization, etc.)</xs:documentation>
+          <xs:documentation xml:lang="en">Answer is a reference to another resource (practitioner, organization, etc.).</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="quantity">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Answer is a combination of a numeric value and unit, potentially with a comparator (&lt;, &gt;, etc)</xs:documentation>
+          <xs:documentation xml:lang="en">Answer is a combination of a numeric value and unit, potentially with a comparator (&lt;, &gt;, etc.).</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="AnswerFormat">
     <xs:annotation>
-      <xs:documentation xml:lang="en">The expected format of an answer</xs:documentation>
+      <xs:documentation xml:lang="en">The expected format of an answer.</xs:documentation>
       <xs:documentation xml:lang="en">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>
     </xs:annotation>
     <xs:complexContent>

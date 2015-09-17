@@ -112,7 +112,7 @@ public interface ValueSetCodeSystem extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Concepts that are in the code system. The concept definitions are inherently heirarchical, but the definitions must be consulted to determine what the meaning of the heirachical relationships are.
+	 * Concepts that are in the code system. The concept definitions are inherently hierarchical, but the definitions must be consulted to determine what the meaning of the heirachical relationships are.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Concept</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getValueSetCodeSystem_Concept()

@@ -66,8 +66,7 @@ public interface DeviceMetric extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Describes the unique identification of this metric that has been assigned by the device or gateway software. For example: handle ID. 
-	 * It should be noted that in order to make the identifier unique, the system element of the identifier should be set to the unique identifier of the device.
+	 * Describes the unique identification of this metric that has been assigned by the device or gateway software. For example: handle ID.  It should be noted that in order to make the identifier unique, the system element of the identifier should be set to the unique identifier of the device.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Identifier</em>' containment reference.
 	 * @see #setIdentifier(Identifier)
@@ -145,8 +144,7 @@ public interface DeviceMetric extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Describes the link to the  DeviceComponent that this DeviceMetric belongs to and that provide information about the location of this DeviceMetric in the containment structure of the parent Device.
-	 * An example would be a DeviceComponent that represents a Channel. This reference can be used by a client application to distinguish DeviceMetrics that have the same type, but should be interpreted based on their containment location.
+	 * Describes the link to the  DeviceComponent that this DeviceMetric belongs to and that provide information about the location of this DeviceMetric in the containment structure of the parent Device. An example would be a DeviceComponent that represents a Channel. This reference can be used by a client application to distinguish DeviceMetrics that have the same type, but should be interpreted based on their containment location.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Parent</em>' containment reference.
 	 * @see #setParent(Reference)
@@ -250,9 +248,7 @@ public interface DeviceMetric extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Describes the measurement repetition time. This is not necessarily the same as the update period.
-	 * The measurement repetition time can range from milliseconds up to hours. An example for a measurement repetition time in the range of milliseconds is the sampling rate of an ECG. An example for a measurement repetition time in the range of hours is a NIBP that is triggered automatically every hour.
-	 * The update period may be different than the measurement repetition time, if the device does not update the published observed value with the same frequency as it was measured.
+	 * Describes the measurement repetition time. This is not necessarily the same as the update period. The measurement repetition time can range from milliseconds up to hours. An example for a measurement repetition time in the range of milliseconds is the sampling rate of an ECG. An example for a measurement repetition time in the range of hours is a NIBP that is triggered automatically every hour. The update period may be different than the measurement repetition time, if the device does not update the published observed value with the same frequency as it was measured.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Measurement Period</em>' containment reference.
 	 * @see #setMeasurementPeriod(Timing)

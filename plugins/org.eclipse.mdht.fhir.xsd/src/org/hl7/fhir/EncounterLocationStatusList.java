@@ -31,14 +31,14 @@ public enum EncounterLocationStatusList implements Enumerator {
 	PLANNED(0, "planned", "planned"),
 
 	/**
-	 * The '<em><b>Present</b></em>' literal object.
+	 * The '<em><b>Active</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #PRESENT_VALUE
+	 * @see #ACTIVE_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	PRESENT(1, "present", "present"),
+	ACTIVE(1, "active", "active"),
 
 	/**
 	 * The '<em><b>Reserved</b></em>' literal object.
@@ -48,14 +48,24 @@ public enum EncounterLocationStatusList implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	RESERVED(2, "reserved", "reserved");
+	RESERVED(2, "reserved", "reserved"),
+
+	/**
+	 * The '<em><b>Completed</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #COMPLETED_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	COMPLETED(3, "completed", "completed");
 
 	/**
 	 * The '<em><b>Planned</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The patient is planned to be moved to this location at some point in the future
+	 * The patient is planned to be moved to this location at some point in the future.
 	 * <!-- end-model-doc -->
 	 * @see #PLANNED
 	 * @model name="planned"
@@ -65,25 +75,27 @@ public enum EncounterLocationStatusList implements Enumerator {
 	public static final int PLANNED_VALUE = 0;
 
 	/**
-	 * The '<em><b>Present</b></em>' literal value.
+	 * The '<em><b>Active</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The patient is currently at this location, or was between the period specified
+	 * The patient is currently at this location, or was between the period specified.
+	 * 
+	 * A system may update these records when the patient leaves the location to either reserved, or completed
 	 * <!-- end-model-doc -->
-	 * @see #PRESENT
-	 * @model name="present"
+	 * @see #ACTIVE
+	 * @model name="active"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int PRESENT_VALUE = 1;
+	public static final int ACTIVE_VALUE = 1;
 
 	/**
 	 * The '<em><b>Reserved</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * This location is held empty for this patient
+	 * This location is held empty for this patient.
 	 * <!-- end-model-doc -->
 	 * @see #RESERVED
 	 * @model name="reserved"
@@ -91,6 +103,22 @@ public enum EncounterLocationStatusList implements Enumerator {
 	 * @ordered
 	 */
 	public static final int RESERVED_VALUE = 2;
+
+	/**
+	 * The '<em><b>Completed</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The patient was at this location during the period specified.
+	 * 
+	 * Not to be used when the patient is currently at the location
+	 * <!-- end-model-doc -->
+	 * @see #COMPLETED
+	 * @model name="completed"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int COMPLETED_VALUE = 3;
 
 	/**
 	 * An array of all the '<em><b>Encounter Location Status List</b></em>' enumerators.
@@ -101,8 +129,9 @@ public enum EncounterLocationStatusList implements Enumerator {
 	private static final EncounterLocationStatusList[] VALUES_ARRAY =
 		new EncounterLocationStatusList[] {
 			PLANNED,
-			PRESENT,
+			ACTIVE,
 			RESERVED,
+			COMPLETED,
 		};
 
 	/**
@@ -160,8 +189,9 @@ public enum EncounterLocationStatusList implements Enumerator {
 	public static EncounterLocationStatusList get(int value) {
 		switch (value) {
 			case PLANNED_VALUE: return PLANNED;
-			case PRESENT_VALUE: return PRESENT;
+			case ACTIVE_VALUE: return ACTIVE;
 			case RESERVED_VALUE: return RESERVED;
+			case COMPLETED_VALUE: return COMPLETED;
 		}
 		return null;
 	}

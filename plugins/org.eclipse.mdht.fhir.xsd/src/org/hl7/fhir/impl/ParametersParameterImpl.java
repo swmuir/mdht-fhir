@@ -28,6 +28,7 @@ import org.hl7.fhir.ContactPoint;
 import org.hl7.fhir.Date;
 import org.hl7.fhir.DateTime;
 import org.hl7.fhir.Decimal;
+import org.hl7.fhir.ElementDefinition;
 import org.hl7.fhir.FhirPackage;
 import org.hl7.fhir.HumanName;
 import org.hl7.fhir.Id;
@@ -95,13 +96,14 @@ import org.hl7.fhir.Uuid;
  *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getValueContactPoint <em>Value Contact Point</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getValueTiming <em>Value Timing</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getValueMeta <em>Value Meta</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getValueElementDefinition <em>Value Element Definition</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getResource <em>Resource</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ParametersParameterImpl#getPart <em>Part</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ParametersParameterImpl extends ElementImpl implements ParametersParameter {
+public class ParametersParameterImpl extends BackboneElementImpl implements ParametersParameter {
 	/**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -451,6 +453,16 @@ public class ParametersParameterImpl extends ElementImpl implements ParametersPa
 	 * @ordered
 	 */
 	protected Meta valueMeta;
+
+	/**
+	 * The cached value of the '{@link #getValueElementDefinition() <em>Value Element Definition</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getValueElementDefinition()
+	 * @generated
+	 * @ordered
+	 */
+	protected ElementDefinition valueElementDefinition;
 
 	/**
 	 * The cached value of the '{@link #getResource() <em>Resource</em>}' containment reference.
@@ -2001,6 +2013,49 @@ public class ParametersParameterImpl extends ElementImpl implements ParametersPa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public ElementDefinition getValueElementDefinition() {
+		return valueElementDefinition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetValueElementDefinition(ElementDefinition newValueElementDefinition, NotificationChain msgs) {
+		ElementDefinition oldValueElementDefinition = valueElementDefinition;
+		valueElementDefinition = newValueElementDefinition;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.PARAMETERS_PARAMETER__VALUE_ELEMENT_DEFINITION, oldValueElementDefinition, newValueElementDefinition);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setValueElementDefinition(ElementDefinition newValueElementDefinition) {
+		if (newValueElementDefinition != valueElementDefinition) {
+			NotificationChain msgs = null;
+			if (valueElementDefinition != null)
+				msgs = ((InternalEObject)valueElementDefinition).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PARAMETERS_PARAMETER__VALUE_ELEMENT_DEFINITION, null, msgs);
+			if (newValueElementDefinition != null)
+				msgs = ((InternalEObject)newValueElementDefinition).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PARAMETERS_PARAMETER__VALUE_ELEMENT_DEFINITION, null, msgs);
+			msgs = basicSetValueElementDefinition(newValueElementDefinition, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.PARAMETERS_PARAMETER__VALUE_ELEMENT_DEFINITION, newValueElementDefinition, newValueElementDefinition));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ResourceContainer getResource() {
 		return resource;
 	}
@@ -2129,6 +2184,8 @@ public class ParametersParameterImpl extends ElementImpl implements ParametersPa
 				return basicSetValueTiming(null, msgs);
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_META:
 				return basicSetValueMeta(null, msgs);
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_ELEMENT_DEFINITION:
+				return basicSetValueElementDefinition(null, msgs);
 			case FhirPackage.PARAMETERS_PARAMETER__RESOURCE:
 				return basicSetResource(null, msgs);
 			case FhirPackage.PARAMETERS_PARAMETER__PART:
@@ -2215,6 +2272,8 @@ public class ParametersParameterImpl extends ElementImpl implements ParametersPa
 				return getValueTiming();
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_META:
 				return getValueMeta();
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_ELEMENT_DEFINITION:
+				return getValueElementDefinition();
 			case FhirPackage.PARAMETERS_PARAMETER__RESOURCE:
 				return getResource();
 			case FhirPackage.PARAMETERS_PARAMETER__PART:
@@ -2336,6 +2395,9 @@ public class ParametersParameterImpl extends ElementImpl implements ParametersPa
 				return;
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_META:
 				setValueMeta((Meta)newValue);
+				return;
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_ELEMENT_DEFINITION:
+				setValueElementDefinition((ElementDefinition)newValue);
 				return;
 			case FhirPackage.PARAMETERS_PARAMETER__RESOURCE:
 				setResource((ResourceContainer)newValue);
@@ -2461,6 +2523,9 @@ public class ParametersParameterImpl extends ElementImpl implements ParametersPa
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_META:
 				setValueMeta((Meta)null);
 				return;
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_ELEMENT_DEFINITION:
+				setValueElementDefinition((ElementDefinition)null);
+				return;
 			case FhirPackage.PARAMETERS_PARAMETER__RESOURCE:
 				setResource((ResourceContainer)null);
 				return;
@@ -2549,6 +2614,8 @@ public class ParametersParameterImpl extends ElementImpl implements ParametersPa
 				return valueTiming != null;
 			case FhirPackage.PARAMETERS_PARAMETER__VALUE_META:
 				return valueMeta != null;
+			case FhirPackage.PARAMETERS_PARAMETER__VALUE_ELEMENT_DEFINITION:
+				return valueElementDefinition != null;
 			case FhirPackage.PARAMETERS_PARAMETER__RESOURCE:
 				return resource != null;
 			case FhirPackage.PARAMETERS_PARAMETER__PART:

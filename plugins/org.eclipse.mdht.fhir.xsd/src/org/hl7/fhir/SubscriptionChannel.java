@@ -32,7 +32,7 @@ public interface SubscriptionChannel extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The type of channel to send notififcations on.
+	 * The type of channel to send notifications on.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Type</em>' containment reference.
 	 * @see #setType(SubscriptionChannelType)
@@ -58,7 +58,7 @@ public interface SubscriptionChannel extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The uri that describes tha actual end point to send messages to.
+	 * The uri that describes the actual end-point to send messages to.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Endpoint</em>' containment reference.
 	 * @see #setEndpoint(Uri)

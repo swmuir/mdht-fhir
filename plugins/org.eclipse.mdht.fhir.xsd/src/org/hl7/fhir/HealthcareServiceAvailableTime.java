@@ -10,7 +10,7 @@ import org.eclipse.emf.common.util.EList;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * The details of a Healthcare Service available at a location.
+ * The details of a healthcare service available at a location.
  * <!-- end-model-doc -->
  *
  * <p>
@@ -34,7 +34,7 @@ public interface HealthcareServiceAvailableTime extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Indicates which Days of the week are available between the Start and End Times.
+	 * Indicates which days of the week are available between the start and end Times.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Days Of Week</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getHealthcareServiceAvailableTime_DaysOfWeek()

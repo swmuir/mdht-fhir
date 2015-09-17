@@ -41,7 +41,7 @@ public interface EnrollmentRequest extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The Response Business Identifier.
+	 * The Response business identifier.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Identifier</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getEnrollmentRequest_Identifier()

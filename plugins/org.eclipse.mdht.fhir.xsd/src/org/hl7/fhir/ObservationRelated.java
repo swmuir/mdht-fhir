@@ -56,7 +56,7 @@ public interface ObservationRelated extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A reference to the observation or questionnaireanswer that is related to this observation.
+	 * A reference to the observation or [[[QuestionnaireaResponse]]] resource that is related to this observation.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Target</em>' containment reference.
 	 * @see #setTarget(Reference)

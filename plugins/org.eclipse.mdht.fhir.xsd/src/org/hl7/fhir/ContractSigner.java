@@ -31,7 +31,7 @@ public interface ContractSigner extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Role of this Contract signer, e.g., notary, grantee.
+	 * Role of this Contract signer, e.g. notary, grantee.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Type</em>' containment reference.
 	 * @see #setType(Coding)

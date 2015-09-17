@@ -80,7 +80,7 @@ public interface VisionPrescription extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A link to a resource representing the person to whom the Vision products will be supplied.
+	 * A link to a resource representing the person to whom the vision products will be supplied.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Patient</em>' containment reference.
 	 * @see #setPatient(Reference)

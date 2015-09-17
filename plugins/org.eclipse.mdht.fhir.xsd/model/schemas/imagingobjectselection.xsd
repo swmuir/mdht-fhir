@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Thu, Aug 20, 2015 14:13+0000 for FHIR v0.5.0 
+  Generated on Wed, Sep 16, 2015 13:28+0000 for FHIR v1.0.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -71,12 +71,12 @@
           </xs:element>
           <xs:element name="author" minOccurs="0" maxOccurs="1" type="Reference">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Author of ImagingObjectSelection. It can be a human author or a device which made the decision of the SOP instances selected. For example, a radiologist selected a set of imaging SOP instances to attached in a diagnostic report, and a CAD application may author a selection to describe SOP instances it used to generate a detection conclusion.</xs:documentation>
+              <xs:documentation xml:lang="en">Author of ImagingObjectSelection. It can be a human author or a device which made the decision of the SOP instances selected. For example, a radiologist selected a set of imaging SOP instances to attach in a diagnostic report, and a CAD application may author a selection to describe SOP instances it used to generate a detection conclusion.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="authoringTime" minOccurs="0" maxOccurs="1" type="dateTime">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Date and time when the selection of the referenced instances were made. It is (typically) diffeent from the creation date of the selection resource, and from dates associated with the referenced instances (e.g. capture time of the referenced image).</xs:documentation>
+              <xs:documentation xml:lang="en">Date and time when the selection of the referenced instances were made. It is (typically) different from the creation date of the selection resource, and from dates associated with the referenced instances (e.g. capture time of the referenced image).</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="study" type="ImagingObjectSelection.Study" minOccurs="1" maxOccurs="unbounded">
@@ -112,7 +112,7 @@
           </xs:element>
           <xs:element name="series" type="ImagingObjectSelection.Series" minOccurs="1" maxOccurs="unbounded">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Series indentity and locating information of the DICOM SOP instances in the selection.</xs:documentation>
+              <xs:documentation xml:lang="en">Series identity and locating information of the DICOM SOP instances in the selection.</xs:documentation>
            </xs:annotation>
           </xs:element>
         </xs:sequence>

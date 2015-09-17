@@ -20,6 +20,7 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link org.hl7.fhir.ReferralRequest#getStatus <em>Status</em>}</li>
  *   <li>{@link org.hl7.fhir.ReferralRequest#getIdentifier <em>Identifier</em>}</li>
+ *   <li>{@link org.hl7.fhir.ReferralRequest#getDate <em>Date</em>}</li>
  *   <li>{@link org.hl7.fhir.ReferralRequest#getType <em>Type</em>}</li>
  *   <li>{@link org.hl7.fhir.ReferralRequest#getSpecialty <em>Specialty</em>}</li>
  *   <li>{@link org.hl7.fhir.ReferralRequest#getPriority <em>Priority</em>}</li>
@@ -81,6 +82,32 @@ public interface ReferralRequest extends DomainResource {
 	 * @generated
 	 */
 	EList<Identifier> getIdentifier();
+
+	/**
+	 * Returns the value of the '<em><b>Date</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Date/DateTime of creation for draft requests and date of activation for active requests.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Date</em>' containment reference.
+	 * @see #setDate(DateTime)
+	 * @see org.hl7.fhir.FhirPackage#getReferralRequest_Date()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='date' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	DateTime getDate();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.ReferralRequest#getDate <em>Date</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Date</em>' containment reference.
+	 * @see #getDate()
+	 * @generated
+	 */
+	void setDate(DateTime value);
 
 	/**
 	 * Returns the value of the '<em><b>Type</b></em>' containment reference.

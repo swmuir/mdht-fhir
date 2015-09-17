@@ -78,7 +78,7 @@ public interface SpecimenContainer extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The type of container associated with the specimen (e.g. slide, aliquot, etc).
+	 * The type of container associated with the specimen (e.g. slide, aliquot, etc.).
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Type</em>' containment reference.
 	 * @see #setType(CodeableConcept)

@@ -19,6 +19,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link org.hl7.fhir.AllergyIntolerance#getIdentifier <em>Identifier</em>}</li>
+ *   <li>{@link org.hl7.fhir.AllergyIntolerance#getOnset <em>Onset</em>}</li>
  *   <li>{@link org.hl7.fhir.AllergyIntolerance#getRecordedDate <em>Recorded Date</em>}</li>
  *   <li>{@link org.hl7.fhir.AllergyIntolerance#getRecorder <em>Recorder</em>}</li>
  *   <li>{@link org.hl7.fhir.AllergyIntolerance#getPatient <em>Patient</em>}</li>
@@ -29,8 +30,8 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.hl7.fhir.AllergyIntolerance#getType <em>Type</em>}</li>
  *   <li>{@link org.hl7.fhir.AllergyIntolerance#getCategory <em>Category</em>}</li>
  *   <li>{@link org.hl7.fhir.AllergyIntolerance#getLastOccurence <em>Last Occurence</em>}</li>
- *   <li>{@link org.hl7.fhir.AllergyIntolerance#getComment <em>Comment</em>}</li>
- *   <li>{@link org.hl7.fhir.AllergyIntolerance#getEvent <em>Event</em>}</li>
+ *   <li>{@link org.hl7.fhir.AllergyIntolerance#getNote <em>Note</em>}</li>
+ *   <li>{@link org.hl7.fhir.AllergyIntolerance#getReaction <em>Reaction</em>}</li>
  * </ul>
  *
  * @see org.hl7.fhir.FhirPackage#getAllergyIntolerance()
@@ -44,7 +45,7 @@ public interface AllergyIntolerance extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * This records identifiers associated with this allergy/intolerance concern that are defined by business processed and/ or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation).
+	 * This records identifiers associated with this allergy/intolerance concern that are defined by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation).
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Identifier</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getAllergyIntolerance_Identifier()
@@ -53,6 +54,32 @@ public interface AllergyIntolerance extends DomainResource {
 	 * @generated
 	 */
 	EList<Identifier> getIdentifier();
+
+	/**
+	 * Returns the value of the '<em><b>Onset</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Record of the date and/or time of the onset of the Allergy or Intolerance.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Onset</em>' containment reference.
+	 * @see #setOnset(DateTime)
+	 * @see org.hl7.fhir.FhirPackage#getAllergyIntolerance_Onset()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='onset' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	DateTime getOnset();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.AllergyIntolerance#getOnset <em>Onset</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Onset</em>' containment reference.
+	 * @see #getOnset()
+	 * @generated
+	 */
+	void setOnset(DateTime value);
 
 	/**
 	 * Returns the value of the '<em><b>Recorded Date</b></em>' containment reference.
@@ -163,7 +190,7 @@ public interface AllergyIntolerance extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Identification of a substance, or a class of substances, that is considered to be responsible for the Adverse reaction risk.
+	 * Identification of a substance, or a class of substances, that is considered to be responsible for the adverse reaction risk.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Substance</em>' containment reference.
 	 * @see #setSubstance(CodeableConcept)
@@ -241,7 +268,7 @@ public interface AllergyIntolerance extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Identification of the underlying physiological mechanism for the Reaction Risk.
+	 * Identification of the underlying physiological mechanism for the reaction risk.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Type</em>' containment reference.
 	 * @see #setType(AllergyIntoleranceType)
@@ -293,7 +320,7 @@ public interface AllergyIntolerance extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Represents the date and/or time of the last known occurence of a reaction event.
+	 * Represents the date and/or time of the last known occurrence of a reaction event.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Last Occurence</em>' containment reference.
 	 * @see #setLastOccurence(DateTime)
@@ -315,45 +342,45 @@ public interface AllergyIntolerance extends DomainResource {
 	void setLastOccurence(DateTime value);
 
 	/**
-	 * Returns the value of the '<em><b>Comment</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Note</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Additional narrative about the propensity for the Adverse Reaction, not captured in other fields.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Comment</em>' containment reference.
-	 * @see #setComment(org.hl7.fhir.String)
-	 * @see org.hl7.fhir.FhirPackage#getAllergyIntolerance_Comment()
+	 * @return the value of the '<em>Note</em>' containment reference.
+	 * @see #setNote(Annotation)
+	 * @see org.hl7.fhir.FhirPackage#getAllergyIntolerance_Note()
 	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='comment' namespace='##targetNamespace'"
+	 *        extendedMetaData="kind='element' name='note' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	org.hl7.fhir.String getComment();
+	Annotation getNote();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.AllergyIntolerance#getComment <em>Comment</em>}' containment reference.
+	 * Sets the value of the '{@link org.hl7.fhir.AllergyIntolerance#getNote <em>Note</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Comment</em>' containment reference.
-	 * @see #getComment()
+	 * @param value the new value of the '<em>Note</em>' containment reference.
+	 * @see #getNote()
 	 * @generated
 	 */
-	void setComment(org.hl7.fhir.String value);
+	void setNote(Annotation value);
 
 	/**
-	 * Returns the value of the '<em><b>Event</b></em>' containment reference list.
-	 * The list contents are of type {@link org.hl7.fhir.AllergyIntoleranceEvent}.
+	 * Returns the value of the '<em><b>Reaction</b></em>' containment reference list.
+	 * The list contents are of type {@link org.hl7.fhir.AllergyIntoleranceReaction}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Details about each Adverse Reaction Event linked to exposure to the identified Substance.
+	 * Details about each adverse reaction event linked to exposure to the identified Substance.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Event</em>' containment reference list.
-	 * @see org.hl7.fhir.FhirPackage#getAllergyIntolerance_Event()
+	 * @return the value of the '<em>Reaction</em>' containment reference list.
+	 * @see org.hl7.fhir.FhirPackage#getAllergyIntolerance_Reaction()
 	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='event' namespace='##targetNamespace'"
+	 *        extendedMetaData="kind='element' name='reaction' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	EList<AllergyIntoleranceEvent> getEvent();
+	EList<AllergyIntoleranceReaction> getReaction();
 
 } // AllergyIntolerance

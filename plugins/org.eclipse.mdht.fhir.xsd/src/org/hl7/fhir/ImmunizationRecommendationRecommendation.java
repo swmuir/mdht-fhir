@@ -10,7 +10,7 @@ import org.eclipse.emf.common.util.EList;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A patient's point-of-time immunization status and recommendation with optional supporting justification.
+ * A patient’s point-in-time immunization and recommendation (i.e. forecasting a patient’s immunization eligibility according to a published schedule) with optional supporting justification.
  * <!-- end-model-doc -->
  *
  * <p>
@@ -18,7 +18,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link org.hl7.fhir.ImmunizationRecommendationRecommendation#getDate <em>Date</em>}</li>
- *   <li>{@link org.hl7.fhir.ImmunizationRecommendationRecommendation#getVaccineType <em>Vaccine Type</em>}</li>
+ *   <li>{@link org.hl7.fhir.ImmunizationRecommendationRecommendation#getVaccineCode <em>Vaccine Code</em>}</li>
  *   <li>{@link org.hl7.fhir.ImmunizationRecommendationRecommendation#getDoseNumber <em>Dose Number</em>}</li>
  *   <li>{@link org.hl7.fhir.ImmunizationRecommendationRecommendation#getForecastStatus <em>Forecast Status</em>}</li>
  *   <li>{@link org.hl7.fhir.ImmunizationRecommendationRecommendation#getDateCriterion <em>Date Criterion</em>}</li>
@@ -59,30 +59,30 @@ public interface ImmunizationRecommendationRecommendation extends BackboneElemen
 	void setDate(DateTime value);
 
 	/**
-	 * Returns the value of the '<em><b>Vaccine Type</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Vaccine Code</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Vaccine that pertains to the recommendation.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Vaccine Type</em>' containment reference.
-	 * @see #setVaccineType(CodeableConcept)
-	 * @see org.hl7.fhir.FhirPackage#getImmunizationRecommendationRecommendation_VaccineType()
+	 * @return the value of the '<em>Vaccine Code</em>' containment reference.
+	 * @see #setVaccineCode(CodeableConcept)
+	 * @see org.hl7.fhir.FhirPackage#getImmunizationRecommendationRecommendation_VaccineCode()
 	 * @model containment="true" required="true"
-	 *        extendedMetaData="kind='element' name='vaccineType' namespace='##targetNamespace'"
+	 *        extendedMetaData="kind='element' name='vaccineCode' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	CodeableConcept getVaccineType();
+	CodeableConcept getVaccineCode();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ImmunizationRecommendationRecommendation#getVaccineType <em>Vaccine Type</em>}' containment reference.
+	 * Sets the value of the '{@link org.hl7.fhir.ImmunizationRecommendationRecommendation#getVaccineCode <em>Vaccine Code</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Vaccine Type</em>' containment reference.
-	 * @see #getVaccineType()
+	 * @param value the new value of the '<em>Vaccine Code</em>' containment reference.
+	 * @see #getVaccineCode()
 	 * @generated
 	 */
-	void setVaccineType(CodeableConcept value);
+	void setVaccineCode(CodeableConcept value);
 
 	/**
 	 * Returns the value of the '<em><b>Dose Number</b></em>' containment reference.

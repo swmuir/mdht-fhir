@@ -2,13 +2,20 @@
  */
 package org.hl7.fhir.impl;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.hl7.fhir.CodeableConcept;
 import org.hl7.fhir.FhirPackage;
@@ -29,7 +36,7 @@ import org.hl7.fhir.Reference;
  *   <li>{@link org.hl7.fhir.impl.ImmunizationVaccinationProtocolImpl#getAuthority <em>Authority</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ImmunizationVaccinationProtocolImpl#getSeries <em>Series</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ImmunizationVaccinationProtocolImpl#getSeriesDoses <em>Series Doses</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ImmunizationVaccinationProtocolImpl#getDoseTarget <em>Dose Target</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ImmunizationVaccinationProtocolImpl#getTargetDisease <em>Target Disease</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ImmunizationVaccinationProtocolImpl#getDoseStatus <em>Dose Status</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ImmunizationVaccinationProtocolImpl#getDoseStatusReason <em>Dose Status Reason</em>}</li>
  * </ul>
@@ -88,14 +95,14 @@ public class ImmunizationVaccinationProtocolImpl extends BackboneElementImpl imp
 	protected PositiveInt seriesDoses;
 
 	/**
-	 * The cached value of the '{@link #getDoseTarget() <em>Dose Target</em>}' containment reference.
+	 * The cached value of the '{@link #getTargetDisease() <em>Target Disease</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDoseTarget()
+	 * @see #getTargetDisease()
 	 * @generated
 	 * @ordered
 	 */
-	protected CodeableConcept doseTarget;
+	protected EList<CodeableConcept> targetDisease;
 
 	/**
 	 * The cached value of the '{@link #getDoseStatus() <em>Dose Status</em>}' containment reference.
@@ -356,42 +363,11 @@ public class ImmunizationVaccinationProtocolImpl extends BackboneElementImpl imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CodeableConcept getDoseTarget() {
-		return doseTarget;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetDoseTarget(CodeableConcept newDoseTarget, NotificationChain msgs) {
-		CodeableConcept oldDoseTarget = doseTarget;
-		doseTarget = newDoseTarget;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.IMMUNIZATION_VACCINATION_PROTOCOL__DOSE_TARGET, oldDoseTarget, newDoseTarget);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+	public EList<CodeableConcept> getTargetDisease() {
+		if (targetDisease == null) {
+			targetDisease = new EObjectContainmentEList<CodeableConcept>(CodeableConcept.class, this, FhirPackage.IMMUNIZATION_VACCINATION_PROTOCOL__TARGET_DISEASE);
 		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setDoseTarget(CodeableConcept newDoseTarget) {
-		if (newDoseTarget != doseTarget) {
-			NotificationChain msgs = null;
-			if (doseTarget != null)
-				msgs = ((InternalEObject)doseTarget).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.IMMUNIZATION_VACCINATION_PROTOCOL__DOSE_TARGET, null, msgs);
-			if (newDoseTarget != null)
-				msgs = ((InternalEObject)newDoseTarget).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.IMMUNIZATION_VACCINATION_PROTOCOL__DOSE_TARGET, null, msgs);
-			msgs = basicSetDoseTarget(newDoseTarget, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.IMMUNIZATION_VACCINATION_PROTOCOL__DOSE_TARGET, newDoseTarget, newDoseTarget));
+		return targetDisease;
 	}
 
 	/**
@@ -498,8 +474,8 @@ public class ImmunizationVaccinationProtocolImpl extends BackboneElementImpl imp
 				return basicSetSeries(null, msgs);
 			case FhirPackage.IMMUNIZATION_VACCINATION_PROTOCOL__SERIES_DOSES:
 				return basicSetSeriesDoses(null, msgs);
-			case FhirPackage.IMMUNIZATION_VACCINATION_PROTOCOL__DOSE_TARGET:
-				return basicSetDoseTarget(null, msgs);
+			case FhirPackage.IMMUNIZATION_VACCINATION_PROTOCOL__TARGET_DISEASE:
+				return ((InternalEList<?>)getTargetDisease()).basicRemove(otherEnd, msgs);
 			case FhirPackage.IMMUNIZATION_VACCINATION_PROTOCOL__DOSE_STATUS:
 				return basicSetDoseStatus(null, msgs);
 			case FhirPackage.IMMUNIZATION_VACCINATION_PROTOCOL__DOSE_STATUS_REASON:
@@ -526,8 +502,8 @@ public class ImmunizationVaccinationProtocolImpl extends BackboneElementImpl imp
 				return getSeries();
 			case FhirPackage.IMMUNIZATION_VACCINATION_PROTOCOL__SERIES_DOSES:
 				return getSeriesDoses();
-			case FhirPackage.IMMUNIZATION_VACCINATION_PROTOCOL__DOSE_TARGET:
-				return getDoseTarget();
+			case FhirPackage.IMMUNIZATION_VACCINATION_PROTOCOL__TARGET_DISEASE:
+				return getTargetDisease();
 			case FhirPackage.IMMUNIZATION_VACCINATION_PROTOCOL__DOSE_STATUS:
 				return getDoseStatus();
 			case FhirPackage.IMMUNIZATION_VACCINATION_PROTOCOL__DOSE_STATUS_REASON:
@@ -541,6 +517,7 @@ public class ImmunizationVaccinationProtocolImpl extends BackboneElementImpl imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -559,8 +536,9 @@ public class ImmunizationVaccinationProtocolImpl extends BackboneElementImpl imp
 			case FhirPackage.IMMUNIZATION_VACCINATION_PROTOCOL__SERIES_DOSES:
 				setSeriesDoses((PositiveInt)newValue);
 				return;
-			case FhirPackage.IMMUNIZATION_VACCINATION_PROTOCOL__DOSE_TARGET:
-				setDoseTarget((CodeableConcept)newValue);
+			case FhirPackage.IMMUNIZATION_VACCINATION_PROTOCOL__TARGET_DISEASE:
+				getTargetDisease().clear();
+				getTargetDisease().addAll((Collection<? extends CodeableConcept>)newValue);
 				return;
 			case FhirPackage.IMMUNIZATION_VACCINATION_PROTOCOL__DOSE_STATUS:
 				setDoseStatus((CodeableConcept)newValue);
@@ -595,8 +573,8 @@ public class ImmunizationVaccinationProtocolImpl extends BackboneElementImpl imp
 			case FhirPackage.IMMUNIZATION_VACCINATION_PROTOCOL__SERIES_DOSES:
 				setSeriesDoses((PositiveInt)null);
 				return;
-			case FhirPackage.IMMUNIZATION_VACCINATION_PROTOCOL__DOSE_TARGET:
-				setDoseTarget((CodeableConcept)null);
+			case FhirPackage.IMMUNIZATION_VACCINATION_PROTOCOL__TARGET_DISEASE:
+				getTargetDisease().clear();
 				return;
 			case FhirPackage.IMMUNIZATION_VACCINATION_PROTOCOL__DOSE_STATUS:
 				setDoseStatus((CodeableConcept)null);
@@ -626,8 +604,8 @@ public class ImmunizationVaccinationProtocolImpl extends BackboneElementImpl imp
 				return series != null;
 			case FhirPackage.IMMUNIZATION_VACCINATION_PROTOCOL__SERIES_DOSES:
 				return seriesDoses != null;
-			case FhirPackage.IMMUNIZATION_VACCINATION_PROTOCOL__DOSE_TARGET:
-				return doseTarget != null;
+			case FhirPackage.IMMUNIZATION_VACCINATION_PROTOCOL__TARGET_DISEASE:
+				return targetDisease != null && !targetDisease.isEmpty();
 			case FhirPackage.IMMUNIZATION_VACCINATION_PROTOCOL__DOSE_STATUS:
 				return doseStatus != null;
 			case FhirPackage.IMMUNIZATION_VACCINATION_PROTOCOL__DOSE_STATUS_REASON:

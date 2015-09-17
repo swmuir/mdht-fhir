@@ -119,7 +119,7 @@ public interface EncounterHospitalization extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The admitting Diagnosis field is used to record the diagnosis codes as reported by admitting practitioner. This could be different or in addition to the conditions reported as reason-condition(s) for the encounter.
+	 * The admitting diagnosis field is used to record the diagnosis codes as reported by admitting practitioner. This could be different or in addition to the conditions reported as reason-condition(s) for the encounter.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Admitting Diagnosis</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getEncounterHospitalization_AdmittingDiagnosis()

@@ -2,7 +2,6 @@
  */
 package org.hl7.fhir;
 
-import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -29,20 +28,30 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface ListEntry extends BackboneElement {
 	/**
-	 * Returns the value of the '<em><b>Flag</b></em>' containment reference list.
-	 * The list contents are of type {@link org.hl7.fhir.CodeableConcept}.
+	 * Returns the value of the '<em><b>Flag</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The flag allows the system constructing the list to make one or more statements about the role and significance of the item in the list.
+	 * The flag allows the system constructing the list to indicate the role and significance of the item in the list.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Flag</em>' containment reference list.
+	 * @return the value of the '<em>Flag</em>' containment reference.
+	 * @see #setFlag(CodeableConcept)
 	 * @see org.hl7.fhir.FhirPackage#getListEntry_Flag()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='flag' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	EList<CodeableConcept> getFlag();
+	CodeableConcept getFlag();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.ListEntry#getFlag <em>Flag</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Flag</em>' containment reference.
+	 * @see #getFlag()
+	 * @generated
+	 */
+	void setFlag(CodeableConcept value);
 
 	/**
 	 * Returns the value of the '<em><b>Deleted</b></em>' containment reference.

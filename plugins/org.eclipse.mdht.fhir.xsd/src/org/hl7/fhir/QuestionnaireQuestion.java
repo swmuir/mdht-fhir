@@ -24,6 +24,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.hl7.fhir.QuestionnaireQuestion#getRequired <em>Required</em>}</li>
  *   <li>{@link org.hl7.fhir.QuestionnaireQuestion#getRepeats <em>Repeats</em>}</li>
  *   <li>{@link org.hl7.fhir.QuestionnaireQuestion#getOptions <em>Options</em>}</li>
+ *   <li>{@link org.hl7.fhir.QuestionnaireQuestion#getOption <em>Option</em>}</li>
  *   <li>{@link org.hl7.fhir.QuestionnaireQuestion#getGroup <em>Group</em>}</li>
  * </ul>
  *
@@ -203,6 +204,22 @@ public interface QuestionnaireQuestion extends BackboneElement {
 	 * @generated
 	 */
 	void setOptions(Reference value);
+
+	/**
+	 * Returns the value of the '<em><b>Option</b></em>' containment reference list.
+	 * The list contents are of type {@link org.hl7.fhir.Coding}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * For a "choice" question, identifies one of the permitted answers for the question.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Option</em>' containment reference list.
+	 * @see org.hl7.fhir.FhirPackage#getQuestionnaireQuestion_Option()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='option' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	EList<Coding> getOption();
 
 	/**
 	 * Returns the value of the '<em><b>Group</b></em>' containment reference list.

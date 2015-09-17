@@ -19,7 +19,7 @@
   <sch:pattern>
     <sch:title>Bundle</sch:title>
     <sch:rule context="//f:Bundle">
-      <sch:assert test="count(for $entry in entry[resource] return $entry[count(parent::Bundle/entry[fullUrl/@value=$entry/fullUrl/@value and resource/*/meta/versionId/@value=$entry/resource/*/meta/versionId/@value])!=1])=0">bdl-7: FullUrl must be unique in a bundle, or else entries with the same fullUrl must have different meta.versionId</sch:assert>
+      <sch:assert test="count(for $entry in f:entry[f:resource] return $entry[count(parent::f:Bundle/f:entry[f:fullUrl/@value=$entry/f:fullUrl/@value and ((not(f:resource/*/f:meta/f:versionId/@value) and not($entry/f:resource/*/f:meta/f:versionId/@value)) or f:resource/*/f:meta/f:versionId/@value=$entry/f:resource/*/f:meta/f:versionId/@value)])!=1])=0">bdl-7: FullUrl must be unique in a bundle, or else entries with the same fullUrl must have different meta.versionId</sch:assert>
       <sch:assert test="not(f:entry/f:request) or (f:type/@value = 'batch') or (f:type/@value = 'transaction') or (f:type/@value = 'history')">bdl-3: entry.transaction when (and only when) a transaction</sch:assert>
       <sch:assert test="not(f:entry/f:response) or (f:type/@value = 'batch-response') or (f:type/@value = 'transaction-response')">bdl-4: entry.transactionResponse when (and only when) a transaction-response</sch:assert>
       <sch:assert test="not(f:total) or (f:type/@value = 'searchset') or (f:type/@value = 'history')">bdl-1: total only when a search or history</sch:assert>

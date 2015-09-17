@@ -39,6 +39,7 @@ import org.hl7.fhir.PractitionerQualification;
  * </p>
  * <ul>
  *   <li>{@link org.hl7.fhir.impl.PractitionerImpl#getIdentifier <em>Identifier</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.PractitionerImpl#getActive <em>Active</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.PractitionerImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.PractitionerImpl#getTelecom <em>Telecom</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.PractitionerImpl#getAddress <em>Address</em>}</li>
@@ -62,6 +63,16 @@ public class PractitionerImpl extends DomainResourceImpl implements Practitioner
 	 * @ordered
 	 */
 	protected EList<Identifier> identifier;
+
+	/**
+	 * The cached value of the '{@link #getActive() <em>Active</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getActive()
+	 * @generated
+	 * @ordered
+	 */
+	protected org.hl7.fhir.Boolean active;
 
 	/**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' containment reference.
@@ -182,6 +193,49 @@ public class PractitionerImpl extends DomainResourceImpl implements Practitioner
 			identifier = new EObjectContainmentEList<Identifier>(Identifier.class, this, FhirPackage.PRACTITIONER__IDENTIFIER);
 		}
 		return identifier;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public org.hl7.fhir.Boolean getActive() {
+		return active;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetActive(org.hl7.fhir.Boolean newActive, NotificationChain msgs) {
+		org.hl7.fhir.Boolean oldActive = active;
+		active = newActive;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.PRACTITIONER__ACTIVE, oldActive, newActive);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setActive(org.hl7.fhir.Boolean newActive) {
+		if (newActive != active) {
+			NotificationChain msgs = null;
+			if (active != null)
+				msgs = ((InternalEObject)active).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PRACTITIONER__ACTIVE, null, msgs);
+			if (newActive != null)
+				msgs = ((InternalEObject)newActive).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PRACTITIONER__ACTIVE, null, msgs);
+			msgs = basicSetActive(newActive, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.PRACTITIONER__ACTIVE, newActive, newActive));
 	}
 
 	/**
@@ -395,6 +449,8 @@ public class PractitionerImpl extends DomainResourceImpl implements Practitioner
 		switch (featureID) {
 			case FhirPackage.PRACTITIONER__IDENTIFIER:
 				return ((InternalEList<?>)getIdentifier()).basicRemove(otherEnd, msgs);
+			case FhirPackage.PRACTITIONER__ACTIVE:
+				return basicSetActive(null, msgs);
 			case FhirPackage.PRACTITIONER__NAME:
 				return basicSetName(null, msgs);
 			case FhirPackage.PRACTITIONER__TELECOM:
@@ -427,6 +483,8 @@ public class PractitionerImpl extends DomainResourceImpl implements Practitioner
 		switch (featureID) {
 			case FhirPackage.PRACTITIONER__IDENTIFIER:
 				return getIdentifier();
+			case FhirPackage.PRACTITIONER__ACTIVE:
+				return getActive();
 			case FhirPackage.PRACTITIONER__NAME:
 				return getName();
 			case FhirPackage.PRACTITIONER__TELECOM:
@@ -461,6 +519,9 @@ public class PractitionerImpl extends DomainResourceImpl implements Practitioner
 			case FhirPackage.PRACTITIONER__IDENTIFIER:
 				getIdentifier().clear();
 				getIdentifier().addAll((Collection<? extends Identifier>)newValue);
+				return;
+			case FhirPackage.PRACTITIONER__ACTIVE:
+				setActive((org.hl7.fhir.Boolean)newValue);
 				return;
 			case FhirPackage.PRACTITIONER__NAME:
 				setName((HumanName)newValue);
@@ -510,6 +571,9 @@ public class PractitionerImpl extends DomainResourceImpl implements Practitioner
 			case FhirPackage.PRACTITIONER__IDENTIFIER:
 				getIdentifier().clear();
 				return;
+			case FhirPackage.PRACTITIONER__ACTIVE:
+				setActive((org.hl7.fhir.Boolean)null);
+				return;
 			case FhirPackage.PRACTITIONER__NAME:
 				setName((HumanName)null);
 				return;
@@ -551,6 +615,8 @@ public class PractitionerImpl extends DomainResourceImpl implements Practitioner
 		switch (featureID) {
 			case FhirPackage.PRACTITIONER__IDENTIFIER:
 				return identifier != null && !identifier.isEmpty();
+			case FhirPackage.PRACTITIONER__ACTIVE:
+				return active != null;
 			case FhirPackage.PRACTITIONER__NAME:
 				return name != null;
 			case FhirPackage.PRACTITIONER__TELECOM:

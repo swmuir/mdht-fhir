@@ -31,7 +31,7 @@ public interface TestScriptSetup extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Capabilties that must exist and is assumed to function correctly on the FHIR server being tested.
+	 * Capabilities that must exist and are assumed to function correctly on the FHIR server being tested.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Metadata</em>' containment reference.
 	 * @see #setMetadata(TestScriptMetadata)

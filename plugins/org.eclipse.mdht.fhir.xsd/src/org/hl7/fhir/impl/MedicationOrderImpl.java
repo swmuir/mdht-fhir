@@ -22,7 +22,7 @@ import org.hl7.fhir.DateTime;
 import org.hl7.fhir.FhirPackage;
 import org.hl7.fhir.Identifier;
 import org.hl7.fhir.MedicationOrder;
-import org.hl7.fhir.MedicationOrderDispense;
+import org.hl7.fhir.MedicationOrderDispenseRequest;
 import org.hl7.fhir.MedicationOrderDosageInstruction;
 import org.hl7.fhir.MedicationOrderStatus;
 import org.hl7.fhir.MedicationOrderSubstitution;
@@ -50,7 +50,7 @@ import org.hl7.fhir.Reference;
  *   <li>{@link org.hl7.fhir.impl.MedicationOrderImpl#getMedicationCodeableConcept <em>Medication Codeable Concept</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.MedicationOrderImpl#getMedicationReference <em>Medication Reference</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.MedicationOrderImpl#getDosageInstruction <em>Dosage Instruction</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.MedicationOrderImpl#getDispense <em>Dispense</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.MedicationOrderImpl#getDispenseRequest <em>Dispense Request</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.MedicationOrderImpl#getSubstitution <em>Substitution</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.MedicationOrderImpl#getPriorPrescription <em>Prior Prescription</em>}</li>
  * </ul>
@@ -199,14 +199,14 @@ public class MedicationOrderImpl extends DomainResourceImpl implements Medicatio
 	protected EList<MedicationOrderDosageInstruction> dosageInstruction;
 
 	/**
-	 * The cached value of the '{@link #getDispense() <em>Dispense</em>}' containment reference.
+	 * The cached value of the '{@link #getDispenseRequest() <em>Dispense Request</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDispense()
+	 * @see #getDispenseRequest()
 	 * @generated
 	 * @ordered
 	 */
-	protected MedicationOrderDispense dispense;
+	protected MedicationOrderDispenseRequest dispenseRequest;
 
 	/**
 	 * The cached value of the '{@link #getSubstitution() <em>Substitution</em>}' containment reference.
@@ -792,8 +792,8 @@ public class MedicationOrderImpl extends DomainResourceImpl implements Medicatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public MedicationOrderDispense getDispense() {
-		return dispense;
+	public MedicationOrderDispenseRequest getDispenseRequest() {
+		return dispenseRequest;
 	}
 
 	/**
@@ -801,11 +801,11 @@ public class MedicationOrderImpl extends DomainResourceImpl implements Medicatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetDispense(MedicationOrderDispense newDispense, NotificationChain msgs) {
-		MedicationOrderDispense oldDispense = dispense;
-		dispense = newDispense;
+	public NotificationChain basicSetDispenseRequest(MedicationOrderDispenseRequest newDispenseRequest, NotificationChain msgs) {
+		MedicationOrderDispenseRequest oldDispenseRequest = dispenseRequest;
+		dispenseRequest = newDispenseRequest;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.MEDICATION_ORDER__DISPENSE, oldDispense, newDispense);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.MEDICATION_ORDER__DISPENSE_REQUEST, oldDispenseRequest, newDispenseRequest);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -816,18 +816,18 @@ public class MedicationOrderImpl extends DomainResourceImpl implements Medicatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setDispense(MedicationOrderDispense newDispense) {
-		if (newDispense != dispense) {
+	public void setDispenseRequest(MedicationOrderDispenseRequest newDispenseRequest) {
+		if (newDispenseRequest != dispenseRequest) {
 			NotificationChain msgs = null;
-			if (dispense != null)
-				msgs = ((InternalEObject)dispense).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.MEDICATION_ORDER__DISPENSE, null, msgs);
-			if (newDispense != null)
-				msgs = ((InternalEObject)newDispense).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.MEDICATION_ORDER__DISPENSE, null, msgs);
-			msgs = basicSetDispense(newDispense, msgs);
+			if (dispenseRequest != null)
+				msgs = ((InternalEObject)dispenseRequest).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.MEDICATION_ORDER__DISPENSE_REQUEST, null, msgs);
+			if (newDispenseRequest != null)
+				msgs = ((InternalEObject)newDispenseRequest).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.MEDICATION_ORDER__DISPENSE_REQUEST, null, msgs);
+			msgs = basicSetDispenseRequest(newDispenseRequest, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.MEDICATION_ORDER__DISPENSE, newDispense, newDispense));
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.MEDICATION_ORDER__DISPENSE_REQUEST, newDispenseRequest, newDispenseRequest));
 	}
 
 	/**
@@ -952,8 +952,8 @@ public class MedicationOrderImpl extends DomainResourceImpl implements Medicatio
 				return basicSetMedicationReference(null, msgs);
 			case FhirPackage.MEDICATION_ORDER__DOSAGE_INSTRUCTION:
 				return ((InternalEList<?>)getDosageInstruction()).basicRemove(otherEnd, msgs);
-			case FhirPackage.MEDICATION_ORDER__DISPENSE:
-				return basicSetDispense(null, msgs);
+			case FhirPackage.MEDICATION_ORDER__DISPENSE_REQUEST:
+				return basicSetDispenseRequest(null, msgs);
 			case FhirPackage.MEDICATION_ORDER__SUBSTITUTION:
 				return basicSetSubstitution(null, msgs);
 			case FhirPackage.MEDICATION_ORDER__PRIOR_PRESCRIPTION:
@@ -998,8 +998,8 @@ public class MedicationOrderImpl extends DomainResourceImpl implements Medicatio
 				return getMedicationReference();
 			case FhirPackage.MEDICATION_ORDER__DOSAGE_INSTRUCTION:
 				return getDosageInstruction();
-			case FhirPackage.MEDICATION_ORDER__DISPENSE:
-				return getDispense();
+			case FhirPackage.MEDICATION_ORDER__DISPENSE_REQUEST:
+				return getDispenseRequest();
 			case FhirPackage.MEDICATION_ORDER__SUBSTITUTION:
 				return getSubstitution();
 			case FhirPackage.MEDICATION_ORDER__PRIOR_PRESCRIPTION:
@@ -1061,8 +1061,8 @@ public class MedicationOrderImpl extends DomainResourceImpl implements Medicatio
 				getDosageInstruction().clear();
 				getDosageInstruction().addAll((Collection<? extends MedicationOrderDosageInstruction>)newValue);
 				return;
-			case FhirPackage.MEDICATION_ORDER__DISPENSE:
-				setDispense((MedicationOrderDispense)newValue);
+			case FhirPackage.MEDICATION_ORDER__DISPENSE_REQUEST:
+				setDispenseRequest((MedicationOrderDispenseRequest)newValue);
 				return;
 			case FhirPackage.MEDICATION_ORDER__SUBSTITUTION:
 				setSubstitution((MedicationOrderSubstitution)newValue);
@@ -1124,8 +1124,8 @@ public class MedicationOrderImpl extends DomainResourceImpl implements Medicatio
 			case FhirPackage.MEDICATION_ORDER__DOSAGE_INSTRUCTION:
 				getDosageInstruction().clear();
 				return;
-			case FhirPackage.MEDICATION_ORDER__DISPENSE:
-				setDispense((MedicationOrderDispense)null);
+			case FhirPackage.MEDICATION_ORDER__DISPENSE_REQUEST:
+				setDispenseRequest((MedicationOrderDispenseRequest)null);
 				return;
 			case FhirPackage.MEDICATION_ORDER__SUBSTITUTION:
 				setSubstitution((MedicationOrderSubstitution)null);
@@ -1173,8 +1173,8 @@ public class MedicationOrderImpl extends DomainResourceImpl implements Medicatio
 				return medicationReference != null;
 			case FhirPackage.MEDICATION_ORDER__DOSAGE_INSTRUCTION:
 				return dosageInstruction != null && !dosageInstruction.isEmpty();
-			case FhirPackage.MEDICATION_ORDER__DISPENSE:
-				return dispense != null;
+			case FhirPackage.MEDICATION_ORDER__DISPENSE_REQUEST:
+				return dispenseRequest != null;
 			case FhirPackage.MEDICATION_ORDER__SUBSTITUTION:
 				return substitution != null;
 			case FhirPackage.MEDICATION_ORDER__PRIOR_PRESCRIPTION:

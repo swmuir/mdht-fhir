@@ -33,7 +33,7 @@ public interface EpisodeOfCareCareTeam extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The role that this team member is taking within this episode of care.
+	 * The role this team member is taking within this episode of care.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Role</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getEpisodeOfCareCareTeam_Role()
@@ -48,7 +48,7 @@ public interface EpisodeOfCareCareTeam extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The period of time that this practitioner is performing some role within the episode of care.
+	 * The period of time this practitioner is performing some role within the episode of care.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Period</em>' containment reference.
 	 * @see #setPeriod(Period)

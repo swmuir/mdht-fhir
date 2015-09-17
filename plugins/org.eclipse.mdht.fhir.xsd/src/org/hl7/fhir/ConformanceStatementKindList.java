@@ -55,7 +55,7 @@ public enum ConformanceStatementKindList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The Conformance instance represents the present capabilities of a specific system instance.  This is the kind returned by OPTIONS for a FHIR server end-point
+	 * The Conformance instance represents the present capabilities of a specific system instance.  This is the kind returned by OPTIONS for a FHIR server end-point.
 	 * <!-- end-model-doc -->
 	 * @see #INSTANCE
 	 * @model name="instance"
@@ -83,7 +83,7 @@ public enum ConformanceStatementKindList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The Conformance instance represents a set of requirements for other systems to meet.  E.g. as part of an implementation guide or 'request for proposal'
+	 * The Conformance instance represents a set of requirements for other systems to meet; e.g. as part of an implementation guide or 'request for proposal'.
 	 * <!-- end-model-doc -->
 	 * @see #REQUIREMENTS
 	 * @model name="requirements"

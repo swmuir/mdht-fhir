@@ -55,7 +55,7 @@ public enum SearchEntryModeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * This resource matched the search specification
+	 * This resource matched the search specification.
 	 * <!-- end-model-doc -->
 	 * @see #MATCH
 	 * @model name="match"
@@ -69,7 +69,7 @@ public enum SearchEntryModeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * This resource is returned because it is referred to from another resource in the search set
+	 * This resource is returned because it is referred to from another resource in the search set.
 	 * <!-- end-model-doc -->
 	 * @see #INCLUDE
 	 * @model name="include"
@@ -83,7 +83,7 @@ public enum SearchEntryModeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * An OperationOutcome that provides additional information about the processing of a search
+	 * An OperationOutcome that provides additional information about the processing of a search.
 	 * <!-- end-model-doc -->
 	 * @see #OUTCOME
 	 * @model name="outcome"

@@ -39,10 +39,10 @@ import org.hl7.fhir.Reference;
  *   <li>{@link org.hl7.fhir.impl.EpisodeOfCareImpl#getStatus <em>Status</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.EpisodeOfCareImpl#getStatusHistory <em>Status History</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.EpisodeOfCareImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.EpisodeOfCareImpl#getCondition <em>Condition</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.EpisodeOfCareImpl#getPatient <em>Patient</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.EpisodeOfCareImpl#getManagingOrganization <em>Managing Organization</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.EpisodeOfCareImpl#getPeriod <em>Period</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.EpisodeOfCareImpl#getCondition <em>Condition</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.EpisodeOfCareImpl#getReferralRequest <em>Referral Request</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.EpisodeOfCareImpl#getCareManager <em>Care Manager</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.EpisodeOfCareImpl#getCareTeam <em>Care Team</em>}</li>
@@ -92,6 +92,16 @@ public class EpisodeOfCareImpl extends DomainResourceImpl implements EpisodeOfCa
 	protected EList<CodeableConcept> type;
 
 	/**
+	 * The cached value of the '{@link #getCondition() <em>Condition</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCondition()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Reference> condition;
+
+	/**
 	 * The cached value of the '{@link #getPatient() <em>Patient</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -120,16 +130,6 @@ public class EpisodeOfCareImpl extends DomainResourceImpl implements EpisodeOfCa
 	 * @ordered
 	 */
 	protected Period period;
-
-	/**
-	 * The cached value of the '{@link #getCondition() <em>Condition</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getCondition()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Reference> condition;
 
 	/**
 	 * The cached value of the '{@link #getReferralRequest() <em>Referral Request</em>}' containment reference list.
@@ -257,6 +257,18 @@ public class EpisodeOfCareImpl extends DomainResourceImpl implements EpisodeOfCa
 			type = new EObjectContainmentEList<CodeableConcept>(CodeableConcept.class, this, FhirPackage.EPISODE_OF_CARE__TYPE);
 		}
 		return type;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Reference> getCondition() {
+		if (condition == null) {
+			condition = new EObjectContainmentEList<Reference>(Reference.class, this, FhirPackage.EPISODE_OF_CARE__CONDITION);
+		}
+		return condition;
 	}
 
 	/**
@@ -393,18 +405,6 @@ public class EpisodeOfCareImpl extends DomainResourceImpl implements EpisodeOfCa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Reference> getCondition() {
-		if (condition == null) {
-			condition = new EObjectContainmentEList<Reference>(Reference.class, this, FhirPackage.EPISODE_OF_CARE__CONDITION);
-		}
-		return condition;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EList<Reference> getReferralRequest() {
 		if (referralRequest == null) {
 			referralRequest = new EObjectContainmentEList<Reference>(Reference.class, this, FhirPackage.EPISODE_OF_CARE__REFERRAL_REQUEST);
@@ -483,14 +483,14 @@ public class EpisodeOfCareImpl extends DomainResourceImpl implements EpisodeOfCa
 				return ((InternalEList<?>)getStatusHistory()).basicRemove(otherEnd, msgs);
 			case FhirPackage.EPISODE_OF_CARE__TYPE:
 				return ((InternalEList<?>)getType()).basicRemove(otherEnd, msgs);
+			case FhirPackage.EPISODE_OF_CARE__CONDITION:
+				return ((InternalEList<?>)getCondition()).basicRemove(otherEnd, msgs);
 			case FhirPackage.EPISODE_OF_CARE__PATIENT:
 				return basicSetPatient(null, msgs);
 			case FhirPackage.EPISODE_OF_CARE__MANAGING_ORGANIZATION:
 				return basicSetManagingOrganization(null, msgs);
 			case FhirPackage.EPISODE_OF_CARE__PERIOD:
 				return basicSetPeriod(null, msgs);
-			case FhirPackage.EPISODE_OF_CARE__CONDITION:
-				return ((InternalEList<?>)getCondition()).basicRemove(otherEnd, msgs);
 			case FhirPackage.EPISODE_OF_CARE__REFERRAL_REQUEST:
 				return ((InternalEList<?>)getReferralRequest()).basicRemove(otherEnd, msgs);
 			case FhirPackage.EPISODE_OF_CARE__CARE_MANAGER:
@@ -517,14 +517,14 @@ public class EpisodeOfCareImpl extends DomainResourceImpl implements EpisodeOfCa
 				return getStatusHistory();
 			case FhirPackage.EPISODE_OF_CARE__TYPE:
 				return getType();
+			case FhirPackage.EPISODE_OF_CARE__CONDITION:
+				return getCondition();
 			case FhirPackage.EPISODE_OF_CARE__PATIENT:
 				return getPatient();
 			case FhirPackage.EPISODE_OF_CARE__MANAGING_ORGANIZATION:
 				return getManagingOrganization();
 			case FhirPackage.EPISODE_OF_CARE__PERIOD:
 				return getPeriod();
-			case FhirPackage.EPISODE_OF_CARE__CONDITION:
-				return getCondition();
 			case FhirPackage.EPISODE_OF_CARE__REFERRAL_REQUEST:
 				return getReferralRequest();
 			case FhirPackage.EPISODE_OF_CARE__CARE_MANAGER:
@@ -559,6 +559,10 @@ public class EpisodeOfCareImpl extends DomainResourceImpl implements EpisodeOfCa
 				getType().clear();
 				getType().addAll((Collection<? extends CodeableConcept>)newValue);
 				return;
+			case FhirPackage.EPISODE_OF_CARE__CONDITION:
+				getCondition().clear();
+				getCondition().addAll((Collection<? extends Reference>)newValue);
+				return;
 			case FhirPackage.EPISODE_OF_CARE__PATIENT:
 				setPatient((Reference)newValue);
 				return;
@@ -567,10 +571,6 @@ public class EpisodeOfCareImpl extends DomainResourceImpl implements EpisodeOfCa
 				return;
 			case FhirPackage.EPISODE_OF_CARE__PERIOD:
 				setPeriod((Period)newValue);
-				return;
-			case FhirPackage.EPISODE_OF_CARE__CONDITION:
-				getCondition().clear();
-				getCondition().addAll((Collection<? extends Reference>)newValue);
 				return;
 			case FhirPackage.EPISODE_OF_CARE__REFERRAL_REQUEST:
 				getReferralRequest().clear();
@@ -607,6 +607,9 @@ public class EpisodeOfCareImpl extends DomainResourceImpl implements EpisodeOfCa
 			case FhirPackage.EPISODE_OF_CARE__TYPE:
 				getType().clear();
 				return;
+			case FhirPackage.EPISODE_OF_CARE__CONDITION:
+				getCondition().clear();
+				return;
 			case FhirPackage.EPISODE_OF_CARE__PATIENT:
 				setPatient((Reference)null);
 				return;
@@ -615,9 +618,6 @@ public class EpisodeOfCareImpl extends DomainResourceImpl implements EpisodeOfCa
 				return;
 			case FhirPackage.EPISODE_OF_CARE__PERIOD:
 				setPeriod((Period)null);
-				return;
-			case FhirPackage.EPISODE_OF_CARE__CONDITION:
-				getCondition().clear();
 				return;
 			case FhirPackage.EPISODE_OF_CARE__REFERRAL_REQUEST:
 				getReferralRequest().clear();
@@ -648,14 +648,14 @@ public class EpisodeOfCareImpl extends DomainResourceImpl implements EpisodeOfCa
 				return statusHistory != null && !statusHistory.isEmpty();
 			case FhirPackage.EPISODE_OF_CARE__TYPE:
 				return type != null && !type.isEmpty();
+			case FhirPackage.EPISODE_OF_CARE__CONDITION:
+				return condition != null && !condition.isEmpty();
 			case FhirPackage.EPISODE_OF_CARE__PATIENT:
 				return patient != null;
 			case FhirPackage.EPISODE_OF_CARE__MANAGING_ORGANIZATION:
 				return managingOrganization != null;
 			case FhirPackage.EPISODE_OF_CARE__PERIOD:
 				return period != null;
-			case FhirPackage.EPISODE_OF_CARE__CONDITION:
-				return condition != null && !condition.isEmpty();
 			case FhirPackage.EPISODE_OF_CARE__REFERRAL_REQUEST:
 				return referralRequest != null && !referralRequest.isEmpty();
 			case FhirPackage.EPISODE_OF_CARE__CARE_MANAGER:

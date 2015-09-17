@@ -296,7 +296,7 @@ public interface ClaimItem extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The quantity times the unit price for an addittional service or product or charge. For example, the formula: unit Quantity * unit Price (Cost per Point) * factor Number  * points = net Amount. Quantity, factor and points are assumed to be 1 if not supplied.
+	 * The quantity times the unit price for an additional  service or product or charge. For example, the formula: unit Quantity * unit Price (Cost per Point) * factor Number  * points = net Amount. Quantity, factor and points are assumed to be 1 if not supplied.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Net</em>' containment reference.
 	 * @see #setNet(Money)
@@ -348,7 +348,7 @@ public interface ClaimItem extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Physical service site on the patient (limb, tooth, etc).
+	 * Physical service site on the patient (limb, tooth, etc.).
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Body Site</em>' containment reference.
 	 * @see #setBodySite(Coding)
@@ -375,7 +375,7 @@ public interface ClaimItem extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A region or surface of the site, eg. limb region or tooth surface(s).
+	 * A region or surface of the site, e.g. limb region or tooth surface(s).
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Sub Site</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getClaimItem_SubSite()
@@ -391,7 +391,7 @@ public interface ClaimItem extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Item typification or modifiers codes, eg for Oral whether the treatment is cosmetic or associated with TMJ, or an appliance was lost or stolen.
+	 * Item typification or modifiers codes, e.g. for Oral whether the treatment is cosmetic or associated with TMJ, or an appliance was lost or stolen.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Modifier</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getClaimItem_Modifier()

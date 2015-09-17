@@ -67,7 +67,7 @@ public interface SupplyRequest extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The Practitioner , Organization or Patient who initiated this order for the Supply.
+	 * The Practitioner , Organization or Patient who initiated this order for the supply.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Source</em>' containment reference.
 	 * @see #setSource(Reference)

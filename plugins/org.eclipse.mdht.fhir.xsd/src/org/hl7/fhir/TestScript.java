@@ -22,6 +22,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.hl7.fhir.TestScript#getVersion <em>Version</em>}</li>
  *   <li>{@link org.hl7.fhir.TestScript#getName <em>Name</em>}</li>
  *   <li>{@link org.hl7.fhir.TestScript#getStatus <em>Status</em>}</li>
+ *   <li>{@link org.hl7.fhir.TestScript#getIdentifier <em>Identifier</em>}</li>
  *   <li>{@link org.hl7.fhir.TestScript#getExperimental <em>Experimental</em>}</li>
  *   <li>{@link org.hl7.fhir.TestScript#getPublisher <em>Publisher</em>}</li>
  *   <li>{@link org.hl7.fhir.TestScript#getContact <em>Contact</em>}</li>
@@ -150,6 +151,32 @@ public interface TestScript extends DomainResource {
 	void setStatus(Code value);
 
 	/**
+	 * Returns the value of the '<em><b>Identifier</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Identifier for the TestScript assigned for external purposes outside the context of FHIR.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Identifier</em>' containment reference.
+	 * @see #setIdentifier(Identifier)
+	 * @see org.hl7.fhir.FhirPackage#getTestScript_Identifier()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='identifier' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Identifier getIdentifier();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.TestScript#getIdentifier <em>Identifier</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Identifier</em>' containment reference.
+	 * @see #getIdentifier()
+	 * @generated
+	 */
+	void setIdentifier(Identifier value);
+
+	/**
 	 * Returns the value of the '<em><b>Experimental</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -222,7 +249,7 @@ public interface TestScript extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The date that this version of the TestScript was published. The date must change when the business version changes, if it does, and it must change if the status code changes. in addition, it should change when the substantiative content of the test cases change.
+	 * The date this version of the test tcript was published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the test cases change.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Date</em>' containment reference.
 	 * @see #setDate(DateTime)
@@ -342,7 +369,7 @@ public interface TestScript extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The required capability must exist and is assumed to function correctly on the FHIR server being tested.
+	 * The required capability must exist and are assumed to function correctly on the FHIR server being tested.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Metadata</em>' containment reference.
 	 * @see #setMetadata(TestScriptMetadata)

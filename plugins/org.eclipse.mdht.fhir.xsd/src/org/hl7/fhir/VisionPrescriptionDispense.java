@@ -43,7 +43,7 @@ public interface VisionPrescriptionDispense extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Identifies the type of Vision correction product which is required for the patient.
+	 * Identifies the type of vision correction product which is required for the patient.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Product</em>' containment reference.
 	 * @see #setProduct(Coding)
@@ -277,7 +277,7 @@ public interface VisionPrescriptionDispense extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Back Curvature measured in millimeters.
+	 * Back curvature measured in millimeters.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Back Curve</em>' containment reference.
 	 * @see #setBackCurve(Decimal)

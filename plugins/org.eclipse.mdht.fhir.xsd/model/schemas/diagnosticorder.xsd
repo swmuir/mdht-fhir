@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Thu, Aug 20, 2015 14:13+0000 for FHIR v0.5.0 
+  Generated on Wed, Sep 16, 2015 13:28+0000 for FHIR v1.0.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -96,7 +96,7 @@
           </xs:element>
           <xs:element name="event" type="DiagnosticOrder.Event" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation>
-              <xs:documentation xml:lang="en">A summary of the events of interest that have occurred as the request is processed. E.g. when the order was made, various processing steps (specimens received), when it was completed.</xs:documentation>
+              <xs:documentation xml:lang="en">A summary of the events of interest that have occurred as the request is processed; e.g. when the order was made, various processing steps (specimens received), when it was completed.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="item" type="DiagnosticOrder.Item" minOccurs="0" maxOccurs="unbounded">
@@ -106,7 +106,7 @@
           </xs:element>
           <xs:element name="note" minOccurs="0" maxOccurs="unbounded" type="Annotation">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Any other notes associated with this patient or specimen or order (e.g. &quot;patient hates needles&quot;).</xs:documentation>
+              <xs:documentation xml:lang="en">Any other notes associated with this patient, specimen or order (e.g. &quot;patient hates needles&quot;).</xs:documentation>
            </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -137,7 +137,7 @@
           </xs:element>
           <xs:element name="actor" minOccurs="0" maxOccurs="1" type="Reference">
             <xs:annotation>
-              <xs:documentation xml:lang="en">The person who was responsible for performing or recording the action.</xs:documentation>
+              <xs:documentation xml:lang="en">The person responsible for performing or recording the action.</xs:documentation>
            </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -184,74 +184,74 @@
     <xs:restriction base="xs:string">
       <xs:enumeration value="proposed">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The request has been proposed</xs:documentation>
+          <xs:documentation xml:lang="en">The request has been proposed.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="draft">
         <xs:annotation>
-          <xs:documentation xml:lang="en">the request is in preliminary form prior to being sent</xs:documentation>
+          <xs:documentation xml:lang="en">the request is in preliminary form prior to being sent.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="planned">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The request has been planned</xs:documentation>
+          <xs:documentation xml:lang="en">The request has been planned.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="requested">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The request has been placed</xs:documentation>
+          <xs:documentation xml:lang="en">The request has been placed.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="received">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The receiving system has received the order, but not yet decided whether it will be performed</xs:documentation>
+          <xs:documentation xml:lang="en">The receiving system has received the order, but not yet decided whether it will be performed.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="accepted">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The receiving system has accepted the order, but work has not yet commenced</xs:documentation>
+          <xs:documentation xml:lang="en">The receiving system has accepted the order, but work has not yet commenced.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="in-progress">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The work to fulfill the order is happening</xs:documentation>
+          <xs:documentation xml:lang="en">The work to fulfill the order is happening.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="review">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The work is complete, and the outcomes are being reviewed for approval</xs:documentation>
+          <xs:documentation xml:lang="en">The work is complete, and the outcomes are being reviewed for approval.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="completed">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The work has been complete, the report(s) released, and no further work is planned</xs:documentation>
+          <xs:documentation xml:lang="en">The work has been complete, the report(s) released, and no further work is planned.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="cancelled">
         <xs:annotation>
-          <xs:documentation xml:lang="en">the request has been withdrawn</xs:documentation>
+          <xs:documentation xml:lang="en">the request has been withdrawn.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="suspended">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The request has been held by originating system/user request</xs:documentation>
+          <xs:documentation xml:lang="en">The request has been held by originating system/user request.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="rejected">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The receiving system has declined to fulfill the request</xs:documentation>
+          <xs:documentation xml:lang="en">The receiving system has declined to fulfill the request.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="failed">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The diagnostic investigation was attempted, but due to some procedural error, it could not be completed</xs:documentation>
+          <xs:documentation xml:lang="en">The diagnostic investigation was attempted, but due to some procedural error, it could not be completed.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="DiagnosticOrderStatus">
     <xs:annotation>
-      <xs:documentation xml:lang="en">The status of a diagnostic order</xs:documentation>
+      <xs:documentation xml:lang="en">The status of a diagnostic order.</xs:documentation>
       <xs:documentation xml:lang="en">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
@@ -264,29 +264,29 @@
     <xs:restriction base="xs:string">
       <xs:enumeration value="routine">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The order has a normal priority</xs:documentation>
+          <xs:documentation xml:lang="en">The order has a normal priority .</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="urgent">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The order should be urgently</xs:documentation>
+          <xs:documentation xml:lang="en">The order should be urgently.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="stat">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The order is time-critical</xs:documentation>
+          <xs:documentation xml:lang="en">The order is time-critical.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="asap">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The order should be acted on as soon as possible</xs:documentation>
+          <xs:documentation xml:lang="en">The order should be acted on as soon as possible.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="DiagnosticOrderPriority">
     <xs:annotation>
-      <xs:documentation xml:lang="en">The clinical priority of a diagnostic order</xs:documentation>
+      <xs:documentation xml:lang="en">The clinical priority of a diagnostic order.</xs:documentation>
       <xs:documentation xml:lang="en">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>
     </xs:annotation>
     <xs:complexContent>

@@ -9,7 +9,7 @@ package org.hl7.fhir;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Dispensing a medication to a named patient.  This includes a description of the supply provided and the instructions for administering the medication.
+ * Indicates that a medication product is to be or has been dispensed for a named person/patient.  This includes a description of the medication product (supply) provided and the instructions for administering the medication.  The medication dispense is the result of a Pharmacy system responding to a Medication Order.
  * <!-- end-model-doc -->
  *
  * <p>
@@ -21,7 +21,8 @@ package org.hl7.fhir;
  *   <li>{@link org.hl7.fhir.MedicationDispenseDosageInstruction#getTiming <em>Timing</em>}</li>
  *   <li>{@link org.hl7.fhir.MedicationDispenseDosageInstruction#getAsNeededBoolean <em>As Needed Boolean</em>}</li>
  *   <li>{@link org.hl7.fhir.MedicationDispenseDosageInstruction#getAsNeededCodeableConcept <em>As Needed Codeable Concept</em>}</li>
- *   <li>{@link org.hl7.fhir.MedicationDispenseDosageInstruction#getSite <em>Site</em>}</li>
+ *   <li>{@link org.hl7.fhir.MedicationDispenseDosageInstruction#getSiteCodeableConcept <em>Site Codeable Concept</em>}</li>
+ *   <li>{@link org.hl7.fhir.MedicationDispenseDosageInstruction#getSiteReference <em>Site Reference</em>}</li>
  *   <li>{@link org.hl7.fhir.MedicationDispenseDosageInstruction#getRoute <em>Route</em>}</li>
  *   <li>{@link org.hl7.fhir.MedicationDispenseDosageInstruction#getMethod <em>Method</em>}</li>
  *   <li>{@link org.hl7.fhir.MedicationDispenseDosageInstruction#getDoseRange <em>Dose Range</em>}</li>
@@ -169,30 +170,58 @@ public interface MedicationDispenseDosageInstruction extends BackboneElement {
 	void setAsNeededCodeableConcept(CodeableConcept value);
 
 	/**
-	 * Returns the value of the '<em><b>Site</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Site Codeable Concept</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Site Codeable Concept</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
 	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * A coded specification of the anatomic site where the medication first enters the body.
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Site</em>' containment reference.
-	 * @see #setSite(CodeableConcept)
-	 * @see org.hl7.fhir.FhirPackage#getMedicationDispenseDosageInstruction_Site()
+	 * @return the value of the '<em>Site Codeable Concept</em>' containment reference.
+	 * @see #setSiteCodeableConcept(CodeableConcept)
+	 * @see org.hl7.fhir.FhirPackage#getMedicationDispenseDosageInstruction_SiteCodeableConcept()
 	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='site' namespace='##targetNamespace'"
+	 *        extendedMetaData="kind='element' name='siteCodeableConcept' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	CodeableConcept getSite();
+	CodeableConcept getSiteCodeableConcept();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.MedicationDispenseDosageInstruction#getSite <em>Site</em>}' containment reference.
+	 * Sets the value of the '{@link org.hl7.fhir.MedicationDispenseDosageInstruction#getSiteCodeableConcept <em>Site Codeable Concept</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Site</em>' containment reference.
-	 * @see #getSite()
+	 * @param value the new value of the '<em>Site Codeable Concept</em>' containment reference.
+	 * @see #getSiteCodeableConcept()
 	 * @generated
 	 */
-	void setSite(CodeableConcept value);
+	void setSiteCodeableConcept(CodeableConcept value);
+
+	/**
+	 * Returns the value of the '<em><b>Site Reference</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Site Reference</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Site Reference</em>' containment reference.
+	 * @see #setSiteReference(Reference)
+	 * @see org.hl7.fhir.FhirPackage#getMedicationDispenseDosageInstruction_SiteReference()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='siteReference' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Reference getSiteReference();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.MedicationDispenseDosageInstruction#getSiteReference <em>Site Reference</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Site Reference</em>' containment reference.
+	 * @see #getSiteReference()
+	 * @generated
+	 */
+	void setSiteReference(Reference value);
 
 	/**
 	 * Returns the value of the '<em><b>Route</b></em>' containment reference.
@@ -225,7 +254,7 @@ public interface MedicationDispenseDosageInstruction extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A coded value indicating the method by which the medication is introduced into or onto the body. Most commonly used for injections.  Examples:  Slow Push; Deep IV.  Terminologies used often pre-coordinate this term with the route and or form of administration.
+	 * A coded value indicating the method by which the medication is intended to be or was introduced into or on the body.  This attribute will most often NOT be populated.  It is most commonly used for injections.  Examples: Slow Push, Deep IV.  One of the reasons this attribute is not used often, is that the method is often pre-coordinated with the route and/or form of administration.  This means the codes used in route or form may pre-coordinate the method in the route code or the form code.  The implementation decision about what coding system to use for route or form code will determine how frequently the method code will be populated e.g. if route or form code pre-coordinate method code, then this attribute will not be populated often; if there is no pre-coordination then method code may  be used frequently.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Method</em>' containment reference.
 	 * @see #setMethod(CodeableConcept)

@@ -41,9 +41,9 @@ import org.hl7.fhir.ConceptMap;
 import org.hl7.fhir.Condition;
 import org.hl7.fhir.Conformance;
 import org.hl7.fhir.Contract;
-import org.hl7.fhir.Contraindication;
 import org.hl7.fhir.Coverage;
 import org.hl7.fhir.DataElement;
+import org.hl7.fhir.DetectedIssue;
 import org.hl7.fhir.Device;
 import org.hl7.fhir.DeviceComponent;
 import org.hl7.fhir.DeviceMetric;
@@ -149,9 +149,9 @@ import org.hl7.fhir.VisionPrescription;
  *   <li>{@link org.hl7.fhir.impl.DocumentRootImpl#getCondition <em>Condition</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.DocumentRootImpl#getConformance <em>Conformance</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.DocumentRootImpl#getContract <em>Contract</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.DocumentRootImpl#getContraindication <em>Contraindication</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.DocumentRootImpl#getCoverage <em>Coverage</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.DocumentRootImpl#getDataElement <em>Data Element</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.DocumentRootImpl#getDetectedIssue <em>Detected Issue</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.DocumentRootImpl#getDevice <em>Device</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.DocumentRootImpl#getDeviceComponent <em>Device Component</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.DocumentRootImpl#getDeviceMetric <em>Device Metric</em>}</li>
@@ -858,33 +858,6 @@ public class DocumentRootImpl extends MinimalEObjectImpl.Container implements Do
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Contraindication getContraindication() {
-		return (Contraindication)getMixed().get(FhirPackage.eINSTANCE.getDocumentRoot_Contraindication(), true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetContraindication(Contraindication newContraindication, NotificationChain msgs) {
-		return ((FeatureMap.Internal)getMixed()).basicAdd(FhirPackage.eINSTANCE.getDocumentRoot_Contraindication(), newContraindication, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setContraindication(Contraindication newContraindication) {
-		((FeatureMap.Internal)getMixed()).set(FhirPackage.eINSTANCE.getDocumentRoot_Contraindication(), newContraindication);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public Coverage getCoverage() {
 		return (Coverage)getMixed().get(FhirPackage.eINSTANCE.getDocumentRoot_Coverage(), true);
 	}
@@ -932,6 +905,33 @@ public class DocumentRootImpl extends MinimalEObjectImpl.Container implements Do
 	 */
 	public void setDataElement(DataElement newDataElement) {
 		((FeatureMap.Internal)getMixed()).set(FhirPackage.eINSTANCE.getDocumentRoot_DataElement(), newDataElement);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DetectedIssue getDetectedIssue() {
+		return (DetectedIssue)getMixed().get(FhirPackage.eINSTANCE.getDocumentRoot_DetectedIssue(), true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetDetectedIssue(DetectedIssue newDetectedIssue, NotificationChain msgs) {
+		return ((FeatureMap.Internal)getMixed()).basicAdd(FhirPackage.eINSTANCE.getDocumentRoot_DetectedIssue(), newDetectedIssue, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDetectedIssue(DetectedIssue newDetectedIssue) {
+		((FeatureMap.Internal)getMixed()).set(FhirPackage.eINSTANCE.getDocumentRoot_DetectedIssue(), newDetectedIssue);
 	}
 
 	/**
@@ -2905,12 +2905,12 @@ public class DocumentRootImpl extends MinimalEObjectImpl.Container implements Do
 				return basicSetConformance(null, msgs);
 			case FhirPackage.DOCUMENT_ROOT__CONTRACT:
 				return basicSetContract(null, msgs);
-			case FhirPackage.DOCUMENT_ROOT__CONTRAINDICATION:
-				return basicSetContraindication(null, msgs);
 			case FhirPackage.DOCUMENT_ROOT__COVERAGE:
 				return basicSetCoverage(null, msgs);
 			case FhirPackage.DOCUMENT_ROOT__DATA_ELEMENT:
 				return basicSetDataElement(null, msgs);
+			case FhirPackage.DOCUMENT_ROOT__DETECTED_ISSUE:
+				return basicSetDetectedIssue(null, msgs);
 			case FhirPackage.DOCUMENT_ROOT__DEVICE:
 				return basicSetDevice(null, msgs);
 			case FhirPackage.DOCUMENT_ROOT__DEVICE_COMPONENT:
@@ -3114,12 +3114,12 @@ public class DocumentRootImpl extends MinimalEObjectImpl.Container implements Do
 				return getConformance();
 			case FhirPackage.DOCUMENT_ROOT__CONTRACT:
 				return getContract();
-			case FhirPackage.DOCUMENT_ROOT__CONTRAINDICATION:
-				return getContraindication();
 			case FhirPackage.DOCUMENT_ROOT__COVERAGE:
 				return getCoverage();
 			case FhirPackage.DOCUMENT_ROOT__DATA_ELEMENT:
 				return getDataElement();
+			case FhirPackage.DOCUMENT_ROOT__DETECTED_ISSUE:
+				return getDetectedIssue();
 			case FhirPackage.DOCUMENT_ROOT__DEVICE:
 				return getDevice();
 			case FhirPackage.DOCUMENT_ROOT__DEVICE_COMPONENT:
@@ -3343,14 +3343,14 @@ public class DocumentRootImpl extends MinimalEObjectImpl.Container implements Do
 			case FhirPackage.DOCUMENT_ROOT__CONTRACT:
 				setContract((Contract)newValue);
 				return;
-			case FhirPackage.DOCUMENT_ROOT__CONTRAINDICATION:
-				setContraindication((Contraindication)newValue);
-				return;
 			case FhirPackage.DOCUMENT_ROOT__COVERAGE:
 				setCoverage((Coverage)newValue);
 				return;
 			case FhirPackage.DOCUMENT_ROOT__DATA_ELEMENT:
 				setDataElement((DataElement)newValue);
+				return;
+			case FhirPackage.DOCUMENT_ROOT__DETECTED_ISSUE:
+				setDetectedIssue((DetectedIssue)newValue);
 				return;
 			case FhirPackage.DOCUMENT_ROOT__DEVICE:
 				setDevice((Device)newValue);
@@ -3646,14 +3646,14 @@ public class DocumentRootImpl extends MinimalEObjectImpl.Container implements Do
 			case FhirPackage.DOCUMENT_ROOT__CONTRACT:
 				setContract((Contract)null);
 				return;
-			case FhirPackage.DOCUMENT_ROOT__CONTRAINDICATION:
-				setContraindication((Contraindication)null);
-				return;
 			case FhirPackage.DOCUMENT_ROOT__COVERAGE:
 				setCoverage((Coverage)null);
 				return;
 			case FhirPackage.DOCUMENT_ROOT__DATA_ELEMENT:
 				setDataElement((DataElement)null);
+				return;
+			case FhirPackage.DOCUMENT_ROOT__DETECTED_ISSUE:
+				setDetectedIssue((DetectedIssue)null);
 				return;
 			case FhirPackage.DOCUMENT_ROOT__DEVICE:
 				setDevice((Device)null);
@@ -3926,12 +3926,12 @@ public class DocumentRootImpl extends MinimalEObjectImpl.Container implements Do
 				return getConformance() != null;
 			case FhirPackage.DOCUMENT_ROOT__CONTRACT:
 				return getContract() != null;
-			case FhirPackage.DOCUMENT_ROOT__CONTRAINDICATION:
-				return getContraindication() != null;
 			case FhirPackage.DOCUMENT_ROOT__COVERAGE:
 				return getCoverage() != null;
 			case FhirPackage.DOCUMENT_ROOT__DATA_ELEMENT:
 				return getDataElement() != null;
+			case FhirPackage.DOCUMENT_ROOT__DETECTED_ISSUE:
+				return getDetectedIssue() != null;
 			case FhirPackage.DOCUMENT_ROOT__DEVICE:
 				return getDevice() != null;
 			case FhirPackage.DOCUMENT_ROOT__DEVICE_COMPONENT:

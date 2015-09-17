@@ -21,7 +21,8 @@ package org.hl7.fhir;
  *   <li>{@link org.hl7.fhir.MedicationOrderDosageInstruction#getTiming <em>Timing</em>}</li>
  *   <li>{@link org.hl7.fhir.MedicationOrderDosageInstruction#getAsNeededBoolean <em>As Needed Boolean</em>}</li>
  *   <li>{@link org.hl7.fhir.MedicationOrderDosageInstruction#getAsNeededCodeableConcept <em>As Needed Codeable Concept</em>}</li>
- *   <li>{@link org.hl7.fhir.MedicationOrderDosageInstruction#getSite <em>Site</em>}</li>
+ *   <li>{@link org.hl7.fhir.MedicationOrderDosageInstruction#getSiteCodeableConcept <em>Site Codeable Concept</em>}</li>
+ *   <li>{@link org.hl7.fhir.MedicationOrderDosageInstruction#getSiteReference <em>Site Reference</em>}</li>
  *   <li>{@link org.hl7.fhir.MedicationOrderDosageInstruction#getRoute <em>Route</em>}</li>
  *   <li>{@link org.hl7.fhir.MedicationOrderDosageInstruction#getMethod <em>Method</em>}</li>
  *   <li>{@link org.hl7.fhir.MedicationOrderDosageInstruction#getDoseRange <em>Dose Range</em>}</li>
@@ -41,7 +42,7 @@ public interface MedicationOrderDosageInstruction extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Free text dosage instructions can be used for cases where the instructions are too complex to code. When coded instructions are present, the free text instructions may still be present for display to humans taking or administering the medication.
+	 * Free text dosage instructions can be used for cases where the instructions are too complex to code.  The content of this attribute does not include the name or description of the medication. When coded instructions are present, the free text instructions may still be present for display to humans taking or administering the medication. It is expected that the text instructions will always be populated.  If the dosage.timing attribute is also populated, then the dosage.text should reflect the same information as the timing.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Text</em>' containment reference.
 	 * @see #setText(org.hl7.fhir.String)
@@ -93,7 +94,7 @@ public interface MedicationOrderDosageInstruction extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The timing schedule for giving the medication to the patient.  The Schedule data type allows many different expressions, for example.  "Every  8 hours"; "Three times a day"; "1/2 an hour before breakfast for 10 days from 23-Dec 2011:";  "15 Oct 2013, 17 Oct 2013 and 1 Nov 2013".
+	 * The timing schedule for giving the medication to the patient. The Schedule data type allows many different expressions, for example. "Every 8 hours"; "Three times a day"; "1/2 an hour before breakfast for 10 days from 23-Dec 2011:"; "15 Oct 2013, 17 Oct 2013 and 1 Nov 2013".  This attribute may not always be populated while the DosageInstruction.text is expected to be populated.  If both are populated, then the DosageInstruction.text should reflect the content of the Dosage.timing.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Timing</em>' containment reference.
 	 * @see #setTiming(Timing)
@@ -169,30 +170,58 @@ public interface MedicationOrderDosageInstruction extends BackboneElement {
 	void setAsNeededCodeableConcept(CodeableConcept value);
 
 	/**
-	 * Returns the value of the '<em><b>Site</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Site Codeable Concept</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Site Codeable Concept</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
 	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * A coded specification of the anatomic site where the medication first enters the body.
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Site</em>' containment reference.
-	 * @see #setSite(CodeableConcept)
-	 * @see org.hl7.fhir.FhirPackage#getMedicationOrderDosageInstruction_Site()
+	 * @return the value of the '<em>Site Codeable Concept</em>' containment reference.
+	 * @see #setSiteCodeableConcept(CodeableConcept)
+	 * @see org.hl7.fhir.FhirPackage#getMedicationOrderDosageInstruction_SiteCodeableConcept()
 	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='site' namespace='##targetNamespace'"
+	 *        extendedMetaData="kind='element' name='siteCodeableConcept' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	CodeableConcept getSite();
+	CodeableConcept getSiteCodeableConcept();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.MedicationOrderDosageInstruction#getSite <em>Site</em>}' containment reference.
+	 * Sets the value of the '{@link org.hl7.fhir.MedicationOrderDosageInstruction#getSiteCodeableConcept <em>Site Codeable Concept</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Site</em>' containment reference.
-	 * @see #getSite()
+	 * @param value the new value of the '<em>Site Codeable Concept</em>' containment reference.
+	 * @see #getSiteCodeableConcept()
 	 * @generated
 	 */
-	void setSite(CodeableConcept value);
+	void setSiteCodeableConcept(CodeableConcept value);
+
+	/**
+	 * Returns the value of the '<em><b>Site Reference</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Site Reference</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Site Reference</em>' containment reference.
+	 * @see #setSiteReference(Reference)
+	 * @see org.hl7.fhir.FhirPackage#getMedicationOrderDosageInstruction_SiteReference()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='siteReference' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Reference getSiteReference();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.MedicationOrderDosageInstruction#getSiteReference <em>Site Reference</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Site Reference</em>' containment reference.
+	 * @see #getSiteReference()
+	 * @generated
+	 */
+	void setSiteReference(Reference value);
 
 	/**
 	 * Returns the value of the '<em><b>Route</b></em>' containment reference.
@@ -359,7 +388,7 @@ public interface MedicationOrderDosageInstruction extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The maximum total quantity of a therapeutic substance that may be administered to a subject over the period of time. E.g. 1000mg in 24 hours.
+	 * The maximum total quantity of a therapeutic substance that may be administered to a subject over the period of time; e.g. 1000mg in 24 hours.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Max Dose Per Period</em>' containment reference.
 	 * @see #setMaxDosePerPeriod(Ratio)

@@ -77,7 +77,7 @@ public interface Basic extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Identifies the patient, practitioner, device or any other resource that is the "focus" of this resoruce.
+	 * Identifies the patient, practitioner, device or any other resource that is the "focus" of this resource.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Subject</em>' containment reference.
 	 * @see #setSubject(Reference)

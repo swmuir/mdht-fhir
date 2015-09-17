@@ -18,7 +18,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link org.hl7.fhir.TestScriptMetadata#getLink <em>Link</em>}</li>
- *   <li>{@link org.hl7.fhir.TestScriptMetadata#getCapabilities <em>Capabilities</em>}</li>
+ *   <li>{@link org.hl7.fhir.TestScriptMetadata#getCapability <em>Capability</em>}</li>
  * </ul>
  *
  * @see org.hl7.fhir.FhirPackage#getTestScriptMetadata()
@@ -43,19 +43,19 @@ public interface TestScriptMetadata extends BackboneElement {
 	EList<TestScriptLink> getLink();
 
 	/**
-	 * Returns the value of the '<em><b>Capabilities</b></em>' containment reference list.
-	 * The list contents are of type {@link org.hl7.fhir.TestScriptCapabilities}.
+	 * Returns the value of the '<em><b>Capability</b></em>' containment reference list.
+	 * The list contents are of type {@link org.hl7.fhir.TestScriptCapability}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Capabilties that must exist and is assumed to function correctly on the FHIR server being tested.
+	 * Capabilities that must exist and are assumed to function correctly on the FHIR server being tested.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Capabilities</em>' containment reference list.
-	 * @see org.hl7.fhir.FhirPackage#getTestScriptMetadata_Capabilities()
+	 * @return the value of the '<em>Capability</em>' containment reference list.
+	 * @see org.hl7.fhir.FhirPackage#getTestScriptMetadata_Capability()
 	 * @model containment="true" required="true"
-	 *        extendedMetaData="kind='element' name='capabilities' namespace='##targetNamespace'"
+	 *        extendedMetaData="kind='element' name='capability' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	EList<TestScriptCapabilities> getCapabilities();
+	EList<TestScriptCapability> getCapability();
 
 } // TestScriptMetadata

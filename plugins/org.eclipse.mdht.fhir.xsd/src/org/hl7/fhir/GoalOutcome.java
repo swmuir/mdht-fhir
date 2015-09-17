@@ -9,7 +9,7 @@ package org.hl7.fhir;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Describes the intended objective(s) of patient care, for example, weight loss, restoring an activity of daily living, etc.
+ * Describes the intended objective(s) for a patient, group or organization care, for example, weight loss, restoring an activity of daily living, obtaining herd immunity via immunization, meeting a process improvement objective, etc.;.
  * <!-- end-model-doc -->
  *
  * <p>

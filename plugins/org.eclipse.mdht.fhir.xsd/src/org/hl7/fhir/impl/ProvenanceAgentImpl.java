@@ -2,18 +2,26 @@
  */
 package org.hl7.fhir.impl;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+
 import org.hl7.fhir.Coding;
 import org.hl7.fhir.FhirPackage;
 import org.hl7.fhir.Identifier;
 import org.hl7.fhir.ProvenanceAgent;
+import org.hl7.fhir.ProvenanceRelatedAgent;
 import org.hl7.fhir.Reference;
 
 /**
@@ -27,6 +35,7 @@ import org.hl7.fhir.Reference;
  *   <li>{@link org.hl7.fhir.impl.ProvenanceAgentImpl#getRole <em>Role</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ProvenanceAgentImpl#getActor <em>Actor</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ProvenanceAgentImpl#getUserId <em>User Id</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ProvenanceAgentImpl#getRelatedAgent <em>Related Agent</em>}</li>
  * </ul>
  *
  * @generated
@@ -61,6 +70,16 @@ public class ProvenanceAgentImpl extends BackboneElementImpl implements Provenan
 	 * @ordered
 	 */
 	protected Identifier userId;
+
+	/**
+	 * The cached value of the '{@link #getRelatedAgent() <em>Related Agent</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRelatedAgent()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ProvenanceRelatedAgent> relatedAgent;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -215,6 +234,18 @@ public class ProvenanceAgentImpl extends BackboneElementImpl implements Provenan
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<ProvenanceRelatedAgent> getRelatedAgent() {
+		if (relatedAgent == null) {
+			relatedAgent = new EObjectContainmentEList<ProvenanceRelatedAgent>(ProvenanceRelatedAgent.class, this, FhirPackage.PROVENANCE_AGENT__RELATED_AGENT);
+		}
+		return relatedAgent;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -224,6 +255,8 @@ public class ProvenanceAgentImpl extends BackboneElementImpl implements Provenan
 				return basicSetActor(null, msgs);
 			case FhirPackage.PROVENANCE_AGENT__USER_ID:
 				return basicSetUserId(null, msgs);
+			case FhirPackage.PROVENANCE_AGENT__RELATED_AGENT:
+				return ((InternalEList<?>)getRelatedAgent()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -242,6 +275,8 @@ public class ProvenanceAgentImpl extends BackboneElementImpl implements Provenan
 				return getActor();
 			case FhirPackage.PROVENANCE_AGENT__USER_ID:
 				return getUserId();
+			case FhirPackage.PROVENANCE_AGENT__RELATED_AGENT:
+				return getRelatedAgent();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -251,6 +286,7 @@ public class ProvenanceAgentImpl extends BackboneElementImpl implements Provenan
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -262,6 +298,10 @@ public class ProvenanceAgentImpl extends BackboneElementImpl implements Provenan
 				return;
 			case FhirPackage.PROVENANCE_AGENT__USER_ID:
 				setUserId((Identifier)newValue);
+				return;
+			case FhirPackage.PROVENANCE_AGENT__RELATED_AGENT:
+				getRelatedAgent().clear();
+				getRelatedAgent().addAll((Collection<? extends ProvenanceRelatedAgent>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -284,6 +324,9 @@ public class ProvenanceAgentImpl extends BackboneElementImpl implements Provenan
 			case FhirPackage.PROVENANCE_AGENT__USER_ID:
 				setUserId((Identifier)null);
 				return;
+			case FhirPackage.PROVENANCE_AGENT__RELATED_AGENT:
+				getRelatedAgent().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -302,6 +345,8 @@ public class ProvenanceAgentImpl extends BackboneElementImpl implements Provenan
 				return actor != null;
 			case FhirPackage.PROVENANCE_AGENT__USER_ID:
 				return userId != null;
+			case FhirPackage.PROVENANCE_AGENT__RELATED_AGENT:
+				return relatedAgent != null && !relatedAgent.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

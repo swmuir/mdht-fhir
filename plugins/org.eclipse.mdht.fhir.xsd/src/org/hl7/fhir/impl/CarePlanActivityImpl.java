@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.hl7.fhir.Annotation;
 import org.hl7.fhir.CarePlanActivity;
 import org.hl7.fhir.CarePlanDetail;
 import org.hl7.fhir.FhirPackage;
@@ -31,7 +32,7 @@ import org.hl7.fhir.Reference;
  * </p>
  * <ul>
  *   <li>{@link org.hl7.fhir.impl.CarePlanActivityImpl#getActionResulting <em>Action Resulting</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.CarePlanActivityImpl#getNotes <em>Notes</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.CarePlanActivityImpl#getProgress <em>Progress</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.CarePlanActivityImpl#getReference <em>Reference</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.CarePlanActivityImpl#getDetail <em>Detail</em>}</li>
  * </ul>
@@ -50,14 +51,14 @@ public class CarePlanActivityImpl extends BackboneElementImpl implements CarePla
 	protected EList<Reference> actionResulting;
 
 	/**
-	 * The cached value of the '{@link #getNotes() <em>Notes</em>}' containment reference.
+	 * The cached value of the '{@link #getProgress() <em>Progress</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getNotes()
+	 * @see #getProgress()
 	 * @generated
 	 * @ordered
 	 */
-	protected org.hl7.fhir.String notes;
+	protected EList<Annotation> progress;
 
 	/**
 	 * The cached value of the '{@link #getReference() <em>Reference</em>}' containment reference.
@@ -115,42 +116,11 @@ public class CarePlanActivityImpl extends BackboneElementImpl implements CarePla
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public org.hl7.fhir.String getNotes() {
-		return notes;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetNotes(org.hl7.fhir.String newNotes, NotificationChain msgs) {
-		org.hl7.fhir.String oldNotes = notes;
-		notes = newNotes;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.CARE_PLAN_ACTIVITY__NOTES, oldNotes, newNotes);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+	public EList<Annotation> getProgress() {
+		if (progress == null) {
+			progress = new EObjectContainmentEList<Annotation>(Annotation.class, this, FhirPackage.CARE_PLAN_ACTIVITY__PROGRESS);
 		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setNotes(org.hl7.fhir.String newNotes) {
-		if (newNotes != notes) {
-			NotificationChain msgs = null;
-			if (notes != null)
-				msgs = ((InternalEObject)notes).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CARE_PLAN_ACTIVITY__NOTES, null, msgs);
-			if (newNotes != null)
-				msgs = ((InternalEObject)newNotes).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CARE_PLAN_ACTIVITY__NOTES, null, msgs);
-			msgs = basicSetNotes(newNotes, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.CARE_PLAN_ACTIVITY__NOTES, newNotes, newNotes));
+		return progress;
 	}
 
 	/**
@@ -249,8 +219,8 @@ public class CarePlanActivityImpl extends BackboneElementImpl implements CarePla
 		switch (featureID) {
 			case FhirPackage.CARE_PLAN_ACTIVITY__ACTION_RESULTING:
 				return ((InternalEList<?>)getActionResulting()).basicRemove(otherEnd, msgs);
-			case FhirPackage.CARE_PLAN_ACTIVITY__NOTES:
-				return basicSetNotes(null, msgs);
+			case FhirPackage.CARE_PLAN_ACTIVITY__PROGRESS:
+				return ((InternalEList<?>)getProgress()).basicRemove(otherEnd, msgs);
 			case FhirPackage.CARE_PLAN_ACTIVITY__REFERENCE:
 				return basicSetReference(null, msgs);
 			case FhirPackage.CARE_PLAN_ACTIVITY__DETAIL:
@@ -269,8 +239,8 @@ public class CarePlanActivityImpl extends BackboneElementImpl implements CarePla
 		switch (featureID) {
 			case FhirPackage.CARE_PLAN_ACTIVITY__ACTION_RESULTING:
 				return getActionResulting();
-			case FhirPackage.CARE_PLAN_ACTIVITY__NOTES:
-				return getNotes();
+			case FhirPackage.CARE_PLAN_ACTIVITY__PROGRESS:
+				return getProgress();
 			case FhirPackage.CARE_PLAN_ACTIVITY__REFERENCE:
 				return getReference();
 			case FhirPackage.CARE_PLAN_ACTIVITY__DETAIL:
@@ -292,8 +262,9 @@ public class CarePlanActivityImpl extends BackboneElementImpl implements CarePla
 				getActionResulting().clear();
 				getActionResulting().addAll((Collection<? extends Reference>)newValue);
 				return;
-			case FhirPackage.CARE_PLAN_ACTIVITY__NOTES:
-				setNotes((org.hl7.fhir.String)newValue);
+			case FhirPackage.CARE_PLAN_ACTIVITY__PROGRESS:
+				getProgress().clear();
+				getProgress().addAll((Collection<? extends Annotation>)newValue);
 				return;
 			case FhirPackage.CARE_PLAN_ACTIVITY__REFERENCE:
 				setReference((Reference)newValue);
@@ -316,8 +287,8 @@ public class CarePlanActivityImpl extends BackboneElementImpl implements CarePla
 			case FhirPackage.CARE_PLAN_ACTIVITY__ACTION_RESULTING:
 				getActionResulting().clear();
 				return;
-			case FhirPackage.CARE_PLAN_ACTIVITY__NOTES:
-				setNotes((org.hl7.fhir.String)null);
+			case FhirPackage.CARE_PLAN_ACTIVITY__PROGRESS:
+				getProgress().clear();
 				return;
 			case FhirPackage.CARE_PLAN_ACTIVITY__REFERENCE:
 				setReference((Reference)null);
@@ -339,8 +310,8 @@ public class CarePlanActivityImpl extends BackboneElementImpl implements CarePla
 		switch (featureID) {
 			case FhirPackage.CARE_PLAN_ACTIVITY__ACTION_RESULTING:
 				return actionResulting != null && !actionResulting.isEmpty();
-			case FhirPackage.CARE_PLAN_ACTIVITY__NOTES:
-				return notes != null;
+			case FhirPackage.CARE_PLAN_ACTIVITY__PROGRESS:
+				return progress != null && !progress.isEmpty();
 			case FhirPackage.CARE_PLAN_ACTIVITY__REFERENCE:
 				return reference != null;
 			case FhirPackage.CARE_PLAN_ACTIVITY__DETAIL:

@@ -56,7 +56,7 @@ public interface NutritionOrderTexture extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The food type(s) (e.g., meats, all foods)  that the texture modification applies to.  This could be all foods types.
+	 * The food type(s) (e.g. meats, all foods)  that the texture modification applies to.  This could be all foods types.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Food Type</em>' containment reference.
 	 * @see #setFoodType(CodeableConcept)

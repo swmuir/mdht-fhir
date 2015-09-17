@@ -10,7 +10,9 @@ import org.eclipse.emf.common.util.EList;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A record of medication being taken by a patient, or that the medication has been given to a patient where the record is the result of a report from the patient or another clinician.
+ * A record of a medication that is being consumed by a patient.   A medication statements may indicate that the patient may be taking the medication now, or has taken the medication in the past or will be taking the medication in the future.  The source of this information can be the patient, significant other (such as a family member or spouse), or a clinician.  A common scenario where this information is captured is during the history taking process during a patient visit or stay.   The medication information may come from e.g. the patients’ memory, from a prescription bottle,  or from a list of medications the patient, clinician or other party maintains.
+ * 
+ * The primary difference between a medication statement and a medication administration is that the medication administration has complete administration information and is based on actual administration information from the person who administered the medication.  A medication statement is often, if not always less specific.  There is no required date/time when the medication was administered, in fact we only know that a source has reported the patient is taking this medication, where details such as time, quantity, or rate or even medication product may be incomplete or missing or less precise.  As stated earlier, the Medication Statement information may come from the patient’s memory, from a prescription bottle or from a list of medications the patient, clinician or other party maintains.  Medication Administration is more formal and is not missing detailed information.
  * If the element is present, it must have either a @value, an @id, or extensions
  * <!-- end-model-doc -->
  *
@@ -30,6 +32,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.hl7.fhir.MedicationStatement#getEffectiveDateTime <em>Effective Date Time</em>}</li>
  *   <li>{@link org.hl7.fhir.MedicationStatement#getEffectivePeriod <em>Effective Period</em>}</li>
  *   <li>{@link org.hl7.fhir.MedicationStatement#getNote <em>Note</em>}</li>
+ *   <li>{@link org.hl7.fhir.MedicationStatement#getSupportingInformation <em>Supporting Information</em>}</li>
  *   <li>{@link org.hl7.fhir.MedicationStatement#getMedicationCodeableConcept <em>Medication Codeable Concept</em>}</li>
  *   <li>{@link org.hl7.fhir.MedicationStatement#getMedicationReference <em>Medication Reference</em>}</li>
  *   <li>{@link org.hl7.fhir.MedicationStatement#getDosage <em>Dosage</em>}</li>
@@ -139,7 +142,7 @@ public interface MedicationStatement extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A code specifying the state of the statement.  Generally this will be in-progress or completed state.
+	 * A code representing the patient or other source’s judgment about the state of the medication used that this statement is about.  Generally this will be active or completed.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Status</em>' containment reference.
 	 * @see #setStatus(MedicationStatementStatus)
@@ -335,6 +338,22 @@ public interface MedicationStatement extends DomainResource {
 	 * @generated
 	 */
 	void setNote(org.hl7.fhir.String value);
+
+	/**
+	 * Returns the value of the '<em><b>Supporting Information</b></em>' containment reference list.
+	 * The list contents are of type {@link org.hl7.fhir.Reference}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Allows linking the MedicationStatement to the underlying MedicationOrder, or to other information that supports the MedicationStatement.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Supporting Information</em>' containment reference list.
+	 * @see org.hl7.fhir.FhirPackage#getMedicationStatement_SupportingInformation()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='supportingInformation' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	EList<Reference> getSupportingInformation();
 
 	/**
 	 * Returns the value of the '<em><b>Medication Codeable Concept</b></em>' containment reference.

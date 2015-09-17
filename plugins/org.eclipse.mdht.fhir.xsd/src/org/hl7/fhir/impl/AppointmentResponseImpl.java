@@ -35,12 +35,12 @@ import org.hl7.fhir.Reference;
  * <ul>
  *   <li>{@link org.hl7.fhir.impl.AppointmentResponseImpl#getIdentifier <em>Identifier</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.AppointmentResponseImpl#getAppointment <em>Appointment</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.AppointmentResponseImpl#getStart <em>Start</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.AppointmentResponseImpl#getEnd <em>End</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.AppointmentResponseImpl#getParticipantType <em>Participant Type</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.AppointmentResponseImpl#getActor <em>Actor</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.AppointmentResponseImpl#getParticipantStatus <em>Participant Status</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.AppointmentResponseImpl#getComment <em>Comment</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.AppointmentResponseImpl#getStart <em>Start</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.AppointmentResponseImpl#getEnd <em>End</em>}</li>
  * </ul>
  *
  * @generated
@@ -65,6 +65,26 @@ public class AppointmentResponseImpl extends DomainResourceImpl implements Appoi
 	 * @ordered
 	 */
 	protected Reference appointment;
+
+	/**
+	 * The cached value of the '{@link #getStart() <em>Start</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStart()
+	 * @generated
+	 * @ordered
+	 */
+	protected Instant start;
+
+	/**
+	 * The cached value of the '{@link #getEnd() <em>End</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEnd()
+	 * @generated
+	 * @ordered
+	 */
+	protected Instant end;
 
 	/**
 	 * The cached value of the '{@link #getParticipantType() <em>Participant Type</em>}' containment reference list.
@@ -105,26 +125,6 @@ public class AppointmentResponseImpl extends DomainResourceImpl implements Appoi
 	 * @ordered
 	 */
 	protected org.hl7.fhir.String comment;
-
-	/**
-	 * The cached value of the '{@link #getStart() <em>Start</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getStart()
-	 * @generated
-	 * @ordered
-	 */
-	protected Instant start;
-
-	/**
-	 * The cached value of the '{@link #getEnd() <em>End</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEnd()
-	 * @generated
-	 * @ordered
-	 */
-	protected Instant end;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -198,6 +198,92 @@ public class AppointmentResponseImpl extends DomainResourceImpl implements Appoi
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.APPOINTMENT_RESPONSE__APPOINTMENT, newAppointment, newAppointment));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Instant getStart() {
+		return start;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetStart(Instant newStart, NotificationChain msgs) {
+		Instant oldStart = start;
+		start = newStart;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.APPOINTMENT_RESPONSE__START, oldStart, newStart);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setStart(Instant newStart) {
+		if (newStart != start) {
+			NotificationChain msgs = null;
+			if (start != null)
+				msgs = ((InternalEObject)start).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.APPOINTMENT_RESPONSE__START, null, msgs);
+			if (newStart != null)
+				msgs = ((InternalEObject)newStart).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.APPOINTMENT_RESPONSE__START, null, msgs);
+			msgs = basicSetStart(newStart, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.APPOINTMENT_RESPONSE__START, newStart, newStart));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Instant getEnd() {
+		return end;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetEnd(Instant newEnd, NotificationChain msgs) {
+		Instant oldEnd = end;
+		end = newEnd;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.APPOINTMENT_RESPONSE__END, oldEnd, newEnd);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setEnd(Instant newEnd) {
+		if (newEnd != end) {
+			NotificationChain msgs = null;
+			if (end != null)
+				msgs = ((InternalEObject)end).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.APPOINTMENT_RESPONSE__END, null, msgs);
+			if (newEnd != null)
+				msgs = ((InternalEObject)newEnd).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.APPOINTMENT_RESPONSE__END, null, msgs);
+			msgs = basicSetEnd(newEnd, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.APPOINTMENT_RESPONSE__END, newEnd, newEnd));
 	}
 
 	/**
@@ -346,92 +432,6 @@ public class AppointmentResponseImpl extends DomainResourceImpl implements Appoi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Instant getStart() {
-		return start;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetStart(Instant newStart, NotificationChain msgs) {
-		Instant oldStart = start;
-		start = newStart;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.APPOINTMENT_RESPONSE__START, oldStart, newStart);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setStart(Instant newStart) {
-		if (newStart != start) {
-			NotificationChain msgs = null;
-			if (start != null)
-				msgs = ((InternalEObject)start).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.APPOINTMENT_RESPONSE__START, null, msgs);
-			if (newStart != null)
-				msgs = ((InternalEObject)newStart).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.APPOINTMENT_RESPONSE__START, null, msgs);
-			msgs = basicSetStart(newStart, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.APPOINTMENT_RESPONSE__START, newStart, newStart));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Instant getEnd() {
-		return end;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetEnd(Instant newEnd, NotificationChain msgs) {
-		Instant oldEnd = end;
-		end = newEnd;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.APPOINTMENT_RESPONSE__END, oldEnd, newEnd);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setEnd(Instant newEnd) {
-		if (newEnd != end) {
-			NotificationChain msgs = null;
-			if (end != null)
-				msgs = ((InternalEObject)end).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.APPOINTMENT_RESPONSE__END, null, msgs);
-			if (newEnd != null)
-				msgs = ((InternalEObject)newEnd).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.APPOINTMENT_RESPONSE__END, null, msgs);
-			msgs = basicSetEnd(newEnd, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.APPOINTMENT_RESPONSE__END, newEnd, newEnd));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -439,6 +439,10 @@ public class AppointmentResponseImpl extends DomainResourceImpl implements Appoi
 				return ((InternalEList<?>)getIdentifier()).basicRemove(otherEnd, msgs);
 			case FhirPackage.APPOINTMENT_RESPONSE__APPOINTMENT:
 				return basicSetAppointment(null, msgs);
+			case FhirPackage.APPOINTMENT_RESPONSE__START:
+				return basicSetStart(null, msgs);
+			case FhirPackage.APPOINTMENT_RESPONSE__END:
+				return basicSetEnd(null, msgs);
 			case FhirPackage.APPOINTMENT_RESPONSE__PARTICIPANT_TYPE:
 				return ((InternalEList<?>)getParticipantType()).basicRemove(otherEnd, msgs);
 			case FhirPackage.APPOINTMENT_RESPONSE__ACTOR:
@@ -447,10 +451,6 @@ public class AppointmentResponseImpl extends DomainResourceImpl implements Appoi
 				return basicSetParticipantStatus(null, msgs);
 			case FhirPackage.APPOINTMENT_RESPONSE__COMMENT:
 				return basicSetComment(null, msgs);
-			case FhirPackage.APPOINTMENT_RESPONSE__START:
-				return basicSetStart(null, msgs);
-			case FhirPackage.APPOINTMENT_RESPONSE__END:
-				return basicSetEnd(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -467,6 +467,10 @@ public class AppointmentResponseImpl extends DomainResourceImpl implements Appoi
 				return getIdentifier();
 			case FhirPackage.APPOINTMENT_RESPONSE__APPOINTMENT:
 				return getAppointment();
+			case FhirPackage.APPOINTMENT_RESPONSE__START:
+				return getStart();
+			case FhirPackage.APPOINTMENT_RESPONSE__END:
+				return getEnd();
 			case FhirPackage.APPOINTMENT_RESPONSE__PARTICIPANT_TYPE:
 				return getParticipantType();
 			case FhirPackage.APPOINTMENT_RESPONSE__ACTOR:
@@ -475,10 +479,6 @@ public class AppointmentResponseImpl extends DomainResourceImpl implements Appoi
 				return getParticipantStatus();
 			case FhirPackage.APPOINTMENT_RESPONSE__COMMENT:
 				return getComment();
-			case FhirPackage.APPOINTMENT_RESPONSE__START:
-				return getStart();
-			case FhirPackage.APPOINTMENT_RESPONSE__END:
-				return getEnd();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -499,6 +499,12 @@ public class AppointmentResponseImpl extends DomainResourceImpl implements Appoi
 			case FhirPackage.APPOINTMENT_RESPONSE__APPOINTMENT:
 				setAppointment((Reference)newValue);
 				return;
+			case FhirPackage.APPOINTMENT_RESPONSE__START:
+				setStart((Instant)newValue);
+				return;
+			case FhirPackage.APPOINTMENT_RESPONSE__END:
+				setEnd((Instant)newValue);
+				return;
 			case FhirPackage.APPOINTMENT_RESPONSE__PARTICIPANT_TYPE:
 				getParticipantType().clear();
 				getParticipantType().addAll((Collection<? extends CodeableConcept>)newValue);
@@ -511,12 +517,6 @@ public class AppointmentResponseImpl extends DomainResourceImpl implements Appoi
 				return;
 			case FhirPackage.APPOINTMENT_RESPONSE__COMMENT:
 				setComment((org.hl7.fhir.String)newValue);
-				return;
-			case FhirPackage.APPOINTMENT_RESPONSE__START:
-				setStart((Instant)newValue);
-				return;
-			case FhirPackage.APPOINTMENT_RESPONSE__END:
-				setEnd((Instant)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -536,6 +536,12 @@ public class AppointmentResponseImpl extends DomainResourceImpl implements Appoi
 			case FhirPackage.APPOINTMENT_RESPONSE__APPOINTMENT:
 				setAppointment((Reference)null);
 				return;
+			case FhirPackage.APPOINTMENT_RESPONSE__START:
+				setStart((Instant)null);
+				return;
+			case FhirPackage.APPOINTMENT_RESPONSE__END:
+				setEnd((Instant)null);
+				return;
 			case FhirPackage.APPOINTMENT_RESPONSE__PARTICIPANT_TYPE:
 				getParticipantType().clear();
 				return;
@@ -547,12 +553,6 @@ public class AppointmentResponseImpl extends DomainResourceImpl implements Appoi
 				return;
 			case FhirPackage.APPOINTMENT_RESPONSE__COMMENT:
 				setComment((org.hl7.fhir.String)null);
-				return;
-			case FhirPackage.APPOINTMENT_RESPONSE__START:
-				setStart((Instant)null);
-				return;
-			case FhirPackage.APPOINTMENT_RESPONSE__END:
-				setEnd((Instant)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -570,6 +570,10 @@ public class AppointmentResponseImpl extends DomainResourceImpl implements Appoi
 				return identifier != null && !identifier.isEmpty();
 			case FhirPackage.APPOINTMENT_RESPONSE__APPOINTMENT:
 				return appointment != null;
+			case FhirPackage.APPOINTMENT_RESPONSE__START:
+				return start != null;
+			case FhirPackage.APPOINTMENT_RESPONSE__END:
+				return end != null;
 			case FhirPackage.APPOINTMENT_RESPONSE__PARTICIPANT_TYPE:
 				return participantType != null && !participantType.isEmpty();
 			case FhirPackage.APPOINTMENT_RESPONSE__ACTOR:
@@ -578,10 +582,6 @@ public class AppointmentResponseImpl extends DomainResourceImpl implements Appoi
 				return participantStatus != null;
 			case FhirPackage.APPOINTMENT_RESPONSE__COMMENT:
 				return comment != null;
-			case FhirPackage.APPOINTMENT_RESPONSE__START:
-				return start != null;
-			case FhirPackage.APPOINTMENT_RESPONSE__END:
-				return end != null;
 		}
 		return super.eIsSet(featureID);
 	}

@@ -10,7 +10,7 @@ import org.eclipse.emf.common.util.EList;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * An occurrence of information being transmitted. E.g., an alert that was sent to a responsible provider, a public health agency was notified about a reportable condition.
+ * An occurrence of information being transmitted; e.g. an alert that was sent to a responsible provider, a public health agency was notified about a reportable condition.
  * If the element is present, it must have either a @value, an @id, or extensions
  * <!-- end-model-doc -->
  *
@@ -30,6 +30,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.hl7.fhir.Communication#getReceived <em>Received</em>}</li>
  *   <li>{@link org.hl7.fhir.Communication#getReason <em>Reason</em>}</li>
  *   <li>{@link org.hl7.fhir.Communication#getSubject <em>Subject</em>}</li>
+ *   <li>{@link org.hl7.fhir.Communication#getRequestDetail <em>Request Detail</em>}</li>
  * </ul>
  *
  * @see org.hl7.fhir.FhirPackage#getCommunication()
@@ -84,7 +85,7 @@ public interface Communication extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The entity (e.g., person, organization, clinical information system, or device) which was the source of the communication.
+	 * The entity (e.g. person, organization, clinical information system, or device) which was the source of the communication.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Sender</em>' containment reference.
 	 * @see #setSender(Reference)
@@ -111,7 +112,7 @@ public interface Communication extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The entity (e.g., person, organization, clinical information system, or device) which was the target of the communication.
+	 * The entity (e.g. person, organization, clinical information system, or device) which was the target of the communication. If receipts need to be tracked by individual, a separate resource instance will need to be created for each recipient.  Multiple recipient communications are intended where either a receipt(s) is not tracked (e.g. a mass mail-out) or is captured in aggregate (all emails confirmed received by a particular time).
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Recipient</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getCommunication_Recipient()
@@ -143,7 +144,7 @@ public interface Communication extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The communication medium, e.g., email, fax.
+	 * A channel that was used for this communication (e.g. email, fax).
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Medium</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getCommunication_Medium()
@@ -298,5 +299,31 @@ public interface Communication extends DomainResource {
 	 * @generated
 	 */
 	void setSubject(Reference value);
+
+	/**
+	 * Returns the value of the '<em><b>Request Detail</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The communication request that was responsible for producing this communication.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Request Detail</em>' containment reference.
+	 * @see #setRequestDetail(Reference)
+	 * @see org.hl7.fhir.FhirPackage#getCommunication_RequestDetail()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='requestDetail' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Reference getRequestDetail();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.Communication#getRequestDetail <em>Request Detail</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Request Detail</em>' containment reference.
+	 * @see #getRequestDetail()
+	 * @generated
+	 */
+	void setRequestDetail(Reference value);
 
 } // Communication

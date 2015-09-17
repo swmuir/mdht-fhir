@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Thu, Aug 20, 2015 14:13+0000 for FHIR v0.5.0 
+  Generated on Wed, Sep 16, 2015 13:28+0000 for FHIR v1.0.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -61,7 +61,7 @@
           </xs:element>
           <xs:element name="patient" minOccurs="0" maxOccurs="1" type="Reference">
             <xs:annotation>
-              <xs:documentation xml:lang="en">A link to a resource representing the person to whom the Vision products will be supplied.</xs:documentation>
+              <xs:documentation xml:lang="en">A link to a resource representing the person to whom the vision products will be supplied.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="prescriber" minOccurs="0" maxOccurs="1" type="Reference">
@@ -99,7 +99,7 @@
         <xs:sequence>
           <xs:element name="product" minOccurs="1" maxOccurs="1" type="Coding">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Identifies the type of Vision correction product which is required for the patient.</xs:documentation>
+              <xs:documentation xml:lang="en">Identifies the type of vision correction product which is required for the patient.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="eye" minOccurs="0" maxOccurs="1" type="VisionEyes">
@@ -144,7 +144,7 @@
           </xs:element>
           <xs:element name="backCurve" minOccurs="0" maxOccurs="1" type="decimal">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Back Curvature measured in millimeters.</xs:documentation>
+              <xs:documentation xml:lang="en">Back curvature measured in millimeters.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="diameter" minOccurs="0" maxOccurs="1" type="decimal">

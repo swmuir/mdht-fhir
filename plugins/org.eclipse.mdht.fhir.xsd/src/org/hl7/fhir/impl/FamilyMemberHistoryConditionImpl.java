@@ -11,9 +11,11 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.hl7.fhir.Age;
+import org.hl7.fhir.Annotation;
 import org.hl7.fhir.CodeableConcept;
 import org.hl7.fhir.FamilyMemberHistoryCondition;
 import org.hl7.fhir.FhirPackage;
+import org.hl7.fhir.Period;
 import org.hl7.fhir.Range;
 
 /**
@@ -24,10 +26,11 @@ import org.hl7.fhir.Range;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.hl7.fhir.impl.FamilyMemberHistoryConditionImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.FamilyMemberHistoryConditionImpl#getCode <em>Code</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.FamilyMemberHistoryConditionImpl#getOutcome <em>Outcome</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.FamilyMemberHistoryConditionImpl#getOnsetQuantity <em>Onset Quantity</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.FamilyMemberHistoryConditionImpl#getOnsetRange <em>Onset Range</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.FamilyMemberHistoryConditionImpl#getOnsetPeriod <em>Onset Period</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.FamilyMemberHistoryConditionImpl#getOnsetString <em>Onset String</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.FamilyMemberHistoryConditionImpl#getNote <em>Note</em>}</li>
  * </ul>
@@ -36,14 +39,14 @@ import org.hl7.fhir.Range;
  */
 public class FamilyMemberHistoryConditionImpl extends BackboneElementImpl implements FamilyMemberHistoryCondition {
 	/**
-	 * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
+	 * The cached value of the '{@link #getCode() <em>Code</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getType()
+	 * @see #getCode()
 	 * @generated
 	 * @ordered
 	 */
-	protected CodeableConcept type;
+	protected CodeableConcept code;
 
 	/**
 	 * The cached value of the '{@link #getOutcome() <em>Outcome</em>}' containment reference.
@@ -76,6 +79,16 @@ public class FamilyMemberHistoryConditionImpl extends BackboneElementImpl implem
 	protected Range onsetRange;
 
 	/**
+	 * The cached value of the '{@link #getOnsetPeriod() <em>Onset Period</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOnsetPeriod()
+	 * @generated
+	 * @ordered
+	 */
+	protected Period onsetPeriod;
+
+	/**
 	 * The cached value of the '{@link #getOnsetString() <em>Onset String</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -93,7 +106,7 @@ public class FamilyMemberHistoryConditionImpl extends BackboneElementImpl implem
 	 * @generated
 	 * @ordered
 	 */
-	protected org.hl7.fhir.String note;
+	protected Annotation note;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -119,8 +132,8 @@ public class FamilyMemberHistoryConditionImpl extends BackboneElementImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CodeableConcept getType() {
-		return type;
+	public CodeableConcept getCode() {
+		return code;
 	}
 
 	/**
@@ -128,11 +141,11 @@ public class FamilyMemberHistoryConditionImpl extends BackboneElementImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetType(CodeableConcept newType, NotificationChain msgs) {
-		CodeableConcept oldType = type;
-		type = newType;
+	public NotificationChain basicSetCode(CodeableConcept newCode, NotificationChain msgs) {
+		CodeableConcept oldCode = code;
+		code = newCode;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.FAMILY_MEMBER_HISTORY_CONDITION__TYPE, oldType, newType);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.FAMILY_MEMBER_HISTORY_CONDITION__CODE, oldCode, newCode);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -143,18 +156,18 @@ public class FamilyMemberHistoryConditionImpl extends BackboneElementImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setType(CodeableConcept newType) {
-		if (newType != type) {
+	public void setCode(CodeableConcept newCode) {
+		if (newCode != code) {
 			NotificationChain msgs = null;
-			if (type != null)
-				msgs = ((InternalEObject)type).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.FAMILY_MEMBER_HISTORY_CONDITION__TYPE, null, msgs);
-			if (newType != null)
-				msgs = ((InternalEObject)newType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.FAMILY_MEMBER_HISTORY_CONDITION__TYPE, null, msgs);
-			msgs = basicSetType(newType, msgs);
+			if (code != null)
+				msgs = ((InternalEObject)code).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.FAMILY_MEMBER_HISTORY_CONDITION__CODE, null, msgs);
+			if (newCode != null)
+				msgs = ((InternalEObject)newCode).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.FAMILY_MEMBER_HISTORY_CONDITION__CODE, null, msgs);
+			msgs = basicSetCode(newCode, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.FAMILY_MEMBER_HISTORY_CONDITION__TYPE, newType, newType));
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.FAMILY_MEMBER_HISTORY_CONDITION__CODE, newCode, newCode));
 	}
 
 	/**
@@ -291,6 +304,49 @@ public class FamilyMemberHistoryConditionImpl extends BackboneElementImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Period getOnsetPeriod() {
+		return onsetPeriod;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetOnsetPeriod(Period newOnsetPeriod, NotificationChain msgs) {
+		Period oldOnsetPeriod = onsetPeriod;
+		onsetPeriod = newOnsetPeriod;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.FAMILY_MEMBER_HISTORY_CONDITION__ONSET_PERIOD, oldOnsetPeriod, newOnsetPeriod);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOnsetPeriod(Period newOnsetPeriod) {
+		if (newOnsetPeriod != onsetPeriod) {
+			NotificationChain msgs = null;
+			if (onsetPeriod != null)
+				msgs = ((InternalEObject)onsetPeriod).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.FAMILY_MEMBER_HISTORY_CONDITION__ONSET_PERIOD, null, msgs);
+			if (newOnsetPeriod != null)
+				msgs = ((InternalEObject)newOnsetPeriod).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.FAMILY_MEMBER_HISTORY_CONDITION__ONSET_PERIOD, null, msgs);
+			msgs = basicSetOnsetPeriod(newOnsetPeriod, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.FAMILY_MEMBER_HISTORY_CONDITION__ONSET_PERIOD, newOnsetPeriod, newOnsetPeriod));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public org.hl7.fhir.String getOnsetString() {
 		return onsetString;
 	}
@@ -334,7 +390,7 @@ public class FamilyMemberHistoryConditionImpl extends BackboneElementImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public org.hl7.fhir.String getNote() {
+	public Annotation getNote() {
 		return note;
 	}
 
@@ -343,8 +399,8 @@ public class FamilyMemberHistoryConditionImpl extends BackboneElementImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetNote(org.hl7.fhir.String newNote, NotificationChain msgs) {
-		org.hl7.fhir.String oldNote = note;
+	public NotificationChain basicSetNote(Annotation newNote, NotificationChain msgs) {
+		Annotation oldNote = note;
 		note = newNote;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.FAMILY_MEMBER_HISTORY_CONDITION__NOTE, oldNote, newNote);
@@ -358,7 +414,7 @@ public class FamilyMemberHistoryConditionImpl extends BackboneElementImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setNote(org.hl7.fhir.String newNote) {
+	public void setNote(Annotation newNote) {
 		if (newNote != note) {
 			NotificationChain msgs = null;
 			if (note != null)
@@ -380,14 +436,16 @@ public class FamilyMemberHistoryConditionImpl extends BackboneElementImpl implem
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case FhirPackage.FAMILY_MEMBER_HISTORY_CONDITION__TYPE:
-				return basicSetType(null, msgs);
+			case FhirPackage.FAMILY_MEMBER_HISTORY_CONDITION__CODE:
+				return basicSetCode(null, msgs);
 			case FhirPackage.FAMILY_MEMBER_HISTORY_CONDITION__OUTCOME:
 				return basicSetOutcome(null, msgs);
 			case FhirPackage.FAMILY_MEMBER_HISTORY_CONDITION__ONSET_QUANTITY:
 				return basicSetOnsetQuantity(null, msgs);
 			case FhirPackage.FAMILY_MEMBER_HISTORY_CONDITION__ONSET_RANGE:
 				return basicSetOnsetRange(null, msgs);
+			case FhirPackage.FAMILY_MEMBER_HISTORY_CONDITION__ONSET_PERIOD:
+				return basicSetOnsetPeriod(null, msgs);
 			case FhirPackage.FAMILY_MEMBER_HISTORY_CONDITION__ONSET_STRING:
 				return basicSetOnsetString(null, msgs);
 			case FhirPackage.FAMILY_MEMBER_HISTORY_CONDITION__NOTE:
@@ -404,14 +462,16 @@ public class FamilyMemberHistoryConditionImpl extends BackboneElementImpl implem
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case FhirPackage.FAMILY_MEMBER_HISTORY_CONDITION__TYPE:
-				return getType();
+			case FhirPackage.FAMILY_MEMBER_HISTORY_CONDITION__CODE:
+				return getCode();
 			case FhirPackage.FAMILY_MEMBER_HISTORY_CONDITION__OUTCOME:
 				return getOutcome();
 			case FhirPackage.FAMILY_MEMBER_HISTORY_CONDITION__ONSET_QUANTITY:
 				return getOnsetQuantity();
 			case FhirPackage.FAMILY_MEMBER_HISTORY_CONDITION__ONSET_RANGE:
 				return getOnsetRange();
+			case FhirPackage.FAMILY_MEMBER_HISTORY_CONDITION__ONSET_PERIOD:
+				return getOnsetPeriod();
 			case FhirPackage.FAMILY_MEMBER_HISTORY_CONDITION__ONSET_STRING:
 				return getOnsetString();
 			case FhirPackage.FAMILY_MEMBER_HISTORY_CONDITION__NOTE:
@@ -428,8 +488,8 @@ public class FamilyMemberHistoryConditionImpl extends BackboneElementImpl implem
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case FhirPackage.FAMILY_MEMBER_HISTORY_CONDITION__TYPE:
-				setType((CodeableConcept)newValue);
+			case FhirPackage.FAMILY_MEMBER_HISTORY_CONDITION__CODE:
+				setCode((CodeableConcept)newValue);
 				return;
 			case FhirPackage.FAMILY_MEMBER_HISTORY_CONDITION__OUTCOME:
 				setOutcome((CodeableConcept)newValue);
@@ -440,11 +500,14 @@ public class FamilyMemberHistoryConditionImpl extends BackboneElementImpl implem
 			case FhirPackage.FAMILY_MEMBER_HISTORY_CONDITION__ONSET_RANGE:
 				setOnsetRange((Range)newValue);
 				return;
+			case FhirPackage.FAMILY_MEMBER_HISTORY_CONDITION__ONSET_PERIOD:
+				setOnsetPeriod((Period)newValue);
+				return;
 			case FhirPackage.FAMILY_MEMBER_HISTORY_CONDITION__ONSET_STRING:
 				setOnsetString((org.hl7.fhir.String)newValue);
 				return;
 			case FhirPackage.FAMILY_MEMBER_HISTORY_CONDITION__NOTE:
-				setNote((org.hl7.fhir.String)newValue);
+				setNote((Annotation)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -458,8 +521,8 @@ public class FamilyMemberHistoryConditionImpl extends BackboneElementImpl implem
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case FhirPackage.FAMILY_MEMBER_HISTORY_CONDITION__TYPE:
-				setType((CodeableConcept)null);
+			case FhirPackage.FAMILY_MEMBER_HISTORY_CONDITION__CODE:
+				setCode((CodeableConcept)null);
 				return;
 			case FhirPackage.FAMILY_MEMBER_HISTORY_CONDITION__OUTCOME:
 				setOutcome((CodeableConcept)null);
@@ -470,11 +533,14 @@ public class FamilyMemberHistoryConditionImpl extends BackboneElementImpl implem
 			case FhirPackage.FAMILY_MEMBER_HISTORY_CONDITION__ONSET_RANGE:
 				setOnsetRange((Range)null);
 				return;
+			case FhirPackage.FAMILY_MEMBER_HISTORY_CONDITION__ONSET_PERIOD:
+				setOnsetPeriod((Period)null);
+				return;
 			case FhirPackage.FAMILY_MEMBER_HISTORY_CONDITION__ONSET_STRING:
 				setOnsetString((org.hl7.fhir.String)null);
 				return;
 			case FhirPackage.FAMILY_MEMBER_HISTORY_CONDITION__NOTE:
-				setNote((org.hl7.fhir.String)null);
+				setNote((Annotation)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -488,14 +554,16 @@ public class FamilyMemberHistoryConditionImpl extends BackboneElementImpl implem
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case FhirPackage.FAMILY_MEMBER_HISTORY_CONDITION__TYPE:
-				return type != null;
+			case FhirPackage.FAMILY_MEMBER_HISTORY_CONDITION__CODE:
+				return code != null;
 			case FhirPackage.FAMILY_MEMBER_HISTORY_CONDITION__OUTCOME:
 				return outcome != null;
 			case FhirPackage.FAMILY_MEMBER_HISTORY_CONDITION__ONSET_QUANTITY:
 				return onsetQuantity != null;
 			case FhirPackage.FAMILY_MEMBER_HISTORY_CONDITION__ONSET_RANGE:
 				return onsetRange != null;
+			case FhirPackage.FAMILY_MEMBER_HISTORY_CONDITION__ONSET_PERIOD:
+				return onsetPeriod != null;
 			case FhirPackage.FAMILY_MEMBER_HISTORY_CONDITION__ONSET_STRING:
 				return onsetString != null;
 			case FhirPackage.FAMILY_MEMBER_HISTORY_CONDITION__NOTE:

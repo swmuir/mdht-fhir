@@ -44,7 +44,6 @@ import org.hl7.fhir.Uri;
  *   <li>{@link org.hl7.fhir.impl.ConformanceRestImpl#getTransactionMode <em>Transaction Mode</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ConformanceRestImpl#getSearchParam <em>Search Param</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ConformanceRestImpl#getOperation <em>Operation</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ConformanceRestImpl#getDocumentMailbox <em>Document Mailbox</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ConformanceRestImpl#getCompartment <em>Compartment</em>}</li>
  * </ul>
  *
@@ -130,16 +129,6 @@ public class ConformanceRestImpl extends BackboneElementImpl implements Conforma
 	 * @ordered
 	 */
 	protected EList<ConformanceOperation> operation;
-
-	/**
-	 * The cached value of the '{@link #getDocumentMailbox() <em>Document Mailbox</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDocumentMailbox()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Uri> documentMailbox;
 
 	/**
 	 * The cached value of the '{@link #getCompartment() <em>Compartment</em>}' containment reference list.
@@ -395,18 +384,6 @@ public class ConformanceRestImpl extends BackboneElementImpl implements Conforma
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Uri> getDocumentMailbox() {
-		if (documentMailbox == null) {
-			documentMailbox = new EObjectContainmentEList<Uri>(Uri.class, this, FhirPackage.CONFORMANCE_REST__DOCUMENT_MAILBOX);
-		}
-		return documentMailbox;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EList<Uri> getCompartment() {
 		if (compartment == null) {
 			compartment = new EObjectContainmentEList<Uri>(Uri.class, this, FhirPackage.CONFORMANCE_REST__COMPARTMENT);
@@ -438,8 +415,6 @@ public class ConformanceRestImpl extends BackboneElementImpl implements Conforma
 				return ((InternalEList<?>)getSearchParam()).basicRemove(otherEnd, msgs);
 			case FhirPackage.CONFORMANCE_REST__OPERATION:
 				return ((InternalEList<?>)getOperation()).basicRemove(otherEnd, msgs);
-			case FhirPackage.CONFORMANCE_REST__DOCUMENT_MAILBOX:
-				return ((InternalEList<?>)getDocumentMailbox()).basicRemove(otherEnd, msgs);
 			case FhirPackage.CONFORMANCE_REST__COMPARTMENT:
 				return ((InternalEList<?>)getCompartment()).basicRemove(otherEnd, msgs);
 		}
@@ -470,8 +445,6 @@ public class ConformanceRestImpl extends BackboneElementImpl implements Conforma
 				return getSearchParam();
 			case FhirPackage.CONFORMANCE_REST__OPERATION:
 				return getOperation();
-			case FhirPackage.CONFORMANCE_REST__DOCUMENT_MAILBOX:
-				return getDocumentMailbox();
 			case FhirPackage.CONFORMANCE_REST__COMPARTMENT:
 				return getCompartment();
 		}
@@ -515,10 +488,6 @@ public class ConformanceRestImpl extends BackboneElementImpl implements Conforma
 				getOperation().clear();
 				getOperation().addAll((Collection<? extends ConformanceOperation>)newValue);
 				return;
-			case FhirPackage.CONFORMANCE_REST__DOCUMENT_MAILBOX:
-				getDocumentMailbox().clear();
-				getDocumentMailbox().addAll((Collection<? extends Uri>)newValue);
-				return;
 			case FhirPackage.CONFORMANCE_REST__COMPARTMENT:
 				getCompartment().clear();
 				getCompartment().addAll((Collection<? extends Uri>)newValue);
@@ -559,9 +528,6 @@ public class ConformanceRestImpl extends BackboneElementImpl implements Conforma
 			case FhirPackage.CONFORMANCE_REST__OPERATION:
 				getOperation().clear();
 				return;
-			case FhirPackage.CONFORMANCE_REST__DOCUMENT_MAILBOX:
-				getDocumentMailbox().clear();
-				return;
 			case FhirPackage.CONFORMANCE_REST__COMPARTMENT:
 				getCompartment().clear();
 				return;
@@ -593,8 +559,6 @@ public class ConformanceRestImpl extends BackboneElementImpl implements Conforma
 				return searchParam != null && !searchParam.isEmpty();
 			case FhirPackage.CONFORMANCE_REST__OPERATION:
 				return operation != null && !operation.isEmpty();
-			case FhirPackage.CONFORMANCE_REST__DOCUMENT_MAILBOX:
-				return documentMailbox != null && !documentMailbox.isEmpty();
 			case FhirPackage.CONFORMANCE_REST__COMPARTMENT:
 				return compartment != null && !compartment.isEmpty();
 		}

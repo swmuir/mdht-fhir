@@ -110,7 +110,7 @@ public interface NamingSystemUniqueId extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Identifies the period of time over which this identifier is considered appropriate to refer to the namingsystem.  Outside of this window, the identifier might be non-deterministic.
+	 * Identifies the period of time over which this identifier is considered appropriate to refer to the naming system.  Outside of this window, the identifier might be non-deterministic.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Period</em>' containment reference.
 	 * @see #setPeriod(Period)

@@ -9,7 +9,7 @@ package org.hl7.fhir;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Identifies the purpose of the namingsystem
+ * Identifies the purpose of the naming system
  * If the element is present, it must have either a @value, an @id, or extensions
  * <!-- end-model-doc -->
  *

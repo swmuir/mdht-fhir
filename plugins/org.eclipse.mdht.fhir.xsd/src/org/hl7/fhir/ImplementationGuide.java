@@ -219,7 +219,7 @@ public interface ImplementationGuide extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The date that this version of the Implementation Guide was published. The date must change when the business version changes, if it does, and it must change if the status code changes. in addition, it should change when the substantiative content of the implementation guide changes.
+	 * The date this version of the implementation guide was published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the implementation guide changes.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Date</em>' containment reference.
 	 * @see #setDate(DateTime)
@@ -272,7 +272,7 @@ public interface ImplementationGuide extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching of implementation guides. The most common use of this element is to represent the country / jurisdication for which this implementation guide was defined.
+	 * The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching of implementation guides. The most common use of this element is to represent the country / jurisdiction for which this implementation guide was defined.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Use Context</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getImplementationGuide_UseContext()
@@ -313,7 +313,7 @@ public interface ImplementationGuide extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The version of the FHIR specification on which this ImplementationGuide is based - this is the formal version of the specification, without the revision number, e.g. [publication].[major].[minor], which is 0.5.0 for this version.
+	 * The version of the FHIR specification on which this ImplementationGuide is based - this is the formal version of the specification, without the revision number, e.g. [publication].[major].[minor], which is 1.0.0 for this version.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Fhir Version</em>' containment reference.
 	 * @see #setFhirVersion(Id)
@@ -340,7 +340,7 @@ public interface ImplementationGuide extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Another implementation guide that this implementation depends on. Typically, an implementation guide uses value sets, profiles etc defined in other implementation guides.
+	 * Another implementation guide that this implementation depends on. Typically, an implementation guide uses value sets, profiles etc.defined in other implementation guides.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Dependency</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getImplementationGuide_Dependency()
@@ -356,7 +356,7 @@ public interface ImplementationGuide extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A logial group of resources. Logical groups can be used when building pages.
+	 * A logical group of resources. Logical groups can be used when building pages.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Package</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getImplementationGuide_Package()

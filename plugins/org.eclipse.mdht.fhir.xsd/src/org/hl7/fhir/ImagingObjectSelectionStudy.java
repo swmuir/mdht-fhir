@@ -112,7 +112,7 @@ public interface ImagingObjectSelectionStudy extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Series indentity and locating information of the DICOM SOP instances in the selection.
+	 * Series identity and locating information of the DICOM SOP instances in the selection.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Series</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getImagingObjectSelectionStudy_Series()

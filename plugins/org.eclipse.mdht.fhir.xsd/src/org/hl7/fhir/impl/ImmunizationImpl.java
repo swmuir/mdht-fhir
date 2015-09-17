@@ -17,6 +17,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.hl7.fhir.Annotation;
+import org.hl7.fhir.Code;
 import org.hl7.fhir.CodeableConcept;
 import org.hl7.fhir.Date;
 import org.hl7.fhir.DateTime;
@@ -38,8 +40,9 @@ import org.hl7.fhir.SimpleQuantity;
  * </p>
  * <ul>
  *   <li>{@link org.hl7.fhir.impl.ImmunizationImpl#getIdentifier <em>Identifier</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ImmunizationImpl#getStatus <em>Status</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ImmunizationImpl#getDate <em>Date</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ImmunizationImpl#getVaccineType <em>Vaccine Type</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ImmunizationImpl#getVaccineCode <em>Vaccine Code</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ImmunizationImpl#getPatient <em>Patient</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ImmunizationImpl#getWasNotGiven <em>Was Not Given</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ImmunizationImpl#getReported <em>Reported</em>}</li>
@@ -53,6 +56,7 @@ import org.hl7.fhir.SimpleQuantity;
  *   <li>{@link org.hl7.fhir.impl.ImmunizationImpl#getSite <em>Site</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ImmunizationImpl#getRoute <em>Route</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ImmunizationImpl#getDoseQuantity <em>Dose Quantity</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ImmunizationImpl#getNote <em>Note</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ImmunizationImpl#getExplanation <em>Explanation</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ImmunizationImpl#getReaction <em>Reaction</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ImmunizationImpl#getVaccinationProtocol <em>Vaccination Protocol</em>}</li>
@@ -72,6 +76,16 @@ public class ImmunizationImpl extends DomainResourceImpl implements Immunization
 	protected EList<Identifier> identifier;
 
 	/**
+	 * The cached value of the '{@link #getStatus() <em>Status</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStatus()
+	 * @generated
+	 * @ordered
+	 */
+	protected Code status;
+
+	/**
 	 * The cached value of the '{@link #getDate() <em>Date</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -82,14 +96,14 @@ public class ImmunizationImpl extends DomainResourceImpl implements Immunization
 	protected DateTime date;
 
 	/**
-	 * The cached value of the '{@link #getVaccineType() <em>Vaccine Type</em>}' containment reference.
+	 * The cached value of the '{@link #getVaccineCode() <em>Vaccine Code</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getVaccineType()
+	 * @see #getVaccineCode()
 	 * @generated
 	 * @ordered
 	 */
-	protected CodeableConcept vaccineType;
+	protected CodeableConcept vaccineCode;
 
 	/**
 	 * The cached value of the '{@link #getPatient() <em>Patient</em>}' containment reference.
@@ -222,6 +236,16 @@ public class ImmunizationImpl extends DomainResourceImpl implements Immunization
 	protected SimpleQuantity doseQuantity;
 
 	/**
+	 * The cached value of the '{@link #getNote() <em>Note</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNote()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Annotation> note;
+
+	/**
 	 * The cached value of the '{@link #getExplanation() <em>Explanation</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -287,6 +311,49 @@ public class ImmunizationImpl extends DomainResourceImpl implements Immunization
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Code getStatus() {
+		return status;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetStatus(Code newStatus, NotificationChain msgs) {
+		Code oldStatus = status;
+		status = newStatus;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.IMMUNIZATION__STATUS, oldStatus, newStatus);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setStatus(Code newStatus) {
+		if (newStatus != status) {
+			NotificationChain msgs = null;
+			if (status != null)
+				msgs = ((InternalEObject)status).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.IMMUNIZATION__STATUS, null, msgs);
+			if (newStatus != null)
+				msgs = ((InternalEObject)newStatus).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.IMMUNIZATION__STATUS, null, msgs);
+			msgs = basicSetStatus(newStatus, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.IMMUNIZATION__STATUS, newStatus, newStatus));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public DateTime getDate() {
 		return date;
 	}
@@ -330,8 +397,8 @@ public class ImmunizationImpl extends DomainResourceImpl implements Immunization
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CodeableConcept getVaccineType() {
-		return vaccineType;
+	public CodeableConcept getVaccineCode() {
+		return vaccineCode;
 	}
 
 	/**
@@ -339,11 +406,11 @@ public class ImmunizationImpl extends DomainResourceImpl implements Immunization
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetVaccineType(CodeableConcept newVaccineType, NotificationChain msgs) {
-		CodeableConcept oldVaccineType = vaccineType;
-		vaccineType = newVaccineType;
+	public NotificationChain basicSetVaccineCode(CodeableConcept newVaccineCode, NotificationChain msgs) {
+		CodeableConcept oldVaccineCode = vaccineCode;
+		vaccineCode = newVaccineCode;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.IMMUNIZATION__VACCINE_TYPE, oldVaccineType, newVaccineType);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.IMMUNIZATION__VACCINE_CODE, oldVaccineCode, newVaccineCode);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -354,18 +421,18 @@ public class ImmunizationImpl extends DomainResourceImpl implements Immunization
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setVaccineType(CodeableConcept newVaccineType) {
-		if (newVaccineType != vaccineType) {
+	public void setVaccineCode(CodeableConcept newVaccineCode) {
+		if (newVaccineCode != vaccineCode) {
 			NotificationChain msgs = null;
-			if (vaccineType != null)
-				msgs = ((InternalEObject)vaccineType).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.IMMUNIZATION__VACCINE_TYPE, null, msgs);
-			if (newVaccineType != null)
-				msgs = ((InternalEObject)newVaccineType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.IMMUNIZATION__VACCINE_TYPE, null, msgs);
-			msgs = basicSetVaccineType(newVaccineType, msgs);
+			if (vaccineCode != null)
+				msgs = ((InternalEObject)vaccineCode).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.IMMUNIZATION__VACCINE_CODE, null, msgs);
+			if (newVaccineCode != null)
+				msgs = ((InternalEObject)newVaccineCode).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.IMMUNIZATION__VACCINE_CODE, null, msgs);
+			msgs = basicSetVaccineCode(newVaccineCode, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.IMMUNIZATION__VACCINE_TYPE, newVaccineType, newVaccineType));
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.IMMUNIZATION__VACCINE_CODE, newVaccineCode, newVaccineCode));
 	}
 
 	/**
@@ -932,6 +999,18 @@ public class ImmunizationImpl extends DomainResourceImpl implements Immunization
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Annotation> getNote() {
+		if (note == null) {
+			note = new EObjectContainmentEList<Annotation>(Annotation.class, this, FhirPackage.IMMUNIZATION__NOTE);
+		}
+		return note;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ImmunizationExplanation getExplanation() {
 		return explanation;
 	}
@@ -1004,10 +1083,12 @@ public class ImmunizationImpl extends DomainResourceImpl implements Immunization
 		switch (featureID) {
 			case FhirPackage.IMMUNIZATION__IDENTIFIER:
 				return ((InternalEList<?>)getIdentifier()).basicRemove(otherEnd, msgs);
+			case FhirPackage.IMMUNIZATION__STATUS:
+				return basicSetStatus(null, msgs);
 			case FhirPackage.IMMUNIZATION__DATE:
 				return basicSetDate(null, msgs);
-			case FhirPackage.IMMUNIZATION__VACCINE_TYPE:
-				return basicSetVaccineType(null, msgs);
+			case FhirPackage.IMMUNIZATION__VACCINE_CODE:
+				return basicSetVaccineCode(null, msgs);
 			case FhirPackage.IMMUNIZATION__PATIENT:
 				return basicSetPatient(null, msgs);
 			case FhirPackage.IMMUNIZATION__WAS_NOT_GIVEN:
@@ -1034,6 +1115,8 @@ public class ImmunizationImpl extends DomainResourceImpl implements Immunization
 				return basicSetRoute(null, msgs);
 			case FhirPackage.IMMUNIZATION__DOSE_QUANTITY:
 				return basicSetDoseQuantity(null, msgs);
+			case FhirPackage.IMMUNIZATION__NOTE:
+				return ((InternalEList<?>)getNote()).basicRemove(otherEnd, msgs);
 			case FhirPackage.IMMUNIZATION__EXPLANATION:
 				return basicSetExplanation(null, msgs);
 			case FhirPackage.IMMUNIZATION__REACTION:
@@ -1054,10 +1137,12 @@ public class ImmunizationImpl extends DomainResourceImpl implements Immunization
 		switch (featureID) {
 			case FhirPackage.IMMUNIZATION__IDENTIFIER:
 				return getIdentifier();
+			case FhirPackage.IMMUNIZATION__STATUS:
+				return getStatus();
 			case FhirPackage.IMMUNIZATION__DATE:
 				return getDate();
-			case FhirPackage.IMMUNIZATION__VACCINE_TYPE:
-				return getVaccineType();
+			case FhirPackage.IMMUNIZATION__VACCINE_CODE:
+				return getVaccineCode();
 			case FhirPackage.IMMUNIZATION__PATIENT:
 				return getPatient();
 			case FhirPackage.IMMUNIZATION__WAS_NOT_GIVEN:
@@ -1084,6 +1169,8 @@ public class ImmunizationImpl extends DomainResourceImpl implements Immunization
 				return getRoute();
 			case FhirPackage.IMMUNIZATION__DOSE_QUANTITY:
 				return getDoseQuantity();
+			case FhirPackage.IMMUNIZATION__NOTE:
+				return getNote();
 			case FhirPackage.IMMUNIZATION__EXPLANATION:
 				return getExplanation();
 			case FhirPackage.IMMUNIZATION__REACTION:
@@ -1107,11 +1194,14 @@ public class ImmunizationImpl extends DomainResourceImpl implements Immunization
 				getIdentifier().clear();
 				getIdentifier().addAll((Collection<? extends Identifier>)newValue);
 				return;
+			case FhirPackage.IMMUNIZATION__STATUS:
+				setStatus((Code)newValue);
+				return;
 			case FhirPackage.IMMUNIZATION__DATE:
 				setDate((DateTime)newValue);
 				return;
-			case FhirPackage.IMMUNIZATION__VACCINE_TYPE:
-				setVaccineType((CodeableConcept)newValue);
+			case FhirPackage.IMMUNIZATION__VACCINE_CODE:
+				setVaccineCode((CodeableConcept)newValue);
 				return;
 			case FhirPackage.IMMUNIZATION__PATIENT:
 				setPatient((Reference)newValue);
@@ -1152,6 +1242,10 @@ public class ImmunizationImpl extends DomainResourceImpl implements Immunization
 			case FhirPackage.IMMUNIZATION__DOSE_QUANTITY:
 				setDoseQuantity((SimpleQuantity)newValue);
 				return;
+			case FhirPackage.IMMUNIZATION__NOTE:
+				getNote().clear();
+				getNote().addAll((Collection<? extends Annotation>)newValue);
+				return;
 			case FhirPackage.IMMUNIZATION__EXPLANATION:
 				setExplanation((ImmunizationExplanation)newValue);
 				return;
@@ -1178,11 +1272,14 @@ public class ImmunizationImpl extends DomainResourceImpl implements Immunization
 			case FhirPackage.IMMUNIZATION__IDENTIFIER:
 				getIdentifier().clear();
 				return;
+			case FhirPackage.IMMUNIZATION__STATUS:
+				setStatus((Code)null);
+				return;
 			case FhirPackage.IMMUNIZATION__DATE:
 				setDate((DateTime)null);
 				return;
-			case FhirPackage.IMMUNIZATION__VACCINE_TYPE:
-				setVaccineType((CodeableConcept)null);
+			case FhirPackage.IMMUNIZATION__VACCINE_CODE:
+				setVaccineCode((CodeableConcept)null);
 				return;
 			case FhirPackage.IMMUNIZATION__PATIENT:
 				setPatient((Reference)null);
@@ -1223,6 +1320,9 @@ public class ImmunizationImpl extends DomainResourceImpl implements Immunization
 			case FhirPackage.IMMUNIZATION__DOSE_QUANTITY:
 				setDoseQuantity((SimpleQuantity)null);
 				return;
+			case FhirPackage.IMMUNIZATION__NOTE:
+				getNote().clear();
+				return;
 			case FhirPackage.IMMUNIZATION__EXPLANATION:
 				setExplanation((ImmunizationExplanation)null);
 				return;
@@ -1246,10 +1346,12 @@ public class ImmunizationImpl extends DomainResourceImpl implements Immunization
 		switch (featureID) {
 			case FhirPackage.IMMUNIZATION__IDENTIFIER:
 				return identifier != null && !identifier.isEmpty();
+			case FhirPackage.IMMUNIZATION__STATUS:
+				return status != null;
 			case FhirPackage.IMMUNIZATION__DATE:
 				return date != null;
-			case FhirPackage.IMMUNIZATION__VACCINE_TYPE:
-				return vaccineType != null;
+			case FhirPackage.IMMUNIZATION__VACCINE_CODE:
+				return vaccineCode != null;
 			case FhirPackage.IMMUNIZATION__PATIENT:
 				return patient != null;
 			case FhirPackage.IMMUNIZATION__WAS_NOT_GIVEN:
@@ -1276,6 +1378,8 @@ public class ImmunizationImpl extends DomainResourceImpl implements Immunization
 				return route != null;
 			case FhirPackage.IMMUNIZATION__DOSE_QUANTITY:
 				return doseQuantity != null;
+			case FhirPackage.IMMUNIZATION__NOTE:
+				return note != null && !note.isEmpty();
 			case FhirPackage.IMMUNIZATION__EXPLANATION:
 				return explanation != null;
 			case FhirPackage.IMMUNIZATION__REACTION:

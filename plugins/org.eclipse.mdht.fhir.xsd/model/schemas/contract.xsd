@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Thu, Aug 20, 2015 14:13+0000 for FHIR v0.5.0 
+  Generated on Wed, Sep 16, 2015 13:28+0000 for FHIR v1.0.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -228,7 +228,7 @@
         <xs:sequence>
           <xs:element name="type" minOccurs="1" maxOccurs="1" type="Coding">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Role of this Contract signer, e.g., notary, grantee.</xs:documentation>
+              <xs:documentation xml:lang="en">Role of this Contract signer, e.g. notary, grantee.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="party" minOccurs="1" maxOccurs="1" type="Reference">
@@ -269,12 +269,12 @@
           </xs:element>
           <xs:element name="type" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Type of Contract Provision such as specific requirements, purposes for actions, obligations, prohibitions, e.g., life time maximum benefit.</xs:documentation>
+              <xs:documentation xml:lang="en">Type of Contract Provision such as specific requirements, purposes for actions, obligations, prohibitions, e.g. life time maximum benefit.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="subType" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Subtype of this Contract Provision, e.g., life time maximum payment for a contract term for specific valued item, e.g., disability payment.</xs:documentation>
+              <xs:documentation xml:lang="en">Subtype of this Contract Provision, e.g. life time maximum payment for a contract term for specific valued item, e.g. disability payment.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="subject" minOccurs="0" maxOccurs="1" type="Reference">

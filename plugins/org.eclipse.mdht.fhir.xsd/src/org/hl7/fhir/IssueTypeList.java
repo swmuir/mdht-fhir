@@ -567,7 +567,7 @@ public enum IssueTypeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The operation was stopped to protect server resources. E.g. a request for a value set expansion on all of SNOMED CT
+	 * The operation was stopped to protect server resources; e.g. a request for a value set expansion on all of SNOMED CT
 	 * <!-- end-model-doc -->
 	 * @see #TOO_COSTLY
 	 * @model name="tooCostly" literal="too-costly"
@@ -651,7 +651,7 @@ public enum IssueTypeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The persistent store unavailable. E.g. the database is down for maintenance or similar
+	 * The persistent store unavailable; e.g. the database is down for maintenance or similar
 	 * <!-- end-model-doc -->
 	 * @see #NO_STORE
 	 * @model name="noStore" literal="no-store"

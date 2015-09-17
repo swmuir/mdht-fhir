@@ -78,7 +78,7 @@ public interface BodySite extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Named anatomical location - ideally would be coded where possible.
+	 * Named anatomical location - ideally coded where possible.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Code</em>' containment reference.
 	 * @see #setCode(CodeableConcept)

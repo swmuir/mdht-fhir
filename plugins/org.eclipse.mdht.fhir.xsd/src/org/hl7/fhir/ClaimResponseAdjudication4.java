@@ -31,7 +31,7 @@ public interface ClaimResponseAdjudication4 extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Code indicating: Co-Pay, deductable, elegible, benefit, tax, etc.
+	 * Code indicating: Co-Pay, deductible, eligible, benefit, tax, etc.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Code</em>' containment reference.
 	 * @see #setCode(Coding)
@@ -57,7 +57,7 @@ public interface ClaimResponseAdjudication4 extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Monitory amount associated with the code.
+	 * Monetary amount associated with the code.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Amount</em>' containment reference.
 	 * @see #setAmount(Money)

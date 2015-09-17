@@ -65,7 +65,7 @@ public enum TransactionModeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Neither Batch or Transaction supported
+	 * Neither batch or transaction is supported.
 	 * <!-- end-model-doc -->
 	 * @see #NOT_SUPPORTED
 	 * @model name="notSupported" literal="not-supported"
@@ -79,7 +79,7 @@ public enum TransactionModeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Batches supported
+	 * Batches are  supported.
 	 * <!-- end-model-doc -->
 	 * @see #BATCH
 	 * @model name="batch"
@@ -93,7 +93,7 @@ public enum TransactionModeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Transactions Supported
+	 * Transactions are supported.
 	 * <!-- end-model-doc -->
 	 * @see #TRANSACTION
 	 * @model name="transaction"
@@ -107,7 +107,7 @@ public enum TransactionModeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Both Batches and Transactions Supported
+	 * Both batches and transactions are supported.
 	 * <!-- end-model-doc -->
 	 * @see #BOTH
 	 * @model name="both"

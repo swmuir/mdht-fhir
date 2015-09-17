@@ -10,7 +10,7 @@ import org.eclipse.emf.common.util.EList;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Immunization event information.
+ * Describes the event of a patient being administered a vaccination or a record of a vaccination as reported by a patient, a clinician or another party and may include vaccine reaction information and what vaccination protocol was followed.
  * If the element is present, it must have either a @value, an @id, or extensions
  * <!-- end-model-doc -->
  *
@@ -19,8 +19,9 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link org.hl7.fhir.Immunization#getIdentifier <em>Identifier</em>}</li>
+ *   <li>{@link org.hl7.fhir.Immunization#getStatus <em>Status</em>}</li>
  *   <li>{@link org.hl7.fhir.Immunization#getDate <em>Date</em>}</li>
- *   <li>{@link org.hl7.fhir.Immunization#getVaccineType <em>Vaccine Type</em>}</li>
+ *   <li>{@link org.hl7.fhir.Immunization#getVaccineCode <em>Vaccine Code</em>}</li>
  *   <li>{@link org.hl7.fhir.Immunization#getPatient <em>Patient</em>}</li>
  *   <li>{@link org.hl7.fhir.Immunization#getWasNotGiven <em>Was Not Given</em>}</li>
  *   <li>{@link org.hl7.fhir.Immunization#getReported <em>Reported</em>}</li>
@@ -34,6 +35,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.hl7.fhir.Immunization#getSite <em>Site</em>}</li>
  *   <li>{@link org.hl7.fhir.Immunization#getRoute <em>Route</em>}</li>
  *   <li>{@link org.hl7.fhir.Immunization#getDoseQuantity <em>Dose Quantity</em>}</li>
+ *   <li>{@link org.hl7.fhir.Immunization#getNote <em>Note</em>}</li>
  *   <li>{@link org.hl7.fhir.Immunization#getExplanation <em>Explanation</em>}</li>
  *   <li>{@link org.hl7.fhir.Immunization#getReaction <em>Reaction</em>}</li>
  *   <li>{@link org.hl7.fhir.Immunization#getVaccinationProtocol <em>Vaccination Protocol</em>}</li>
@@ -61,6 +63,32 @@ public interface Immunization extends DomainResource {
 	EList<Identifier> getIdentifier();
 
 	/**
+	 * Returns the value of the '<em><b>Status</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Indicates the current status of the vaccination event.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Status</em>' containment reference.
+	 * @see #setStatus(Code)
+	 * @see org.hl7.fhir.FhirPackage#getImmunization_Status()
+	 * @model containment="true" required="true"
+	 *        extendedMetaData="kind='element' name='status' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Code getStatus();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.Immunization#getStatus <em>Status</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Status</em>' containment reference.
+	 * @see #getStatus()
+	 * @generated
+	 */
+	void setStatus(Code value);
+
+	/**
 	 * Returns the value of the '<em><b>Date</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -70,7 +98,7 @@ public interface Immunization extends DomainResource {
 	 * @return the value of the '<em>Date</em>' containment reference.
 	 * @see #setDate(DateTime)
 	 * @see org.hl7.fhir.FhirPackage#getImmunization_Date()
-	 * @model containment="true" required="true"
+	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='date' namespace='##targetNamespace'"
 	 * @generated
 	 */
@@ -87,30 +115,30 @@ public interface Immunization extends DomainResource {
 	void setDate(DateTime value);
 
 	/**
-	 * Returns the value of the '<em><b>Vaccine Type</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Vaccine Code</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Vaccine that was administered or was to be administered.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Vaccine Type</em>' containment reference.
-	 * @see #setVaccineType(CodeableConcept)
-	 * @see org.hl7.fhir.FhirPackage#getImmunization_VaccineType()
+	 * @return the value of the '<em>Vaccine Code</em>' containment reference.
+	 * @see #setVaccineCode(CodeableConcept)
+	 * @see org.hl7.fhir.FhirPackage#getImmunization_VaccineCode()
 	 * @model containment="true" required="true"
-	 *        extendedMetaData="kind='element' name='vaccineType' namespace='##targetNamespace'"
+	 *        extendedMetaData="kind='element' name='vaccineCode' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	CodeableConcept getVaccineType();
+	CodeableConcept getVaccineCode();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.Immunization#getVaccineType <em>Vaccine Type</em>}' containment reference.
+	 * Sets the value of the '{@link org.hl7.fhir.Immunization#getVaccineCode <em>Vaccine Code</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Vaccine Type</em>' containment reference.
-	 * @see #getVaccineType()
+	 * @param value the new value of the '<em>Vaccine Code</em>' containment reference.
+	 * @see #getVaccineCode()
 	 * @generated
 	 */
-	void setVaccineType(CodeableConcept value);
+	void setVaccineCode(CodeableConcept value);
 
 	/**
 	 * Returns the value of the '<em><b>Patient</b></em>' containment reference.
@@ -449,6 +477,22 @@ public interface Immunization extends DomainResource {
 	 * @generated
 	 */
 	void setDoseQuantity(SimpleQuantity value);
+
+	/**
+	 * Returns the value of the '<em><b>Note</b></em>' containment reference list.
+	 * The list contents are of type {@link org.hl7.fhir.Annotation}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Extra information about the immunization that is not conveyed by the other attributes.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Note</em>' containment reference list.
+	 * @see org.hl7.fhir.FhirPackage#getImmunization_Note()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='note' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	EList<Annotation> getNote();
 
 	/**
 	 * Returns the value of the '<em><b>Explanation</b></em>' containment reference.

@@ -85,13 +85,13 @@ public interface AuditEventParticipant extends BackboneElement {
 	 * Unique identifier for the user actively participating in the event.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>User Id</em>' containment reference.
-	 * @see #setUserId(org.hl7.fhir.String)
+	 * @see #setUserId(Identifier)
 	 * @see org.hl7.fhir.FhirPackage#getAuditEventParticipant_UserId()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='userId' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	org.hl7.fhir.String getUserId();
+	Identifier getUserId();
 
 	/**
 	 * Sets the value of the '{@link org.hl7.fhir.AuditEventParticipant#getUserId <em>User Id</em>}' containment reference.
@@ -101,14 +101,14 @@ public interface AuditEventParticipant extends BackboneElement {
 	 * @see #getUserId()
 	 * @generated
 	 */
-	void setUserId(org.hl7.fhir.String value);
+	void setUserId(Identifier value);
 
 	/**
 	 * Returns the value of the '<em><b>Alt Id</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Alternative Participant Identifier. For a human, this should be a user identifier text string from authentication system. This identifier would be one known to a common authentication system (e.g., single sign-on), if available.
+	 * Alternative Participant Identifier. For a human, this should be a user identifier text string from authentication system. This identifier would be one known to a common authentication system (e.g. single sign-on), if available.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Alt Id</em>' containment reference.
 	 * @see #setAltId(org.hl7.fhir.String)
@@ -281,7 +281,7 @@ public interface AuditEventParticipant extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The purposeOfUse (reason) specific to this participant that was used during the event being recorded.
+	 * The reason (purpose of use), specific to this participant, that was used during the event being recorded.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Purpose Of Use</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getAuditEventParticipant_PurposeOfUse()

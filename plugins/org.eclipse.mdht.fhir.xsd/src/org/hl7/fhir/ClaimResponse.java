@@ -57,7 +57,7 @@ public interface ClaimResponse extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The Response Business Identifier.
+	 * The Response business identifier.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Identifier</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getClaimResponse_Identifier()
@@ -406,7 +406,7 @@ public interface ClaimResponse extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The amount of deductable applied which was not allocated to any particular service line.
+	 * The amount of deductible applied which was not allocated to any particular service line.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Unalloc Deductable</em>' containment reference.
 	 * @see #setUnallocDeductable(Money)
@@ -432,7 +432,7 @@ public interface ClaimResponse extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Total amount of benefit payable (Equal to sum of the Benefit amounts from all detail lines and additions less the Unallocated Deductable).
+	 * Total amount of benefit payable (Equal to sum of the Benefit amounts from all detail lines and additions less the Unallocated Deductible).
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Total Benefit</em>' containment reference.
 	 * @see #setTotalBenefit(Money)
@@ -562,7 +562,7 @@ public interface ClaimResponse extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Payment identifer.
+	 * Payment identifier.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Payment Ref</em>' containment reference.
 	 * @see #setPaymentRef(Identifier)

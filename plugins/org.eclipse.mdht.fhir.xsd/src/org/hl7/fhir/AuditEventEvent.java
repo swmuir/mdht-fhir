@@ -39,13 +39,13 @@ public interface AuditEventEvent extends BackboneElement {
 	 * Identifier for a family of the event.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Type</em>' containment reference.
-	 * @see #setType(CodeableConcept)
+	 * @see #setType(Coding)
 	 * @see org.hl7.fhir.FhirPackage#getAuditEventEvent_Type()
 	 * @model containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='type' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	CodeableConcept getType();
+	Coding getType();
 
 	/**
 	 * Sets the value of the '{@link org.hl7.fhir.AuditEventEvent#getType <em>Type</em>}' containment reference.
@@ -55,11 +55,11 @@ public interface AuditEventEvent extends BackboneElement {
 	 * @see #getType()
 	 * @generated
 	 */
-	void setType(CodeableConcept value);
+	void setType(Coding value);
 
 	/**
 	 * Returns the value of the '<em><b>Subtype</b></em>' containment reference list.
-	 * The list contents are of type {@link org.hl7.fhir.CodeableConcept}.
+	 * The list contents are of type {@link org.hl7.fhir.Coding}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -71,7 +71,7 @@ public interface AuditEventEvent extends BackboneElement {
 	 *        extendedMetaData="kind='element' name='subtype' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	EList<CodeableConcept> getSubtype();
+	EList<Coding> getSubtype();
 
 	/**
 	 * Returns the value of the '<em><b>Action</b></em>' containment reference.

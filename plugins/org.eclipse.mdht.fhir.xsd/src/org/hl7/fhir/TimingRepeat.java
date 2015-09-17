@@ -279,7 +279,7 @@ public interface TimingRepeat extends Element {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Indicates the duration of time over which repetitions are to occur.  E.g. to express "3 times per day", 3 would be the frequency and "1 day" would be the period.
+	 * Indicates the duration of time over which repetitions are to occur; e.g. to express "3 times per day", 3 would be the frequency and "1 day" would be the period.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Period</em>' containment reference.
 	 * @see #setPeriod(Decimal)

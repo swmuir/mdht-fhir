@@ -99,7 +99,7 @@ public enum MedicationOrderStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Actions implied by the prescription have been temporarily halted, but are expected to continue later.  May also be called "suspended".
+	 * Actions implied by the prescription are to be temporarily halted, but are expected to continue later.  May also be called "suspended".
 	 * <!-- end-model-doc -->
 	 * @see #ON_HOLD
 	 * @model name="onHold" literal="on-hold"
@@ -113,7 +113,7 @@ public enum MedicationOrderStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * All actions that are implied by the prescription have occurred (this will rarely be made explicit).
+	 * All actions that are implied by the prescription have occurred.
 	 * <!-- end-model-doc -->
 	 * @see #COMPLETED
 	 * @model name="completed"
@@ -127,7 +127,7 @@ public enum MedicationOrderStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The prescription was entered in error and therefore nullified.
+	 * The prescription was entered in error.
 	 * <!-- end-model-doc -->
 	 * @see #ENTERED_IN_ERROR
 	 * @model name="enteredInError" literal="entered-in-error"
@@ -141,7 +141,7 @@ public enum MedicationOrderStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Actions implied by the prescription have been permanently halted, before all of them occurred.
+	 * Actions implied by the prescription are to be permanently halted, before all of them occurred.
 	 * <!-- end-model-doc -->
 	 * @see #STOPPED
 	 * @model name="stopped"
@@ -155,7 +155,7 @@ public enum MedicationOrderStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The prescription is not yet 'actionable', i.e. it is a work in progress, required sign-off, need to be run through decision support.
+	 * The prescription is not yet 'actionable', i.e. it is a work in progress, requires sign-off or verification, needs to be run through decision support process.
 	 * <!-- end-model-doc -->
 	 * @see #DRAFT
 	 * @model name="draft"

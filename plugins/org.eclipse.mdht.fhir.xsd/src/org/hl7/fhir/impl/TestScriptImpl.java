@@ -21,6 +21,7 @@ import org.hl7.fhir.Code;
 import org.hl7.fhir.CodeableConcept;
 import org.hl7.fhir.DateTime;
 import org.hl7.fhir.FhirPackage;
+import org.hl7.fhir.Identifier;
 import org.hl7.fhir.Reference;
 import org.hl7.fhir.TestScript;
 import org.hl7.fhir.TestScriptContact;
@@ -44,6 +45,7 @@ import org.hl7.fhir.Uri;
  *   <li>{@link org.hl7.fhir.impl.TestScriptImpl#getVersion <em>Version</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.TestScriptImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.TestScriptImpl#getStatus <em>Status</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.TestScriptImpl#getIdentifier <em>Identifier</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.TestScriptImpl#getExperimental <em>Experimental</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.TestScriptImpl#getPublisher <em>Publisher</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.TestScriptImpl#getContact <em>Contact</em>}</li>
@@ -104,6 +106,16 @@ public class TestScriptImpl extends DomainResourceImpl implements TestScript {
 	 * @ordered
 	 */
 	protected Code status;
+
+	/**
+	 * The cached value of the '{@link #getIdentifier() <em>Identifier</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIdentifier()
+	 * @generated
+	 * @ordered
+	 */
+	protected Identifier identifier;
 
 	/**
 	 * The cached value of the '{@link #getExperimental() <em>Experimental</em>}' containment reference.
@@ -454,6 +466,49 @@ public class TestScriptImpl extends DomainResourceImpl implements TestScript {
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.TEST_SCRIPT__STATUS, newStatus, newStatus));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Identifier getIdentifier() {
+		return identifier;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetIdentifier(Identifier newIdentifier, NotificationChain msgs) {
+		Identifier oldIdentifier = identifier;
+		identifier = newIdentifier;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.TEST_SCRIPT__IDENTIFIER, oldIdentifier, newIdentifier);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setIdentifier(Identifier newIdentifier) {
+		if (newIdentifier != identifier) {
+			NotificationChain msgs = null;
+			if (identifier != null)
+				msgs = ((InternalEObject)identifier).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.TEST_SCRIPT__IDENTIFIER, null, msgs);
+			if (newIdentifier != null)
+				msgs = ((InternalEObject)newIdentifier).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.TEST_SCRIPT__IDENTIFIER, null, msgs);
+			msgs = basicSetIdentifier(newIdentifier, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.TEST_SCRIPT__IDENTIFIER, newIdentifier, newIdentifier));
 	}
 
 	/**
@@ -974,6 +1029,8 @@ public class TestScriptImpl extends DomainResourceImpl implements TestScript {
 				return basicSetName(null, msgs);
 			case FhirPackage.TEST_SCRIPT__STATUS:
 				return basicSetStatus(null, msgs);
+			case FhirPackage.TEST_SCRIPT__IDENTIFIER:
+				return basicSetIdentifier(null, msgs);
 			case FhirPackage.TEST_SCRIPT__EXPERIMENTAL:
 				return basicSetExperimental(null, msgs);
 			case FhirPackage.TEST_SCRIPT__PUBLISHER:
@@ -1026,6 +1083,8 @@ public class TestScriptImpl extends DomainResourceImpl implements TestScript {
 				return getName();
 			case FhirPackage.TEST_SCRIPT__STATUS:
 				return getStatus();
+			case FhirPackage.TEST_SCRIPT__IDENTIFIER:
+				return getIdentifier();
 			case FhirPackage.TEST_SCRIPT__EXPERIMENTAL:
 				return getExperimental();
 			case FhirPackage.TEST_SCRIPT__PUBLISHER:
@@ -1082,6 +1141,9 @@ public class TestScriptImpl extends DomainResourceImpl implements TestScript {
 				return;
 			case FhirPackage.TEST_SCRIPT__STATUS:
 				setStatus((Code)newValue);
+				return;
+			case FhirPackage.TEST_SCRIPT__IDENTIFIER:
+				setIdentifier((Identifier)newValue);
 				return;
 			case FhirPackage.TEST_SCRIPT__EXPERIMENTAL:
 				setExperimental((org.hl7.fhir.Boolean)newValue);
@@ -1161,6 +1223,9 @@ public class TestScriptImpl extends DomainResourceImpl implements TestScript {
 			case FhirPackage.TEST_SCRIPT__STATUS:
 				setStatus((Code)null);
 				return;
+			case FhirPackage.TEST_SCRIPT__IDENTIFIER:
+				setIdentifier((Identifier)null);
+				return;
 			case FhirPackage.TEST_SCRIPT__EXPERIMENTAL:
 				setExperimental((org.hl7.fhir.Boolean)null);
 				return;
@@ -1229,6 +1294,8 @@ public class TestScriptImpl extends DomainResourceImpl implements TestScript {
 				return name != null;
 			case FhirPackage.TEST_SCRIPT__STATUS:
 				return status != null;
+			case FhirPackage.TEST_SCRIPT__IDENTIFIER:
+				return identifier != null;
 			case FhirPackage.TEST_SCRIPT__EXPERIMENTAL:
 				return experimental != null;
 			case FhirPackage.TEST_SCRIPT__PUBLISHER:

@@ -15,6 +15,7 @@ import org.hl7.fhir.FhirPackage;
 import org.hl7.fhir.MedicationDispenseDosageInstruction;
 import org.hl7.fhir.Range;
 import org.hl7.fhir.Ratio;
+import org.hl7.fhir.Reference;
 import org.hl7.fhir.SimpleQuantity;
 import org.hl7.fhir.Timing;
 
@@ -31,7 +32,8 @@ import org.hl7.fhir.Timing;
  *   <li>{@link org.hl7.fhir.impl.MedicationDispenseDosageInstructionImpl#getTiming <em>Timing</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.MedicationDispenseDosageInstructionImpl#getAsNeededBoolean <em>As Needed Boolean</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.MedicationDispenseDosageInstructionImpl#getAsNeededCodeableConcept <em>As Needed Codeable Concept</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.MedicationDispenseDosageInstructionImpl#getSite <em>Site</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.MedicationDispenseDosageInstructionImpl#getSiteCodeableConcept <em>Site Codeable Concept</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.MedicationDispenseDosageInstructionImpl#getSiteReference <em>Site Reference</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.MedicationDispenseDosageInstructionImpl#getRoute <em>Route</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.MedicationDispenseDosageInstructionImpl#getMethod <em>Method</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.MedicationDispenseDosageInstructionImpl#getDoseRange <em>Dose Range</em>}</li>
@@ -95,14 +97,24 @@ public class MedicationDispenseDosageInstructionImpl extends BackboneElementImpl
 	protected CodeableConcept asNeededCodeableConcept;
 
 	/**
-	 * The cached value of the '{@link #getSite() <em>Site</em>}' containment reference.
+	 * The cached value of the '{@link #getSiteCodeableConcept() <em>Site Codeable Concept</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSite()
+	 * @see #getSiteCodeableConcept()
 	 * @generated
 	 * @ordered
 	 */
-	protected CodeableConcept site;
+	protected CodeableConcept siteCodeableConcept;
+
+	/**
+	 * The cached value of the '{@link #getSiteReference() <em>Site Reference</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSiteReference()
+	 * @generated
+	 * @ordered
+	 */
+	protected Reference siteReference;
 
 	/**
 	 * The cached value of the '{@link #getRoute() <em>Route</em>}' containment reference.
@@ -413,8 +425,8 @@ public class MedicationDispenseDosageInstructionImpl extends BackboneElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CodeableConcept getSite() {
-		return site;
+	public CodeableConcept getSiteCodeableConcept() {
+		return siteCodeableConcept;
 	}
 
 	/**
@@ -422,11 +434,11 @@ public class MedicationDispenseDosageInstructionImpl extends BackboneElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetSite(CodeableConcept newSite, NotificationChain msgs) {
-		CodeableConcept oldSite = site;
-		site = newSite;
+	public NotificationChain basicSetSiteCodeableConcept(CodeableConcept newSiteCodeableConcept, NotificationChain msgs) {
+		CodeableConcept oldSiteCodeableConcept = siteCodeableConcept;
+		siteCodeableConcept = newSiteCodeableConcept;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.MEDICATION_DISPENSE_DOSAGE_INSTRUCTION__SITE, oldSite, newSite);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.MEDICATION_DISPENSE_DOSAGE_INSTRUCTION__SITE_CODEABLE_CONCEPT, oldSiteCodeableConcept, newSiteCodeableConcept);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -437,18 +449,61 @@ public class MedicationDispenseDosageInstructionImpl extends BackboneElementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSite(CodeableConcept newSite) {
-		if (newSite != site) {
+	public void setSiteCodeableConcept(CodeableConcept newSiteCodeableConcept) {
+		if (newSiteCodeableConcept != siteCodeableConcept) {
 			NotificationChain msgs = null;
-			if (site != null)
-				msgs = ((InternalEObject)site).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.MEDICATION_DISPENSE_DOSAGE_INSTRUCTION__SITE, null, msgs);
-			if (newSite != null)
-				msgs = ((InternalEObject)newSite).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.MEDICATION_DISPENSE_DOSAGE_INSTRUCTION__SITE, null, msgs);
-			msgs = basicSetSite(newSite, msgs);
+			if (siteCodeableConcept != null)
+				msgs = ((InternalEObject)siteCodeableConcept).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.MEDICATION_DISPENSE_DOSAGE_INSTRUCTION__SITE_CODEABLE_CONCEPT, null, msgs);
+			if (newSiteCodeableConcept != null)
+				msgs = ((InternalEObject)newSiteCodeableConcept).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.MEDICATION_DISPENSE_DOSAGE_INSTRUCTION__SITE_CODEABLE_CONCEPT, null, msgs);
+			msgs = basicSetSiteCodeableConcept(newSiteCodeableConcept, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.MEDICATION_DISPENSE_DOSAGE_INSTRUCTION__SITE, newSite, newSite));
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.MEDICATION_DISPENSE_DOSAGE_INSTRUCTION__SITE_CODEABLE_CONCEPT, newSiteCodeableConcept, newSiteCodeableConcept));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Reference getSiteReference() {
+		return siteReference;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetSiteReference(Reference newSiteReference, NotificationChain msgs) {
+		Reference oldSiteReference = siteReference;
+		siteReference = newSiteReference;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.MEDICATION_DISPENSE_DOSAGE_INSTRUCTION__SITE_REFERENCE, oldSiteReference, newSiteReference);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSiteReference(Reference newSiteReference) {
+		if (newSiteReference != siteReference) {
+			NotificationChain msgs = null;
+			if (siteReference != null)
+				msgs = ((InternalEObject)siteReference).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.MEDICATION_DISPENSE_DOSAGE_INSTRUCTION__SITE_REFERENCE, null, msgs);
+			if (newSiteReference != null)
+				msgs = ((InternalEObject)newSiteReference).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.MEDICATION_DISPENSE_DOSAGE_INSTRUCTION__SITE_REFERENCE, null, msgs);
+			msgs = basicSetSiteReference(newSiteReference, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.MEDICATION_DISPENSE_DOSAGE_INSTRUCTION__SITE_REFERENCE, newSiteReference, newSiteReference));
 	}
 
 	/**
@@ -770,8 +825,10 @@ public class MedicationDispenseDosageInstructionImpl extends BackboneElementImpl
 				return basicSetAsNeededBoolean(null, msgs);
 			case FhirPackage.MEDICATION_DISPENSE_DOSAGE_INSTRUCTION__AS_NEEDED_CODEABLE_CONCEPT:
 				return basicSetAsNeededCodeableConcept(null, msgs);
-			case FhirPackage.MEDICATION_DISPENSE_DOSAGE_INSTRUCTION__SITE:
-				return basicSetSite(null, msgs);
+			case FhirPackage.MEDICATION_DISPENSE_DOSAGE_INSTRUCTION__SITE_CODEABLE_CONCEPT:
+				return basicSetSiteCodeableConcept(null, msgs);
+			case FhirPackage.MEDICATION_DISPENSE_DOSAGE_INSTRUCTION__SITE_REFERENCE:
+				return basicSetSiteReference(null, msgs);
 			case FhirPackage.MEDICATION_DISPENSE_DOSAGE_INSTRUCTION__ROUTE:
 				return basicSetRoute(null, msgs);
 			case FhirPackage.MEDICATION_DISPENSE_DOSAGE_INSTRUCTION__METHOD:
@@ -808,8 +865,10 @@ public class MedicationDispenseDosageInstructionImpl extends BackboneElementImpl
 				return getAsNeededBoolean();
 			case FhirPackage.MEDICATION_DISPENSE_DOSAGE_INSTRUCTION__AS_NEEDED_CODEABLE_CONCEPT:
 				return getAsNeededCodeableConcept();
-			case FhirPackage.MEDICATION_DISPENSE_DOSAGE_INSTRUCTION__SITE:
-				return getSite();
+			case FhirPackage.MEDICATION_DISPENSE_DOSAGE_INSTRUCTION__SITE_CODEABLE_CONCEPT:
+				return getSiteCodeableConcept();
+			case FhirPackage.MEDICATION_DISPENSE_DOSAGE_INSTRUCTION__SITE_REFERENCE:
+				return getSiteReference();
 			case FhirPackage.MEDICATION_DISPENSE_DOSAGE_INSTRUCTION__ROUTE:
 				return getRoute();
 			case FhirPackage.MEDICATION_DISPENSE_DOSAGE_INSTRUCTION__METHOD:
@@ -851,8 +910,11 @@ public class MedicationDispenseDosageInstructionImpl extends BackboneElementImpl
 			case FhirPackage.MEDICATION_DISPENSE_DOSAGE_INSTRUCTION__AS_NEEDED_CODEABLE_CONCEPT:
 				setAsNeededCodeableConcept((CodeableConcept)newValue);
 				return;
-			case FhirPackage.MEDICATION_DISPENSE_DOSAGE_INSTRUCTION__SITE:
-				setSite((CodeableConcept)newValue);
+			case FhirPackage.MEDICATION_DISPENSE_DOSAGE_INSTRUCTION__SITE_CODEABLE_CONCEPT:
+				setSiteCodeableConcept((CodeableConcept)newValue);
+				return;
+			case FhirPackage.MEDICATION_DISPENSE_DOSAGE_INSTRUCTION__SITE_REFERENCE:
+				setSiteReference((Reference)newValue);
 				return;
 			case FhirPackage.MEDICATION_DISPENSE_DOSAGE_INSTRUCTION__ROUTE:
 				setRoute((CodeableConcept)newValue);
@@ -902,8 +964,11 @@ public class MedicationDispenseDosageInstructionImpl extends BackboneElementImpl
 			case FhirPackage.MEDICATION_DISPENSE_DOSAGE_INSTRUCTION__AS_NEEDED_CODEABLE_CONCEPT:
 				setAsNeededCodeableConcept((CodeableConcept)null);
 				return;
-			case FhirPackage.MEDICATION_DISPENSE_DOSAGE_INSTRUCTION__SITE:
-				setSite((CodeableConcept)null);
+			case FhirPackage.MEDICATION_DISPENSE_DOSAGE_INSTRUCTION__SITE_CODEABLE_CONCEPT:
+				setSiteCodeableConcept((CodeableConcept)null);
+				return;
+			case FhirPackage.MEDICATION_DISPENSE_DOSAGE_INSTRUCTION__SITE_REFERENCE:
+				setSiteReference((Reference)null);
 				return;
 			case FhirPackage.MEDICATION_DISPENSE_DOSAGE_INSTRUCTION__ROUTE:
 				setRoute((CodeableConcept)null);
@@ -948,8 +1013,10 @@ public class MedicationDispenseDosageInstructionImpl extends BackboneElementImpl
 				return asNeededBoolean != null;
 			case FhirPackage.MEDICATION_DISPENSE_DOSAGE_INSTRUCTION__AS_NEEDED_CODEABLE_CONCEPT:
 				return asNeededCodeableConcept != null;
-			case FhirPackage.MEDICATION_DISPENSE_DOSAGE_INSTRUCTION__SITE:
-				return site != null;
+			case FhirPackage.MEDICATION_DISPENSE_DOSAGE_INSTRUCTION__SITE_CODEABLE_CONCEPT:
+				return siteCodeableConcept != null;
+			case FhirPackage.MEDICATION_DISPENSE_DOSAGE_INSTRUCTION__SITE_REFERENCE:
+				return siteReference != null;
 			case FhirPackage.MEDICATION_DISPENSE_DOSAGE_INSTRUCTION__ROUTE:
 				return route != null;
 			case FhirPackage.MEDICATION_DISPENSE_DOSAGE_INSTRUCTION__METHOD:

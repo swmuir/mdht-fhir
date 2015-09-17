@@ -36,6 +36,7 @@ import org.hl7.fhir.ReferralStatus;
  * <ul>
  *   <li>{@link org.hl7.fhir.impl.ReferralRequestImpl#getStatus <em>Status</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ReferralRequestImpl#getIdentifier <em>Identifier</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ReferralRequestImpl#getDate <em>Date</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ReferralRequestImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ReferralRequestImpl#getSpecialty <em>Specialty</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ReferralRequestImpl#getPriority <em>Priority</em>}</li>
@@ -73,6 +74,16 @@ public class ReferralRequestImpl extends DomainResourceImpl implements ReferralR
 	 * @ordered
 	 */
 	protected EList<Identifier> identifier;
+
+	/**
+	 * The cached value of the '{@link #getDate() <em>Date</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDate()
+	 * @generated
+	 * @ordered
+	 */
+	protected DateTime date;
 
 	/**
 	 * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
@@ -276,6 +287,49 @@ public class ReferralRequestImpl extends DomainResourceImpl implements ReferralR
 			identifier = new EObjectContainmentEList<Identifier>(Identifier.class, this, FhirPackage.REFERRAL_REQUEST__IDENTIFIER);
 		}
 		return identifier;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DateTime getDate() {
+		return date;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetDate(DateTime newDate, NotificationChain msgs) {
+		DateTime oldDate = date;
+		date = newDate;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.REFERRAL_REQUEST__DATE, oldDate, newDate);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDate(DateTime newDate) {
+		if (newDate != date) {
+			NotificationChain msgs = null;
+			if (date != null)
+				msgs = ((InternalEObject)date).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.REFERRAL_REQUEST__DATE, null, msgs);
+			if (newDate != null)
+				msgs = ((InternalEObject)newDate).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.REFERRAL_REQUEST__DATE, null, msgs);
+			msgs = basicSetDate(newDate, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.REFERRAL_REQUEST__DATE, newDate, newDate));
 	}
 
 	/**
@@ -756,6 +810,8 @@ public class ReferralRequestImpl extends DomainResourceImpl implements ReferralR
 				return basicSetStatus(null, msgs);
 			case FhirPackage.REFERRAL_REQUEST__IDENTIFIER:
 				return ((InternalEList<?>)getIdentifier()).basicRemove(otherEnd, msgs);
+			case FhirPackage.REFERRAL_REQUEST__DATE:
+				return basicSetDate(null, msgs);
 			case FhirPackage.REFERRAL_REQUEST__TYPE:
 				return basicSetType(null, msgs);
 			case FhirPackage.REFERRAL_REQUEST__SPECIALTY:
@@ -798,6 +854,8 @@ public class ReferralRequestImpl extends DomainResourceImpl implements ReferralR
 				return getStatus();
 			case FhirPackage.REFERRAL_REQUEST__IDENTIFIER:
 				return getIdentifier();
+			case FhirPackage.REFERRAL_REQUEST__DATE:
+				return getDate();
 			case FhirPackage.REFERRAL_REQUEST__TYPE:
 				return getType();
 			case FhirPackage.REFERRAL_REQUEST__SPECIALTY:
@@ -843,6 +901,9 @@ public class ReferralRequestImpl extends DomainResourceImpl implements ReferralR
 			case FhirPackage.REFERRAL_REQUEST__IDENTIFIER:
 				getIdentifier().clear();
 				getIdentifier().addAll((Collection<? extends Identifier>)newValue);
+				return;
+			case FhirPackage.REFERRAL_REQUEST__DATE:
+				setDate((DateTime)newValue);
 				return;
 			case FhirPackage.REFERRAL_REQUEST__TYPE:
 				setType((CodeableConcept)newValue);
@@ -904,6 +965,9 @@ public class ReferralRequestImpl extends DomainResourceImpl implements ReferralR
 			case FhirPackage.REFERRAL_REQUEST__IDENTIFIER:
 				getIdentifier().clear();
 				return;
+			case FhirPackage.REFERRAL_REQUEST__DATE:
+				setDate((DateTime)null);
+				return;
 			case FhirPackage.REFERRAL_REQUEST__TYPE:
 				setType((CodeableConcept)null);
 				return;
@@ -959,6 +1023,8 @@ public class ReferralRequestImpl extends DomainResourceImpl implements ReferralR
 				return status != null;
 			case FhirPackage.REFERRAL_REQUEST__IDENTIFIER:
 				return identifier != null && !identifier.isEmpty();
+			case FhirPackage.REFERRAL_REQUEST__DATE:
+				return date != null;
 			case FhirPackage.REFERRAL_REQUEST__TYPE:
 				return type != null;
 			case FhirPackage.REFERRAL_REQUEST__SPECIALTY:

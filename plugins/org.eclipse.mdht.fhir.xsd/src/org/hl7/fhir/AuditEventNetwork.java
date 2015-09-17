@@ -16,7 +16,7 @@ package org.hl7.fhir;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.hl7.fhir.AuditEventNetwork#getIdentifier <em>Identifier</em>}</li>
+ *   <li>{@link org.hl7.fhir.AuditEventNetwork#getAddress <em>Address</em>}</li>
  *   <li>{@link org.hl7.fhir.AuditEventNetwork#getType <em>Type</em>}</li>
  * </ul>
  *
@@ -26,30 +26,30 @@ package org.hl7.fhir;
  */
 public interface AuditEventNetwork extends BackboneElement {
 	/**
-	 * Returns the value of the '<em><b>Identifier</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Address</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * An identifier for the network access point of the user device for the audit event.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Identifier</em>' containment reference.
-	 * @see #setIdentifier(org.hl7.fhir.String)
-	 * @see org.hl7.fhir.FhirPackage#getAuditEventNetwork_Identifier()
+	 * @return the value of the '<em>Address</em>' containment reference.
+	 * @see #setAddress(org.hl7.fhir.String)
+	 * @see org.hl7.fhir.FhirPackage#getAuditEventNetwork_Address()
 	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='identifier' namespace='##targetNamespace'"
+	 *        extendedMetaData="kind='element' name='address' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	org.hl7.fhir.String getIdentifier();
+	org.hl7.fhir.String getAddress();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.AuditEventNetwork#getIdentifier <em>Identifier</em>}' containment reference.
+	 * Sets the value of the '{@link org.hl7.fhir.AuditEventNetwork#getAddress <em>Address</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Identifier</em>' containment reference.
-	 * @see #getIdentifier()
+	 * @param value the new value of the '<em>Address</em>' containment reference.
+	 * @see #getAddress()
 	 * @generated
 	 */
-	void setIdentifier(org.hl7.fhir.String value);
+	void setAddress(org.hl7.fhir.String value);
 
 	/**
 	 * Returns the value of the '<em><b>Type</b></em>' containment reference.

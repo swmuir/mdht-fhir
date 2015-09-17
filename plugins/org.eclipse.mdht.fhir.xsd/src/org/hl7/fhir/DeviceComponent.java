@@ -186,7 +186,7 @@ public interface DeviceComponent extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Describes the parameter group supported by the current device component that is based on some nomenclature, e.g., cardiovascular.
+	 * Describes the parameter group supported by the current device component that is based on some nomenclature, e.g. cardiovascular.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Parameter Group</em>' containment reference.
 	 * @see #setParameterGroup(CodeableConcept)

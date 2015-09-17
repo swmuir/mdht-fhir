@@ -34,7 +34,7 @@ public class AllergyIntoleranceTypeImpl extends ElementImpl implements AllergyIn
 	 * @generated
 	 * @ordered
 	 */
-	protected static final AllergyIntoleranceTypeList VALUE_EDEFAULT = AllergyIntoleranceTypeList.IMMUNE;
+	protected static final AllergyIntoleranceTypeList VALUE_EDEFAULT = AllergyIntoleranceTypeList.ALLERGY;
 
 	/**
 	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.

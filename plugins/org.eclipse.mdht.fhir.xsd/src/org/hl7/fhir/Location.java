@@ -19,6 +19,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link org.hl7.fhir.Location#getIdentifier <em>Identifier</em>}</li>
+ *   <li>{@link org.hl7.fhir.Location#getStatus <em>Status</em>}</li>
  *   <li>{@link org.hl7.fhir.Location#getName <em>Name</em>}</li>
  *   <li>{@link org.hl7.fhir.Location#getDescription <em>Description</em>}</li>
  *   <li>{@link org.hl7.fhir.Location#getMode <em>Mode</em>}</li>
@@ -29,7 +30,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.hl7.fhir.Location#getPosition <em>Position</em>}</li>
  *   <li>{@link org.hl7.fhir.Location#getManagingOrganization <em>Managing Organization</em>}</li>
  *   <li>{@link org.hl7.fhir.Location#getPartOf <em>Part Of</em>}</li>
- *   <li>{@link org.hl7.fhir.Location#getStatus <em>Status</em>}</li>
  * </ul>
  *
  * @see org.hl7.fhir.FhirPackage#getLocation()
@@ -52,6 +52,32 @@ public interface Location extends DomainResource {
 	 * @generated
 	 */
 	EList<Identifier> getIdentifier();
+
+	/**
+	 * Returns the value of the '<em><b>Status</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * active | suspended | inactive.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Status</em>' containment reference.
+	 * @see #setStatus(LocationStatus)
+	 * @see org.hl7.fhir.FhirPackage#getLocation_Status()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='status' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	LocationStatus getStatus();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.Location#getStatus <em>Status</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Status</em>' containment reference.
+	 * @see #getStatus()
+	 * @generated
+	 */
+	void setStatus(LocationStatus value);
 
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' containment reference.
@@ -230,7 +256,7 @@ public interface Location extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The absolute geographic location of the Location, expressed in with the WGS84 datum (This is the same co-ordinate system used in KML).
+	 * The absolute geographic location of the Location, expressed using the WGS84 datum (This is the same co-ordinate system used in KML).
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Position</em>' containment reference.
 	 * @see #setPosition(LocationPosition)
@@ -256,7 +282,7 @@ public interface Location extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The organization that is responsible for the provisioning and upkeep of the location.
+	 * The organization responsible for the provisioning and upkeep of the location.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Managing Organization</em>' containment reference.
 	 * @see #setManagingOrganization(Reference)
@@ -302,31 +328,5 @@ public interface Location extends DomainResource {
 	 * @generated
 	 */
 	void setPartOf(Reference value);
-
-	/**
-	 * Returns the value of the '<em><b>Status</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * active | suspended | inactive.
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Status</em>' containment reference.
-	 * @see #setStatus(LocationStatus)
-	 * @see org.hl7.fhir.FhirPackage#getLocation_Status()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='status' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	LocationStatus getStatus();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.Location#getStatus <em>Status</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Status</em>' containment reference.
-	 * @see #getStatus()
-	 * @generated
-	 */
-	void setStatus(LocationStatus value);
 
 } // Location

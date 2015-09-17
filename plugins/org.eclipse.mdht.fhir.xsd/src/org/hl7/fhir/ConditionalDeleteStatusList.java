@@ -55,7 +55,7 @@ public enum ConditionalDeleteStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * No support for conditional deletes
+	 * No support for conditional deletes.
 	 * <!-- end-model-doc -->
 	 * @see #NOT_SUPPORTED
 	 * @model name="notSupported" literal="not-supported"
@@ -69,7 +69,7 @@ public enum ConditionalDeleteStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Conditional deletes are supported, but only single resources at a time
+	 * Conditional deletes are supported, but only single resources at a time.
 	 * <!-- end-model-doc -->
 	 * @see #SINGLE
 	 * @model name="single"
@@ -83,7 +83,7 @@ public enum ConditionalDeleteStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Conditional deletes are supported, and multiple resources can be deleted in a single interaction
+	 * Conditional deletes are supported, and multiple resources can be deleted in a single interaction.
 	 * <!-- end-model-doc -->
 	 * @see #MULTIPLE
 	 * @model name="multiple"

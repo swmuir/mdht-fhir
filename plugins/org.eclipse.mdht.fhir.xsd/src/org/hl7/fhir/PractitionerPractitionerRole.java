@@ -35,7 +35,7 @@ public interface PractitionerPractitionerRole extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The Organization where the Practitioner performs the roles associated.
+	 * The organization where the Practitioner performs the roles associated.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Managing Organization</em>' containment reference.
 	 * @see #setManagingOrganization(Reference)

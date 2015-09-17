@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Thu, Aug 20, 2015 14:13+0000 for FHIR v0.5.0 
+  Generated on Wed, Sep 16, 2015 13:28+0000 for FHIR v1.0.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -66,17 +66,12 @@
           </xs:element>
           <xs:element name="type" minOccurs="1" maxOccurs="1" type="CodeableConcept">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Specifies the particular kind of document. This usually equates to the purpose of making the document. It is recommended that the value Set be drawn from a coding scheme providing a fine level of granularity such as LOINC.  (e.g. Patient Summary, Discharge Summary, Prescription, etc.).</xs:documentation>
+              <xs:documentation xml:lang="en">Specifies the particular kind of document referenced  (e.g. History and Physical, Discharge Summary, Progress Note). This usually equates to the purpose of making the document referenced.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="class" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             <xs:annotation>
-              <xs:documentation xml:lang="en">A categorization for the type of document - helps for indexing and searching. This may be implied by or derived from the code specified in the Composition Type.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-          <xs:element name="format" minOccurs="0" maxOccurs="unbounded" type="Coding">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">An identifier of the document encoding, structure, and template that the document conforms to beyond the base format indicated in the mimeType.</xs:documentation>
+              <xs:documentation xml:lang="en">A categorization for the type of document referenced - helps for indexing and searching. This may be implied by or derived from the code specified in the DocumentReference.type.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="author" minOccurs="0" maxOccurs="unbounded" type="Reference">
@@ -129,9 +124,9 @@
               <xs:documentation xml:lang="en">A set of Security-Tag codes specifying the level of privacy/security of the Document. Note that DocumentReference.meta.security is the security labels of the reference to the document, while DocumentReference.securityLabel is the security labels on the document it refers to.</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:element name="content" minOccurs="1" maxOccurs="unbounded" type="Attachment">
+          <xs:element name="content" type="DocumentReference.Content" minOccurs="1" maxOccurs="unbounded">
             <xs:annotation>
-              <xs:documentation xml:lang="en">The document or url to the document along with critical metadata to prove content has integrity.</xs:documentation>
+              <xs:documentation xml:lang="en">The document and format referenced. May be multiple content each with a different format.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="context" type="DocumentReference.Context" minOccurs="0" maxOccurs="1">
@@ -158,6 +153,27 @@
           <xs:element name="target" minOccurs="1" maxOccurs="1" type="Reference">
             <xs:annotation>
               <xs:documentation xml:lang="en">The target document of this relationship.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DocumentReference.Content">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">A reference to a document.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="BackboneElement">
+        <xs:sequence>
+          <xs:element name="attachment" minOccurs="1" maxOccurs="1" type="Attachment">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The document or url to the document along with critical metadata to prove content has integrity.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="format" minOccurs="0" maxOccurs="unbounded" type="Coding">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">An identifier of the document encoding, structure, and template that the document conforms to beyond the base format indicated in the mimeType.</xs:documentation>
            </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -235,29 +251,29 @@
     <xs:restriction base="xs:string">
       <xs:enumeration value="replaces">
         <xs:annotation>
-          <xs:documentation xml:lang="en">This document logically replaces or supersedes the target document</xs:documentation>
+          <xs:documentation xml:lang="en">This document logically replaces or supersedes the target document.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="transforms">
         <xs:annotation>
-          <xs:documentation xml:lang="en">This document was generated by transforming the target document (e.g. format or language conversion)</xs:documentation>
+          <xs:documentation xml:lang="en">This document was generated by transforming the target document (e.g. format or language conversion).</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="signs">
         <xs:annotation>
-          <xs:documentation xml:lang="en">This document is a signature of the target document</xs:documentation>
+          <xs:documentation xml:lang="en">This document is a signature of the target document.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="appends">
         <xs:annotation>
-          <xs:documentation xml:lang="en">This document adds additional information to the target document</xs:documentation>
+          <xs:documentation xml:lang="en">This document adds additional information to the target document.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="DocumentRelationshipType">
     <xs:annotation>
-      <xs:documentation xml:lang="en">The type of relationship between documents</xs:documentation>
+      <xs:documentation xml:lang="en">The type of relationship between documents.</xs:documentation>
       <xs:documentation xml:lang="en">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>
     </xs:annotation>
     <xs:complexContent>

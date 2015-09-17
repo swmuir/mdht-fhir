@@ -45,7 +45,7 @@ public enum ContentTypeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * XML content-type corresponding to the application/xml+fhir mime-type
+	 * XML content-type corresponding to the application/xml+fhir mime-type.
 	 * <!-- end-model-doc -->
 	 * @see #XML
 	 * @model name="xml"
@@ -59,7 +59,7 @@ public enum ContentTypeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * JSON content-type corresponding to the application/json+fhir mime-type
+	 * JSON content-type corresponding to the application/json+fhir mime-type.
 	 * <!-- end-model-doc -->
 	 * @see #JSON
 	 * @model name="json"

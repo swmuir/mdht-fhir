@@ -55,7 +55,7 @@ public enum DocumentReferenceStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * This is the current reference for this document
+	 * This is the current reference for this document.
 	 * <!-- end-model-doc -->
 	 * @see #CURRENT
 	 * @model name="current"
@@ -69,7 +69,7 @@ public enum DocumentReferenceStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * This reference has been superseded by another reference
+	 * This reference has been superseded by another reference.
 	 * <!-- end-model-doc -->
 	 * @see #SUPERSEDED
 	 * @model name="superseded"
@@ -83,7 +83,7 @@ public enum DocumentReferenceStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * This reference was created in error
+	 * This reference was created in error.
 	 * <!-- end-model-doc -->
 	 * @see #ENTERED_IN_ERROR
 	 * @model name="enteredInError" literal="entered-in-error"

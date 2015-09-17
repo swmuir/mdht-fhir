@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Thu, Aug 20, 2015 14:13+0000 for FHIR v0.5.0 
+  Generated on Wed, Sep 16, 2015 13:28+0000 for FHIR v1.0.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -61,7 +61,7 @@
           </xs:element>
           <xs:element name="category" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             <xs:annotation>
-              <xs:documentation xml:lang="en">A code that classifies the dlinical discipline, department or diagnostic service that created the report (e.g. cardiology, biochemistry, hematology, MRI). This is used for searching, sorting and display purposes.</xs:documentation>
+              <xs:documentation xml:lang="en">A code that classifies the clinical discipline, department or diagnostic service that created the report (e.g. cardiology, biochemistry, hematology, MRI). This is used for searching, sorting and display purposes.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="code" minOccurs="1" maxOccurs="1" type="CodeableConcept">
@@ -165,44 +165,44 @@
     <xs:restriction base="xs:string">
       <xs:enumeration value="registered">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The existence of the report is registered, but there is nothing yet available</xs:documentation>
+          <xs:documentation xml:lang="en">The existence of the report is registered, but there is nothing yet available.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="partial">
         <xs:annotation>
-          <xs:documentation xml:lang="en">This is a partial (e.g. initial, interim or preliminary) report: data in the report may be incomplete or unverified</xs:documentation>
+          <xs:documentation xml:lang="en">This is a partial (e.g. initial, interim or preliminary) report: data in the report may be incomplete or unverified.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="final">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The report is complete and verified by an authorized person</xs:documentation>
+          <xs:documentation xml:lang="en">The report is complete and verified by an authorized person.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="corrected">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The report has been modified subsequent to being Final, and is complete and verified by an authorized person</xs:documentation>
+          <xs:documentation xml:lang="en">The report has been modified subsequent to being Final, and is complete and verified by an authorized person. New content has been added, but existing content hasn't changed</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="appended">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The report has been modified subsequent to being Final, and is complete and verified by an authorized person. New content has been added, but existing content hasn't changed</xs:documentation>
+          <xs:documentation xml:lang="en">The report has been modified subsequent to being Final, and is complete and verified by an authorized person. New content has been added, but existing content hasn't changed.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="cancelled">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The report is unavailable because the measurement was not started or not completed (also sometimes called &quot;aborted&quot;)</xs:documentation>
+          <xs:documentation xml:lang="en">The report is unavailable because the measurement was not started or not completed (also sometimes called &quot;aborted&quot;).</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="entered-in-error">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The report has been withdrawn following previous Final release</xs:documentation>
+          <xs:documentation xml:lang="en">The report has been withdrawn following previous Final release.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="DiagnosticReportStatus">
     <xs:annotation>
-      <xs:documentation xml:lang="en">The status of the diagnostic report as a whole</xs:documentation>
+      <xs:documentation xml:lang="en">The status of the diagnostic report as a whole.</xs:documentation>
       <xs:documentation xml:lang="en">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>
     </xs:annotation>
     <xs:complexContent>

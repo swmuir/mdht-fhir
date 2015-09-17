@@ -21,6 +21,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.hl7.fhir.FamilyMemberHistory#getIdentifier <em>Identifier</em>}</li>
  *   <li>{@link org.hl7.fhir.FamilyMemberHistory#getPatient <em>Patient</em>}</li>
  *   <li>{@link org.hl7.fhir.FamilyMemberHistory#getDate <em>Date</em>}</li>
+ *   <li>{@link org.hl7.fhir.FamilyMemberHistory#getStatus <em>Status</em>}</li>
  *   <li>{@link org.hl7.fhir.FamilyMemberHistory#getName <em>Name</em>}</li>
  *   <li>{@link org.hl7.fhir.FamilyMemberHistory#getRelationship <em>Relationship</em>}</li>
  *   <li>{@link org.hl7.fhir.FamilyMemberHistory#getGender <em>Gender</em>}</li>
@@ -113,11 +114,37 @@ public interface FamilyMemberHistory extends DomainResource {
 	void setDate(DateTime value);
 
 	/**
+	 * Returns the value of the '<em><b>Status</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A code specifying a state of a Family Member History record.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Status</em>' containment reference.
+	 * @see #setStatus(FamilyHistoryStatus)
+	 * @see org.hl7.fhir.FhirPackage#getFamilyMemberHistory_Status()
+	 * @model containment="true" required="true"
+	 *        extendedMetaData="kind='element' name='status' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	FamilyHistoryStatus getStatus();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.FamilyMemberHistory#getStatus <em>Status</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Status</em>' containment reference.
+	 * @see #getStatus()
+	 * @generated
+	 */
+	void setStatus(FamilyHistoryStatus value);
+
+	/**
 	 * Returns the value of the '<em><b>Name</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * This will either be a name or a description.  E.g. "Aunt Susan", "my cousin with the red hair".
+	 * This will either be a name or a description; e.g. "Aunt Susan", "my cousin with the red hair".
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Name</em>' containment reference.
 	 * @see #setName(org.hl7.fhir.String)
@@ -495,13 +522,13 @@ public interface FamilyMemberHistory extends DomainResource {
 	 * This property allows a non condition-specific note to the made about the related person. Ideally, the note would be in the condition property, but this is not always possible.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Note</em>' containment reference.
-	 * @see #setNote(org.hl7.fhir.String)
+	 * @see #setNote(Annotation)
 	 * @see org.hl7.fhir.FhirPackage#getFamilyMemberHistory_Note()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='note' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	org.hl7.fhir.String getNote();
+	Annotation getNote();
 
 	/**
 	 * Sets the value of the '{@link org.hl7.fhir.FamilyMemberHistory#getNote <em>Note</em>}' containment reference.
@@ -511,7 +538,7 @@ public interface FamilyMemberHistory extends DomainResource {
 	 * @see #getNote()
 	 * @generated
 	 */
-	void setNote(org.hl7.fhir.String value);
+	void setNote(Annotation value);
 
 	/**
 	 * Returns the value of the '<em><b>Condition</b></em>' containment reference list.

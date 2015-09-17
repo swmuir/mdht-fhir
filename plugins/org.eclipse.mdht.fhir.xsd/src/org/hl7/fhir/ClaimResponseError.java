@@ -32,7 +32,7 @@ public interface ClaimResponseError extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The sequence number of the line item submitted which contains the error. This value is ommitted when the error is elsewhere.
+	 * The sequence number of the line item submitted which contains the error. This value is omitted when the error is elsewhere.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Sequence Link Id</em>' containment reference.
 	 * @see #setSequenceLinkId(PositiveInt)
@@ -58,7 +58,7 @@ public interface ClaimResponseError extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The sequence number of the addition within the line item submitted which contains the error. This value is ommitted when the error is not related to an Addition.
+	 * The sequence number of the addition within the line item submitted which contains the error. This value is omitted when the error is not related to an Addition.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Detail Sequence Link Id</em>' containment reference.
 	 * @see #setDetailSequenceLinkId(PositiveInt)
@@ -84,7 +84,7 @@ public interface ClaimResponseError extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The sequence number of the addition within the line item submitted which contains the error. This value is ommitted when the error is not related to an Addition.
+	 * The sequence number of the addition within the line item submitted which contains the error. This value is omitted when the error is not related to an Addition.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Subdetail Sequence Link Id</em>' containment reference.
 	 * @see #setSubdetailSequenceLinkId(PositiveInt)

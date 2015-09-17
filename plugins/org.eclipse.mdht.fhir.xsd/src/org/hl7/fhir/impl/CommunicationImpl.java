@@ -46,6 +46,7 @@ import org.hl7.fhir.Reference;
  *   <li>{@link org.hl7.fhir.impl.CommunicationImpl#getReceived <em>Received</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.CommunicationImpl#getReason <em>Reason</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.CommunicationImpl#getSubject <em>Subject</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.CommunicationImpl#getRequestDetail <em>Request Detail</em>}</li>
  * </ul>
  *
  * @generated
@@ -170,6 +171,16 @@ public class CommunicationImpl extends DomainResourceImpl implements Communicati
 	 * @ordered
 	 */
 	protected Reference subject;
+
+	/**
+	 * The cached value of the '{@link #getRequestDetail() <em>Request Detail</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRequestDetail()
+	 * @generated
+	 * @ordered
+	 */
+	protected Reference requestDetail;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -556,6 +567,49 @@ public class CommunicationImpl extends DomainResourceImpl implements Communicati
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Reference getRequestDetail() {
+		return requestDetail;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetRequestDetail(Reference newRequestDetail, NotificationChain msgs) {
+		Reference oldRequestDetail = requestDetail;
+		requestDetail = newRequestDetail;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.COMMUNICATION__REQUEST_DETAIL, oldRequestDetail, newRequestDetail);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setRequestDetail(Reference newRequestDetail) {
+		if (newRequestDetail != requestDetail) {
+			NotificationChain msgs = null;
+			if (requestDetail != null)
+				msgs = ((InternalEObject)requestDetail).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.COMMUNICATION__REQUEST_DETAIL, null, msgs);
+			if (newRequestDetail != null)
+				msgs = ((InternalEObject)newRequestDetail).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.COMMUNICATION__REQUEST_DETAIL, null, msgs);
+			msgs = basicSetRequestDetail(newRequestDetail, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.COMMUNICATION__REQUEST_DETAIL, newRequestDetail, newRequestDetail));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -583,6 +637,8 @@ public class CommunicationImpl extends DomainResourceImpl implements Communicati
 				return ((InternalEList<?>)getReason()).basicRemove(otherEnd, msgs);
 			case FhirPackage.COMMUNICATION__SUBJECT:
 				return basicSetSubject(null, msgs);
+			case FhirPackage.COMMUNICATION__REQUEST_DETAIL:
+				return basicSetRequestDetail(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -619,6 +675,8 @@ public class CommunicationImpl extends DomainResourceImpl implements Communicati
 				return getReason();
 			case FhirPackage.COMMUNICATION__SUBJECT:
 				return getSubject();
+			case FhirPackage.COMMUNICATION__REQUEST_DETAIL:
+				return getRequestDetail();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -673,6 +731,9 @@ public class CommunicationImpl extends DomainResourceImpl implements Communicati
 			case FhirPackage.COMMUNICATION__SUBJECT:
 				setSubject((Reference)newValue);
 				return;
+			case FhirPackage.COMMUNICATION__REQUEST_DETAIL:
+				setRequestDetail((Reference)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -721,6 +782,9 @@ public class CommunicationImpl extends DomainResourceImpl implements Communicati
 			case FhirPackage.COMMUNICATION__SUBJECT:
 				setSubject((Reference)null);
 				return;
+			case FhirPackage.COMMUNICATION__REQUEST_DETAIL:
+				setRequestDetail((Reference)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -757,6 +821,8 @@ public class CommunicationImpl extends DomainResourceImpl implements Communicati
 				return reason != null && !reason.isEmpty();
 			case FhirPackage.COMMUNICATION__SUBJECT:
 				return subject != null;
+			case FhirPackage.COMMUNICATION__REQUEST_DETAIL:
+				return requestDetail != null;
 		}
 		return super.eIsSet(featureID);
 	}

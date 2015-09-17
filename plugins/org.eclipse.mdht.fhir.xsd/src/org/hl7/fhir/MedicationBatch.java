@@ -9,7 +9,7 @@ package org.hl7.fhir;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Primarily used for identification and definition of Medication, but also covers ingredients and packaging.
+ * This resource is primarily used for the identification and definition of a medication. It covers the ingredients and the packaging for a medication.
  * <!-- end-model-doc -->
  *
  * <p>

@@ -41,46 +41,6 @@ public enum GoalStatusList implements Enumerator {
 	PLANNED(1, "planned", "planned"),
 
 	/**
-	 * The '<em><b>In Progress</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #IN_PROGRESS_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	IN_PROGRESS(2, "inProgress", "in-progress"),
-
-	/**
-	 * The '<em><b>Achieved</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #ACHIEVED_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	ACHIEVED(3, "achieved", "achieved"),
-
-	/**
-	 * The '<em><b>Sustaining</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #SUSTAINING_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	SUSTAINING(4, "sustaining", "sustaining"),
-
-	/**
-	 * The '<em><b>Cancelled</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #CANCELLED_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	CANCELLED(5, "cancelled", "cancelled"),
-
-	/**
 	 * The '<em><b>Accepted</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -88,7 +48,7 @@ public enum GoalStatusList implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	ACCEPTED(6, "accepted", "accepted"),
+	ACCEPTED(2, "accepted", "accepted"),
 
 	/**
 	 * The '<em><b>Rejected</b></em>' literal object.
@@ -98,7 +58,57 @@ public enum GoalStatusList implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	REJECTED(7, "rejected", "rejected");
+	REJECTED(3, "rejected", "rejected"),
+
+	/**
+	 * The '<em><b>In Progress</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #IN_PROGRESS_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	IN_PROGRESS(4, "inProgress", "in-progress"),
+
+	/**
+	 * The '<em><b>Achieved</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #ACHIEVED_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	ACHIEVED(5, "achieved", "achieved"),
+
+	/**
+	 * The '<em><b>Sustaining</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #SUSTAINING_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	SUSTAINING(6, "sustaining", "sustaining"),
+
+	/**
+	 * The '<em><b>On Hold</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #ON_HOLD_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	ON_HOLD(7, "onHold", "on-hold"),
+
+	/**
+	 * The '<em><b>Cancelled</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #CANCELLED_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	CANCELLED(8, "cancelled", "cancelled");
 
 	/**
 	 * The '<em><b>Proposed</b></em>' literal value.
@@ -129,62 +139,6 @@ public enum GoalStatusList implements Enumerator {
 	public static final int PLANNED_VALUE = 1;
 
 	/**
-	 * The '<em><b>In Progress</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The goal is being sought but has not yet been reached.  (Also applies if goal was reached in the past but there has been regression and goal is being sought again)
-	 * <!-- end-model-doc -->
-	 * @see #IN_PROGRESS
-	 * @model name="inProgress" literal="in-progress"
-	 * @generated
-	 * @ordered
-	 */
-	public static final int IN_PROGRESS_VALUE = 2;
-
-	/**
-	 * The '<em><b>Achieved</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The goal has been met and no further action is needed
-	 * <!-- end-model-doc -->
-	 * @see #ACHIEVED
-	 * @model name="achieved"
-	 * @generated
-	 * @ordered
-	 */
-	public static final int ACHIEVED_VALUE = 3;
-
-	/**
-	 * The '<em><b>Sustaining</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The goal has been met, but ongoing activity is needed to sustain the goal objective
-	 * <!-- end-model-doc -->
-	 * @see #SUSTAINING
-	 * @model name="sustaining"
-	 * @generated
-	 * @ordered
-	 */
-	public static final int SUSTAINING_VALUE = 4;
-
-	/**
-	 * The '<em><b>Cancelled</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The goal is no longer being sought
-	 * <!-- end-model-doc -->
-	 * @see #CANCELLED
-	 * @model name="cancelled"
-	 * @generated
-	 * @ordered
-	 */
-	public static final int CANCELLED_VALUE = 5;
-
-	/**
 	 * The '<em><b>Accepted</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -196,7 +150,7 @@ public enum GoalStatusList implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int ACCEPTED_VALUE = 6;
+	public static final int ACCEPTED_VALUE = 2;
 
 	/**
 	 * The '<em><b>Rejected</b></em>' literal value.
@@ -210,7 +164,77 @@ public enum GoalStatusList implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int REJECTED_VALUE = 7;
+	public static final int REJECTED_VALUE = 3;
+
+	/**
+	 * The '<em><b>In Progress</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The goal is being sought but has not yet been reached.  (Also applies if goal was reached in the past but there has been regression and goal is being sought again)
+	 * <!-- end-model-doc -->
+	 * @see #IN_PROGRESS
+	 * @model name="inProgress" literal="in-progress"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int IN_PROGRESS_VALUE = 4;
+
+	/**
+	 * The '<em><b>Achieved</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The goal has been met and no further action is needed
+	 * <!-- end-model-doc -->
+	 * @see #ACHIEVED
+	 * @model name="achieved"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ACHIEVED_VALUE = 5;
+
+	/**
+	 * The '<em><b>Sustaining</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The goal has been met, but ongoing activity is needed to sustain the goal objective
+	 * <!-- end-model-doc -->
+	 * @see #SUSTAINING
+	 * @model name="sustaining"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int SUSTAINING_VALUE = 6;
+
+	/**
+	 * The '<em><b>On Hold</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The goal remains a long term objective but is no longer being actively pursued for a temporary period of time.
+	 * <!-- end-model-doc -->
+	 * @see #ON_HOLD
+	 * @model name="onHold" literal="on-hold"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ON_HOLD_VALUE = 7;
+
+	/**
+	 * The '<em><b>Cancelled</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The goal is no longer being sought
+	 * <!-- end-model-doc -->
+	 * @see #CANCELLED
+	 * @model name="cancelled"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int CANCELLED_VALUE = 8;
 
 	/**
 	 * An array of all the '<em><b>Goal Status List</b></em>' enumerators.
@@ -222,12 +246,13 @@ public enum GoalStatusList implements Enumerator {
 		new GoalStatusList[] {
 			PROPOSED,
 			PLANNED,
+			ACCEPTED,
+			REJECTED,
 			IN_PROGRESS,
 			ACHIEVED,
 			SUSTAINING,
+			ON_HOLD,
 			CANCELLED,
-			ACCEPTED,
-			REJECTED,
 		};
 
 	/**
@@ -286,12 +311,13 @@ public enum GoalStatusList implements Enumerator {
 		switch (value) {
 			case PROPOSED_VALUE: return PROPOSED;
 			case PLANNED_VALUE: return PLANNED;
+			case ACCEPTED_VALUE: return ACCEPTED;
+			case REJECTED_VALUE: return REJECTED;
 			case IN_PROGRESS_VALUE: return IN_PROGRESS;
 			case ACHIEVED_VALUE: return ACHIEVED;
 			case SUSTAINING_VALUE: return SUSTAINING;
+			case ON_HOLD_VALUE: return ON_HOLD;
 			case CANCELLED_VALUE: return CANCELLED;
-			case ACCEPTED_VALUE: return ACCEPTED;
-			case REJECTED_VALUE: return REJECTED;
 		}
 		return null;
 	}

@@ -34,7 +34,7 @@ public class AllergyIntoleranceStatusImpl extends ElementImpl implements Allergy
 	 * @generated
 	 * @ordered
 	 */
-	protected static final AllergyIntoleranceStatusList VALUE_EDEFAULT = AllergyIntoleranceStatusList.UNCONFIRMED;
+	protected static final AllergyIntoleranceStatusList VALUE_EDEFAULT = AllergyIntoleranceStatusList.ACTIVE;
 
 	/**
 	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.

@@ -30,7 +30,7 @@ public interface PatientCommunication extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The ISO-639-1 alpha 2 code in lower case for the language, optionally followed by a hyphen and the ISO-3166-1 alpha 2 code for the region in upper case. E.g. "en" for English, or "en-US" for American English versus "en-EN" for England English.
+	 * The ISO-639-1 alpha 2 code in lower case for the language, optionally followed by a hyphen and the ISO-3166-1 alpha 2 code for the region in upper case; e.g. "en" for English, or "en-US" for American English versus "en-EN" for England English.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Language</em>' containment reference.
 	 * @see #setLanguage(CodeableConcept)
@@ -56,7 +56,7 @@ public interface PatientCommunication extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Indicates whether or not the Patient prefers this language (over other languages he masters up a certain level).
+	 * Indicates whether or not the patient prefers this language (over other languages he masters up a certain level).
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Preferred</em>' containment reference.
 	 * @see #setPreferred(org.hl7.fhir.Boolean)

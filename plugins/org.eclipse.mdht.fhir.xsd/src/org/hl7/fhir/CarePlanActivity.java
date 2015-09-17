@@ -10,7 +10,7 @@ import org.eclipse.emf.common.util.EList;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Describes the intention of how one or more practitioners intend to deliver care for a particular patient for a period of time, possibly limited to care for a specific condition or set of conditions.
+ * Describes the intention of how one or more practitioners intend to deliver care for a particular patient, group or community for a period of time, possibly limited to care for a specific condition or set of conditions.
  * <!-- end-model-doc -->
  *
  * <p>
@@ -18,7 +18,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link org.hl7.fhir.CarePlanActivity#getActionResulting <em>Action Resulting</em>}</li>
- *   <li>{@link org.hl7.fhir.CarePlanActivity#getNotes <em>Notes</em>}</li>
+ *   <li>{@link org.hl7.fhir.CarePlanActivity#getProgress <em>Progress</em>}</li>
  *   <li>{@link org.hl7.fhir.CarePlanActivity#getReference <em>Reference</em>}</li>
  *   <li>{@link org.hl7.fhir.CarePlanActivity#getDetail <em>Detail</em>}</li>
  * </ul>
@@ -45,30 +45,20 @@ public interface CarePlanActivity extends BackboneElement {
 	EList<Reference> getActionResulting();
 
 	/**
-	 * Returns the value of the '<em><b>Notes</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Progress</b></em>' containment reference list.
+	 * The list contents are of type {@link org.hl7.fhir.Annotation}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Notes about the execution of the activity.
+	 * Notes about the adherence/status/progress of the activity.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Notes</em>' containment reference.
-	 * @see #setNotes(org.hl7.fhir.String)
-	 * @see org.hl7.fhir.FhirPackage#getCarePlanActivity_Notes()
+	 * @return the value of the '<em>Progress</em>' containment reference list.
+	 * @see org.hl7.fhir.FhirPackage#getCarePlanActivity_Progress()
 	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='notes' namespace='##targetNamespace'"
+	 *        extendedMetaData="kind='element' name='progress' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	org.hl7.fhir.String getNotes();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.CarePlanActivity#getNotes <em>Notes</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Notes</em>' containment reference.
-	 * @see #getNotes()
-	 * @generated
-	 */
-	void setNotes(org.hl7.fhir.String value);
+	EList<Annotation> getProgress();
 
 	/**
 	 * Returns the value of the '<em><b>Reference</b></em>' containment reference.

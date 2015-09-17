@@ -9,7 +9,7 @@ package org.hl7.fhir;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Describes the intention of how one or more practitioners intend to deliver care for a particular patient for a period of time, possibly limited to care for a specific condition or set of conditions.
+ * Describes the intention of how one or more practitioners intend to deliver care for a particular patient, group or community for a period of time, possibly limited to care for a specific condition or set of conditions.
  * <!-- end-model-doc -->
  *
  * <p>
@@ -30,7 +30,7 @@ public interface CarePlanParticipant extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Indicates specific responsibility of an individual within the care plan.  E.g. "Primary physician", "Team coordinator", "Caregiver", etc.
+	 * Indicates specific responsibility of an individual within the care plan; e.g. "Primary physician", "Team coordinator", "Caregiver", etc.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Role</em>' containment reference.
 	 * @see #setRole(CodeableConcept)
@@ -61,7 +61,7 @@ public interface CarePlanParticipant extends BackboneElement {
 	 * @return the value of the '<em>Member</em>' containment reference.
 	 * @see #setMember(Reference)
 	 * @see org.hl7.fhir.FhirPackage#getCarePlanParticipant_Member()
-	 * @model containment="true" required="true"
+	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='member' namespace='##targetNamespace'"
 	 * @generated
 	 */

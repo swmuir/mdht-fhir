@@ -9,7 +9,7 @@ package org.hl7.fhir;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Assertion about certainty associated with a propensity, or potential risk, of a reaction to the identified Substance
+ * Assertion about certainty associated with a propensity, or potential risk, of a reaction to the identified Substance.
  * If the element is present, it must have either a @value, an @id, or extensions
  * <!-- end-model-doc -->
  *

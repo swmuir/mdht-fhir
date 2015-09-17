@@ -22,7 +22,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.hl7.fhir.AuditEventObject#getType <em>Type</em>}</li>
  *   <li>{@link org.hl7.fhir.AuditEventObject#getRole <em>Role</em>}</li>
  *   <li>{@link org.hl7.fhir.AuditEventObject#getLifecycle <em>Lifecycle</em>}</li>
- *   <li>{@link org.hl7.fhir.AuditEventObject#getSensitivity <em>Sensitivity</em>}</li>
+ *   <li>{@link org.hl7.fhir.AuditEventObject#getSecurityLabel <em>Security Label</em>}</li>
  *   <li>{@link org.hl7.fhir.AuditEventObject#getName <em>Name</em>}</li>
  *   <li>{@link org.hl7.fhir.AuditEventObject#getDescription <em>Description</em>}</li>
  *   <li>{@link org.hl7.fhir.AuditEventObject#getQuery <em>Query</em>}</li>
@@ -94,13 +94,13 @@ public interface AuditEventObject extends BackboneElement {
 	 * The type of the object that was involved in this audit event.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Type</em>' containment reference.
-	 * @see #setType(AuditEventObjectType)
+	 * @see #setType(Coding)
 	 * @see org.hl7.fhir.FhirPackage#getAuditEventObject_Type()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='type' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	AuditEventObjectType getType();
+	Coding getType();
 
 	/**
 	 * Sets the value of the '{@link org.hl7.fhir.AuditEventObject#getType <em>Type</em>}' containment reference.
@@ -110,7 +110,7 @@ public interface AuditEventObject extends BackboneElement {
 	 * @see #getType()
 	 * @generated
 	 */
-	void setType(AuditEventObjectType value);
+	void setType(Coding value);
 
 	/**
 	 * Returns the value of the '<em><b>Role</b></em>' containment reference.
@@ -120,13 +120,13 @@ public interface AuditEventObject extends BackboneElement {
 	 * Code representing the functional application role of Participant Object being audited.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Role</em>' containment reference.
-	 * @see #setRole(AuditEventObjectRole)
+	 * @see #setRole(Coding)
 	 * @see org.hl7.fhir.FhirPackage#getAuditEventObject_Role()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='role' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	AuditEventObjectRole getRole();
+	Coding getRole();
 
 	/**
 	 * Sets the value of the '{@link org.hl7.fhir.AuditEventObject#getRole <em>Role</em>}' containment reference.
@@ -136,7 +136,7 @@ public interface AuditEventObject extends BackboneElement {
 	 * @see #getRole()
 	 * @generated
 	 */
-	void setRole(AuditEventObjectRole value);
+	void setRole(Coding value);
 
 	/**
 	 * Returns the value of the '<em><b>Lifecycle</b></em>' containment reference.
@@ -146,13 +146,13 @@ public interface AuditEventObject extends BackboneElement {
 	 * Identifier for the data life-cycle stage for the participant object.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Lifecycle</em>' containment reference.
-	 * @see #setLifecycle(AuditEventObjectLifecycle)
+	 * @see #setLifecycle(Coding)
 	 * @see org.hl7.fhir.FhirPackage#getAuditEventObject_Lifecycle()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='lifecycle' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	AuditEventObjectLifecycle getLifecycle();
+	Coding getLifecycle();
 
 	/**
 	 * Sets the value of the '{@link org.hl7.fhir.AuditEventObject#getLifecycle <em>Lifecycle</em>}' containment reference.
@@ -162,33 +162,23 @@ public interface AuditEventObject extends BackboneElement {
 	 * @see #getLifecycle()
 	 * @generated
 	 */
-	void setLifecycle(AuditEventObjectLifecycle value);
+	void setLifecycle(Coding value);
 
 	/**
-	 * Returns the value of the '<em><b>Sensitivity</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Security Label</b></em>' containment reference list.
+	 * The list contents are of type {@link org.hl7.fhir.Coding}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Denotes policy-defined sensitivity for the Participant Object ID such as VIP, HIV status, mental health status or similar topics.
+	 * Denotes security labels for the identified object.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Sensitivity</em>' containment reference.
-	 * @see #setSensitivity(CodeableConcept)
-	 * @see org.hl7.fhir.FhirPackage#getAuditEventObject_Sensitivity()
+	 * @return the value of the '<em>Security Label</em>' containment reference list.
+	 * @see org.hl7.fhir.FhirPackage#getAuditEventObject_SecurityLabel()
 	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='sensitivity' namespace='##targetNamespace'"
+	 *        extendedMetaData="kind='element' name='securityLabel' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	CodeableConcept getSensitivity();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.AuditEventObject#getSensitivity <em>Sensitivity</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Sensitivity</em>' containment reference.
-	 * @see #getSensitivity()
-	 * @generated
-	 */
-	void setSensitivity(CodeableConcept value);
+	EList<Coding> getSecurityLabel();
 
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' containment reference.

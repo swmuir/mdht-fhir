@@ -31,9 +31,9 @@ import org.hl7.fhir.ConceptMap;
 import org.hl7.fhir.Condition;
 import org.hl7.fhir.Conformance;
 import org.hl7.fhir.Contract;
-import org.hl7.fhir.Contraindication;
 import org.hl7.fhir.Coverage;
 import org.hl7.fhir.DataElement;
+import org.hl7.fhir.DetectedIssue;
 import org.hl7.fhir.Device;
 import org.hl7.fhir.DeviceComponent;
 import org.hl7.fhir.DeviceMetric;
@@ -136,9 +136,9 @@ import org.hl7.fhir.VisionPrescription;
  *   <li>{@link org.hl7.fhir.impl.ResourceContainerImpl#getCondition <em>Condition</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ResourceContainerImpl#getConformance <em>Conformance</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ResourceContainerImpl#getContract <em>Contract</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ResourceContainerImpl#getContraindication <em>Contraindication</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ResourceContainerImpl#getCoverage <em>Coverage</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ResourceContainerImpl#getDataElement <em>Data Element</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ResourceContainerImpl#getDetectedIssue <em>Detected Issue</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ResourceContainerImpl#getDevice <em>Device</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ResourceContainerImpl#getDeviceComponent <em>Device Component</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ResourceContainerImpl#getDeviceMetric <em>Device Metric</em>}</li>
@@ -416,16 +416,6 @@ public class ResourceContainerImpl extends MinimalEObjectImpl.Container implemen
 	protected Contract contract;
 
 	/**
-	 * The cached value of the '{@link #getContraindication() <em>Contraindication</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getContraindication()
-	 * @generated
-	 * @ordered
-	 */
-	protected Contraindication contraindication;
-
-	/**
 	 * The cached value of the '{@link #getCoverage() <em>Coverage</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -444,6 +434,16 @@ public class ResourceContainerImpl extends MinimalEObjectImpl.Container implemen
 	 * @ordered
 	 */
 	protected DataElement dataElement;
+
+	/**
+	 * The cached value of the '{@link #getDetectedIssue() <em>Detected Issue</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDetectedIssue()
+	 * @generated
+	 * @ordered
+	 */
+	protected DetectedIssue detectedIssue;
 
 	/**
 	 * The cached value of the '{@link #getDevice() <em>Device</em>}' containment reference.
@@ -2039,49 +2039,6 @@ public class ResourceContainerImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Contraindication getContraindication() {
-		return contraindication;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetContraindication(Contraindication newContraindication, NotificationChain msgs) {
-		Contraindication oldContraindication = contraindication;
-		contraindication = newContraindication;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.RESOURCE_CONTAINER__CONTRAINDICATION, oldContraindication, newContraindication);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setContraindication(Contraindication newContraindication) {
-		if (newContraindication != contraindication) {
-			NotificationChain msgs = null;
-			if (contraindication != null)
-				msgs = ((InternalEObject)contraindication).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.RESOURCE_CONTAINER__CONTRAINDICATION, null, msgs);
-			if (newContraindication != null)
-				msgs = ((InternalEObject)newContraindication).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.RESOURCE_CONTAINER__CONTRAINDICATION, null, msgs);
-			msgs = basicSetContraindication(newContraindication, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.RESOURCE_CONTAINER__CONTRAINDICATION, newContraindication, newContraindication));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public Coverage getCoverage() {
 		return coverage;
 	}
@@ -2161,6 +2118,49 @@ public class ResourceContainerImpl extends MinimalEObjectImpl.Container implemen
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.RESOURCE_CONTAINER__DATA_ELEMENT, newDataElement, newDataElement));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DetectedIssue getDetectedIssue() {
+		return detectedIssue;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetDetectedIssue(DetectedIssue newDetectedIssue, NotificationChain msgs) {
+		DetectedIssue oldDetectedIssue = detectedIssue;
+		detectedIssue = newDetectedIssue;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.RESOURCE_CONTAINER__DETECTED_ISSUE, oldDetectedIssue, newDetectedIssue);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDetectedIssue(DetectedIssue newDetectedIssue) {
+		if (newDetectedIssue != detectedIssue) {
+			NotificationChain msgs = null;
+			if (detectedIssue != null)
+				msgs = ((InternalEObject)detectedIssue).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.RESOURCE_CONTAINER__DETECTED_ISSUE, null, msgs);
+			if (newDetectedIssue != null)
+				msgs = ((InternalEObject)newDetectedIssue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.RESOURCE_CONTAINER__DETECTED_ISSUE, null, msgs);
+			msgs = basicSetDetectedIssue(newDetectedIssue, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.RESOURCE_CONTAINER__DETECTED_ISSUE, newDetectedIssue, newDetectedIssue));
 	}
 
 	/**
@@ -5264,12 +5264,12 @@ public class ResourceContainerImpl extends MinimalEObjectImpl.Container implemen
 				return basicSetConformance(null, msgs);
 			case FhirPackage.RESOURCE_CONTAINER__CONTRACT:
 				return basicSetContract(null, msgs);
-			case FhirPackage.RESOURCE_CONTAINER__CONTRAINDICATION:
-				return basicSetContraindication(null, msgs);
 			case FhirPackage.RESOURCE_CONTAINER__COVERAGE:
 				return basicSetCoverage(null, msgs);
 			case FhirPackage.RESOURCE_CONTAINER__DATA_ELEMENT:
 				return basicSetDataElement(null, msgs);
+			case FhirPackage.RESOURCE_CONTAINER__DETECTED_ISSUE:
+				return basicSetDetectedIssue(null, msgs);
 			case FhirPackage.RESOURCE_CONTAINER__DEVICE:
 				return basicSetDevice(null, msgs);
 			case FhirPackage.RESOURCE_CONTAINER__DEVICE_COMPONENT:
@@ -5464,12 +5464,12 @@ public class ResourceContainerImpl extends MinimalEObjectImpl.Container implemen
 				return getConformance();
 			case FhirPackage.RESOURCE_CONTAINER__CONTRACT:
 				return getContract();
-			case FhirPackage.RESOURCE_CONTAINER__CONTRAINDICATION:
-				return getContraindication();
 			case FhirPackage.RESOURCE_CONTAINER__COVERAGE:
 				return getCoverage();
 			case FhirPackage.RESOURCE_CONTAINER__DATA_ELEMENT:
 				return getDataElement();
+			case FhirPackage.RESOURCE_CONTAINER__DETECTED_ISSUE:
+				return getDetectedIssue();
 			case FhirPackage.RESOURCE_CONTAINER__DEVICE:
 				return getDevice();
 			case FhirPackage.RESOURCE_CONTAINER__DEVICE_COMPONENT:
@@ -5684,14 +5684,14 @@ public class ResourceContainerImpl extends MinimalEObjectImpl.Container implemen
 			case FhirPackage.RESOURCE_CONTAINER__CONTRACT:
 				setContract((Contract)newValue);
 				return;
-			case FhirPackage.RESOURCE_CONTAINER__CONTRAINDICATION:
-				setContraindication((Contraindication)newValue);
-				return;
 			case FhirPackage.RESOURCE_CONTAINER__COVERAGE:
 				setCoverage((Coverage)newValue);
 				return;
 			case FhirPackage.RESOURCE_CONTAINER__DATA_ELEMENT:
 				setDataElement((DataElement)newValue);
+				return;
+			case FhirPackage.RESOURCE_CONTAINER__DETECTED_ISSUE:
+				setDetectedIssue((DetectedIssue)newValue);
 				return;
 			case FhirPackage.RESOURCE_CONTAINER__DEVICE:
 				setDevice((Device)newValue);
@@ -5978,14 +5978,14 @@ public class ResourceContainerImpl extends MinimalEObjectImpl.Container implemen
 			case FhirPackage.RESOURCE_CONTAINER__CONTRACT:
 				setContract((Contract)null);
 				return;
-			case FhirPackage.RESOURCE_CONTAINER__CONTRAINDICATION:
-				setContraindication((Contraindication)null);
-				return;
 			case FhirPackage.RESOURCE_CONTAINER__COVERAGE:
 				setCoverage((Coverage)null);
 				return;
 			case FhirPackage.RESOURCE_CONTAINER__DATA_ELEMENT:
 				setDataElement((DataElement)null);
+				return;
+			case FhirPackage.RESOURCE_CONTAINER__DETECTED_ISSUE:
+				setDetectedIssue((DetectedIssue)null);
 				return;
 			case FhirPackage.RESOURCE_CONTAINER__DEVICE:
 				setDevice((Device)null);
@@ -6252,12 +6252,12 @@ public class ResourceContainerImpl extends MinimalEObjectImpl.Container implemen
 				return conformance != null;
 			case FhirPackage.RESOURCE_CONTAINER__CONTRACT:
 				return contract != null;
-			case FhirPackage.RESOURCE_CONTAINER__CONTRAINDICATION:
-				return contraindication != null;
 			case FhirPackage.RESOURCE_CONTAINER__COVERAGE:
 				return coverage != null;
 			case FhirPackage.RESOURCE_CONTAINER__DATA_ELEMENT:
 				return dataElement != null;
+			case FhirPackage.RESOURCE_CONTAINER__DETECTED_ISSUE:
+				return detectedIssue != null;
 			case FhirPackage.RESOURCE_CONTAINER__DEVICE:
 				return device != null;
 			case FhirPackage.RESOURCE_CONTAINER__DEVICE_COMPONENT:

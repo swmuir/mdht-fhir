@@ -42,7 +42,7 @@ public interface Account extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Unique identifier used to reference the account.  May or may not be intended for human use.  (E.g. credit card number).
+	 * Unique identifier used to reference the account.  May or may not be intended for human use (e.g. credit card number).
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Identifier</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getAccount_Identifier()
@@ -213,7 +213,7 @@ public interface Account extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Identifies the period of time the account applies to.  E.g. accounts created per fiscal year, quarter, etc.
+	 * Identifies the period of time the account applies to; e.g. accounts created per fiscal year, quarter, etc.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Coverage Period</em>' containment reference.
 	 * @see #setCoveragePeriod(Period)

@@ -9,7 +9,7 @@ package org.hl7.fhir;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Why an entry is in the result set - whether it's included as a match or because of an _include requirement
+ * Why an entry is in the result set - whether it's included as a match or because of an _include requirement.
  * If the element is present, it must have either a @value, an @id, or extensions
  * <!-- end-model-doc -->
  *

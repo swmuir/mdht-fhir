@@ -24,6 +24,7 @@ import org.hl7.fhir.CommunicationRequestStatus;
 import org.hl7.fhir.DateTime;
 import org.hl7.fhir.FhirPackage;
 import org.hl7.fhir.Identifier;
+import org.hl7.fhir.Period;
 import org.hl7.fhir.Reference;
 
 /**
@@ -43,9 +44,10 @@ import org.hl7.fhir.Reference;
  *   <li>{@link org.hl7.fhir.impl.CommunicationRequestImpl#getRequester <em>Requester</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.CommunicationRequestImpl#getStatus <em>Status</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.CommunicationRequestImpl#getEncounter <em>Encounter</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.CommunicationRequestImpl#getScheduledTime <em>Scheduled Time</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.CommunicationRequestImpl#getScheduledDateTime <em>Scheduled Date Time</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.CommunicationRequestImpl#getScheduledPeriod <em>Scheduled Period</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.CommunicationRequestImpl#getReason <em>Reason</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.CommunicationRequestImpl#getOrderedOn <em>Ordered On</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.CommunicationRequestImpl#getRequestedOn <em>Requested On</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.CommunicationRequestImpl#getSubject <em>Subject</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.CommunicationRequestImpl#getPriority <em>Priority</em>}</li>
  * </ul>
@@ -144,14 +146,24 @@ public class CommunicationRequestImpl extends DomainResourceImpl implements Comm
 	protected Reference encounter;
 
 	/**
-	 * The cached value of the '{@link #getScheduledTime() <em>Scheduled Time</em>}' containment reference.
+	 * The cached value of the '{@link #getScheduledDateTime() <em>Scheduled Date Time</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getScheduledTime()
+	 * @see #getScheduledDateTime()
 	 * @generated
 	 * @ordered
 	 */
-	protected DateTime scheduledTime;
+	protected DateTime scheduledDateTime;
+
+	/**
+	 * The cached value of the '{@link #getScheduledPeriod() <em>Scheduled Period</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getScheduledPeriod()
+	 * @generated
+	 * @ordered
+	 */
+	protected Period scheduledPeriod;
 
 	/**
 	 * The cached value of the '{@link #getReason() <em>Reason</em>}' containment reference list.
@@ -164,14 +176,14 @@ public class CommunicationRequestImpl extends DomainResourceImpl implements Comm
 	protected EList<CodeableConcept> reason;
 
 	/**
-	 * The cached value of the '{@link #getOrderedOn() <em>Ordered On</em>}' containment reference.
+	 * The cached value of the '{@link #getRequestedOn() <em>Requested On</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOrderedOn()
+	 * @see #getRequestedOn()
 	 * @generated
 	 * @ordered
 	 */
-	protected DateTime orderedOn;
+	protected DateTime requestedOn;
 
 	/**
 	 * The cached value of the '{@link #getSubject() <em>Subject</em>}' containment reference.
@@ -480,8 +492,8 @@ public class CommunicationRequestImpl extends DomainResourceImpl implements Comm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DateTime getScheduledTime() {
-		return scheduledTime;
+	public DateTime getScheduledDateTime() {
+		return scheduledDateTime;
 	}
 
 	/**
@@ -489,11 +501,11 @@ public class CommunicationRequestImpl extends DomainResourceImpl implements Comm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetScheduledTime(DateTime newScheduledTime, NotificationChain msgs) {
-		DateTime oldScheduledTime = scheduledTime;
-		scheduledTime = newScheduledTime;
+	public NotificationChain basicSetScheduledDateTime(DateTime newScheduledDateTime, NotificationChain msgs) {
+		DateTime oldScheduledDateTime = scheduledDateTime;
+		scheduledDateTime = newScheduledDateTime;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.COMMUNICATION_REQUEST__SCHEDULED_TIME, oldScheduledTime, newScheduledTime);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.COMMUNICATION_REQUEST__SCHEDULED_DATE_TIME, oldScheduledDateTime, newScheduledDateTime);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -504,18 +516,61 @@ public class CommunicationRequestImpl extends DomainResourceImpl implements Comm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setScheduledTime(DateTime newScheduledTime) {
-		if (newScheduledTime != scheduledTime) {
+	public void setScheduledDateTime(DateTime newScheduledDateTime) {
+		if (newScheduledDateTime != scheduledDateTime) {
 			NotificationChain msgs = null;
-			if (scheduledTime != null)
-				msgs = ((InternalEObject)scheduledTime).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.COMMUNICATION_REQUEST__SCHEDULED_TIME, null, msgs);
-			if (newScheduledTime != null)
-				msgs = ((InternalEObject)newScheduledTime).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.COMMUNICATION_REQUEST__SCHEDULED_TIME, null, msgs);
-			msgs = basicSetScheduledTime(newScheduledTime, msgs);
+			if (scheduledDateTime != null)
+				msgs = ((InternalEObject)scheduledDateTime).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.COMMUNICATION_REQUEST__SCHEDULED_DATE_TIME, null, msgs);
+			if (newScheduledDateTime != null)
+				msgs = ((InternalEObject)newScheduledDateTime).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.COMMUNICATION_REQUEST__SCHEDULED_DATE_TIME, null, msgs);
+			msgs = basicSetScheduledDateTime(newScheduledDateTime, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.COMMUNICATION_REQUEST__SCHEDULED_TIME, newScheduledTime, newScheduledTime));
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.COMMUNICATION_REQUEST__SCHEDULED_DATE_TIME, newScheduledDateTime, newScheduledDateTime));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Period getScheduledPeriod() {
+		return scheduledPeriod;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetScheduledPeriod(Period newScheduledPeriod, NotificationChain msgs) {
+		Period oldScheduledPeriod = scheduledPeriod;
+		scheduledPeriod = newScheduledPeriod;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.COMMUNICATION_REQUEST__SCHEDULED_PERIOD, oldScheduledPeriod, newScheduledPeriod);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setScheduledPeriod(Period newScheduledPeriod) {
+		if (newScheduledPeriod != scheduledPeriod) {
+			NotificationChain msgs = null;
+			if (scheduledPeriod != null)
+				msgs = ((InternalEObject)scheduledPeriod).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.COMMUNICATION_REQUEST__SCHEDULED_PERIOD, null, msgs);
+			if (newScheduledPeriod != null)
+				msgs = ((InternalEObject)newScheduledPeriod).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.COMMUNICATION_REQUEST__SCHEDULED_PERIOD, null, msgs);
+			msgs = basicSetScheduledPeriod(newScheduledPeriod, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.COMMUNICATION_REQUEST__SCHEDULED_PERIOD, newScheduledPeriod, newScheduledPeriod));
 	}
 
 	/**
@@ -535,8 +590,8 @@ public class CommunicationRequestImpl extends DomainResourceImpl implements Comm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DateTime getOrderedOn() {
-		return orderedOn;
+	public DateTime getRequestedOn() {
+		return requestedOn;
 	}
 
 	/**
@@ -544,11 +599,11 @@ public class CommunicationRequestImpl extends DomainResourceImpl implements Comm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetOrderedOn(DateTime newOrderedOn, NotificationChain msgs) {
-		DateTime oldOrderedOn = orderedOn;
-		orderedOn = newOrderedOn;
+	public NotificationChain basicSetRequestedOn(DateTime newRequestedOn, NotificationChain msgs) {
+		DateTime oldRequestedOn = requestedOn;
+		requestedOn = newRequestedOn;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.COMMUNICATION_REQUEST__ORDERED_ON, oldOrderedOn, newOrderedOn);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.COMMUNICATION_REQUEST__REQUESTED_ON, oldRequestedOn, newRequestedOn);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -559,18 +614,18 @@ public class CommunicationRequestImpl extends DomainResourceImpl implements Comm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setOrderedOn(DateTime newOrderedOn) {
-		if (newOrderedOn != orderedOn) {
+	public void setRequestedOn(DateTime newRequestedOn) {
+		if (newRequestedOn != requestedOn) {
 			NotificationChain msgs = null;
-			if (orderedOn != null)
-				msgs = ((InternalEObject)orderedOn).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.COMMUNICATION_REQUEST__ORDERED_ON, null, msgs);
-			if (newOrderedOn != null)
-				msgs = ((InternalEObject)newOrderedOn).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.COMMUNICATION_REQUEST__ORDERED_ON, null, msgs);
-			msgs = basicSetOrderedOn(newOrderedOn, msgs);
+			if (requestedOn != null)
+				msgs = ((InternalEObject)requestedOn).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.COMMUNICATION_REQUEST__REQUESTED_ON, null, msgs);
+			if (newRequestedOn != null)
+				msgs = ((InternalEObject)newRequestedOn).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.COMMUNICATION_REQUEST__REQUESTED_ON, null, msgs);
+			msgs = basicSetRequestedOn(newRequestedOn, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.COMMUNICATION_REQUEST__ORDERED_ON, newOrderedOn, newOrderedOn));
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.COMMUNICATION_REQUEST__REQUESTED_ON, newRequestedOn, newRequestedOn));
 	}
 
 	/**
@@ -685,12 +740,14 @@ public class CommunicationRequestImpl extends DomainResourceImpl implements Comm
 				return basicSetStatus(null, msgs);
 			case FhirPackage.COMMUNICATION_REQUEST__ENCOUNTER:
 				return basicSetEncounter(null, msgs);
-			case FhirPackage.COMMUNICATION_REQUEST__SCHEDULED_TIME:
-				return basicSetScheduledTime(null, msgs);
+			case FhirPackage.COMMUNICATION_REQUEST__SCHEDULED_DATE_TIME:
+				return basicSetScheduledDateTime(null, msgs);
+			case FhirPackage.COMMUNICATION_REQUEST__SCHEDULED_PERIOD:
+				return basicSetScheduledPeriod(null, msgs);
 			case FhirPackage.COMMUNICATION_REQUEST__REASON:
 				return ((InternalEList<?>)getReason()).basicRemove(otherEnd, msgs);
-			case FhirPackage.COMMUNICATION_REQUEST__ORDERED_ON:
-				return basicSetOrderedOn(null, msgs);
+			case FhirPackage.COMMUNICATION_REQUEST__REQUESTED_ON:
+				return basicSetRequestedOn(null, msgs);
 			case FhirPackage.COMMUNICATION_REQUEST__SUBJECT:
 				return basicSetSubject(null, msgs);
 			case FhirPackage.COMMUNICATION_REQUEST__PRIORITY:
@@ -725,12 +782,14 @@ public class CommunicationRequestImpl extends DomainResourceImpl implements Comm
 				return getStatus();
 			case FhirPackage.COMMUNICATION_REQUEST__ENCOUNTER:
 				return getEncounter();
-			case FhirPackage.COMMUNICATION_REQUEST__SCHEDULED_TIME:
-				return getScheduledTime();
+			case FhirPackage.COMMUNICATION_REQUEST__SCHEDULED_DATE_TIME:
+				return getScheduledDateTime();
+			case FhirPackage.COMMUNICATION_REQUEST__SCHEDULED_PERIOD:
+				return getScheduledPeriod();
 			case FhirPackage.COMMUNICATION_REQUEST__REASON:
 				return getReason();
-			case FhirPackage.COMMUNICATION_REQUEST__ORDERED_ON:
-				return getOrderedOn();
+			case FhirPackage.COMMUNICATION_REQUEST__REQUESTED_ON:
+				return getRequestedOn();
 			case FhirPackage.COMMUNICATION_REQUEST__SUBJECT:
 				return getSubject();
 			case FhirPackage.COMMUNICATION_REQUEST__PRIORITY:
@@ -779,15 +838,18 @@ public class CommunicationRequestImpl extends DomainResourceImpl implements Comm
 			case FhirPackage.COMMUNICATION_REQUEST__ENCOUNTER:
 				setEncounter((Reference)newValue);
 				return;
-			case FhirPackage.COMMUNICATION_REQUEST__SCHEDULED_TIME:
-				setScheduledTime((DateTime)newValue);
+			case FhirPackage.COMMUNICATION_REQUEST__SCHEDULED_DATE_TIME:
+				setScheduledDateTime((DateTime)newValue);
+				return;
+			case FhirPackage.COMMUNICATION_REQUEST__SCHEDULED_PERIOD:
+				setScheduledPeriod((Period)newValue);
 				return;
 			case FhirPackage.COMMUNICATION_REQUEST__REASON:
 				getReason().clear();
 				getReason().addAll((Collection<? extends CodeableConcept>)newValue);
 				return;
-			case FhirPackage.COMMUNICATION_REQUEST__ORDERED_ON:
-				setOrderedOn((DateTime)newValue);
+			case FhirPackage.COMMUNICATION_REQUEST__REQUESTED_ON:
+				setRequestedOn((DateTime)newValue);
 				return;
 			case FhirPackage.COMMUNICATION_REQUEST__SUBJECT:
 				setSubject((Reference)newValue);
@@ -834,14 +896,17 @@ public class CommunicationRequestImpl extends DomainResourceImpl implements Comm
 			case FhirPackage.COMMUNICATION_REQUEST__ENCOUNTER:
 				setEncounter((Reference)null);
 				return;
-			case FhirPackage.COMMUNICATION_REQUEST__SCHEDULED_TIME:
-				setScheduledTime((DateTime)null);
+			case FhirPackage.COMMUNICATION_REQUEST__SCHEDULED_DATE_TIME:
+				setScheduledDateTime((DateTime)null);
+				return;
+			case FhirPackage.COMMUNICATION_REQUEST__SCHEDULED_PERIOD:
+				setScheduledPeriod((Period)null);
 				return;
 			case FhirPackage.COMMUNICATION_REQUEST__REASON:
 				getReason().clear();
 				return;
-			case FhirPackage.COMMUNICATION_REQUEST__ORDERED_ON:
-				setOrderedOn((DateTime)null);
+			case FhirPackage.COMMUNICATION_REQUEST__REQUESTED_ON:
+				setRequestedOn((DateTime)null);
 				return;
 			case FhirPackage.COMMUNICATION_REQUEST__SUBJECT:
 				setSubject((Reference)null);
@@ -879,12 +944,14 @@ public class CommunicationRequestImpl extends DomainResourceImpl implements Comm
 				return status != null;
 			case FhirPackage.COMMUNICATION_REQUEST__ENCOUNTER:
 				return encounter != null;
-			case FhirPackage.COMMUNICATION_REQUEST__SCHEDULED_TIME:
-				return scheduledTime != null;
+			case FhirPackage.COMMUNICATION_REQUEST__SCHEDULED_DATE_TIME:
+				return scheduledDateTime != null;
+			case FhirPackage.COMMUNICATION_REQUEST__SCHEDULED_PERIOD:
+				return scheduledPeriod != null;
 			case FhirPackage.COMMUNICATION_REQUEST__REASON:
 				return reason != null && !reason.isEmpty();
-			case FhirPackage.COMMUNICATION_REQUEST__ORDERED_ON:
-				return orderedOn != null;
+			case FhirPackage.COMMUNICATION_REQUEST__REQUESTED_ON:
+				return requestedOn != null;
 			case FhirPackage.COMMUNICATION_REQUEST__SUBJECT:
 				return subject != null;
 			case FhirPackage.COMMUNICATION_REQUEST__PRIORITY:

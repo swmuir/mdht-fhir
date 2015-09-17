@@ -18,10 +18,12 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.hl7.fhir.Age;
+import org.hl7.fhir.Annotation;
 import org.hl7.fhir.Code;
 import org.hl7.fhir.CodeableConcept;
 import org.hl7.fhir.Date;
 import org.hl7.fhir.DateTime;
+import org.hl7.fhir.FamilyHistoryStatus;
 import org.hl7.fhir.FamilyMemberHistory;
 import org.hl7.fhir.FamilyMemberHistoryCondition;
 import org.hl7.fhir.FhirPackage;
@@ -41,6 +43,7 @@ import org.hl7.fhir.Reference;
  *   <li>{@link org.hl7.fhir.impl.FamilyMemberHistoryImpl#getIdentifier <em>Identifier</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.FamilyMemberHistoryImpl#getPatient <em>Patient</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.FamilyMemberHistoryImpl#getDate <em>Date</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.FamilyMemberHistoryImpl#getStatus <em>Status</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.FamilyMemberHistoryImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.FamilyMemberHistoryImpl#getRelationship <em>Relationship</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.FamilyMemberHistoryImpl#getGender <em>Gender</em>}</li>
@@ -91,6 +94,16 @@ public class FamilyMemberHistoryImpl extends DomainResourceImpl implements Famil
 	 * @ordered
 	 */
 	protected DateTime date;
+
+	/**
+	 * The cached value of the '{@link #getStatus() <em>Status</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStatus()
+	 * @generated
+	 * @ordered
+	 */
+	protected FamilyHistoryStatus status;
 
 	/**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' containment reference.
@@ -240,7 +253,7 @@ public class FamilyMemberHistoryImpl extends DomainResourceImpl implements Famil
 	 * @generated
 	 * @ordered
 	 */
-	protected org.hl7.fhir.String note;
+	protected Annotation note;
 
 	/**
 	 * The cached value of the '{@link #getCondition() <em>Condition</em>}' containment reference list.
@@ -367,6 +380,49 @@ public class FamilyMemberHistoryImpl extends DomainResourceImpl implements Famil
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.FAMILY_MEMBER_HISTORY__DATE, newDate, newDate));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public FamilyHistoryStatus getStatus() {
+		return status;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetStatus(FamilyHistoryStatus newStatus, NotificationChain msgs) {
+		FamilyHistoryStatus oldStatus = status;
+		status = newStatus;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.FAMILY_MEMBER_HISTORY__STATUS, oldStatus, newStatus);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setStatus(FamilyHistoryStatus newStatus) {
+		if (newStatus != status) {
+			NotificationChain msgs = null;
+			if (status != null)
+				msgs = ((InternalEObject)status).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.FAMILY_MEMBER_HISTORY__STATUS, null, msgs);
+			if (newStatus != null)
+				msgs = ((InternalEObject)newStatus).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.FAMILY_MEMBER_HISTORY__STATUS, null, msgs);
+			msgs = basicSetStatus(newStatus, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.FAMILY_MEMBER_HISTORY__STATUS, newStatus, newStatus));
 	}
 
 	/**
@@ -976,7 +1032,7 @@ public class FamilyMemberHistoryImpl extends DomainResourceImpl implements Famil
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public org.hl7.fhir.String getNote() {
+	public Annotation getNote() {
 		return note;
 	}
 
@@ -985,8 +1041,8 @@ public class FamilyMemberHistoryImpl extends DomainResourceImpl implements Famil
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetNote(org.hl7.fhir.String newNote, NotificationChain msgs) {
-		org.hl7.fhir.String oldNote = note;
+	public NotificationChain basicSetNote(Annotation newNote, NotificationChain msgs) {
+		Annotation oldNote = note;
 		note = newNote;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.FAMILY_MEMBER_HISTORY__NOTE, oldNote, newNote);
@@ -1000,7 +1056,7 @@ public class FamilyMemberHistoryImpl extends DomainResourceImpl implements Famil
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setNote(org.hl7.fhir.String newNote) {
+	public void setNote(Annotation newNote) {
 		if (newNote != note) {
 			NotificationChain msgs = null;
 			if (note != null)
@@ -1040,6 +1096,8 @@ public class FamilyMemberHistoryImpl extends DomainResourceImpl implements Famil
 				return basicSetPatient(null, msgs);
 			case FhirPackage.FAMILY_MEMBER_HISTORY__DATE:
 				return basicSetDate(null, msgs);
+			case FhirPackage.FAMILY_MEMBER_HISTORY__STATUS:
+				return basicSetStatus(null, msgs);
 			case FhirPackage.FAMILY_MEMBER_HISTORY__NAME:
 				return basicSetName(null, msgs);
 			case FhirPackage.FAMILY_MEMBER_HISTORY__RELATIONSHIP:
@@ -1090,6 +1148,8 @@ public class FamilyMemberHistoryImpl extends DomainResourceImpl implements Famil
 				return getPatient();
 			case FhirPackage.FAMILY_MEMBER_HISTORY__DATE:
 				return getDate();
+			case FhirPackage.FAMILY_MEMBER_HISTORY__STATUS:
+				return getStatus();
 			case FhirPackage.FAMILY_MEMBER_HISTORY__NAME:
 				return getName();
 			case FhirPackage.FAMILY_MEMBER_HISTORY__RELATIONSHIP:
@@ -1145,6 +1205,9 @@ public class FamilyMemberHistoryImpl extends DomainResourceImpl implements Famil
 			case FhirPackage.FAMILY_MEMBER_HISTORY__DATE:
 				setDate((DateTime)newValue);
 				return;
+			case FhirPackage.FAMILY_MEMBER_HISTORY__STATUS:
+				setStatus((FamilyHistoryStatus)newValue);
+				return;
 			case FhirPackage.FAMILY_MEMBER_HISTORY__NAME:
 				setName((org.hl7.fhir.String)newValue);
 				return;
@@ -1188,7 +1251,7 @@ public class FamilyMemberHistoryImpl extends DomainResourceImpl implements Famil
 				setDeceasedString((org.hl7.fhir.String)newValue);
 				return;
 			case FhirPackage.FAMILY_MEMBER_HISTORY__NOTE:
-				setNote((org.hl7.fhir.String)newValue);
+				setNote((Annotation)newValue);
 				return;
 			case FhirPackage.FAMILY_MEMBER_HISTORY__CONDITION:
 				getCondition().clear();
@@ -1214,6 +1277,9 @@ public class FamilyMemberHistoryImpl extends DomainResourceImpl implements Famil
 				return;
 			case FhirPackage.FAMILY_MEMBER_HISTORY__DATE:
 				setDate((DateTime)null);
+				return;
+			case FhirPackage.FAMILY_MEMBER_HISTORY__STATUS:
+				setStatus((FamilyHistoryStatus)null);
 				return;
 			case FhirPackage.FAMILY_MEMBER_HISTORY__NAME:
 				setName((org.hl7.fhir.String)null);
@@ -1258,7 +1324,7 @@ public class FamilyMemberHistoryImpl extends DomainResourceImpl implements Famil
 				setDeceasedString((org.hl7.fhir.String)null);
 				return;
 			case FhirPackage.FAMILY_MEMBER_HISTORY__NOTE:
-				setNote((org.hl7.fhir.String)null);
+				setNote((Annotation)null);
 				return;
 			case FhirPackage.FAMILY_MEMBER_HISTORY__CONDITION:
 				getCondition().clear();
@@ -1281,6 +1347,8 @@ public class FamilyMemberHistoryImpl extends DomainResourceImpl implements Famil
 				return patient != null;
 			case FhirPackage.FAMILY_MEMBER_HISTORY__DATE:
 				return date != null;
+			case FhirPackage.FAMILY_MEMBER_HISTORY__STATUS:
+				return status != null;
 			case FhirPackage.FAMILY_MEMBER_HISTORY__NAME:
 				return name != null;
 			case FhirPackage.FAMILY_MEMBER_HISTORY__RELATIONSHIP:

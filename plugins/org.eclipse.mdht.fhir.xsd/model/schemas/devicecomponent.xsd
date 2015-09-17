@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Thu, Aug 20, 2015 14:13+0000 for FHIR v0.5.0 
+  Generated on Wed, Sep 16, 2015 13:28+0000 for FHIR v1.0.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -81,7 +81,7 @@
           </xs:element>
           <xs:element name="parameterGroup" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Describes the parameter group supported by the current device component that is based on some nomenclature, e.g., cardiovascular.</xs:documentation>
+              <xs:documentation xml:lang="en">Describes the parameter group supported by the current device component that is based on some nomenclature, e.g. cardiovascular.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="measurementPrinciple" minOccurs="0" maxOccurs="1" type="Measmnt-Principle">
@@ -133,64 +133,64 @@
     <xs:restriction base="xs:string">
       <xs:enumeration value="other">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Measurement principle isn't in the list</xs:documentation>
+          <xs:documentation xml:lang="en">Measurement principle isn't in the list.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="chemical">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Measurement is done using chemical</xs:documentation>
+          <xs:documentation xml:lang="en">Measurement is done using chemical.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="electrical">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Measurement is done using electrical</xs:documentation>
+          <xs:documentation xml:lang="en">Measurement is done using electrical.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="impedance">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Measurement is done using impedance</xs:documentation>
+          <xs:documentation xml:lang="en">Measurement is done using impedance.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="nuclear">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Measurement is done using nuclear</xs:documentation>
+          <xs:documentation xml:lang="en">Measurement is done using nuclear.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="optical">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Measurement is done using optical</xs:documentation>
+          <xs:documentation xml:lang="en">Measurement is done using optical.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="thermal">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Measurement is done using thermal</xs:documentation>
+          <xs:documentation xml:lang="en">Measurement is done using thermal.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="biological">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Measurement is done using biological</xs:documentation>
+          <xs:documentation xml:lang="en">Measurement is done using biological.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="mechanical">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Measurement is done using mechanical</xs:documentation>
+          <xs:documentation xml:lang="en">Measurement is done using mechanical.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="acoustical">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Measurement is done using acoustical</xs:documentation>
+          <xs:documentation xml:lang="en">Measurement is done using acoustical.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="manual">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Measurement is done using manual</xs:documentation>
+          <xs:documentation xml:lang="en">Measurement is done using manual.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="Measmnt-Principle">
     <xs:annotation>
-      <xs:documentation xml:lang="en">Different measurement principle supported by the device</xs:documentation>
+      <xs:documentation xml:lang="en">Different measurement principle supported by the device.</xs:documentation>
       <xs:documentation xml:lang="en">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>
     </xs:annotation>
     <xs:complexContent>

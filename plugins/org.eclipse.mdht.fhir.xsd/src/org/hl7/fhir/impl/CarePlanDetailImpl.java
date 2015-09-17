@@ -17,7 +17,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.hl7.fhir.CarePlanActivityCategory;
 import org.hl7.fhir.CarePlanActivityStatus;
 import org.hl7.fhir.CarePlanDetail;
 import org.hl7.fhir.CodeableConcept;
@@ -37,7 +36,7 @@ import org.hl7.fhir.Timing;
  * <ul>
  *   <li>{@link org.hl7.fhir.impl.CarePlanDetailImpl#getCategory <em>Category</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.CarePlanDetailImpl#getCode <em>Code</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.CarePlanDetailImpl#getReasonCodeableConcept <em>Reason Codeable Concept</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.CarePlanDetailImpl#getReasonCode <em>Reason Code</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.CarePlanDetailImpl#getReasonReference <em>Reason Reference</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.CarePlanDetailImpl#getGoal <em>Goal</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.CarePlanDetailImpl#getStatus <em>Status</em>}</li>
@@ -48,10 +47,11 @@ import org.hl7.fhir.Timing;
  *   <li>{@link org.hl7.fhir.impl.CarePlanDetailImpl#getScheduledString <em>Scheduled String</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.CarePlanDetailImpl#getLocation <em>Location</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.CarePlanDetailImpl#getPerformer <em>Performer</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.CarePlanDetailImpl#getProduct <em>Product</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.CarePlanDetailImpl#getProductCodeableConcept <em>Product Codeable Concept</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.CarePlanDetailImpl#getProductReference <em>Product Reference</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.CarePlanDetailImpl#getDailyAmount <em>Daily Amount</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.CarePlanDetailImpl#getQuantity <em>Quantity</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.CarePlanDetailImpl#getNote <em>Note</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.CarePlanDetailImpl#getDescription <em>Description</em>}</li>
  * </ul>
  *
  * @generated
@@ -65,7 +65,7 @@ public class CarePlanDetailImpl extends BackboneElementImpl implements CarePlanD
 	 * @generated
 	 * @ordered
 	 */
-	protected CarePlanActivityCategory category;
+	protected CodeableConcept category;
 
 	/**
 	 * The cached value of the '{@link #getCode() <em>Code</em>}' containment reference.
@@ -78,24 +78,24 @@ public class CarePlanDetailImpl extends BackboneElementImpl implements CarePlanD
 	protected CodeableConcept code;
 
 	/**
-	 * The cached value of the '{@link #getReasonCodeableConcept() <em>Reason Codeable Concept</em>}' containment reference.
+	 * The cached value of the '{@link #getReasonCode() <em>Reason Code</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getReasonCodeableConcept()
+	 * @see #getReasonCode()
 	 * @generated
 	 * @ordered
 	 */
-	protected CodeableConcept reasonCodeableConcept;
+	protected EList<CodeableConcept> reasonCode;
 
 	/**
-	 * The cached value of the '{@link #getReasonReference() <em>Reason Reference</em>}' containment reference.
+	 * The cached value of the '{@link #getReasonReference() <em>Reason Reference</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getReasonReference()
 	 * @generated
 	 * @ordered
 	 */
-	protected Reference reasonReference;
+	protected EList<Reference> reasonReference;
 
 	/**
 	 * The cached value of the '{@link #getGoal() <em>Goal</em>}' containment reference list.
@@ -188,14 +188,24 @@ public class CarePlanDetailImpl extends BackboneElementImpl implements CarePlanD
 	protected EList<Reference> performer;
 
 	/**
-	 * The cached value of the '{@link #getProduct() <em>Product</em>}' containment reference.
+	 * The cached value of the '{@link #getProductCodeableConcept() <em>Product Codeable Concept</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getProduct()
+	 * @see #getProductCodeableConcept()
 	 * @generated
 	 * @ordered
 	 */
-	protected Reference product;
+	protected CodeableConcept productCodeableConcept;
+
+	/**
+	 * The cached value of the '{@link #getProductReference() <em>Product Reference</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getProductReference()
+	 * @generated
+	 * @ordered
+	 */
+	protected Reference productReference;
 
 	/**
 	 * The cached value of the '{@link #getDailyAmount() <em>Daily Amount</em>}' containment reference.
@@ -218,14 +228,14 @@ public class CarePlanDetailImpl extends BackboneElementImpl implements CarePlanD
 	protected SimpleQuantity quantity;
 
 	/**
-	 * The cached value of the '{@link #getNote() <em>Note</em>}' containment reference.
+	 * The cached value of the '{@link #getDescription() <em>Description</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getNote()
+	 * @see #getDescription()
 	 * @generated
 	 * @ordered
 	 */
-	protected org.hl7.fhir.String note;
+	protected org.hl7.fhir.String description;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -251,7 +261,7 @@ public class CarePlanDetailImpl extends BackboneElementImpl implements CarePlanD
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CarePlanActivityCategory getCategory() {
+	public CodeableConcept getCategory() {
 		return category;
 	}
 
@@ -260,8 +270,8 @@ public class CarePlanDetailImpl extends BackboneElementImpl implements CarePlanD
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetCategory(CarePlanActivityCategory newCategory, NotificationChain msgs) {
-		CarePlanActivityCategory oldCategory = category;
+	public NotificationChain basicSetCategory(CodeableConcept newCategory, NotificationChain msgs) {
+		CodeableConcept oldCategory = category;
 		category = newCategory;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.CARE_PLAN_DETAIL__CATEGORY, oldCategory, newCategory);
@@ -275,7 +285,7 @@ public class CarePlanDetailImpl extends BackboneElementImpl implements CarePlanD
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setCategory(CarePlanActivityCategory newCategory) {
+	public void setCategory(CodeableConcept newCategory) {
 		if (newCategory != category) {
 			NotificationChain msgs = null;
 			if (category != null)
@@ -337,23 +347,11 @@ public class CarePlanDetailImpl extends BackboneElementImpl implements CarePlanD
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CodeableConcept getReasonCodeableConcept() {
-		return reasonCodeableConcept;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetReasonCodeableConcept(CodeableConcept newReasonCodeableConcept, NotificationChain msgs) {
-		CodeableConcept oldReasonCodeableConcept = reasonCodeableConcept;
-		reasonCodeableConcept = newReasonCodeableConcept;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.CARE_PLAN_DETAIL__REASON_CODEABLE_CONCEPT, oldReasonCodeableConcept, newReasonCodeableConcept);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+	public EList<CodeableConcept> getReasonCode() {
+		if (reasonCode == null) {
+			reasonCode = new EObjectContainmentEList<CodeableConcept>(CodeableConcept.class, this, FhirPackage.CARE_PLAN_DETAIL__REASON_CODE);
 		}
-		return msgs;
+		return reasonCode;
 	}
 
 	/**
@@ -361,61 +359,11 @@ public class CarePlanDetailImpl extends BackboneElementImpl implements CarePlanD
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setReasonCodeableConcept(CodeableConcept newReasonCodeableConcept) {
-		if (newReasonCodeableConcept != reasonCodeableConcept) {
-			NotificationChain msgs = null;
-			if (reasonCodeableConcept != null)
-				msgs = ((InternalEObject)reasonCodeableConcept).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CARE_PLAN_DETAIL__REASON_CODEABLE_CONCEPT, null, msgs);
-			if (newReasonCodeableConcept != null)
-				msgs = ((InternalEObject)newReasonCodeableConcept).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CARE_PLAN_DETAIL__REASON_CODEABLE_CONCEPT, null, msgs);
-			msgs = basicSetReasonCodeableConcept(newReasonCodeableConcept, msgs);
-			if (msgs != null) msgs.dispatch();
+	public EList<Reference> getReasonReference() {
+		if (reasonReference == null) {
+			reasonReference = new EObjectContainmentEList<Reference>(Reference.class, this, FhirPackage.CARE_PLAN_DETAIL__REASON_REFERENCE);
 		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.CARE_PLAN_DETAIL__REASON_CODEABLE_CONCEPT, newReasonCodeableConcept, newReasonCodeableConcept));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Reference getReasonReference() {
 		return reasonReference;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetReasonReference(Reference newReasonReference, NotificationChain msgs) {
-		Reference oldReasonReference = reasonReference;
-		reasonReference = newReasonReference;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.CARE_PLAN_DETAIL__REASON_REFERENCE, oldReasonReference, newReasonReference);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setReasonReference(Reference newReasonReference) {
-		if (newReasonReference != reasonReference) {
-			NotificationChain msgs = null;
-			if (reasonReference != null)
-				msgs = ((InternalEObject)reasonReference).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CARE_PLAN_DETAIL__REASON_REFERENCE, null, msgs);
-			if (newReasonReference != null)
-				msgs = ((InternalEObject)newReasonReference).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CARE_PLAN_DETAIL__REASON_REFERENCE, null, msgs);
-			msgs = basicSetReasonReference(newReasonReference, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.CARE_PLAN_DETAIL__REASON_REFERENCE, newReasonReference, newReasonReference));
 	}
 
 	/**
@@ -748,8 +696,8 @@ public class CarePlanDetailImpl extends BackboneElementImpl implements CarePlanD
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Reference getProduct() {
-		return product;
+	public CodeableConcept getProductCodeableConcept() {
+		return productCodeableConcept;
 	}
 
 	/**
@@ -757,11 +705,11 @@ public class CarePlanDetailImpl extends BackboneElementImpl implements CarePlanD
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetProduct(Reference newProduct, NotificationChain msgs) {
-		Reference oldProduct = product;
-		product = newProduct;
+	public NotificationChain basicSetProductCodeableConcept(CodeableConcept newProductCodeableConcept, NotificationChain msgs) {
+		CodeableConcept oldProductCodeableConcept = productCodeableConcept;
+		productCodeableConcept = newProductCodeableConcept;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.CARE_PLAN_DETAIL__PRODUCT, oldProduct, newProduct);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.CARE_PLAN_DETAIL__PRODUCT_CODEABLE_CONCEPT, oldProductCodeableConcept, newProductCodeableConcept);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -772,18 +720,61 @@ public class CarePlanDetailImpl extends BackboneElementImpl implements CarePlanD
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setProduct(Reference newProduct) {
-		if (newProduct != product) {
+	public void setProductCodeableConcept(CodeableConcept newProductCodeableConcept) {
+		if (newProductCodeableConcept != productCodeableConcept) {
 			NotificationChain msgs = null;
-			if (product != null)
-				msgs = ((InternalEObject)product).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CARE_PLAN_DETAIL__PRODUCT, null, msgs);
-			if (newProduct != null)
-				msgs = ((InternalEObject)newProduct).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CARE_PLAN_DETAIL__PRODUCT, null, msgs);
-			msgs = basicSetProduct(newProduct, msgs);
+			if (productCodeableConcept != null)
+				msgs = ((InternalEObject)productCodeableConcept).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CARE_PLAN_DETAIL__PRODUCT_CODEABLE_CONCEPT, null, msgs);
+			if (newProductCodeableConcept != null)
+				msgs = ((InternalEObject)newProductCodeableConcept).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CARE_PLAN_DETAIL__PRODUCT_CODEABLE_CONCEPT, null, msgs);
+			msgs = basicSetProductCodeableConcept(newProductCodeableConcept, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.CARE_PLAN_DETAIL__PRODUCT, newProduct, newProduct));
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.CARE_PLAN_DETAIL__PRODUCT_CODEABLE_CONCEPT, newProductCodeableConcept, newProductCodeableConcept));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Reference getProductReference() {
+		return productReference;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetProductReference(Reference newProductReference, NotificationChain msgs) {
+		Reference oldProductReference = productReference;
+		productReference = newProductReference;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.CARE_PLAN_DETAIL__PRODUCT_REFERENCE, oldProductReference, newProductReference);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setProductReference(Reference newProductReference) {
+		if (newProductReference != productReference) {
+			NotificationChain msgs = null;
+			if (productReference != null)
+				msgs = ((InternalEObject)productReference).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CARE_PLAN_DETAIL__PRODUCT_REFERENCE, null, msgs);
+			if (newProductReference != null)
+				msgs = ((InternalEObject)newProductReference).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CARE_PLAN_DETAIL__PRODUCT_REFERENCE, null, msgs);
+			msgs = basicSetProductReference(newProductReference, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.CARE_PLAN_DETAIL__PRODUCT_REFERENCE, newProductReference, newProductReference));
 	}
 
 	/**
@@ -877,8 +868,8 @@ public class CarePlanDetailImpl extends BackboneElementImpl implements CarePlanD
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public org.hl7.fhir.String getNote() {
-		return note;
+	public org.hl7.fhir.String getDescription() {
+		return description;
 	}
 
 	/**
@@ -886,11 +877,11 @@ public class CarePlanDetailImpl extends BackboneElementImpl implements CarePlanD
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetNote(org.hl7.fhir.String newNote, NotificationChain msgs) {
-		org.hl7.fhir.String oldNote = note;
-		note = newNote;
+	public NotificationChain basicSetDescription(org.hl7.fhir.String newDescription, NotificationChain msgs) {
+		org.hl7.fhir.String oldDescription = description;
+		description = newDescription;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.CARE_PLAN_DETAIL__NOTE, oldNote, newNote);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.CARE_PLAN_DETAIL__DESCRIPTION, oldDescription, newDescription);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -901,18 +892,18 @@ public class CarePlanDetailImpl extends BackboneElementImpl implements CarePlanD
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setNote(org.hl7.fhir.String newNote) {
-		if (newNote != note) {
+	public void setDescription(org.hl7.fhir.String newDescription) {
+		if (newDescription != description) {
 			NotificationChain msgs = null;
-			if (note != null)
-				msgs = ((InternalEObject)note).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CARE_PLAN_DETAIL__NOTE, null, msgs);
-			if (newNote != null)
-				msgs = ((InternalEObject)newNote).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CARE_PLAN_DETAIL__NOTE, null, msgs);
-			msgs = basicSetNote(newNote, msgs);
+			if (description != null)
+				msgs = ((InternalEObject)description).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CARE_PLAN_DETAIL__DESCRIPTION, null, msgs);
+			if (newDescription != null)
+				msgs = ((InternalEObject)newDescription).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CARE_PLAN_DETAIL__DESCRIPTION, null, msgs);
+			msgs = basicSetDescription(newDescription, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.CARE_PLAN_DETAIL__NOTE, newNote, newNote));
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.CARE_PLAN_DETAIL__DESCRIPTION, newDescription, newDescription));
 	}
 
 	/**
@@ -927,10 +918,10 @@ public class CarePlanDetailImpl extends BackboneElementImpl implements CarePlanD
 				return basicSetCategory(null, msgs);
 			case FhirPackage.CARE_PLAN_DETAIL__CODE:
 				return basicSetCode(null, msgs);
-			case FhirPackage.CARE_PLAN_DETAIL__REASON_CODEABLE_CONCEPT:
-				return basicSetReasonCodeableConcept(null, msgs);
+			case FhirPackage.CARE_PLAN_DETAIL__REASON_CODE:
+				return ((InternalEList<?>)getReasonCode()).basicRemove(otherEnd, msgs);
 			case FhirPackage.CARE_PLAN_DETAIL__REASON_REFERENCE:
-				return basicSetReasonReference(null, msgs);
+				return ((InternalEList<?>)getReasonReference()).basicRemove(otherEnd, msgs);
 			case FhirPackage.CARE_PLAN_DETAIL__GOAL:
 				return ((InternalEList<?>)getGoal()).basicRemove(otherEnd, msgs);
 			case FhirPackage.CARE_PLAN_DETAIL__STATUS:
@@ -949,14 +940,16 @@ public class CarePlanDetailImpl extends BackboneElementImpl implements CarePlanD
 				return basicSetLocation(null, msgs);
 			case FhirPackage.CARE_PLAN_DETAIL__PERFORMER:
 				return ((InternalEList<?>)getPerformer()).basicRemove(otherEnd, msgs);
-			case FhirPackage.CARE_PLAN_DETAIL__PRODUCT:
-				return basicSetProduct(null, msgs);
+			case FhirPackage.CARE_PLAN_DETAIL__PRODUCT_CODEABLE_CONCEPT:
+				return basicSetProductCodeableConcept(null, msgs);
+			case FhirPackage.CARE_PLAN_DETAIL__PRODUCT_REFERENCE:
+				return basicSetProductReference(null, msgs);
 			case FhirPackage.CARE_PLAN_DETAIL__DAILY_AMOUNT:
 				return basicSetDailyAmount(null, msgs);
 			case FhirPackage.CARE_PLAN_DETAIL__QUANTITY:
 				return basicSetQuantity(null, msgs);
-			case FhirPackage.CARE_PLAN_DETAIL__NOTE:
-				return basicSetNote(null, msgs);
+			case FhirPackage.CARE_PLAN_DETAIL__DESCRIPTION:
+				return basicSetDescription(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -973,8 +966,8 @@ public class CarePlanDetailImpl extends BackboneElementImpl implements CarePlanD
 				return getCategory();
 			case FhirPackage.CARE_PLAN_DETAIL__CODE:
 				return getCode();
-			case FhirPackage.CARE_PLAN_DETAIL__REASON_CODEABLE_CONCEPT:
-				return getReasonCodeableConcept();
+			case FhirPackage.CARE_PLAN_DETAIL__REASON_CODE:
+				return getReasonCode();
 			case FhirPackage.CARE_PLAN_DETAIL__REASON_REFERENCE:
 				return getReasonReference();
 			case FhirPackage.CARE_PLAN_DETAIL__GOAL:
@@ -995,14 +988,16 @@ public class CarePlanDetailImpl extends BackboneElementImpl implements CarePlanD
 				return getLocation();
 			case FhirPackage.CARE_PLAN_DETAIL__PERFORMER:
 				return getPerformer();
-			case FhirPackage.CARE_PLAN_DETAIL__PRODUCT:
-				return getProduct();
+			case FhirPackage.CARE_PLAN_DETAIL__PRODUCT_CODEABLE_CONCEPT:
+				return getProductCodeableConcept();
+			case FhirPackage.CARE_PLAN_DETAIL__PRODUCT_REFERENCE:
+				return getProductReference();
 			case FhirPackage.CARE_PLAN_DETAIL__DAILY_AMOUNT:
 				return getDailyAmount();
 			case FhirPackage.CARE_PLAN_DETAIL__QUANTITY:
 				return getQuantity();
-			case FhirPackage.CARE_PLAN_DETAIL__NOTE:
-				return getNote();
+			case FhirPackage.CARE_PLAN_DETAIL__DESCRIPTION:
+				return getDescription();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -1017,16 +1012,18 @@ public class CarePlanDetailImpl extends BackboneElementImpl implements CarePlanD
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case FhirPackage.CARE_PLAN_DETAIL__CATEGORY:
-				setCategory((CarePlanActivityCategory)newValue);
+				setCategory((CodeableConcept)newValue);
 				return;
 			case FhirPackage.CARE_PLAN_DETAIL__CODE:
 				setCode((CodeableConcept)newValue);
 				return;
-			case FhirPackage.CARE_PLAN_DETAIL__REASON_CODEABLE_CONCEPT:
-				setReasonCodeableConcept((CodeableConcept)newValue);
+			case FhirPackage.CARE_PLAN_DETAIL__REASON_CODE:
+				getReasonCode().clear();
+				getReasonCode().addAll((Collection<? extends CodeableConcept>)newValue);
 				return;
 			case FhirPackage.CARE_PLAN_DETAIL__REASON_REFERENCE:
-				setReasonReference((Reference)newValue);
+				getReasonReference().clear();
+				getReasonReference().addAll((Collection<? extends Reference>)newValue);
 				return;
 			case FhirPackage.CARE_PLAN_DETAIL__GOAL:
 				getGoal().clear();
@@ -1057,8 +1054,11 @@ public class CarePlanDetailImpl extends BackboneElementImpl implements CarePlanD
 				getPerformer().clear();
 				getPerformer().addAll((Collection<? extends Reference>)newValue);
 				return;
-			case FhirPackage.CARE_PLAN_DETAIL__PRODUCT:
-				setProduct((Reference)newValue);
+			case FhirPackage.CARE_PLAN_DETAIL__PRODUCT_CODEABLE_CONCEPT:
+				setProductCodeableConcept((CodeableConcept)newValue);
+				return;
+			case FhirPackage.CARE_PLAN_DETAIL__PRODUCT_REFERENCE:
+				setProductReference((Reference)newValue);
 				return;
 			case FhirPackage.CARE_PLAN_DETAIL__DAILY_AMOUNT:
 				setDailyAmount((SimpleQuantity)newValue);
@@ -1066,8 +1066,8 @@ public class CarePlanDetailImpl extends BackboneElementImpl implements CarePlanD
 			case FhirPackage.CARE_PLAN_DETAIL__QUANTITY:
 				setQuantity((SimpleQuantity)newValue);
 				return;
-			case FhirPackage.CARE_PLAN_DETAIL__NOTE:
-				setNote((org.hl7.fhir.String)newValue);
+			case FhirPackage.CARE_PLAN_DETAIL__DESCRIPTION:
+				setDescription((org.hl7.fhir.String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -1082,16 +1082,16 @@ public class CarePlanDetailImpl extends BackboneElementImpl implements CarePlanD
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case FhirPackage.CARE_PLAN_DETAIL__CATEGORY:
-				setCategory((CarePlanActivityCategory)null);
+				setCategory((CodeableConcept)null);
 				return;
 			case FhirPackage.CARE_PLAN_DETAIL__CODE:
 				setCode((CodeableConcept)null);
 				return;
-			case FhirPackage.CARE_PLAN_DETAIL__REASON_CODEABLE_CONCEPT:
-				setReasonCodeableConcept((CodeableConcept)null);
+			case FhirPackage.CARE_PLAN_DETAIL__REASON_CODE:
+				getReasonCode().clear();
 				return;
 			case FhirPackage.CARE_PLAN_DETAIL__REASON_REFERENCE:
-				setReasonReference((Reference)null);
+				getReasonReference().clear();
 				return;
 			case FhirPackage.CARE_PLAN_DETAIL__GOAL:
 				getGoal().clear();
@@ -1120,8 +1120,11 @@ public class CarePlanDetailImpl extends BackboneElementImpl implements CarePlanD
 			case FhirPackage.CARE_PLAN_DETAIL__PERFORMER:
 				getPerformer().clear();
 				return;
-			case FhirPackage.CARE_PLAN_DETAIL__PRODUCT:
-				setProduct((Reference)null);
+			case FhirPackage.CARE_PLAN_DETAIL__PRODUCT_CODEABLE_CONCEPT:
+				setProductCodeableConcept((CodeableConcept)null);
+				return;
+			case FhirPackage.CARE_PLAN_DETAIL__PRODUCT_REFERENCE:
+				setProductReference((Reference)null);
 				return;
 			case FhirPackage.CARE_PLAN_DETAIL__DAILY_AMOUNT:
 				setDailyAmount((SimpleQuantity)null);
@@ -1129,8 +1132,8 @@ public class CarePlanDetailImpl extends BackboneElementImpl implements CarePlanD
 			case FhirPackage.CARE_PLAN_DETAIL__QUANTITY:
 				setQuantity((SimpleQuantity)null);
 				return;
-			case FhirPackage.CARE_PLAN_DETAIL__NOTE:
-				setNote((org.hl7.fhir.String)null);
+			case FhirPackage.CARE_PLAN_DETAIL__DESCRIPTION:
+				setDescription((org.hl7.fhir.String)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -1148,10 +1151,10 @@ public class CarePlanDetailImpl extends BackboneElementImpl implements CarePlanD
 				return category != null;
 			case FhirPackage.CARE_PLAN_DETAIL__CODE:
 				return code != null;
-			case FhirPackage.CARE_PLAN_DETAIL__REASON_CODEABLE_CONCEPT:
-				return reasonCodeableConcept != null;
+			case FhirPackage.CARE_PLAN_DETAIL__REASON_CODE:
+				return reasonCode != null && !reasonCode.isEmpty();
 			case FhirPackage.CARE_PLAN_DETAIL__REASON_REFERENCE:
-				return reasonReference != null;
+				return reasonReference != null && !reasonReference.isEmpty();
 			case FhirPackage.CARE_PLAN_DETAIL__GOAL:
 				return goal != null && !goal.isEmpty();
 			case FhirPackage.CARE_PLAN_DETAIL__STATUS:
@@ -1170,14 +1173,16 @@ public class CarePlanDetailImpl extends BackboneElementImpl implements CarePlanD
 				return location != null;
 			case FhirPackage.CARE_PLAN_DETAIL__PERFORMER:
 				return performer != null && !performer.isEmpty();
-			case FhirPackage.CARE_PLAN_DETAIL__PRODUCT:
-				return product != null;
+			case FhirPackage.CARE_PLAN_DETAIL__PRODUCT_CODEABLE_CONCEPT:
+				return productCodeableConcept != null;
+			case FhirPackage.CARE_PLAN_DETAIL__PRODUCT_REFERENCE:
+				return productReference != null;
 			case FhirPackage.CARE_PLAN_DETAIL__DAILY_AMOUNT:
 				return dailyAmount != null;
 			case FhirPackage.CARE_PLAN_DETAIL__QUANTITY:
 				return quantity != null;
-			case FhirPackage.CARE_PLAN_DETAIL__NOTE:
-				return note != null;
+			case FhirPackage.CARE_PLAN_DETAIL__DESCRIPTION:
+				return description != null;
 		}
 		return super.eIsSet(featureID);
 	}

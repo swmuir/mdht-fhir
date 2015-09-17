@@ -164,7 +164,7 @@ public interface DataElement extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A flag to indicate that this search data elemnt definition is authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.
+	 * A flag to indicate that this search data element definition is authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Experimental</em>' containment reference.
 	 * @see #setExperimental(org.hl7.fhir.Boolean)
@@ -232,7 +232,7 @@ public interface DataElement extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The date that this version of the Data Element was published. The date must change when the business version changes, if it does, and it must change if the status code changes. in addition, it should change when the substantiative content of the data element  changes.
+	 * The date this version of the data element was published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the data element  changes.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Date</em>' containment reference.
 	 * @see #setDate(DateTime)
@@ -327,7 +327,7 @@ public interface DataElement extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Identifies a specification (other than a terminology) that the elements that make up the DataElement hav some correspondance with.
+	 * Identifies a specification (other than a terminology) that the elements which make up the DataElement have some correspondence with.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Mapping</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getDataElement_Mapping()

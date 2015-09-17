@@ -53,7 +53,7 @@ public interface Substance extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A code that classifies the the general type of substance.  This is used  for searching, sorting and display purposes.
+	 * A code that classifies the general type of substance.  This is used  for searching, sorting and display purposes.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Category</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getSubstance_Category()

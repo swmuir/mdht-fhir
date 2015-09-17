@@ -65,7 +65,7 @@ public enum UnknownContentCodeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The application does not accept either unknown elements or extensions
+	 * The application does not accept either unknown elements or extensions.
 	 * <!-- end-model-doc -->
 	 * @see #NO
 	 * @model name="no"
@@ -79,7 +79,7 @@ public enum UnknownContentCodeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The application accepts unknown extensions, but not unknown elements
+	 * The application accepts unknown extensions, but not unknown elements.
 	 * <!-- end-model-doc -->
 	 * @see #EXTENSIONS
 	 * @model name="extensions"
@@ -93,7 +93,7 @@ public enum UnknownContentCodeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The application accepts unknown elements, but not unknown extensions
+	 * The application accepts unknown elements, but not unknown extensions.
 	 * <!-- end-model-doc -->
 	 * @see #ELEMENTS
 	 * @model name="elements"
@@ -107,7 +107,7 @@ public enum UnknownContentCodeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The application accepts unknown elements and extensions
+	 * The application accepts unknown elements and extensions.
 	 * <!-- end-model-doc -->
 	 * @see #BOTH
 	 * @model name="both"

@@ -21,52 +21,52 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum AllergyIntoleranceTypeList implements Enumerator {
 	/**
-	 * The '<em><b>Immune</b></em>' literal object.
+	 * The '<em><b>Allergy</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #IMMUNE_VALUE
+	 * @see #ALLERGY_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	IMMUNE(0, "immune", "immune"),
+	ALLERGY(0, "allergy", "allergy"),
 
 	/**
-	 * The '<em><b>Non Immune</b></em>' literal object.
+	 * The '<em><b>Intolerance</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #NON_IMMUNE_VALUE
+	 * @see #INTOLERANCE_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	NON_IMMUNE(1, "nonImmune", "non-immune");
+	INTOLERANCE(1, "intolerance", "intolerance");
 
 	/**
-	 * The '<em><b>Immune</b></em>' literal value.
+	 * The '<em><b>Allergy</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Immune mediated reaction, including allergic reactions and hypersensitivities.
+	 * A propensity for hypersensitivity reaction(s) to a substance.  These reactions are most typically type I hypersensitivity, plus other "allergy-like" reactions, including pseudoallergy.
 	 * <!-- end-model-doc -->
-	 * @see #IMMUNE
-	 * @model name="immune"
+	 * @see #ALLERGY
+	 * @model name="allergy"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int IMMUNE_VALUE = 0;
+	public static final int ALLERGY_VALUE = 0;
 
 	/**
-	 * The '<em><b>Non Immune</b></em>' literal value.
+	 * The '<em><b>Intolerance</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A non-immune mediated reaction, which can include pseudoallergic reactions, side effects, intolerances, drug toxicities (eg to Gentamicin), drug-drug interactions, food-drug interactions, and drug-disease interactions.
+	 * A propensity for adverse reactions to a substance that is not judged to be allergic or "allergy-like".  These reactions are typically (but not necessarily) non-immune.  They are to some degree idiosyncratic and/or individually specific (i.e. are not a reaction that is expected to occur with most or all patients given similar circumstances).
 	 * <!-- end-model-doc -->
-	 * @see #NON_IMMUNE
-	 * @model name="nonImmune" literal="non-immune"
+	 * @see #INTOLERANCE
+	 * @model name="intolerance"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int NON_IMMUNE_VALUE = 1;
+	public static final int INTOLERANCE_VALUE = 1;
 
 	/**
 	 * An array of all the '<em><b>Allergy Intolerance Type List</b></em>' enumerators.
@@ -76,8 +76,8 @@ public enum AllergyIntoleranceTypeList implements Enumerator {
 	 */
 	private static final AllergyIntoleranceTypeList[] VALUES_ARRAY =
 		new AllergyIntoleranceTypeList[] {
-			IMMUNE,
-			NON_IMMUNE,
+			ALLERGY,
+			INTOLERANCE,
 		};
 
 	/**
@@ -134,8 +134,8 @@ public enum AllergyIntoleranceTypeList implements Enumerator {
 	 */
 	public static AllergyIntoleranceTypeList get(int value) {
 		switch (value) {
-			case IMMUNE_VALUE: return IMMUNE;
-			case NON_IMMUNE_VALUE: return NON_IMMUNE;
+			case ALLERGY_VALUE: return ALLERGY;
+			case INTOLERANCE_VALUE: return INTOLERANCE;
 		}
 		return null;
 	}

@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Thu, Aug 20, 2015 14:13+0000 for FHIR v0.5.0 
+  Generated on Wed, Sep 16, 2015 13:28+0000 for FHIR v1.0.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -54,6 +54,11 @@
               <xs:documentation xml:lang="en">Id for specimen.</xs:documentation>
            </xs:annotation>
           </xs:element>
+          <xs:element name="status" minOccurs="0" maxOccurs="1" type="SpecimenStatus">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">The availability of the specimen.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
           <xs:element name="type" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             <xs:annotation>
               <xs:documentation xml:lang="en">The kind of material that forms the specimen.</xs:documentation>
@@ -61,7 +66,7 @@
           </xs:element>
           <xs:element name="parent" minOccurs="0" maxOccurs="unbounded" type="Reference">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Reference to the parent (source) specimen which is used when the specimen was either derived from or a component of a another specimen.</xs:documentation>
+              <xs:documentation xml:lang="en">Reference to the parent (source) specimen which is used when the specimen was either derived from or a component of another specimen.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="subject" minOccurs="1" maxOccurs="1" type="Reference">
@@ -186,7 +191,7 @@
           </xs:element>
           <xs:element name="type" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             <xs:annotation>
-              <xs:documentation xml:lang="en">The type of container associated with the specimen (e.g. slide, aliquot, etc).</xs:documentation>
+              <xs:documentation xml:lang="en">The type of container associated with the specimen (e.g. slide, aliquot, etc.).</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="capacity" minOccurs="0" maxOccurs="1" type="SimpleQuantity">
@@ -201,12 +206,47 @@
           </xs:element>
           <xs:choice minOccurs="0" maxOccurs="1" >
             <xs:annotation>
-              <xs:documentation xml:lang="en">Introduced substance to preserve, maintain or enhance the specimen. examples: Formalin, Citrate, EDTA.</xs:documentation>
+              <xs:documentation xml:lang="en">Introduced substance to preserve, maintain or enhance the specimen. Examples: Formalin, Citrate, EDTA.</xs:documentation>
             </xs:annotation>
             <xs:element name="additiveCodeableConcept" type="CodeableConcept"/>
             <xs:element name="additiveReference" type="Reference"/>
           </xs:choice>
         </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="SpecimenStatus-list">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="available">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The physical specimen is present and in good condition.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="unavailable">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">There is no physical specimen because it is either lost, destroyed or consumed.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="unsatisfactory">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The specimen cannot be used because of a quality issue such as a broken container, contamination, or too old.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="entered-in-error">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The specimen was entered in error and therefore nullified.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="SpecimenStatus">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">Codes providing the status/availability of a specimen</xs:documentation>
+      <xs:documentation xml:lang="en">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="Element">
+        <xs:attribute name="value" type="SpecimenStatus-list" use="optional"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>

@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.hl7.fhir.FhirPackage;
-import org.hl7.fhir.TestScriptCapabilities;
+import org.hl7.fhir.TestScriptCapability;
 import org.hl7.fhir.TestScriptLink;
 import org.hl7.fhir.TestScriptMetadata;
 
@@ -28,7 +28,7 @@ import org.hl7.fhir.TestScriptMetadata;
  * </p>
  * <ul>
  *   <li>{@link org.hl7.fhir.impl.TestScriptMetadataImpl#getLink <em>Link</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.TestScriptMetadataImpl#getCapabilities <em>Capabilities</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.TestScriptMetadataImpl#getCapability <em>Capability</em>}</li>
  * </ul>
  *
  * @generated
@@ -45,14 +45,14 @@ public class TestScriptMetadataImpl extends BackboneElementImpl implements TestS
 	protected EList<TestScriptLink> link;
 
 	/**
-	 * The cached value of the '{@link #getCapabilities() <em>Capabilities</em>}' containment reference list.
+	 * The cached value of the '{@link #getCapability() <em>Capability</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getCapabilities()
+	 * @see #getCapability()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<TestScriptCapabilities> capabilities;
+	protected EList<TestScriptCapability> capability;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -90,11 +90,11 @@ public class TestScriptMetadataImpl extends BackboneElementImpl implements TestS
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<TestScriptCapabilities> getCapabilities() {
-		if (capabilities == null) {
-			capabilities = new EObjectContainmentEList<TestScriptCapabilities>(TestScriptCapabilities.class, this, FhirPackage.TEST_SCRIPT_METADATA__CAPABILITIES);
+	public EList<TestScriptCapability> getCapability() {
+		if (capability == null) {
+			capability = new EObjectContainmentEList<TestScriptCapability>(TestScriptCapability.class, this, FhirPackage.TEST_SCRIPT_METADATA__CAPABILITY);
 		}
-		return capabilities;
+		return capability;
 	}
 
 	/**
@@ -107,8 +107,8 @@ public class TestScriptMetadataImpl extends BackboneElementImpl implements TestS
 		switch (featureID) {
 			case FhirPackage.TEST_SCRIPT_METADATA__LINK:
 				return ((InternalEList<?>)getLink()).basicRemove(otherEnd, msgs);
-			case FhirPackage.TEST_SCRIPT_METADATA__CAPABILITIES:
-				return ((InternalEList<?>)getCapabilities()).basicRemove(otherEnd, msgs);
+			case FhirPackage.TEST_SCRIPT_METADATA__CAPABILITY:
+				return ((InternalEList<?>)getCapability()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -123,8 +123,8 @@ public class TestScriptMetadataImpl extends BackboneElementImpl implements TestS
 		switch (featureID) {
 			case FhirPackage.TEST_SCRIPT_METADATA__LINK:
 				return getLink();
-			case FhirPackage.TEST_SCRIPT_METADATA__CAPABILITIES:
-				return getCapabilities();
+			case FhirPackage.TEST_SCRIPT_METADATA__CAPABILITY:
+				return getCapability();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -142,9 +142,9 @@ public class TestScriptMetadataImpl extends BackboneElementImpl implements TestS
 				getLink().clear();
 				getLink().addAll((Collection<? extends TestScriptLink>)newValue);
 				return;
-			case FhirPackage.TEST_SCRIPT_METADATA__CAPABILITIES:
-				getCapabilities().clear();
-				getCapabilities().addAll((Collection<? extends TestScriptCapabilities>)newValue);
+			case FhirPackage.TEST_SCRIPT_METADATA__CAPABILITY:
+				getCapability().clear();
+				getCapability().addAll((Collection<? extends TestScriptCapability>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -161,8 +161,8 @@ public class TestScriptMetadataImpl extends BackboneElementImpl implements TestS
 			case FhirPackage.TEST_SCRIPT_METADATA__LINK:
 				getLink().clear();
 				return;
-			case FhirPackage.TEST_SCRIPT_METADATA__CAPABILITIES:
-				getCapabilities().clear();
+			case FhirPackage.TEST_SCRIPT_METADATA__CAPABILITY:
+				getCapability().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -178,8 +178,8 @@ public class TestScriptMetadataImpl extends BackboneElementImpl implements TestS
 		switch (featureID) {
 			case FhirPackage.TEST_SCRIPT_METADATA__LINK:
 				return link != null && !link.isEmpty();
-			case FhirPackage.TEST_SCRIPT_METADATA__CAPABILITIES:
-				return capabilities != null && !capabilities.isEmpty();
+			case FhirPackage.TEST_SCRIPT_METADATA__CAPABILITY:
+				return capability != null && !capability.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

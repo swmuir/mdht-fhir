@@ -37,6 +37,7 @@ import org.hl7.fhir.Reference;
  * </p>
  * <ul>
  *   <li>{@link org.hl7.fhir.impl.LocationImpl#getIdentifier <em>Identifier</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.LocationImpl#getStatus <em>Status</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.LocationImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.LocationImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.LocationImpl#getMode <em>Mode</em>}</li>
@@ -47,7 +48,6 @@ import org.hl7.fhir.Reference;
  *   <li>{@link org.hl7.fhir.impl.LocationImpl#getPosition <em>Position</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.LocationImpl#getManagingOrganization <em>Managing Organization</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.LocationImpl#getPartOf <em>Part Of</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.LocationImpl#getStatus <em>Status</em>}</li>
  * </ul>
  *
  * @generated
@@ -62,6 +62,16 @@ public class LocationImpl extends DomainResourceImpl implements Location {
 	 * @ordered
 	 */
 	protected EList<Identifier> identifier;
+
+	/**
+	 * The cached value of the '{@link #getStatus() <em>Status</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStatus()
+	 * @generated
+	 * @ordered
+	 */
+	protected LocationStatus status;
 
 	/**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' containment reference.
@@ -164,16 +174,6 @@ public class LocationImpl extends DomainResourceImpl implements Location {
 	protected Reference partOf;
 
 	/**
-	 * The cached value of the '{@link #getStatus() <em>Status</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getStatus()
-	 * @generated
-	 * @ordered
-	 */
-	protected LocationStatus status;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -202,6 +202,49 @@ public class LocationImpl extends DomainResourceImpl implements Location {
 			identifier = new EObjectContainmentEList<Identifier>(Identifier.class, this, FhirPackage.LOCATION__IDENTIFIER);
 		}
 		return identifier;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LocationStatus getStatus() {
+		return status;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetStatus(LocationStatus newStatus, NotificationChain msgs) {
+		LocationStatus oldStatus = status;
+		status = newStatus;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.LOCATION__STATUS, oldStatus, newStatus);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setStatus(LocationStatus newStatus) {
+		if (newStatus != status) {
+			NotificationChain msgs = null;
+			if (status != null)
+				msgs = ((InternalEObject)status).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.LOCATION__STATUS, null, msgs);
+			if (newStatus != null)
+				msgs = ((InternalEObject)newStatus).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.LOCATION__STATUS, null, msgs);
+			msgs = basicSetStatus(newStatus, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.LOCATION__STATUS, newStatus, newStatus));
 	}
 
 	/**
@@ -608,54 +651,13 @@ public class LocationImpl extends DomainResourceImpl implements Location {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LocationStatus getStatus() {
-		return status;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetStatus(LocationStatus newStatus, NotificationChain msgs) {
-		LocationStatus oldStatus = status;
-		status = newStatus;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.LOCATION__STATUS, oldStatus, newStatus);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setStatus(LocationStatus newStatus) {
-		if (newStatus != status) {
-			NotificationChain msgs = null;
-			if (status != null)
-				msgs = ((InternalEObject)status).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.LOCATION__STATUS, null, msgs);
-			if (newStatus != null)
-				msgs = ((InternalEObject)newStatus).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.LOCATION__STATUS, null, msgs);
-			msgs = basicSetStatus(newStatus, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.LOCATION__STATUS, newStatus, newStatus));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case FhirPackage.LOCATION__IDENTIFIER:
 				return ((InternalEList<?>)getIdentifier()).basicRemove(otherEnd, msgs);
+			case FhirPackage.LOCATION__STATUS:
+				return basicSetStatus(null, msgs);
 			case FhirPackage.LOCATION__NAME:
 				return basicSetName(null, msgs);
 			case FhirPackage.LOCATION__DESCRIPTION:
@@ -676,8 +678,6 @@ public class LocationImpl extends DomainResourceImpl implements Location {
 				return basicSetManagingOrganization(null, msgs);
 			case FhirPackage.LOCATION__PART_OF:
 				return basicSetPartOf(null, msgs);
-			case FhirPackage.LOCATION__STATUS:
-				return basicSetStatus(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -692,6 +692,8 @@ public class LocationImpl extends DomainResourceImpl implements Location {
 		switch (featureID) {
 			case FhirPackage.LOCATION__IDENTIFIER:
 				return getIdentifier();
+			case FhirPackage.LOCATION__STATUS:
+				return getStatus();
 			case FhirPackage.LOCATION__NAME:
 				return getName();
 			case FhirPackage.LOCATION__DESCRIPTION:
@@ -712,8 +714,6 @@ public class LocationImpl extends DomainResourceImpl implements Location {
 				return getManagingOrganization();
 			case FhirPackage.LOCATION__PART_OF:
 				return getPartOf();
-			case FhirPackage.LOCATION__STATUS:
-				return getStatus();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -730,6 +730,9 @@ public class LocationImpl extends DomainResourceImpl implements Location {
 			case FhirPackage.LOCATION__IDENTIFIER:
 				getIdentifier().clear();
 				getIdentifier().addAll((Collection<? extends Identifier>)newValue);
+				return;
+			case FhirPackage.LOCATION__STATUS:
+				setStatus((LocationStatus)newValue);
 				return;
 			case FhirPackage.LOCATION__NAME:
 				setName((org.hl7.fhir.String)newValue);
@@ -762,9 +765,6 @@ public class LocationImpl extends DomainResourceImpl implements Location {
 			case FhirPackage.LOCATION__PART_OF:
 				setPartOf((Reference)newValue);
 				return;
-			case FhirPackage.LOCATION__STATUS:
-				setStatus((LocationStatus)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -779,6 +779,9 @@ public class LocationImpl extends DomainResourceImpl implements Location {
 		switch (featureID) {
 			case FhirPackage.LOCATION__IDENTIFIER:
 				getIdentifier().clear();
+				return;
+			case FhirPackage.LOCATION__STATUS:
+				setStatus((LocationStatus)null);
 				return;
 			case FhirPackage.LOCATION__NAME:
 				setName((org.hl7.fhir.String)null);
@@ -810,9 +813,6 @@ public class LocationImpl extends DomainResourceImpl implements Location {
 			case FhirPackage.LOCATION__PART_OF:
 				setPartOf((Reference)null);
 				return;
-			case FhirPackage.LOCATION__STATUS:
-				setStatus((LocationStatus)null);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -827,6 +827,8 @@ public class LocationImpl extends DomainResourceImpl implements Location {
 		switch (featureID) {
 			case FhirPackage.LOCATION__IDENTIFIER:
 				return identifier != null && !identifier.isEmpty();
+			case FhirPackage.LOCATION__STATUS:
+				return status != null;
 			case FhirPackage.LOCATION__NAME:
 				return name != null;
 			case FhirPackage.LOCATION__DESCRIPTION:
@@ -847,8 +849,6 @@ public class LocationImpl extends DomainResourceImpl implements Location {
 				return managingOrganization != null;
 			case FhirPackage.LOCATION__PART_OF:
 				return partOf != null;
-			case FhirPackage.LOCATION__STATUS:
-				return status != null;
 		}
 		return super.eIsSet(featureID);
 	}

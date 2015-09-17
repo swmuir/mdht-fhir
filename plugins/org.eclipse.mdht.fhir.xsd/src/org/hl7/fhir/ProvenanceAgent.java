@@ -2,6 +2,7 @@
  */
 package org.hl7.fhir;
 
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -9,7 +10,7 @@ package org.hl7.fhir;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Provenance of a resource is a record that describes entities and processes involved in producing and delivering or otherwise influencing that resource. Provenance provides a critical foundation for assessing authenticity, enabling trust, and allowing reproducibility. Provenance assertions are a form of contextual metadata and can themselves become important records with their own provenance. Provenance statement indicates clinical significance in terms of confidence in authenticity, reliability, and trustworthiness, integrity, and stage in lifecycle (e.g., Document Completion - has the artifact been legally authenticated), all of which may impact Security, Privacy, and Trust policies.
+ * Provenance of a resource is a record that describes entities and processes involved in producing and delivering or otherwise influencing that resource. Provenance provides a critical foundation for assessing authenticity, enabling trust, and allowing reproducibility. Provenance assertions are a form of contextual metadata and can themselves become important records with their own provenance. Provenance statement indicates clinical significance in terms of confidence in authenticity, reliability, and trustworthiness, integrity, and stage in lifecycle (e.g. Document Completion - has the artifact been legally authenticated), all of which may impact Security, Privacy, and Trust policies.
  * <!-- end-model-doc -->
  *
  * <p>
@@ -19,6 +20,7 @@ package org.hl7.fhir;
  *   <li>{@link org.hl7.fhir.ProvenanceAgent#getRole <em>Role</em>}</li>
  *   <li>{@link org.hl7.fhir.ProvenanceAgent#getActor <em>Actor</em>}</li>
  *   <li>{@link org.hl7.fhir.ProvenanceAgent#getUserId <em>User Id</em>}</li>
+ *   <li>{@link org.hl7.fhir.ProvenanceAgent#getRelatedAgent <em>Related Agent</em>}</li>
  * </ul>
  *
  * @see org.hl7.fhir.FhirPackage#getProvenanceAgent()
@@ -103,5 +105,21 @@ public interface ProvenanceAgent extends BackboneElement {
 	 * @generated
 	 */
 	void setUserId(Identifier value);
+
+	/**
+	 * Returns the value of the '<em><b>Related Agent</b></em>' containment reference list.
+	 * The list contents are of type {@link org.hl7.fhir.ProvenanceRelatedAgent}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A relationship between two the agents referenced in this resource. This is defined to allow for explicit description of the delegation between agents - e.g. this human author used this device, or one person acted on another's behest.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Related Agent</em>' containment reference list.
+	 * @see org.hl7.fhir.FhirPackage#getProvenanceAgent_RelatedAgent()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='relatedAgent' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	EList<ProvenanceRelatedAgent> getRelatedAgent();
 
 } // ProvenanceAgent

@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Thu, Aug 20, 2015 14:13+0000 for FHIR v0.5.0 
+  Generated on Wed, Sep 16, 2015 13:28+0000 for FHIR v1.0.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -72,7 +72,7 @@
           </xs:element>
           <xs:element name="code" minOccurs="1" maxOccurs="1" type="IssueType">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Describes the type of the issue. The system that creates an OperationOutcome SHALL choose the most applicable code from the IssueType value set, and may additional provide it's own code for the error in the details element.</xs:documentation>
+              <xs:documentation xml:lang="en">Describes the type of the issue. The system that creates an OperationOutcome SHALL choose the most applicable code from the IssueType value set, and may additional provide its own code for the error in the details element.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="details" minOccurs="0" maxOccurs="1" type="CodeableConcept">
@@ -188,7 +188,7 @@
       </xs:enumeration>
       <xs:enumeration value="too-costly">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The operation was stopped to protect server resources. E.g. a request for a value set expansion on all of SNOMED CT</xs:documentation>
+          <xs:documentation xml:lang="en">The operation was stopped to protect server resources; e.g. a request for a value set expansion on all of SNOMED CT</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="business-rule">
@@ -218,7 +218,7 @@
       </xs:enumeration>
       <xs:enumeration value="no-store">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The persistent store unavailable. E.g. the database is down for maintenance or similar</xs:documentation>
+          <xs:documentation xml:lang="en">The persistent store unavailable; e.g. the database is down for maintenance or similar</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="exception">

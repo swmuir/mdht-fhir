@@ -131,7 +131,7 @@ public enum SubscriptionChannelTypeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The channel Is executed by sending a message (e.g. a Bundle with a MessageHeader resource etc) to the application identified in the URI
+	 * The channel Is executed by sending a message (e.g. a Bundle with a MessageHeader resource etc.) to the application identified in the URI
 	 * <!-- end-model-doc -->
 	 * @see #MESSAGE
 	 * @model name="message"

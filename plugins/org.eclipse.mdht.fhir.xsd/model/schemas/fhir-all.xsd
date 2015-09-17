@@ -26,9 +26,9 @@ Copyright (c) 2011+, HL7, Inc
  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
  POSSIBILITY OF SUCH DAMAGE.
 
- Generated on Thu, Aug 20, 2015 14:13+0000 for FHIR v0.5.0
+ Generated on Wed, Sep 16, 2015 13:28+0000 for FHIR v1.0.0
 -->
-<xs:schema xmlns="http://hl7.org/fhir" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://hl7.org/fhir" elementFormDefault="qualified" version="0.5.0">
+<xs:schema xmlns="http://hl7.org/fhir" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://hl7.org/fhir" elementFormDefault="qualified" version="1.0.0">
   <xs:include schemaLocation="account.xsd"/>
   <xs:include schemaLocation="allergyintolerance.xsd"/>
   <xs:include schemaLocation="appointment.xsd"/>
@@ -49,9 +49,9 @@ Copyright (c) 2011+, HL7, Inc
   <xs:include schemaLocation="condition.xsd"/>
   <xs:include schemaLocation="conformance.xsd"/>
   <xs:include schemaLocation="contract.xsd"/>
-  <xs:include schemaLocation="contraindication.xsd"/>
   <xs:include schemaLocation="coverage.xsd"/>
   <xs:include schemaLocation="dataelement.xsd"/>
+  <xs:include schemaLocation="detectedissue.xsd"/>
   <xs:include schemaLocation="device.xsd"/>
   <xs:include schemaLocation="devicecomponent.xsd"/>
   <xs:include schemaLocation="devicemetric.xsd"/>
@@ -95,6 +95,7 @@ Copyright (c) 2011+, HL7, Inc
   <xs:include schemaLocation="order.xsd"/>
   <xs:include schemaLocation="orderresponse.xsd"/>
   <xs:include schemaLocation="organization.xsd"/>
+  <xs:include schemaLocation="parameters.xsd"/>
   <xs:include schemaLocation="patient.xsd"/>
   <xs:include schemaLocation="paymentnotice.xsd"/>
   <xs:include schemaLocation="paymentreconciliation.xsd"/>

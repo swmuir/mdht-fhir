@@ -10,7 +10,7 @@ import org.eclipse.emf.common.util.EList;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Representation of the content produced in a DICOM imaging study. A study comprises a set of Series, each of which includes a set of Service-Object Pair Instances (SOP Instances - images or other data) acquired or produced in a common context.  A Series is of only one modality (e.g., X-ray, CT, MR, ultrasound), but a Study may have multiple Series of different modalities.
+ * Representation of the content produced in a DICOM imaging study. A study comprises a set of Series, each of which includes a set of Service-Object Pair Instances (SOP Instances - images or other data) acquired or produced in a common context.  A Series is of only one modality (e.g. X-ray, CT, MR, ultrasound), but a Study may have multiple Series of different modalities.
  * <!-- end-model-doc -->
  *
  * <p>
@@ -222,7 +222,7 @@ public interface ImagingStudySeries extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Body part examined. See  DICOM Part 16 Annex L for the mapping from DICOM to Snomed.
+	 * Body part examined. See  DICOM Part 16 Annex L for the mapping from DICOM to Snomed CT.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Body Site</em>' containment reference.
 	 * @see #setBodySite(Coding)
@@ -248,7 +248,7 @@ public interface ImagingStudySeries extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Laterality if bodySite is paired anatomic structure and laterality is not pre-coordinated in bodySite code.
+	 * Laterality if body site is paired anatomic structure and laterality is not pre-coordinated in body site code.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Laterality</em>' containment reference.
 	 * @see #setLaterality(Coding)
@@ -274,7 +274,7 @@ public interface ImagingStudySeries extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The date and time when the series was started.
+	 * The date and time the series was started.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Started</em>' containment reference.
 	 * @see #setStarted(DateTime)
@@ -301,7 +301,7 @@ public interface ImagingStudySeries extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A single SOP Instance within the series, e.g., an image, or presentation state.
+	 * A single SOP Instance within the series, e.g. an image, or presentation state.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Instance</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getImagingStudySeries_Instance()

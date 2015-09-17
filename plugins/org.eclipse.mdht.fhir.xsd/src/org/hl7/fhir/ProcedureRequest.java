@@ -20,12 +20,13 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link org.hl7.fhir.ProcedureRequest#getIdentifier <em>Identifier</em>}</li>
  *   <li>{@link org.hl7.fhir.ProcedureRequest#getSubject <em>Subject</em>}</li>
- *   <li>{@link org.hl7.fhir.ProcedureRequest#getType <em>Type</em>}</li>
+ *   <li>{@link org.hl7.fhir.ProcedureRequest#getCode <em>Code</em>}</li>
  *   <li>{@link org.hl7.fhir.ProcedureRequest#getBodySite <em>Body Site</em>}</li>
- *   <li>{@link org.hl7.fhir.ProcedureRequest#getIndication <em>Indication</em>}</li>
- *   <li>{@link org.hl7.fhir.ProcedureRequest#getTimingDateTime <em>Timing Date Time</em>}</li>
- *   <li>{@link org.hl7.fhir.ProcedureRequest#getTimingPeriod <em>Timing Period</em>}</li>
- *   <li>{@link org.hl7.fhir.ProcedureRequest#getTimingTiming <em>Timing Timing</em>}</li>
+ *   <li>{@link org.hl7.fhir.ProcedureRequest#getReasonCodeableConcept <em>Reason Codeable Concept</em>}</li>
+ *   <li>{@link org.hl7.fhir.ProcedureRequest#getReasonReference <em>Reason Reference</em>}</li>
+ *   <li>{@link org.hl7.fhir.ProcedureRequest#getScheduledDateTime <em>Scheduled Date Time</em>}</li>
+ *   <li>{@link org.hl7.fhir.ProcedureRequest#getScheduledPeriod <em>Scheduled Period</em>}</li>
+ *   <li>{@link org.hl7.fhir.ProcedureRequest#getScheduledTiming <em>Scheduled Timing</em>}</li>
  *   <li>{@link org.hl7.fhir.ProcedureRequest#getEncounter <em>Encounter</em>}</li>
  *   <li>{@link org.hl7.fhir.ProcedureRequest#getPerformer <em>Performer</em>}</li>
  *   <li>{@link org.hl7.fhir.ProcedureRequest#getStatus <em>Status</em>}</li>
@@ -63,7 +64,7 @@ public interface ProcedureRequest extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The patient who will receive the procedure.
+	 * The patient who will receive the procedure or a group of subjects.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Subject</em>' containment reference.
 	 * @see #setSubject(Reference)
@@ -85,34 +86,34 @@ public interface ProcedureRequest extends DomainResource {
 	void setSubject(Reference value);
 
 	/**
-	 * Returns the value of the '<em><b>Type</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Code</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The specific procedure that is ordered. Use text if the exact nature of the procedure can't be coded.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Type</em>' containment reference.
-	 * @see #setType(CodeableConcept)
-	 * @see org.hl7.fhir.FhirPackage#getProcedureRequest_Type()
+	 * @return the value of the '<em>Code</em>' containment reference.
+	 * @see #setCode(CodeableConcept)
+	 * @see org.hl7.fhir.FhirPackage#getProcedureRequest_Code()
 	 * @model containment="true" required="true"
-	 *        extendedMetaData="kind='element' name='type' namespace='##targetNamespace'"
+	 *        extendedMetaData="kind='element' name='code' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	CodeableConcept getType();
+	CodeableConcept getCode();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ProcedureRequest#getType <em>Type</em>}' containment reference.
+	 * Sets the value of the '{@link org.hl7.fhir.ProcedureRequest#getCode <em>Code</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Type</em>' containment reference.
-	 * @see #getType()
+	 * @param value the new value of the '<em>Code</em>' containment reference.
+	 * @see #getCode()
 	 * @generated
 	 */
-	void setType(CodeableConcept value);
+	void setCode(CodeableConcept value);
 
 	/**
 	 * Returns the value of the '<em><b>Body Site</b></em>' containment reference list.
-	 * The list contents are of type {@link org.hl7.fhir.ProcedureRequestBodySite}.
+	 * The list contents are of type {@link org.hl7.fhir.CodeableConcept}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -124,104 +125,142 @@ public interface ProcedureRequest extends DomainResource {
 	 *        extendedMetaData="kind='element' name='bodySite' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	EList<ProcedureRequestBodySite> getBodySite();
+	EList<CodeableConcept> getBodySite();
 
 	/**
-	 * Returns the value of the '<em><b>Indication</b></em>' containment reference list.
-	 * The list contents are of type {@link org.hl7.fhir.CodeableConcept}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The reason why the procedure is proposed or ordered. This procedure request may be motivated by a Condition for instance.
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Indication</em>' containment reference list.
-	 * @see org.hl7.fhir.FhirPackage#getProcedureRequest_Indication()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='indication' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	EList<CodeableConcept> getIndication();
-
-	/**
-	 * Returns the value of the '<em><b>Timing Date Time</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Reason Codeable Concept</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Timing Date Time</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Reason Codeable Concept</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Timing Date Time</em>' containment reference.
-	 * @see #setTimingDateTime(DateTime)
-	 * @see org.hl7.fhir.FhirPackage#getProcedureRequest_TimingDateTime()
+	 * @return the value of the '<em>Reason Codeable Concept</em>' containment reference.
+	 * @see #setReasonCodeableConcept(CodeableConcept)
+	 * @see org.hl7.fhir.FhirPackage#getProcedureRequest_ReasonCodeableConcept()
 	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='timingDateTime' namespace='##targetNamespace'"
+	 *        extendedMetaData="kind='element' name='reasonCodeableConcept' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	DateTime getTimingDateTime();
+	CodeableConcept getReasonCodeableConcept();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ProcedureRequest#getTimingDateTime <em>Timing Date Time</em>}' containment reference.
+	 * Sets the value of the '{@link org.hl7.fhir.ProcedureRequest#getReasonCodeableConcept <em>Reason Codeable Concept</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Timing Date Time</em>' containment reference.
-	 * @see #getTimingDateTime()
+	 * @param value the new value of the '<em>Reason Codeable Concept</em>' containment reference.
+	 * @see #getReasonCodeableConcept()
 	 * @generated
 	 */
-	void setTimingDateTime(DateTime value);
+	void setReasonCodeableConcept(CodeableConcept value);
 
 	/**
-	 * Returns the value of the '<em><b>Timing Period</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Reason Reference</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Timing Period</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Reason Reference</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Timing Period</em>' containment reference.
-	 * @see #setTimingPeriod(Period)
-	 * @see org.hl7.fhir.FhirPackage#getProcedureRequest_TimingPeriod()
+	 * @return the value of the '<em>Reason Reference</em>' containment reference.
+	 * @see #setReasonReference(Reference)
+	 * @see org.hl7.fhir.FhirPackage#getProcedureRequest_ReasonReference()
 	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='timingPeriod' namespace='##targetNamespace'"
+	 *        extendedMetaData="kind='element' name='reasonReference' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	Period getTimingPeriod();
+	Reference getReasonReference();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ProcedureRequest#getTimingPeriod <em>Timing Period</em>}' containment reference.
+	 * Sets the value of the '{@link org.hl7.fhir.ProcedureRequest#getReasonReference <em>Reason Reference</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Timing Period</em>' containment reference.
-	 * @see #getTimingPeriod()
+	 * @param value the new value of the '<em>Reason Reference</em>' containment reference.
+	 * @see #getReasonReference()
 	 * @generated
 	 */
-	void setTimingPeriod(Period value);
+	void setReasonReference(Reference value);
 
 	/**
-	 * Returns the value of the '<em><b>Timing Timing</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Scheduled Date Time</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Timing Timing</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Scheduled Date Time</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Timing Timing</em>' containment reference.
-	 * @see #setTimingTiming(Timing)
-	 * @see org.hl7.fhir.FhirPackage#getProcedureRequest_TimingTiming()
+	 * @return the value of the '<em>Scheduled Date Time</em>' containment reference.
+	 * @see #setScheduledDateTime(DateTime)
+	 * @see org.hl7.fhir.FhirPackage#getProcedureRequest_ScheduledDateTime()
 	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='timingTiming' namespace='##targetNamespace'"
+	 *        extendedMetaData="kind='element' name='scheduledDateTime' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	Timing getTimingTiming();
+	DateTime getScheduledDateTime();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ProcedureRequest#getTimingTiming <em>Timing Timing</em>}' containment reference.
+	 * Sets the value of the '{@link org.hl7.fhir.ProcedureRequest#getScheduledDateTime <em>Scheduled Date Time</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Timing Timing</em>' containment reference.
-	 * @see #getTimingTiming()
+	 * @param value the new value of the '<em>Scheduled Date Time</em>' containment reference.
+	 * @see #getScheduledDateTime()
 	 * @generated
 	 */
-	void setTimingTiming(Timing value);
+	void setScheduledDateTime(DateTime value);
+
+	/**
+	 * Returns the value of the '<em><b>Scheduled Period</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Scheduled Period</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Scheduled Period</em>' containment reference.
+	 * @see #setScheduledPeriod(Period)
+	 * @see org.hl7.fhir.FhirPackage#getProcedureRequest_ScheduledPeriod()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='scheduledPeriod' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Period getScheduledPeriod();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.ProcedureRequest#getScheduledPeriod <em>Scheduled Period</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Scheduled Period</em>' containment reference.
+	 * @see #getScheduledPeriod()
+	 * @generated
+	 */
+	void setScheduledPeriod(Period value);
+
+	/**
+	 * Returns the value of the '<em><b>Scheduled Timing</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Scheduled Timing</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Scheduled Timing</em>' containment reference.
+	 * @see #setScheduledTiming(Timing)
+	 * @see org.hl7.fhir.FhirPackage#getProcedureRequest_ScheduledTiming()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='scheduledTiming' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Timing getScheduledTiming();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.ProcedureRequest#getScheduledTiming <em>Scheduled Timing</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Scheduled Timing</em>' containment reference.
+	 * @see #getScheduledTiming()
+	 * @generated
+	 */
+	void setScheduledTiming(Timing value);
 
 	/**
 	 * Returns the value of the '<em><b>Encounter</b></em>' containment reference.
@@ -303,11 +342,11 @@ public interface ProcedureRequest extends DomainResource {
 
 	/**
 	 * Returns the value of the '<em><b>Notes</b></em>' containment reference list.
-	 * The list contents are of type {@link org.hl7.fhir.String}.
+	 * The list contents are of type {@link org.hl7.fhir.Annotation}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Any other notes associated with this proposal or order - e.g., provider instructions.
+	 * Any other notes associated with this proposal or order - e.g. provider instructions.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Notes</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getProcedureRequest_Notes()
@@ -315,7 +354,7 @@ public interface ProcedureRequest extends DomainResource {
 	 *        extendedMetaData="kind='element' name='notes' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	EList<org.hl7.fhir.String> getNotes();
+	EList<Annotation> getNotes();
 
 	/**
 	 * Returns the value of the '<em><b>As Needed Boolean</b></em>' containment reference.

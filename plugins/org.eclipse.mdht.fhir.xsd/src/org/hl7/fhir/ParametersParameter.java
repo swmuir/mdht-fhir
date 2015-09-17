@@ -11,7 +11,6 @@ import org.eclipse.emf.common.util.EList;
  *
  * <!-- begin-model-doc -->
  * This special resource type is used to represent [operation](operations.html] request and response. It has no other use, and there is no RESTful end=point associated with it.
- * If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions
  * <!-- end-model-doc -->
  *
  * <p>
@@ -53,6 +52,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.hl7.fhir.ParametersParameter#getValueContactPoint <em>Value Contact Point</em>}</li>
  *   <li>{@link org.hl7.fhir.ParametersParameter#getValueTiming <em>Value Timing</em>}</li>
  *   <li>{@link org.hl7.fhir.ParametersParameter#getValueMeta <em>Value Meta</em>}</li>
+ *   <li>{@link org.hl7.fhir.ParametersParameter#getValueElementDefinition <em>Value Element Definition</em>}</li>
  *   <li>{@link org.hl7.fhir.ParametersParameter#getResource <em>Resource</em>}</li>
  *   <li>{@link org.hl7.fhir.ParametersParameter#getPart <em>Part</em>}</li>
  * </ul>
@@ -61,7 +61,7 @@ import org.eclipse.emf.common.util.EList;
  * @model extendedMetaData="name='Parameters.Parameter' kind='elementOnly'"
  * @generated
  */
-public interface ParametersParameter extends Element {
+public interface ParametersParameter extends BackboneElement {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -1005,6 +1005,33 @@ public interface ParametersParameter extends Element {
 	 * @generated
 	 */
 	void setValueMeta(Meta value);
+
+	/**
+	 * Returns the value of the '<em><b>Value Element Definition</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Value Element Definition</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Value Element Definition</em>' containment reference.
+	 * @see #setValueElementDefinition(ElementDefinition)
+	 * @see org.hl7.fhir.FhirPackage#getParametersParameter_ValueElementDefinition()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='valueElementDefinition' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	ElementDefinition getValueElementDefinition();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.ParametersParameter#getValueElementDefinition <em>Value Element Definition</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Value Element Definition</em>' containment reference.
+	 * @see #getValueElementDefinition()
+	 * @generated
+	 */
+	void setValueElementDefinition(ElementDefinition value);
 
 	/**
 	 * Returns the value of the '<em><b>Resource</b></em>' containment reference.

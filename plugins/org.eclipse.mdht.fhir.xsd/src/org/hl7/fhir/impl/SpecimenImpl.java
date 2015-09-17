@@ -25,6 +25,7 @@ import org.hl7.fhir.Reference;
 import org.hl7.fhir.Specimen;
 import org.hl7.fhir.SpecimenCollection;
 import org.hl7.fhir.SpecimenContainer;
+import org.hl7.fhir.SpecimenStatus;
 import org.hl7.fhir.SpecimenTreatment;
 
 /**
@@ -36,6 +37,7 @@ import org.hl7.fhir.SpecimenTreatment;
  * </p>
  * <ul>
  *   <li>{@link org.hl7.fhir.impl.SpecimenImpl#getIdentifier <em>Identifier</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.SpecimenImpl#getStatus <em>Status</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.SpecimenImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.SpecimenImpl#getParent <em>Parent</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.SpecimenImpl#getSubject <em>Subject</em>}</li>
@@ -58,6 +60,16 @@ public class SpecimenImpl extends DomainResourceImpl implements Specimen {
 	 * @ordered
 	 */
 	protected EList<Identifier> identifier;
+
+	/**
+	 * The cached value of the '{@link #getStatus() <em>Status</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStatus()
+	 * @generated
+	 * @ordered
+	 */
+	protected SpecimenStatus status;
 
 	/**
 	 * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
@@ -168,6 +180,49 @@ public class SpecimenImpl extends DomainResourceImpl implements Specimen {
 			identifier = new EObjectContainmentEList<Identifier>(Identifier.class, this, FhirPackage.SPECIMEN__IDENTIFIER);
 		}
 		return identifier;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SpecimenStatus getStatus() {
+		return status;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetStatus(SpecimenStatus newStatus, NotificationChain msgs) {
+		SpecimenStatus oldStatus = status;
+		status = newStatus;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.SPECIMEN__STATUS, oldStatus, newStatus);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setStatus(SpecimenStatus newStatus) {
+		if (newStatus != status) {
+			NotificationChain msgs = null;
+			if (status != null)
+				msgs = ((InternalEObject)status).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.SPECIMEN__STATUS, null, msgs);
+			if (newStatus != null)
+				msgs = ((InternalEObject)newStatus).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.SPECIMEN__STATUS, null, msgs);
+			msgs = basicSetStatus(newStatus, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.SPECIMEN__STATUS, newStatus, newStatus));
 	}
 
 	/**
@@ -431,6 +486,8 @@ public class SpecimenImpl extends DomainResourceImpl implements Specimen {
 		switch (featureID) {
 			case FhirPackage.SPECIMEN__IDENTIFIER:
 				return ((InternalEList<?>)getIdentifier()).basicRemove(otherEnd, msgs);
+			case FhirPackage.SPECIMEN__STATUS:
+				return basicSetStatus(null, msgs);
 			case FhirPackage.SPECIMEN__TYPE:
 				return basicSetType(null, msgs);
 			case FhirPackage.SPECIMEN__PARENT:
@@ -461,6 +518,8 @@ public class SpecimenImpl extends DomainResourceImpl implements Specimen {
 		switch (featureID) {
 			case FhirPackage.SPECIMEN__IDENTIFIER:
 				return getIdentifier();
+			case FhirPackage.SPECIMEN__STATUS:
+				return getStatus();
 			case FhirPackage.SPECIMEN__TYPE:
 				return getType();
 			case FhirPackage.SPECIMEN__PARENT:
@@ -493,6 +552,9 @@ public class SpecimenImpl extends DomainResourceImpl implements Specimen {
 			case FhirPackage.SPECIMEN__IDENTIFIER:
 				getIdentifier().clear();
 				getIdentifier().addAll((Collection<? extends Identifier>)newValue);
+				return;
+			case FhirPackage.SPECIMEN__STATUS:
+				setStatus((SpecimenStatus)newValue);
 				return;
 			case FhirPackage.SPECIMEN__TYPE:
 				setType((CodeableConcept)newValue);
@@ -536,6 +598,9 @@ public class SpecimenImpl extends DomainResourceImpl implements Specimen {
 			case FhirPackage.SPECIMEN__IDENTIFIER:
 				getIdentifier().clear();
 				return;
+			case FhirPackage.SPECIMEN__STATUS:
+				setStatus((SpecimenStatus)null);
+				return;
 			case FhirPackage.SPECIMEN__TYPE:
 				setType((CodeableConcept)null);
 				return;
@@ -574,6 +639,8 @@ public class SpecimenImpl extends DomainResourceImpl implements Specimen {
 		switch (featureID) {
 			case FhirPackage.SPECIMEN__IDENTIFIER:
 				return identifier != null && !identifier.isEmpty();
+			case FhirPackage.SPECIMEN__STATUS:
+				return status != null;
 			case FhirPackage.SPECIMEN__TYPE:
 				return type != null;
 			case FhirPackage.SPECIMEN__PARENT:

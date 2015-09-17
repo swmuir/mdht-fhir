@@ -60,7 +60,7 @@ public interface Quantity extends Element {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * How the value should be understood and represented - whether the actual value is greater or less than the stated value due to measurement issues. E.g. if the comparator is "<" , then the real value is < stated value.
+	 * How the value should be understood and represented - whether the actual value is greater or less than the stated value due to measurement issues; e.g. if the comparator is "<" , then the real value is < stated value.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Comparator</em>' containment reference.
 	 * @see #setComparator(QuantityComparator)
@@ -86,7 +86,7 @@ public interface Quantity extends Element {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A human-readable form of the units.
+	 * A human-readable form of the unit.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Unit</em>' containment reference.
 	 * @see #setUnit(org.hl7.fhir.String)
@@ -138,7 +138,7 @@ public interface Quantity extends Element {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A computer processable form of the units in some unit representation system.
+	 * A computer processable form of the unit in some unit representation system.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Code</em>' containment reference.
 	 * @see #setCode(Code)

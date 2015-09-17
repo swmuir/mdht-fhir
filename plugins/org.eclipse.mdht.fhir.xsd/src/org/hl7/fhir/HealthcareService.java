@@ -10,7 +10,7 @@ import org.eclipse.emf.common.util.EList;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * The details of a Healthcare Service available at a location.
+ * The details of a healthcare service available at a location.
  * If the element is present, it must have either a @value, an @id, or extensions
  * <!-- end-model-doc -->
  *
@@ -20,9 +20,9 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link org.hl7.fhir.HealthcareService#getIdentifier <em>Identifier</em>}</li>
  *   <li>{@link org.hl7.fhir.HealthcareService#getProvidedBy <em>Provided By</em>}</li>
- *   <li>{@link org.hl7.fhir.HealthcareService#getLocation <em>Location</em>}</li>
  *   <li>{@link org.hl7.fhir.HealthcareService#getServiceCategory <em>Service Category</em>}</li>
  *   <li>{@link org.hl7.fhir.HealthcareService#getServiceType <em>Service Type</em>}</li>
+ *   <li>{@link org.hl7.fhir.HealthcareService#getLocation <em>Location</em>}</li>
  *   <li>{@link org.hl7.fhir.HealthcareService#getServiceName <em>Service Name</em>}</li>
  *   <li>{@link org.hl7.fhir.HealthcareService#getComment <em>Comment</em>}</li>
  *   <li>{@link org.hl7.fhir.HealthcareService#getExtraDetails <em>Extra Details</em>}</li>
@@ -53,7 +53,7 @@ public interface HealthcareService extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * External Identifiers for this item.
+	 * External identifiers for this item.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Identifier</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getHealthcareService_Identifier()
@@ -68,7 +68,7 @@ public interface HealthcareService extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The organization that provides this Healthcare Service.
+	 * The organization that provides this healthcare service.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Provided By</em>' containment reference.
 	 * @see #setProvidedBy(Reference)
@@ -90,37 +90,11 @@ public interface HealthcareService extends DomainResource {
 	void setProvidedBy(Reference value);
 
 	/**
-	 * Returns the value of the '<em><b>Location</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The location where this healthcare service may be provided.
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Location</em>' containment reference.
-	 * @see #setLocation(Reference)
-	 * @see org.hl7.fhir.FhirPackage#getHealthcareService_Location()
-	 * @model containment="true" required="true"
-	 *        extendedMetaData="kind='element' name='location' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	Reference getLocation();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.HealthcareService#getLocation <em>Location</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Location</em>' containment reference.
-	 * @see #getLocation()
-	 * @generated
-	 */
-	void setLocation(Reference value);
-
-	/**
 	 * Returns the value of the '<em><b>Service Category</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Identifies the broad category of service being performed or delivered. Selecting a Service Category then determines the list of relevant service types that can be selected in the Primary Service Type.
+	 * Identifies the broad category of service being performed or delivered.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Service Category</em>' containment reference.
 	 * @see #setServiceCategory(CodeableConcept)
@@ -156,6 +130,32 @@ public interface HealthcareService extends DomainResource {
 	 * @generated
 	 */
 	EList<HealthcareServiceServiceType> getServiceType();
+
+	/**
+	 * Returns the value of the '<em><b>Location</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The location where this healthcare service may be provided.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Location</em>' containment reference.
+	 * @see #setLocation(Reference)
+	 * @see org.hl7.fhir.FhirPackage#getHealthcareService_Location()
+	 * @model containment="true" required="true"
+	 *        extendedMetaData="kind='element' name='location' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Reference getLocation();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.HealthcareService#getLocation <em>Location</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Location</em>' containment reference.
+	 * @see #getLocation()
+	 * @generated
+	 */
+	void setLocation(Reference value);
 
 	/**
 	 * Returns the value of the '<em><b>Service Name</b></em>' containment reference.
@@ -267,7 +267,7 @@ public interface HealthcareService extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * List of contacts related to this specific healthcare service. If this is empty, then refer to the location's contacts.
+	 * List of contacts related to this specific healthcare service.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Telecom</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getHealthcareService_Telecom()
@@ -314,7 +314,7 @@ public interface HealthcareService extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Does this service have specific eligibility requirements that need to be met in order to use the service.
+	 * Does this service have specific eligibility requirements that need to be met in order to use the service?
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Eligibility</em>' containment reference.
 	 * @see #setEligibility(CodeableConcept)
@@ -340,7 +340,7 @@ public interface HealthcareService extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The description of service eligibility should, in general, not exceed one or two paragraphs. It should be sufficient for a prospective consumer to determine if they are likely to be eligible or not. Where eligibility requirements and conditions are complex, it may simply be noted that an eligibility assessment is required. Where eligibility is determined by an outside source, such as an Act of Parliament, this should be noted, preferably with a reference to a commonly available copy of the source document such as a web page.
+	 * Describes the eligibility conditions for the service.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Eligibility Note</em>' containment reference.
 	 * @see #setEligibilityNote(org.hl7.fhir.String)
@@ -383,7 +383,7 @@ public interface HealthcareService extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Collection of Characteristics (attributes).
+	 * Collection of characteristics (attributes).
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Characteristic</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getHealthcareService_Characteristic()
@@ -440,7 +440,7 @@ public interface HealthcareService extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Indicates whether or not a prospective consumer will require an appointment for a particular service at a Site to be provided by the Organization. Indicates if an appointment is required for access to this service.
+	 * Indicates whether or not a prospective consumer will require an appointment for a particular service at a site to be provided by the Organization. Indicates if an appointment is required for access to this service.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Appointment Required</em>' containment reference.
 	 * @see #setAppointmentRequired(org.hl7.fhir.Boolean)
@@ -467,7 +467,7 @@ public interface HealthcareService extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A Collection of times that the Service Site is available.
+	 * A collection of times that the Service Site is available.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Available Time</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getHealthcareService_AvailableTime()
@@ -498,7 +498,7 @@ public interface HealthcareService extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A description of Site availability exceptions, e.g., public holiday availability. Succinctly describing all possible exceptions to normal Site availability as details in the Available Times and Not Available Times.
+	 * A description of site availability exceptions, e.g. public holiday availability. Succinctly describing all possible exceptions to normal site availability as details in the available Times and not available Times.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Availability Exceptions</em>' containment reference.
 	 * @see #setAvailabilityExceptions(org.hl7.fhir.String)

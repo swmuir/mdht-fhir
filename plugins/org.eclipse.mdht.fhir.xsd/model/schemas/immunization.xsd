@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Thu, Aug 20, 2015 14:13+0000 for FHIR v0.5.0 
+  Generated on Wed, Sep 16, 2015 13:28+0000 for FHIR v1.0.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -38,12 +38,12 @@
   <xs:include schemaLocation="fhir-base.xsd"/>
   <xs:element name="Immunization" type="Immunization">
     <xs:annotation>
-      <xs:documentation xml:lang="en">Immunization event information.</xs:documentation>
+      <xs:documentation xml:lang="en">Describes the event of a patient being administered a vaccination or a record of a vaccination as reported by a patient, a clinician or another party and may include vaccine reaction information and what vaccination protocol was followed.</xs:documentation>
     </xs:annotation>
   </xs:element>
   <xs:complexType name="Immunization">
     <xs:annotation>
-      <xs:documentation xml:lang="en">Immunization event information.</xs:documentation>
+      <xs:documentation xml:lang="en">Describes the event of a patient being administered a vaccination or a record of a vaccination as reported by a patient, a clinician or another party and may include vaccine reaction information and what vaccination protocol was followed.</xs:documentation>
       <xs:documentation xml:lang="en">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
@@ -54,12 +54,17 @@
               <xs:documentation xml:lang="en">A unique identifier assigned to this immunization record.</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:element name="date" minOccurs="1" maxOccurs="1" type="dateTime">
+          <xs:element name="status" minOccurs="1" maxOccurs="1" type="code">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Indicates the current status of the vaccination event.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="date" minOccurs="0" maxOccurs="1" type="dateTime">
             <xs:annotation>
               <xs:documentation xml:lang="en">Date vaccine administered or was to be administered.</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:element name="vaccineType" minOccurs="1" maxOccurs="1" type="CodeableConcept">
+          <xs:element name="vaccineCode" minOccurs="1" maxOccurs="1" type="CodeableConcept">
             <xs:annotation>
               <xs:documentation xml:lang="en">Vaccine that was administered or was to be administered.</xs:documentation>
            </xs:annotation>
@@ -129,6 +134,11 @@
               <xs:documentation xml:lang="en">The quantity of vaccine product that was administered.</xs:documentation>
            </xs:annotation>
           </xs:element>
+          <xs:element name="note" minOccurs="0" maxOccurs="unbounded" type="Annotation">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Extra information about the immunization that is not conveyed by the other attributes.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
           <xs:element name="explanation" type="Immunization.Explanation" minOccurs="0" maxOccurs="1">
             <xs:annotation>
               <xs:documentation xml:lang="en">Reasons why a vaccine was or was not administered.</xs:documentation>
@@ -150,7 +160,7 @@
   </xs:complexType>
   <xs:complexType name="Immunization.Explanation">
     <xs:annotation>
-      <xs:documentation xml:lang="en">Immunization event information.</xs:documentation>
+      <xs:documentation xml:lang="en">Describes the event of a patient being administered a vaccination or a record of a vaccination as reported by a patient, a clinician or another party and may include vaccine reaction information and what vaccination protocol was followed.</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="BackboneElement">
@@ -171,7 +181,7 @@
   </xs:complexType>
   <xs:complexType name="Immunization.Reaction">
     <xs:annotation>
-      <xs:documentation xml:lang="en">Immunization event information.</xs:documentation>
+      <xs:documentation xml:lang="en">Describes the event of a patient being administered a vaccination or a record of a vaccination as reported by a patient, a clinician or another party and may include vaccine reaction information and what vaccination protocol was followed.</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="BackboneElement">
@@ -197,7 +207,7 @@
   </xs:complexType>
   <xs:complexType name="Immunization.VaccinationProtocol">
     <xs:annotation>
-      <xs:documentation xml:lang="en">Immunization event information.</xs:documentation>
+      <xs:documentation xml:lang="en">Describes the event of a patient being administered a vaccination or a record of a vaccination as reported by a patient, a clinician or another party and may include vaccine reaction information and what vaccination protocol was followed.</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="BackboneElement">
@@ -227,7 +237,7 @@
               <xs:documentation xml:lang="en">The recommended number of doses to achieve immunity.</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:element name="doseTarget" minOccurs="1" maxOccurs="1" type="CodeableConcept">
+          <xs:element name="targetDisease" minOccurs="1" maxOccurs="unbounded" type="CodeableConcept">
             <xs:annotation>
               <xs:documentation xml:lang="en">The targeted disease.</xs:documentation>
            </xs:annotation>

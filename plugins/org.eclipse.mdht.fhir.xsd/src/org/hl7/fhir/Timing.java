@@ -75,7 +75,7 @@ public interface Timing extends Element {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A code for the timing pattern. Some codes such as BID are uniquitious, but many instutions define their own additional codes.
+	 * A code for the timing pattern. Some codes such as BID are ubiquitious, but many institutions define their own additional codes.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Code</em>' containment reference.
 	 * @see #setCode(CodeableConcept)

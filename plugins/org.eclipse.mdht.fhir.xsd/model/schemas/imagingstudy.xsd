@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Thu, Aug 20, 2015 14:13+0000 for FHIR v0.5.0 
+  Generated on Wed, Sep 16, 2015 13:28+0000 for FHIR v1.0.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -38,12 +38,12 @@
   <xs:include schemaLocation="fhir-base.xsd"/>
   <xs:element name="ImagingStudy" type="ImagingStudy">
     <xs:annotation>
-      <xs:documentation xml:lang="en">Representation of the content produced in a DICOM imaging study. A study comprises a set of Series, each of which includes a set of Service-Object Pair Instances (SOP Instances - images or other data) acquired or produced in a common context.  A Series is of only one modality (e.g., X-ray, CT, MR, ultrasound), but a Study may have multiple Series of different modalities.</xs:documentation>
+      <xs:documentation xml:lang="en">Representation of the content produced in a DICOM imaging study. A study comprises a set of Series, each of which includes a set of Service-Object Pair Instances (SOP Instances - images or other data) acquired or produced in a common context.  A Series is of only one modality (e.g. X-ray, CT, MR, ultrasound), but a Study may have multiple Series of different modalities.</xs:documentation>
     </xs:annotation>
   </xs:element>
   <xs:complexType name="ImagingStudy">
     <xs:annotation>
-      <xs:documentation xml:lang="en">Representation of the content produced in a DICOM imaging study. A study comprises a set of Series, each of which includes a set of Service-Object Pair Instances (SOP Instances - images or other data) acquired or produced in a common context.  A Series is of only one modality (e.g., X-ray, CT, MR, ultrasound), but a Study may have multiple Series of different modalities.</xs:documentation>
+      <xs:documentation xml:lang="en">Representation of the content produced in a DICOM imaging study. A study comprises a set of Series, each of which includes a set of Service-Object Pair Instances (SOP Instances - images or other data) acquired or produced in a common context.  A Series is of only one modality (e.g. X-ray, CT, MR, ultrasound), but a Study may have multiple Series of different modalities.</xs:documentation>
       <xs:documentation xml:lang="en">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
@@ -51,7 +51,7 @@
         <xs:sequence>
           <xs:element name="started" minOccurs="0" maxOccurs="1" type="dateTime">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Date and Time the study started. Timezone Offset From UTC.</xs:documentation>
+              <xs:documentation xml:lang="en">Date and Time the study started.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="patient" minOccurs="1" maxOccurs="1" type="Reference">
@@ -66,7 +66,7 @@
           </xs:element>
           <xs:element name="accession" minOccurs="0" maxOccurs="1" type="Identifier">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Accession Number is an identifier related to some aspect of imaging workflow and data management, and usage may vary across different institutions.  See for instance [IHE Radiology Technical Framework Volume 1 Appendix A](http://www.ihe.net/uploadedFiles/Documents/Radiology/IHE_RAD_TF_Rev13.0_Vol1_FT_2014-07-30.pdf).</xs:documentation>
+              <xs:documentation xml:lang="en">Accession Number is an identifier related to some aspect of imaging workflow and data management. Usage may vary across different institutions.  See for instance [IHE Radiology Technical Framework Volume 1 Appendix A](http://www.ihe.net/uploadedFiles/Documents/Radiology/IHE_RAD_TF_Rev13.0_Vol1_FT_2014-07-30.pdf).</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="identifier" minOccurs="0" maxOccurs="unbounded" type="Identifier">
@@ -135,7 +135,7 @@
   </xs:complexType>
   <xs:complexType name="ImagingStudy.Series">
     <xs:annotation>
-      <xs:documentation xml:lang="en">Representation of the content produced in a DICOM imaging study. A study comprises a set of Series, each of which includes a set of Service-Object Pair Instances (SOP Instances - images or other data) acquired or produced in a common context.  A Series is of only one modality (e.g., X-ray, CT, MR, ultrasound), but a Study may have multiple Series of different modalities.</xs:documentation>
+      <xs:documentation xml:lang="en">Representation of the content produced in a DICOM imaging study. A study comprises a set of Series, each of which includes a set of Service-Object Pair Instances (SOP Instances - images or other data) acquired or produced in a common context.  A Series is of only one modality (e.g. X-ray, CT, MR, ultrasound), but a Study may have multiple Series of different modalities.</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="BackboneElement">
@@ -177,22 +177,22 @@
           </xs:element>
           <xs:element name="bodySite" minOccurs="0" maxOccurs="1" type="Coding">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Body part examined. See  DICOM Part 16 Annex L for the mapping from DICOM to Snomed.</xs:documentation>
+              <xs:documentation xml:lang="en">Body part examined. See  DICOM Part 16 Annex L for the mapping from DICOM to Snomed CT.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="laterality" minOccurs="0" maxOccurs="1" type="Coding">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Laterality if bodySite is paired anatomic structure and laterality is not pre-coordinated in bodySite code.</xs:documentation>
+              <xs:documentation xml:lang="en">Laterality if body site is paired anatomic structure and laterality is not pre-coordinated in body site code.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="started" minOccurs="0" maxOccurs="1" type="dateTime">
             <xs:annotation>
-              <xs:documentation xml:lang="en">The date and time when the series was started.</xs:documentation>
+              <xs:documentation xml:lang="en">The date and time the series was started.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="instance" type="ImagingStudy.Instance" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation>
-              <xs:documentation xml:lang="en">A single SOP Instance within the series, e.g., an image, or presentation state.</xs:documentation>
+              <xs:documentation xml:lang="en">A single SOP Instance within the series, e.g. an image, or presentation state.</xs:documentation>
            </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -201,7 +201,7 @@
   </xs:complexType>
   <xs:complexType name="ImagingStudy.Instance">
     <xs:annotation>
-      <xs:documentation xml:lang="en">Representation of the content produced in a DICOM imaging study. A study comprises a set of Series, each of which includes a set of Service-Object Pair Instances (SOP Instances - images or other data) acquired or produced in a common context.  A Series is of only one modality (e.g., X-ray, CT, MR, ultrasound), but a Study may have multiple Series of different modalities.</xs:documentation>
+      <xs:documentation xml:lang="en">Representation of the content produced in a DICOM imaging study. A study comprises a set of Series, each of which includes a set of Service-Object Pair Instances (SOP Instances - images or other data) acquired or produced in a common context.  A Series is of only one modality (e.g. X-ray, CT, MR, ultrasound), but a Study may have multiple Series of different modalities.</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="BackboneElement">
@@ -233,7 +233,7 @@
           </xs:element>
           <xs:element name="content" minOccurs="0" maxOccurs="unbounded" type="Attachment">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Content of the instance or a rendering thereof (e.g., a JPEG of an image, or an XML of a structured report). May be represented for example by inline encoding; by a URL reference to a WADO-RS service that makes the instance available; or to a FHIR Resource (e.g., Media, Document, etc.). Multiple content attachments may be used for alternate representations of the instance.</xs:documentation>
+              <xs:documentation xml:lang="en">Content of the instance or a rendering thereof (e.g. a JPEG of an image, or an XML of a structured report). May be represented for example by inline encoding; by a URL reference to a WADO-RS service that makes the instance available; or to a FHIR Resource (e.g. Media, Document, etc.). Multiple content attachments may be used for alternate representations of the instance.</xs:documentation>
            </xs:annotation>
           </xs:element>
         </xs:sequence>

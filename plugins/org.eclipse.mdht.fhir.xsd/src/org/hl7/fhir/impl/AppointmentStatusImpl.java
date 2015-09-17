@@ -34,7 +34,7 @@ public class AppointmentStatusImpl extends ElementImpl implements AppointmentSta
 	 * @generated
 	 * @ordered
 	 */
-	protected static final AppointmentStatusList VALUE_EDEFAULT = AppointmentStatusList.PENDING;
+	protected static final AppointmentStatusList VALUE_EDEFAULT = AppointmentStatusList.PROPOSED;
 
 	/**
 	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.

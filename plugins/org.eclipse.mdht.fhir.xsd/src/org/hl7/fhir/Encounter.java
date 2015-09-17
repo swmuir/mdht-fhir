@@ -23,6 +23,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.hl7.fhir.Encounter#getStatusHistory <em>Status History</em>}</li>
  *   <li>{@link org.hl7.fhir.Encounter#getClass_ <em>Class</em>}</li>
  *   <li>{@link org.hl7.fhir.Encounter#getType <em>Type</em>}</li>
+ *   <li>{@link org.hl7.fhir.Encounter#getPriority <em>Priority</em>}</li>
  *   <li>{@link org.hl7.fhir.Encounter#getPatient <em>Patient</em>}</li>
  *   <li>{@link org.hl7.fhir.Encounter#getEpisodeOfCare <em>Episode Of Care</em>}</li>
  *   <li>{@link org.hl7.fhir.Encounter#getIncomingReferral <em>Incoming Referral</em>}</li>
@@ -32,7 +33,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.hl7.fhir.Encounter#getLength <em>Length</em>}</li>
  *   <li>{@link org.hl7.fhir.Encounter#getReason <em>Reason</em>}</li>
  *   <li>{@link org.hl7.fhir.Encounter#getIndication <em>Indication</em>}</li>
- *   <li>{@link org.hl7.fhir.Encounter#getPriority <em>Priority</em>}</li>
  *   <li>{@link org.hl7.fhir.Encounter#getHospitalization <em>Hospitalization</em>}</li>
  *   <li>{@link org.hl7.fhir.Encounter#getLocation <em>Location</em>}</li>
  *   <li>{@link org.hl7.fhir.Encounter#getServiceProvider <em>Service Provider</em>}</li>
@@ -92,7 +92,7 @@ public interface Encounter extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The current status is always found in the current version of the resource. This status history permits the encounter resource to contain the status history without the needing to read through the historical versions of the resource, or even have the server store them.
+	 * The status history permits the encounter resource to contain the status history without needing to read through the historical versions of the resource, or even have the server store them.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Status History</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getEncounter_StatusHistory()
@@ -145,6 +145,32 @@ public interface Encounter extends DomainResource {
 	EList<CodeableConcept> getType();
 
 	/**
+	 * Returns the value of the '<em><b>Priority</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Indicates the urgency of the encounter.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Priority</em>' containment reference.
+	 * @see #setPriority(CodeableConcept)
+	 * @see org.hl7.fhir.FhirPackage#getEncounter_Priority()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='priority' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	CodeableConcept getPriority();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.Encounter#getPriority <em>Priority</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Priority</em>' containment reference.
+	 * @see #getPriority()
+	 * @generated
+	 */
+	void setPriority(CodeableConcept value);
+
+	/**
 	 * Returns the value of the '<em><b>Patient</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -176,7 +202,7 @@ public interface Encounter extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Where a specific encounter should be classified as a part of a specific episode(s) of care this field should be used. This association can facilitate grouping of related encounters together for a specific purpose, such as govt reporting, issue tracking, association via a common problem.  The association is recorded on the encounter as these are typically created after the episode of care, and grouped on entry rather than editing the episode of care to append another encounter to it (the episode of care could span years).
+	 * Where a specific encounter should be classified as a part of a specific episode(s) of care this field should be used. This association can facilitate grouping of related encounters together for a specific purpose, such as government reporting, issue tracking, association via a common problem.  The association is recorded on the encounter as these are typically created after the episode of care, and grouped on entry rather than editing the episode of care to append another encounter to it (the episode of care could span years).
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Episode Of Care</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getEncounter_EpisodeOfCare()
@@ -192,7 +218,7 @@ public interface Encounter extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The referral request that this encounter satisfies (incoming referral).
+	 * The referral request this encounter satisfies (incoming referral).
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Incoming Referral</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getEncounter_IncomingReferral()
@@ -329,37 +355,11 @@ public interface Encounter extends DomainResource {
 	EList<Reference> getIndication();
 
 	/**
-	 * Returns the value of the '<em><b>Priority</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Indicates the urgency of the encounter.
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Priority</em>' containment reference.
-	 * @see #setPriority(CodeableConcept)
-	 * @see org.hl7.fhir.FhirPackage#getEncounter_Priority()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='priority' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	CodeableConcept getPriority();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.Encounter#getPriority <em>Priority</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Priority</em>' containment reference.
-	 * @see #getPriority()
-	 * @generated
-	 */
-	void setPriority(CodeableConcept value);
-
-	/**
 	 * Returns the value of the '<em><b>Hospitalization</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Details about an admission to a clinic.
+	 * Details about the admission to a healthcare service.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Hospitalization</em>' containment reference.
 	 * @see #setHospitalization(EncounterHospitalization)
@@ -386,7 +386,7 @@ public interface Encounter extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * List of locations at which the patient has been.
+	 * List of locations where  the patient has been during this encounter.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Location</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getEncounter_Location()
@@ -401,7 +401,7 @@ public interface Encounter extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * An organization that is in charge of maintaining the information of this Encounter (e.g., who maintains the report or the master service catalog item, etc.). This MAY be the same as the organization on the Patient record, however it could be different. This MAY not be not the Service Delivery Location's Organization.
+	 * An organization that is in charge of maintaining the information of this Encounter (e.g. who maintains the report or the master service catalog item, etc.). This MAY be the same as the organization on the Patient record, however it could be different. This MAY not be not the Service Delivery Location's Organization.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Service Provider</em>' containment reference.
 	 * @see #setServiceProvider(Reference)

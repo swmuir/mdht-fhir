@@ -17,12 +17,11 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.hl7.fhir.Attachment;
 import org.hl7.fhir.Code;
 import org.hl7.fhir.CodeableConcept;
-import org.hl7.fhir.Coding;
 import org.hl7.fhir.DateTime;
 import org.hl7.fhir.DocumentReference;
+import org.hl7.fhir.DocumentReferenceContent;
 import org.hl7.fhir.DocumentReferenceContext;
 import org.hl7.fhir.DocumentReferenceRelatesTo;
 import org.hl7.fhir.FhirPackage;
@@ -43,7 +42,6 @@ import org.hl7.fhir.Reference;
  *   <li>{@link org.hl7.fhir.impl.DocumentReferenceImpl#getSubject <em>Subject</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.DocumentReferenceImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.DocumentReferenceImpl#getClass_ <em>Class</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.DocumentReferenceImpl#getFormat <em>Format</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.DocumentReferenceImpl#getAuthor <em>Author</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.DocumentReferenceImpl#getCustodian <em>Custodian</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.DocumentReferenceImpl#getAuthenticator <em>Authenticator</em>}</li>
@@ -110,16 +108,6 @@ public class DocumentReferenceImpl extends DomainResourceImpl implements Documen
 	 * @ordered
 	 */
 	protected CodeableConcept class_;
-
-	/**
-	 * The cached value of the '{@link #getFormat() <em>Format</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getFormat()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Coding> format;
 
 	/**
 	 * The cached value of the '{@link #getAuthor() <em>Author</em>}' containment reference list.
@@ -229,7 +217,7 @@ public class DocumentReferenceImpl extends DomainResourceImpl implements Documen
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Attachment> content;
+	protected EList<DocumentReferenceContent> content;
 
 	/**
 	 * The cached value of the '{@link #getContext() <em>Context</em>}' containment reference.
@@ -442,18 +430,6 @@ public class DocumentReferenceImpl extends DomainResourceImpl implements Documen
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.DOCUMENT_REFERENCE__CLASS, newClass, newClass));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<Coding> getFormat() {
-		if (format == null) {
-			format = new EObjectContainmentEList<Coding>(Coding.class, this, FhirPackage.DOCUMENT_REFERENCE__FORMAT);
-		}
-		return format;
 	}
 
 	/**
@@ -798,9 +774,9 @@ public class DocumentReferenceImpl extends DomainResourceImpl implements Documen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Attachment> getContent() {
+	public EList<DocumentReferenceContent> getContent() {
 		if (content == null) {
-			content = new EObjectContainmentEList<Attachment>(Attachment.class, this, FhirPackage.DOCUMENT_REFERENCE__CONTENT);
+			content = new EObjectContainmentEList<DocumentReferenceContent>(DocumentReferenceContent.class, this, FhirPackage.DOCUMENT_REFERENCE__CONTENT);
 		}
 		return content;
 	}
@@ -866,8 +842,6 @@ public class DocumentReferenceImpl extends DomainResourceImpl implements Documen
 				return basicSetType(null, msgs);
 			case FhirPackage.DOCUMENT_REFERENCE__CLASS:
 				return basicSetClass(null, msgs);
-			case FhirPackage.DOCUMENT_REFERENCE__FORMAT:
-				return ((InternalEList<?>)getFormat()).basicRemove(otherEnd, msgs);
 			case FhirPackage.DOCUMENT_REFERENCE__AUTHOR:
 				return ((InternalEList<?>)getAuthor()).basicRemove(otherEnd, msgs);
 			case FhirPackage.DOCUMENT_REFERENCE__CUSTODIAN:
@@ -914,8 +888,6 @@ public class DocumentReferenceImpl extends DomainResourceImpl implements Documen
 				return getType();
 			case FhirPackage.DOCUMENT_REFERENCE__CLASS:
 				return getClass_();
-			case FhirPackage.DOCUMENT_REFERENCE__FORMAT:
-				return getFormat();
 			case FhirPackage.DOCUMENT_REFERENCE__AUTHOR:
 				return getAuthor();
 			case FhirPackage.DOCUMENT_REFERENCE__CUSTODIAN:
@@ -969,10 +941,6 @@ public class DocumentReferenceImpl extends DomainResourceImpl implements Documen
 			case FhirPackage.DOCUMENT_REFERENCE__CLASS:
 				setClass((CodeableConcept)newValue);
 				return;
-			case FhirPackage.DOCUMENT_REFERENCE__FORMAT:
-				getFormat().clear();
-				getFormat().addAll((Collection<? extends Coding>)newValue);
-				return;
 			case FhirPackage.DOCUMENT_REFERENCE__AUTHOR:
 				getAuthor().clear();
 				getAuthor().addAll((Collection<? extends Reference>)newValue);
@@ -1008,7 +976,7 @@ public class DocumentReferenceImpl extends DomainResourceImpl implements Documen
 				return;
 			case FhirPackage.DOCUMENT_REFERENCE__CONTENT:
 				getContent().clear();
-				getContent().addAll((Collection<? extends Attachment>)newValue);
+				getContent().addAll((Collection<? extends DocumentReferenceContent>)newValue);
 				return;
 			case FhirPackage.DOCUMENT_REFERENCE__CONTEXT:
 				setContext((DocumentReferenceContext)newValue);
@@ -1039,9 +1007,6 @@ public class DocumentReferenceImpl extends DomainResourceImpl implements Documen
 				return;
 			case FhirPackage.DOCUMENT_REFERENCE__CLASS:
 				setClass((CodeableConcept)null);
-				return;
-			case FhirPackage.DOCUMENT_REFERENCE__FORMAT:
-				getFormat().clear();
 				return;
 			case FhirPackage.DOCUMENT_REFERENCE__AUTHOR:
 				getAuthor().clear();
@@ -1101,8 +1066,6 @@ public class DocumentReferenceImpl extends DomainResourceImpl implements Documen
 				return type != null;
 			case FhirPackage.DOCUMENT_REFERENCE__CLASS:
 				return class_ != null;
-			case FhirPackage.DOCUMENT_REFERENCE__FORMAT:
-				return format != null && !format.isEmpty();
 			case FhirPackage.DOCUMENT_REFERENCE__AUTHOR:
 				return author != null && !author.isEmpty();
 			case FhirPackage.DOCUMENT_REFERENCE__CUSTODIAN:

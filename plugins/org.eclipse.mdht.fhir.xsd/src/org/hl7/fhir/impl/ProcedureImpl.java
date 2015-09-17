@@ -17,16 +17,15 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.hl7.fhir.Annotation;
 import org.hl7.fhir.CodeableConcept;
 import org.hl7.fhir.DateTime;
 import org.hl7.fhir.FhirPackage;
 import org.hl7.fhir.Identifier;
 import org.hl7.fhir.Period;
 import org.hl7.fhir.Procedure;
-import org.hl7.fhir.ProcedureBodySite;
-import org.hl7.fhir.ProcedureDevice;
+import org.hl7.fhir.ProcedureFocalDevice;
 import org.hl7.fhir.ProcedurePerformer;
-import org.hl7.fhir.ProcedureRelatedItem;
 import org.hl7.fhir.ProcedureStatus;
 import org.hl7.fhir.Reference;
 
@@ -39,12 +38,15 @@ import org.hl7.fhir.Reference;
  * </p>
  * <ul>
  *   <li>{@link org.hl7.fhir.impl.ProcedureImpl#getIdentifier <em>Identifier</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ProcedureImpl#getPatient <em>Patient</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ProcedureImpl#getSubject <em>Subject</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ProcedureImpl#getStatus <em>Status</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ProcedureImpl#getCategory <em>Category</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ProcedureImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ProcedureImpl#getCode <em>Code</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ProcedureImpl#getNotPerformed <em>Not Performed</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ProcedureImpl#getReasonNotPerformed <em>Reason Not Performed</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ProcedureImpl#getBodySite <em>Body Site</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ProcedureImpl#getIndication <em>Indication</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ProcedureImpl#getReasonCodeableConcept <em>Reason Codeable Concept</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ProcedureImpl#getReasonReference <em>Reason Reference</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ProcedureImpl#getPerformer <em>Performer</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ProcedureImpl#getPerformedDateTime <em>Performed Date Time</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ProcedureImpl#getPerformedPeriod <em>Performed Period</em>}</li>
@@ -54,9 +56,9 @@ import org.hl7.fhir.Reference;
  *   <li>{@link org.hl7.fhir.impl.ProcedureImpl#getReport <em>Report</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ProcedureImpl#getComplication <em>Complication</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ProcedureImpl#getFollowUp <em>Follow Up</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ProcedureImpl#getRelatedItem <em>Related Item</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ProcedureImpl#getRequest <em>Request</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ProcedureImpl#getNotes <em>Notes</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ProcedureImpl#getDevice <em>Device</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ProcedureImpl#getFocalDevice <em>Focal Device</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ProcedureImpl#getUsed <em>Used</em>}</li>
  * </ul>
  *
@@ -74,14 +76,14 @@ public class ProcedureImpl extends DomainResourceImpl implements Procedure {
 	protected EList<Identifier> identifier;
 
 	/**
-	 * The cached value of the '{@link #getPatient() <em>Patient</em>}' containment reference.
+	 * The cached value of the '{@link #getSubject() <em>Subject</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPatient()
+	 * @see #getSubject()
 	 * @generated
 	 * @ordered
 	 */
-	protected Reference patient;
+	protected Reference subject;
 
 	/**
 	 * The cached value of the '{@link #getStatus() <em>Status</em>}' containment reference.
@@ -104,14 +106,34 @@ public class ProcedureImpl extends DomainResourceImpl implements Procedure {
 	protected CodeableConcept category;
 
 	/**
-	 * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
+	 * The cached value of the '{@link #getCode() <em>Code</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getType()
+	 * @see #getCode()
 	 * @generated
 	 * @ordered
 	 */
-	protected CodeableConcept type;
+	protected CodeableConcept code;
+
+	/**
+	 * The cached value of the '{@link #getNotPerformed() <em>Not Performed</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNotPerformed()
+	 * @generated
+	 * @ordered
+	 */
+	protected org.hl7.fhir.Boolean notPerformed;
+
+	/**
+	 * The cached value of the '{@link #getReasonNotPerformed() <em>Reason Not Performed</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getReasonNotPerformed()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<CodeableConcept> reasonNotPerformed;
 
 	/**
 	 * The cached value of the '{@link #getBodySite() <em>Body Site</em>}' containment reference list.
@@ -121,17 +143,27 @@ public class ProcedureImpl extends DomainResourceImpl implements Procedure {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ProcedureBodySite> bodySite;
+	protected EList<CodeableConcept> bodySite;
 
 	/**
-	 * The cached value of the '{@link #getIndication() <em>Indication</em>}' containment reference list.
+	 * The cached value of the '{@link #getReasonCodeableConcept() <em>Reason Codeable Concept</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getIndication()
+	 * @see #getReasonCodeableConcept()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<CodeableConcept> indication;
+	protected CodeableConcept reasonCodeableConcept;
+
+	/**
+	 * The cached value of the '{@link #getReasonReference() <em>Reason Reference</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getReasonReference()
+	 * @generated
+	 * @ordered
+	 */
+	protected Reference reasonReference;
 
 	/**
 	 * The cached value of the '{@link #getPerformer() <em>Performer</em>}' containment reference list.
@@ -224,34 +256,34 @@ public class ProcedureImpl extends DomainResourceImpl implements Procedure {
 	protected EList<CodeableConcept> followUp;
 
 	/**
-	 * The cached value of the '{@link #getRelatedItem() <em>Related Item</em>}' containment reference list.
+	 * The cached value of the '{@link #getRequest() <em>Request</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getRelatedItem()
+	 * @see #getRequest()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ProcedureRelatedItem> relatedItem;
+	protected Reference request;
 
 	/**
-	 * The cached value of the '{@link #getNotes() <em>Notes</em>}' containment reference.
+	 * The cached value of the '{@link #getNotes() <em>Notes</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getNotes()
 	 * @generated
 	 * @ordered
 	 */
-	protected org.hl7.fhir.String notes;
+	protected EList<Annotation> notes;
 
 	/**
-	 * The cached value of the '{@link #getDevice() <em>Device</em>}' containment reference list.
+	 * The cached value of the '{@link #getFocalDevice() <em>Focal Device</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDevice()
+	 * @see #getFocalDevice()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ProcedureDevice> device;
+	protected EList<ProcedureFocalDevice> focalDevice;
 
 	/**
 	 * The cached value of the '{@link #getUsed() <em>Used</em>}' containment reference list.
@@ -299,8 +331,8 @@ public class ProcedureImpl extends DomainResourceImpl implements Procedure {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Reference getPatient() {
-		return patient;
+	public Reference getSubject() {
+		return subject;
 	}
 
 	/**
@@ -308,11 +340,11 @@ public class ProcedureImpl extends DomainResourceImpl implements Procedure {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetPatient(Reference newPatient, NotificationChain msgs) {
-		Reference oldPatient = patient;
-		patient = newPatient;
+	public NotificationChain basicSetSubject(Reference newSubject, NotificationChain msgs) {
+		Reference oldSubject = subject;
+		subject = newSubject;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.PROCEDURE__PATIENT, oldPatient, newPatient);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.PROCEDURE__SUBJECT, oldSubject, newSubject);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -323,18 +355,18 @@ public class ProcedureImpl extends DomainResourceImpl implements Procedure {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setPatient(Reference newPatient) {
-		if (newPatient != patient) {
+	public void setSubject(Reference newSubject) {
+		if (newSubject != subject) {
 			NotificationChain msgs = null;
-			if (patient != null)
-				msgs = ((InternalEObject)patient).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PROCEDURE__PATIENT, null, msgs);
-			if (newPatient != null)
-				msgs = ((InternalEObject)newPatient).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PROCEDURE__PATIENT, null, msgs);
-			msgs = basicSetPatient(newPatient, msgs);
+			if (subject != null)
+				msgs = ((InternalEObject)subject).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PROCEDURE__SUBJECT, null, msgs);
+			if (newSubject != null)
+				msgs = ((InternalEObject)newSubject).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PROCEDURE__SUBJECT, null, msgs);
+			msgs = basicSetSubject(newSubject, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.PROCEDURE__PATIENT, newPatient, newPatient));
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.PROCEDURE__SUBJECT, newSubject, newSubject));
 	}
 
 	/**
@@ -428,8 +460,8 @@ public class ProcedureImpl extends DomainResourceImpl implements Procedure {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CodeableConcept getType() {
-		return type;
+	public CodeableConcept getCode() {
+		return code;
 	}
 
 	/**
@@ -437,11 +469,11 @@ public class ProcedureImpl extends DomainResourceImpl implements Procedure {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetType(CodeableConcept newType, NotificationChain msgs) {
-		CodeableConcept oldType = type;
-		type = newType;
+	public NotificationChain basicSetCode(CodeableConcept newCode, NotificationChain msgs) {
+		CodeableConcept oldCode = code;
+		code = newCode;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.PROCEDURE__TYPE, oldType, newType);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.PROCEDURE__CODE, oldCode, newCode);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -452,18 +484,18 @@ public class ProcedureImpl extends DomainResourceImpl implements Procedure {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setType(CodeableConcept newType) {
-		if (newType != type) {
+	public void setCode(CodeableConcept newCode) {
+		if (newCode != code) {
 			NotificationChain msgs = null;
-			if (type != null)
-				msgs = ((InternalEObject)type).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PROCEDURE__TYPE, null, msgs);
-			if (newType != null)
-				msgs = ((InternalEObject)newType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PROCEDURE__TYPE, null, msgs);
-			msgs = basicSetType(newType, msgs);
+			if (code != null)
+				msgs = ((InternalEObject)code).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PROCEDURE__CODE, null, msgs);
+			if (newCode != null)
+				msgs = ((InternalEObject)newCode).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PROCEDURE__CODE, null, msgs);
+			msgs = basicSetCode(newCode, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.PROCEDURE__TYPE, newType, newType));
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.PROCEDURE__CODE, newCode, newCode));
 	}
 
 	/**
@@ -471,9 +503,64 @@ public class ProcedureImpl extends DomainResourceImpl implements Procedure {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<ProcedureBodySite> getBodySite() {
+	public org.hl7.fhir.Boolean getNotPerformed() {
+		return notPerformed;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetNotPerformed(org.hl7.fhir.Boolean newNotPerformed, NotificationChain msgs) {
+		org.hl7.fhir.Boolean oldNotPerformed = notPerformed;
+		notPerformed = newNotPerformed;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.PROCEDURE__NOT_PERFORMED, oldNotPerformed, newNotPerformed);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setNotPerformed(org.hl7.fhir.Boolean newNotPerformed) {
+		if (newNotPerformed != notPerformed) {
+			NotificationChain msgs = null;
+			if (notPerformed != null)
+				msgs = ((InternalEObject)notPerformed).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PROCEDURE__NOT_PERFORMED, null, msgs);
+			if (newNotPerformed != null)
+				msgs = ((InternalEObject)newNotPerformed).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PROCEDURE__NOT_PERFORMED, null, msgs);
+			msgs = basicSetNotPerformed(newNotPerformed, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.PROCEDURE__NOT_PERFORMED, newNotPerformed, newNotPerformed));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<CodeableConcept> getReasonNotPerformed() {
+		if (reasonNotPerformed == null) {
+			reasonNotPerformed = new EObjectContainmentEList<CodeableConcept>(CodeableConcept.class, this, FhirPackage.PROCEDURE__REASON_NOT_PERFORMED);
+		}
+		return reasonNotPerformed;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<CodeableConcept> getBodySite() {
 		if (bodySite == null) {
-			bodySite = new EObjectContainmentEList<ProcedureBodySite>(ProcedureBodySite.class, this, FhirPackage.PROCEDURE__BODY_SITE);
+			bodySite = new EObjectContainmentEList<CodeableConcept>(CodeableConcept.class, this, FhirPackage.PROCEDURE__BODY_SITE);
 		}
 		return bodySite;
 	}
@@ -483,11 +570,85 @@ public class ProcedureImpl extends DomainResourceImpl implements Procedure {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<CodeableConcept> getIndication() {
-		if (indication == null) {
-			indication = new EObjectContainmentEList<CodeableConcept>(CodeableConcept.class, this, FhirPackage.PROCEDURE__INDICATION);
+	public CodeableConcept getReasonCodeableConcept() {
+		return reasonCodeableConcept;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetReasonCodeableConcept(CodeableConcept newReasonCodeableConcept, NotificationChain msgs) {
+		CodeableConcept oldReasonCodeableConcept = reasonCodeableConcept;
+		reasonCodeableConcept = newReasonCodeableConcept;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.PROCEDURE__REASON_CODEABLE_CONCEPT, oldReasonCodeableConcept, newReasonCodeableConcept);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
-		return indication;
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setReasonCodeableConcept(CodeableConcept newReasonCodeableConcept) {
+		if (newReasonCodeableConcept != reasonCodeableConcept) {
+			NotificationChain msgs = null;
+			if (reasonCodeableConcept != null)
+				msgs = ((InternalEObject)reasonCodeableConcept).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PROCEDURE__REASON_CODEABLE_CONCEPT, null, msgs);
+			if (newReasonCodeableConcept != null)
+				msgs = ((InternalEObject)newReasonCodeableConcept).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PROCEDURE__REASON_CODEABLE_CONCEPT, null, msgs);
+			msgs = basicSetReasonCodeableConcept(newReasonCodeableConcept, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.PROCEDURE__REASON_CODEABLE_CONCEPT, newReasonCodeableConcept, newReasonCodeableConcept));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Reference getReasonReference() {
+		return reasonReference;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetReasonReference(Reference newReasonReference, NotificationChain msgs) {
+		Reference oldReasonReference = reasonReference;
+		reasonReference = newReasonReference;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.PROCEDURE__REASON_REFERENCE, oldReasonReference, newReasonReference);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setReasonReference(Reference newReasonReference) {
+		if (newReasonReference != reasonReference) {
+			NotificationChain msgs = null;
+			if (reasonReference != null)
+				msgs = ((InternalEObject)reasonReference).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PROCEDURE__REASON_REFERENCE, null, msgs);
+			if (newReasonReference != null)
+				msgs = ((InternalEObject)newReasonReference).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PROCEDURE__REASON_REFERENCE, null, msgs);
+			msgs = basicSetReasonReference(newReasonReference, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.PROCEDURE__REASON_REFERENCE, newReasonReference, newReasonReference));
 	}
 
 	/**
@@ -758,11 +919,8 @@ public class ProcedureImpl extends DomainResourceImpl implements Procedure {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<ProcedureRelatedItem> getRelatedItem() {
-		if (relatedItem == null) {
-			relatedItem = new EObjectContainmentEList<ProcedureRelatedItem>(ProcedureRelatedItem.class, this, FhirPackage.PROCEDURE__RELATED_ITEM);
-		}
-		return relatedItem;
+	public Reference getRequest() {
+		return request;
 	}
 
 	/**
@@ -770,20 +928,11 @@ public class ProcedureImpl extends DomainResourceImpl implements Procedure {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public org.hl7.fhir.String getNotes() {
-		return notes;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetNotes(org.hl7.fhir.String newNotes, NotificationChain msgs) {
-		org.hl7.fhir.String oldNotes = notes;
-		notes = newNotes;
+	public NotificationChain basicSetRequest(Reference newRequest, NotificationChain msgs) {
+		Reference oldRequest = request;
+		request = newRequest;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.PROCEDURE__NOTES, oldNotes, newNotes);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.PROCEDURE__REQUEST, oldRequest, newRequest);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -794,18 +943,18 @@ public class ProcedureImpl extends DomainResourceImpl implements Procedure {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setNotes(org.hl7.fhir.String newNotes) {
-		if (newNotes != notes) {
+	public void setRequest(Reference newRequest) {
+		if (newRequest != request) {
 			NotificationChain msgs = null;
-			if (notes != null)
-				msgs = ((InternalEObject)notes).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PROCEDURE__NOTES, null, msgs);
-			if (newNotes != null)
-				msgs = ((InternalEObject)newNotes).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PROCEDURE__NOTES, null, msgs);
-			msgs = basicSetNotes(newNotes, msgs);
+			if (request != null)
+				msgs = ((InternalEObject)request).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PROCEDURE__REQUEST, null, msgs);
+			if (newRequest != null)
+				msgs = ((InternalEObject)newRequest).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PROCEDURE__REQUEST, null, msgs);
+			msgs = basicSetRequest(newRequest, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.PROCEDURE__NOTES, newNotes, newNotes));
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.PROCEDURE__REQUEST, newRequest, newRequest));
 	}
 
 	/**
@@ -813,11 +962,23 @@ public class ProcedureImpl extends DomainResourceImpl implements Procedure {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<ProcedureDevice> getDevice() {
-		if (device == null) {
-			device = new EObjectContainmentEList<ProcedureDevice>(ProcedureDevice.class, this, FhirPackage.PROCEDURE__DEVICE);
+	public EList<Annotation> getNotes() {
+		if (notes == null) {
+			notes = new EObjectContainmentEList<Annotation>(Annotation.class, this, FhirPackage.PROCEDURE__NOTES);
 		}
-		return device;
+		return notes;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<ProcedureFocalDevice> getFocalDevice() {
+		if (focalDevice == null) {
+			focalDevice = new EObjectContainmentEList<ProcedureFocalDevice>(ProcedureFocalDevice.class, this, FhirPackage.PROCEDURE__FOCAL_DEVICE);
+		}
+		return focalDevice;
 	}
 
 	/**
@@ -842,18 +1003,24 @@ public class ProcedureImpl extends DomainResourceImpl implements Procedure {
 		switch (featureID) {
 			case FhirPackage.PROCEDURE__IDENTIFIER:
 				return ((InternalEList<?>)getIdentifier()).basicRemove(otherEnd, msgs);
-			case FhirPackage.PROCEDURE__PATIENT:
-				return basicSetPatient(null, msgs);
+			case FhirPackage.PROCEDURE__SUBJECT:
+				return basicSetSubject(null, msgs);
 			case FhirPackage.PROCEDURE__STATUS:
 				return basicSetStatus(null, msgs);
 			case FhirPackage.PROCEDURE__CATEGORY:
 				return basicSetCategory(null, msgs);
-			case FhirPackage.PROCEDURE__TYPE:
-				return basicSetType(null, msgs);
+			case FhirPackage.PROCEDURE__CODE:
+				return basicSetCode(null, msgs);
+			case FhirPackage.PROCEDURE__NOT_PERFORMED:
+				return basicSetNotPerformed(null, msgs);
+			case FhirPackage.PROCEDURE__REASON_NOT_PERFORMED:
+				return ((InternalEList<?>)getReasonNotPerformed()).basicRemove(otherEnd, msgs);
 			case FhirPackage.PROCEDURE__BODY_SITE:
 				return ((InternalEList<?>)getBodySite()).basicRemove(otherEnd, msgs);
-			case FhirPackage.PROCEDURE__INDICATION:
-				return ((InternalEList<?>)getIndication()).basicRemove(otherEnd, msgs);
+			case FhirPackage.PROCEDURE__REASON_CODEABLE_CONCEPT:
+				return basicSetReasonCodeableConcept(null, msgs);
+			case FhirPackage.PROCEDURE__REASON_REFERENCE:
+				return basicSetReasonReference(null, msgs);
 			case FhirPackage.PROCEDURE__PERFORMER:
 				return ((InternalEList<?>)getPerformer()).basicRemove(otherEnd, msgs);
 			case FhirPackage.PROCEDURE__PERFORMED_DATE_TIME:
@@ -872,12 +1039,12 @@ public class ProcedureImpl extends DomainResourceImpl implements Procedure {
 				return ((InternalEList<?>)getComplication()).basicRemove(otherEnd, msgs);
 			case FhirPackage.PROCEDURE__FOLLOW_UP:
 				return ((InternalEList<?>)getFollowUp()).basicRemove(otherEnd, msgs);
-			case FhirPackage.PROCEDURE__RELATED_ITEM:
-				return ((InternalEList<?>)getRelatedItem()).basicRemove(otherEnd, msgs);
+			case FhirPackage.PROCEDURE__REQUEST:
+				return basicSetRequest(null, msgs);
 			case FhirPackage.PROCEDURE__NOTES:
-				return basicSetNotes(null, msgs);
-			case FhirPackage.PROCEDURE__DEVICE:
-				return ((InternalEList<?>)getDevice()).basicRemove(otherEnd, msgs);
+				return ((InternalEList<?>)getNotes()).basicRemove(otherEnd, msgs);
+			case FhirPackage.PROCEDURE__FOCAL_DEVICE:
+				return ((InternalEList<?>)getFocalDevice()).basicRemove(otherEnd, msgs);
 			case FhirPackage.PROCEDURE__USED:
 				return ((InternalEList<?>)getUsed()).basicRemove(otherEnd, msgs);
 		}
@@ -894,18 +1061,24 @@ public class ProcedureImpl extends DomainResourceImpl implements Procedure {
 		switch (featureID) {
 			case FhirPackage.PROCEDURE__IDENTIFIER:
 				return getIdentifier();
-			case FhirPackage.PROCEDURE__PATIENT:
-				return getPatient();
+			case FhirPackage.PROCEDURE__SUBJECT:
+				return getSubject();
 			case FhirPackage.PROCEDURE__STATUS:
 				return getStatus();
 			case FhirPackage.PROCEDURE__CATEGORY:
 				return getCategory();
-			case FhirPackage.PROCEDURE__TYPE:
-				return getType();
+			case FhirPackage.PROCEDURE__CODE:
+				return getCode();
+			case FhirPackage.PROCEDURE__NOT_PERFORMED:
+				return getNotPerformed();
+			case FhirPackage.PROCEDURE__REASON_NOT_PERFORMED:
+				return getReasonNotPerformed();
 			case FhirPackage.PROCEDURE__BODY_SITE:
 				return getBodySite();
-			case FhirPackage.PROCEDURE__INDICATION:
-				return getIndication();
+			case FhirPackage.PROCEDURE__REASON_CODEABLE_CONCEPT:
+				return getReasonCodeableConcept();
+			case FhirPackage.PROCEDURE__REASON_REFERENCE:
+				return getReasonReference();
 			case FhirPackage.PROCEDURE__PERFORMER:
 				return getPerformer();
 			case FhirPackage.PROCEDURE__PERFORMED_DATE_TIME:
@@ -924,12 +1097,12 @@ public class ProcedureImpl extends DomainResourceImpl implements Procedure {
 				return getComplication();
 			case FhirPackage.PROCEDURE__FOLLOW_UP:
 				return getFollowUp();
-			case FhirPackage.PROCEDURE__RELATED_ITEM:
-				return getRelatedItem();
+			case FhirPackage.PROCEDURE__REQUEST:
+				return getRequest();
 			case FhirPackage.PROCEDURE__NOTES:
 				return getNotes();
-			case FhirPackage.PROCEDURE__DEVICE:
-				return getDevice();
+			case FhirPackage.PROCEDURE__FOCAL_DEVICE:
+				return getFocalDevice();
 			case FhirPackage.PROCEDURE__USED:
 				return getUsed();
 		}
@@ -949,8 +1122,8 @@ public class ProcedureImpl extends DomainResourceImpl implements Procedure {
 				getIdentifier().clear();
 				getIdentifier().addAll((Collection<? extends Identifier>)newValue);
 				return;
-			case FhirPackage.PROCEDURE__PATIENT:
-				setPatient((Reference)newValue);
+			case FhirPackage.PROCEDURE__SUBJECT:
+				setSubject((Reference)newValue);
 				return;
 			case FhirPackage.PROCEDURE__STATUS:
 				setStatus((ProcedureStatus)newValue);
@@ -958,16 +1131,25 @@ public class ProcedureImpl extends DomainResourceImpl implements Procedure {
 			case FhirPackage.PROCEDURE__CATEGORY:
 				setCategory((CodeableConcept)newValue);
 				return;
-			case FhirPackage.PROCEDURE__TYPE:
-				setType((CodeableConcept)newValue);
+			case FhirPackage.PROCEDURE__CODE:
+				setCode((CodeableConcept)newValue);
+				return;
+			case FhirPackage.PROCEDURE__NOT_PERFORMED:
+				setNotPerformed((org.hl7.fhir.Boolean)newValue);
+				return;
+			case FhirPackage.PROCEDURE__REASON_NOT_PERFORMED:
+				getReasonNotPerformed().clear();
+				getReasonNotPerformed().addAll((Collection<? extends CodeableConcept>)newValue);
 				return;
 			case FhirPackage.PROCEDURE__BODY_SITE:
 				getBodySite().clear();
-				getBodySite().addAll((Collection<? extends ProcedureBodySite>)newValue);
+				getBodySite().addAll((Collection<? extends CodeableConcept>)newValue);
 				return;
-			case FhirPackage.PROCEDURE__INDICATION:
-				getIndication().clear();
-				getIndication().addAll((Collection<? extends CodeableConcept>)newValue);
+			case FhirPackage.PROCEDURE__REASON_CODEABLE_CONCEPT:
+				setReasonCodeableConcept((CodeableConcept)newValue);
+				return;
+			case FhirPackage.PROCEDURE__REASON_REFERENCE:
+				setReasonReference((Reference)newValue);
 				return;
 			case FhirPackage.PROCEDURE__PERFORMER:
 				getPerformer().clear();
@@ -1000,16 +1182,16 @@ public class ProcedureImpl extends DomainResourceImpl implements Procedure {
 				getFollowUp().clear();
 				getFollowUp().addAll((Collection<? extends CodeableConcept>)newValue);
 				return;
-			case FhirPackage.PROCEDURE__RELATED_ITEM:
-				getRelatedItem().clear();
-				getRelatedItem().addAll((Collection<? extends ProcedureRelatedItem>)newValue);
+			case FhirPackage.PROCEDURE__REQUEST:
+				setRequest((Reference)newValue);
 				return;
 			case FhirPackage.PROCEDURE__NOTES:
-				setNotes((org.hl7.fhir.String)newValue);
+				getNotes().clear();
+				getNotes().addAll((Collection<? extends Annotation>)newValue);
 				return;
-			case FhirPackage.PROCEDURE__DEVICE:
-				getDevice().clear();
-				getDevice().addAll((Collection<? extends ProcedureDevice>)newValue);
+			case FhirPackage.PROCEDURE__FOCAL_DEVICE:
+				getFocalDevice().clear();
+				getFocalDevice().addAll((Collection<? extends ProcedureFocalDevice>)newValue);
 				return;
 			case FhirPackage.PROCEDURE__USED:
 				getUsed().clear();
@@ -1030,8 +1212,8 @@ public class ProcedureImpl extends DomainResourceImpl implements Procedure {
 			case FhirPackage.PROCEDURE__IDENTIFIER:
 				getIdentifier().clear();
 				return;
-			case FhirPackage.PROCEDURE__PATIENT:
-				setPatient((Reference)null);
+			case FhirPackage.PROCEDURE__SUBJECT:
+				setSubject((Reference)null);
 				return;
 			case FhirPackage.PROCEDURE__STATUS:
 				setStatus((ProcedureStatus)null);
@@ -1039,14 +1221,23 @@ public class ProcedureImpl extends DomainResourceImpl implements Procedure {
 			case FhirPackage.PROCEDURE__CATEGORY:
 				setCategory((CodeableConcept)null);
 				return;
-			case FhirPackage.PROCEDURE__TYPE:
-				setType((CodeableConcept)null);
+			case FhirPackage.PROCEDURE__CODE:
+				setCode((CodeableConcept)null);
+				return;
+			case FhirPackage.PROCEDURE__NOT_PERFORMED:
+				setNotPerformed((org.hl7.fhir.Boolean)null);
+				return;
+			case FhirPackage.PROCEDURE__REASON_NOT_PERFORMED:
+				getReasonNotPerformed().clear();
 				return;
 			case FhirPackage.PROCEDURE__BODY_SITE:
 				getBodySite().clear();
 				return;
-			case FhirPackage.PROCEDURE__INDICATION:
-				getIndication().clear();
+			case FhirPackage.PROCEDURE__REASON_CODEABLE_CONCEPT:
+				setReasonCodeableConcept((CodeableConcept)null);
+				return;
+			case FhirPackage.PROCEDURE__REASON_REFERENCE:
+				setReasonReference((Reference)null);
 				return;
 			case FhirPackage.PROCEDURE__PERFORMER:
 				getPerformer().clear();
@@ -1075,14 +1266,14 @@ public class ProcedureImpl extends DomainResourceImpl implements Procedure {
 			case FhirPackage.PROCEDURE__FOLLOW_UP:
 				getFollowUp().clear();
 				return;
-			case FhirPackage.PROCEDURE__RELATED_ITEM:
-				getRelatedItem().clear();
+			case FhirPackage.PROCEDURE__REQUEST:
+				setRequest((Reference)null);
 				return;
 			case FhirPackage.PROCEDURE__NOTES:
-				setNotes((org.hl7.fhir.String)null);
+				getNotes().clear();
 				return;
-			case FhirPackage.PROCEDURE__DEVICE:
-				getDevice().clear();
+			case FhirPackage.PROCEDURE__FOCAL_DEVICE:
+				getFocalDevice().clear();
 				return;
 			case FhirPackage.PROCEDURE__USED:
 				getUsed().clear();
@@ -1101,18 +1292,24 @@ public class ProcedureImpl extends DomainResourceImpl implements Procedure {
 		switch (featureID) {
 			case FhirPackage.PROCEDURE__IDENTIFIER:
 				return identifier != null && !identifier.isEmpty();
-			case FhirPackage.PROCEDURE__PATIENT:
-				return patient != null;
+			case FhirPackage.PROCEDURE__SUBJECT:
+				return subject != null;
 			case FhirPackage.PROCEDURE__STATUS:
 				return status != null;
 			case FhirPackage.PROCEDURE__CATEGORY:
 				return category != null;
-			case FhirPackage.PROCEDURE__TYPE:
-				return type != null;
+			case FhirPackage.PROCEDURE__CODE:
+				return code != null;
+			case FhirPackage.PROCEDURE__NOT_PERFORMED:
+				return notPerformed != null;
+			case FhirPackage.PROCEDURE__REASON_NOT_PERFORMED:
+				return reasonNotPerformed != null && !reasonNotPerformed.isEmpty();
 			case FhirPackage.PROCEDURE__BODY_SITE:
 				return bodySite != null && !bodySite.isEmpty();
-			case FhirPackage.PROCEDURE__INDICATION:
-				return indication != null && !indication.isEmpty();
+			case FhirPackage.PROCEDURE__REASON_CODEABLE_CONCEPT:
+				return reasonCodeableConcept != null;
+			case FhirPackage.PROCEDURE__REASON_REFERENCE:
+				return reasonReference != null;
 			case FhirPackage.PROCEDURE__PERFORMER:
 				return performer != null && !performer.isEmpty();
 			case FhirPackage.PROCEDURE__PERFORMED_DATE_TIME:
@@ -1131,12 +1328,12 @@ public class ProcedureImpl extends DomainResourceImpl implements Procedure {
 				return complication != null && !complication.isEmpty();
 			case FhirPackage.PROCEDURE__FOLLOW_UP:
 				return followUp != null && !followUp.isEmpty();
-			case FhirPackage.PROCEDURE__RELATED_ITEM:
-				return relatedItem != null && !relatedItem.isEmpty();
+			case FhirPackage.PROCEDURE__REQUEST:
+				return request != null;
 			case FhirPackage.PROCEDURE__NOTES:
-				return notes != null;
-			case FhirPackage.PROCEDURE__DEVICE:
-				return device != null && !device.isEmpty();
+				return notes != null && !notes.isEmpty();
+			case FhirPackage.PROCEDURE__FOCAL_DEVICE:
+				return focalDevice != null && !focalDevice.isEmpty();
 			case FhirPackage.PROCEDURE__USED:
 				return used != null && !used.isEmpty();
 		}

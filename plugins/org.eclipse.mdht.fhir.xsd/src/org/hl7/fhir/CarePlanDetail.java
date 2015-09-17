@@ -10,7 +10,7 @@ import org.eclipse.emf.common.util.EList;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Describes the intention of how one or more practitioners intend to deliver care for a particular patient for a period of time, possibly limited to care for a specific condition or set of conditions.
+ * Describes the intention of how one or more practitioners intend to deliver care for a particular patient, group or community for a period of time, possibly limited to care for a specific condition or set of conditions.
  * <!-- end-model-doc -->
  *
  * <p>
@@ -19,7 +19,7 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link org.hl7.fhir.CarePlanDetail#getCategory <em>Category</em>}</li>
  *   <li>{@link org.hl7.fhir.CarePlanDetail#getCode <em>Code</em>}</li>
- *   <li>{@link org.hl7.fhir.CarePlanDetail#getReasonCodeableConcept <em>Reason Codeable Concept</em>}</li>
+ *   <li>{@link org.hl7.fhir.CarePlanDetail#getReasonCode <em>Reason Code</em>}</li>
  *   <li>{@link org.hl7.fhir.CarePlanDetail#getReasonReference <em>Reason Reference</em>}</li>
  *   <li>{@link org.hl7.fhir.CarePlanDetail#getGoal <em>Goal</em>}</li>
  *   <li>{@link org.hl7.fhir.CarePlanDetail#getStatus <em>Status</em>}</li>
@@ -30,10 +30,11 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.hl7.fhir.CarePlanDetail#getScheduledString <em>Scheduled String</em>}</li>
  *   <li>{@link org.hl7.fhir.CarePlanDetail#getLocation <em>Location</em>}</li>
  *   <li>{@link org.hl7.fhir.CarePlanDetail#getPerformer <em>Performer</em>}</li>
- *   <li>{@link org.hl7.fhir.CarePlanDetail#getProduct <em>Product</em>}</li>
+ *   <li>{@link org.hl7.fhir.CarePlanDetail#getProductCodeableConcept <em>Product Codeable Concept</em>}</li>
+ *   <li>{@link org.hl7.fhir.CarePlanDetail#getProductReference <em>Product Reference</em>}</li>
  *   <li>{@link org.hl7.fhir.CarePlanDetail#getDailyAmount <em>Daily Amount</em>}</li>
  *   <li>{@link org.hl7.fhir.CarePlanDetail#getQuantity <em>Quantity</em>}</li>
- *   <li>{@link org.hl7.fhir.CarePlanDetail#getNote <em>Note</em>}</li>
+ *   <li>{@link org.hl7.fhir.CarePlanDetail#getDescription <em>Description</em>}</li>
  * </ul>
  *
  * @see org.hl7.fhir.FhirPackage#getCarePlanDetail()
@@ -49,13 +50,13 @@ public interface CarePlanDetail extends BackboneElement {
 	 * High-level categorization of the type of activity in a care plan.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Category</em>' containment reference.
-	 * @see #setCategory(CarePlanActivityCategory)
+	 * @see #setCategory(CodeableConcept)
 	 * @see org.hl7.fhir.FhirPackage#getCarePlanDetail_Category()
-	 * @model containment="true" required="true"
+	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='category' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	CarePlanActivityCategory getCategory();
+	CodeableConcept getCategory();
 
 	/**
 	 * Sets the value of the '{@link org.hl7.fhir.CarePlanDetail#getCategory <em>Category</em>}' containment reference.
@@ -65,14 +66,14 @@ public interface CarePlanDetail extends BackboneElement {
 	 * @see #getCategory()
 	 * @generated
 	 */
-	void setCategory(CarePlanActivityCategory value);
+	void setCategory(CodeableConcept value);
 
 	/**
 	 * Returns the value of the '<em><b>Code</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Detailed description of the type of planned activity.  E.g. What lab test, what procedure, what kind of encounter.
+	 * Detailed description of the type of planned activity; e.g. What lab test, what procedure, what kind of encounter.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Code</em>' containment reference.
 	 * @see #setCode(CodeableConcept)
@@ -94,58 +95,36 @@ public interface CarePlanDetail extends BackboneElement {
 	void setCode(CodeableConcept value);
 
 	/**
-	 * Returns the value of the '<em><b>Reason Codeable Concept</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Reason Code</b></em>' containment reference list.
+	 * The list contents are of type {@link org.hl7.fhir.CodeableConcept}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Reason Codeable Concept</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Reason Codeable Concept</em>' containment reference.
-	 * @see #setReasonCodeableConcept(CodeableConcept)
-	 * @see org.hl7.fhir.FhirPackage#getCarePlanDetail_ReasonCodeableConcept()
+	 * <!-- begin-model-doc -->
+	 * Provides the rationale that drove the inclusion of this particular activity as part of the plan.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Reason Code</em>' containment reference list.
+	 * @see org.hl7.fhir.FhirPackage#getCarePlanDetail_ReasonCode()
 	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='reasonCodeableConcept' namespace='##targetNamespace'"
+	 *        extendedMetaData="kind='element' name='reasonCode' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	CodeableConcept getReasonCodeableConcept();
+	EList<CodeableConcept> getReasonCode();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.CarePlanDetail#getReasonCodeableConcept <em>Reason Codeable Concept</em>}' containment reference.
+	 * Returns the value of the '<em><b>Reason Reference</b></em>' containment reference list.
+	 * The list contents are of type {@link org.hl7.fhir.Reference}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Reason Codeable Concept</em>' containment reference.
-	 * @see #getReasonCodeableConcept()
-	 * @generated
-	 */
-	void setReasonCodeableConcept(CodeableConcept value);
-
-	/**
-	 * Returns the value of the '<em><b>Reason Reference</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Reason Reference</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Reason Reference</em>' containment reference.
-	 * @see #setReasonReference(Reference)
+	 * <!-- begin-model-doc -->
+	 * Provides the health condition(s) that drove the inclusion of this particular activity as part of the plan.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Reason Reference</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getCarePlanDetail_ReasonReference()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='reasonReference' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	Reference getReasonReference();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.CarePlanDetail#getReasonReference <em>Reason Reference</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Reason Reference</em>' containment reference.
-	 * @see #getReasonReference()
-	 * @generated
-	 */
-	void setReasonReference(Reference value);
+	EList<Reference> getReasonReference();
 
 	/**
 	 * Returns the value of the '<em><b>Goal</b></em>' containment reference list.
@@ -327,7 +306,7 @@ public interface CarePlanDetail extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Identifies the facility where the activity will occur.  E.g. home, hospital, specific clinic, etc.
+	 * Identifies the facility where the activity will occur; e.g. home, hospital, specific clinic, etc.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Location</em>' containment reference.
 	 * @see #setLocation(Reference)
@@ -365,30 +344,58 @@ public interface CarePlanDetail extends BackboneElement {
 	EList<Reference> getPerformer();
 
 	/**
-	 * Returns the value of the '<em><b>Product</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Product Codeable Concept</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Product Codeable Concept</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
 	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Identifies the food, drug or other product to be consumed or supplied in the activity.
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Product</em>' containment reference.
-	 * @see #setProduct(Reference)
-	 * @see org.hl7.fhir.FhirPackage#getCarePlanDetail_Product()
+	 * @return the value of the '<em>Product Codeable Concept</em>' containment reference.
+	 * @see #setProductCodeableConcept(CodeableConcept)
+	 * @see org.hl7.fhir.FhirPackage#getCarePlanDetail_ProductCodeableConcept()
 	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='product' namespace='##targetNamespace'"
+	 *        extendedMetaData="kind='element' name='productCodeableConcept' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	Reference getProduct();
+	CodeableConcept getProductCodeableConcept();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.CarePlanDetail#getProduct <em>Product</em>}' containment reference.
+	 * Sets the value of the '{@link org.hl7.fhir.CarePlanDetail#getProductCodeableConcept <em>Product Codeable Concept</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Product</em>' containment reference.
-	 * @see #getProduct()
+	 * @param value the new value of the '<em>Product Codeable Concept</em>' containment reference.
+	 * @see #getProductCodeableConcept()
 	 * @generated
 	 */
-	void setProduct(Reference value);
+	void setProductCodeableConcept(CodeableConcept value);
+
+	/**
+	 * Returns the value of the '<em><b>Product Reference</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Product Reference</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Product Reference</em>' containment reference.
+	 * @see #setProductReference(Reference)
+	 * @see org.hl7.fhir.FhirPackage#getCarePlanDetail_ProductReference()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='productReference' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Reference getProductReference();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.CarePlanDetail#getProductReference <em>Product Reference</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Product Reference</em>' containment reference.
+	 * @see #getProductReference()
+	 * @generated
+	 */
+	void setProductReference(Reference value);
 
 	/**
 	 * Returns the value of the '<em><b>Daily Amount</b></em>' containment reference.
@@ -421,7 +428,7 @@ public interface CarePlanDetail extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Identifies the quantity expected to be supplied, addministered or consumed by the subject.
+	 * Identifies the quantity expected to be supplied, administered or consumed by the subject.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Quantity</em>' containment reference.
 	 * @see #setQuantity(SimpleQuantity)
@@ -443,29 +450,29 @@ public interface CarePlanDetail extends BackboneElement {
 	void setQuantity(SimpleQuantity value);
 
 	/**
-	 * Returns the value of the '<em><b>Note</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Description</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * This provides a textual description of constraints on the intended activity occurrence, including relation to other activities.  It may also include objectives, pre-conditions and end-conditions.  Finally, it may convey specifics about the activity such as body site, method, route, etc.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Note</em>' containment reference.
-	 * @see #setNote(org.hl7.fhir.String)
-	 * @see org.hl7.fhir.FhirPackage#getCarePlanDetail_Note()
+	 * @return the value of the '<em>Description</em>' containment reference.
+	 * @see #setDescription(org.hl7.fhir.String)
+	 * @see org.hl7.fhir.FhirPackage#getCarePlanDetail_Description()
 	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='note' namespace='##targetNamespace'"
+	 *        extendedMetaData="kind='element' name='description' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	org.hl7.fhir.String getNote();
+	org.hl7.fhir.String getDescription();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.CarePlanDetail#getNote <em>Note</em>}' containment reference.
+	 * Sets the value of the '{@link org.hl7.fhir.CarePlanDetail#getDescription <em>Description</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Note</em>' containment reference.
-	 * @see #getNote()
+	 * @param value the new value of the '<em>Description</em>' containment reference.
+	 * @see #getDescription()
 	 * @generated
 	 */
-	void setNote(org.hl7.fhir.String value);
+	void setDescription(org.hl7.fhir.String value);
 
 } // CarePlanDetail

@@ -65,7 +65,7 @@ public enum CompositionStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * This is a preliminary composition or document (also known as initial or interim). The content may be incomplete or unverified
+	 * This is a preliminary composition or document (also known as initial or interim). The content may be incomplete or unverified.
 	 * <!-- end-model-doc -->
 	 * @see #PRELIMINARY
 	 * @model name="preliminary"
@@ -93,7 +93,7 @@ public enum CompositionStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The composition content or the referenced resources have been modified (edited or added to) subsequent to being released as "final" and the composition is complete and verified by an authorized person
+	 * The composition content or the referenced resources have been modified (edited or added to) subsequent to being released as "final" and the composition is complete and verified by an authorized person.
 	 * <!-- end-model-doc -->
 	 * @see #AMENDED
 	 * @model name="amended"
@@ -107,7 +107,7 @@ public enum CompositionStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The composition or document was originally created/issued in error, and this is an amendment that marks that the entire series should not be considered as valid
+	 * The composition or document was originally created/issued in error, and this is an amendment that marks that the entire series should not be considered as valid.
 	 * <!-- end-model-doc -->
 	 * @see #ENTERED_IN_ERROR
 	 * @model name="enteredInError" literal="entered-in-error"

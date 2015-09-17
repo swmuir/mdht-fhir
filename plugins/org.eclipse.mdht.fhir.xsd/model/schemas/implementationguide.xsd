@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Thu, Aug 20, 2015 14:13+0000 for FHIR v0.5.0 
+  Generated on Wed, Sep 16, 2015 13:28+0000 for FHIR v1.0.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -86,7 +86,7 @@
           </xs:element>
           <xs:element name="date" minOccurs="0" maxOccurs="1" type="dateTime">
             <xs:annotation>
-              <xs:documentation xml:lang="en">The date that this version of the Implementation Guide was published. The date must change when the business version changes, if it does, and it must change if the status code changes. in addition, it should change when the substantiative content of the implementation guide changes.</xs:documentation>
+              <xs:documentation xml:lang="en">The date this version of the implementation guide was published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the implementation guide changes.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="description" minOccurs="0" maxOccurs="1" type="string">
@@ -96,7 +96,7 @@
           </xs:element>
           <xs:element name="useContext" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
             <xs:annotation>
-              <xs:documentation xml:lang="en">The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching of implementation guides. The most common use of this element is to represent the country / jurisdication for which this implementation guide was defined.</xs:documentation>
+              <xs:documentation xml:lang="en">The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching of implementation guides. The most common use of this element is to represent the country / jurisdiction for which this implementation guide was defined.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="copyright" minOccurs="0" maxOccurs="1" type="string">
@@ -106,17 +106,17 @@
           </xs:element>
           <xs:element name="fhirVersion" minOccurs="0" maxOccurs="1" type="id">
             <xs:annotation>
-              <xs:documentation xml:lang="en">The version of the FHIR specification on which this ImplementationGuide is based - this is the formal version of the specification, without the revision number, e.g. [publication].[major].[minor], which is 0.5.0 for this version.</xs:documentation>
+              <xs:documentation xml:lang="en">The version of the FHIR specification on which this ImplementationGuide is based - this is the formal version of the specification, without the revision number, e.g. [publication].[major].[minor], which is 1.0.0 for this version.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="dependency" type="ImplementationGuide.Dependency" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Another implementation guide that this implementation depends on. Typically, an implementation guide uses value sets, profiles etc defined in other implementation guides.</xs:documentation>
+              <xs:documentation xml:lang="en">Another implementation guide that this implementation depends on. Typically, an implementation guide uses value sets, profiles etc.defined in other implementation guides.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="package" type="ImplementationGuide.Package" minOccurs="1" maxOccurs="unbounded">
             <xs:annotation>
-              <xs:documentation xml:lang="en">A logial group of resources. Logical groups can be used when building pages.</xs:documentation>
+              <xs:documentation xml:lang="en">A logical group of resources. Logical groups can be used when building pages.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="global" type="ImplementationGuide.Global" minOccurs="0" maxOccurs="unbounded">
@@ -173,7 +173,7 @@
           </xs:element>
           <xs:element name="uri" minOccurs="1" maxOccurs="1" type="uri">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Where the dependncy is located.</xs:documentation>
+              <xs:documentation xml:lang="en">Where the dependency is located.</xs:documentation>
            </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -199,7 +199,7 @@
           </xs:element>
           <xs:element name="resource" type="ImplementationGuide.Resource" minOccurs="1" maxOccurs="unbounded">
             <xs:annotation>
-              <xs:documentation xml:lang="en">A resource that is part of the implementation guide. Conformance resources (value set, structure definition, conformance statements etc) are obvious candidates for inclusion, but any kind of resource can be included as an example resource.</xs:documentation>
+              <xs:documentation xml:lang="en">A resource that is part of the implementation guide. Conformance resources (value set, structure definition, conformance statements etc.) are obvious candidates for inclusion, but any kind of resource can be included as an example resource.</xs:documentation>
            </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -284,12 +284,12 @@
           </xs:element>
           <xs:element name="name" minOccurs="1" maxOccurs="1" type="string">
             <xs:annotation>
-              <xs:documentation xml:lang="en">A short name used to represent this page in navigational sturctures such as table of contents, bread crumbs, etc.</xs:documentation>
+              <xs:documentation xml:lang="en">A short name used to represent this page in navigational structures such as table of contents, bread crumbs, etc.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="kind" minOccurs="1" maxOccurs="1" type="GuidePageKind">
             <xs:annotation>
-              <xs:documentation xml:lang="en">The kind of page that this is. Some pages are autogenerated (list, example), and othe kinds are of interest so that tools can navigate the user to the page of interest.</xs:documentation>
+              <xs:documentation xml:lang="en">The kind of page that this is. Some pages are autogenerated (list, example), and other kinds are of interest so that tools can navigate the user to the page of interest.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="type" minOccurs="0" maxOccurs="unbounded" type="code">

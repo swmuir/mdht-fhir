@@ -23,7 +23,7 @@ import org.hl7.fhir.Reference;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.hl7.fhir.impl.ProcedurePerformerImpl#getPerson <em>Person</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ProcedurePerformerImpl#getActor <em>Actor</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ProcedurePerformerImpl#getRole <em>Role</em>}</li>
  * </ul>
  *
@@ -31,14 +31,14 @@ import org.hl7.fhir.Reference;
  */
 public class ProcedurePerformerImpl extends BackboneElementImpl implements ProcedurePerformer {
 	/**
-	 * The cached value of the '{@link #getPerson() <em>Person</em>}' containment reference.
+	 * The cached value of the '{@link #getActor() <em>Actor</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPerson()
+	 * @see #getActor()
 	 * @generated
 	 * @ordered
 	 */
-	protected Reference person;
+	protected Reference actor;
 
 	/**
 	 * The cached value of the '{@link #getRole() <em>Role</em>}' containment reference.
@@ -74,8 +74,8 @@ public class ProcedurePerformerImpl extends BackboneElementImpl implements Proce
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Reference getPerson() {
-		return person;
+	public Reference getActor() {
+		return actor;
 	}
 
 	/**
@@ -83,11 +83,11 @@ public class ProcedurePerformerImpl extends BackboneElementImpl implements Proce
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetPerson(Reference newPerson, NotificationChain msgs) {
-		Reference oldPerson = person;
-		person = newPerson;
+	public NotificationChain basicSetActor(Reference newActor, NotificationChain msgs) {
+		Reference oldActor = actor;
+		actor = newActor;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.PROCEDURE_PERFORMER__PERSON, oldPerson, newPerson);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.PROCEDURE_PERFORMER__ACTOR, oldActor, newActor);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -98,18 +98,18 @@ public class ProcedurePerformerImpl extends BackboneElementImpl implements Proce
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setPerson(Reference newPerson) {
-		if (newPerson != person) {
+	public void setActor(Reference newActor) {
+		if (newActor != actor) {
 			NotificationChain msgs = null;
-			if (person != null)
-				msgs = ((InternalEObject)person).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PROCEDURE_PERFORMER__PERSON, null, msgs);
-			if (newPerson != null)
-				msgs = ((InternalEObject)newPerson).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PROCEDURE_PERFORMER__PERSON, null, msgs);
-			msgs = basicSetPerson(newPerson, msgs);
+			if (actor != null)
+				msgs = ((InternalEObject)actor).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PROCEDURE_PERFORMER__ACTOR, null, msgs);
+			if (newActor != null)
+				msgs = ((InternalEObject)newActor).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PROCEDURE_PERFORMER__ACTOR, null, msgs);
+			msgs = basicSetActor(newActor, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.PROCEDURE_PERFORMER__PERSON, newPerson, newPerson));
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.PROCEDURE_PERFORMER__ACTOR, newActor, newActor));
 	}
 
 	/**
@@ -163,8 +163,8 @@ public class ProcedurePerformerImpl extends BackboneElementImpl implements Proce
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case FhirPackage.PROCEDURE_PERFORMER__PERSON:
-				return basicSetPerson(null, msgs);
+			case FhirPackage.PROCEDURE_PERFORMER__ACTOR:
+				return basicSetActor(null, msgs);
 			case FhirPackage.PROCEDURE_PERFORMER__ROLE:
 				return basicSetRole(null, msgs);
 		}
@@ -179,8 +179,8 @@ public class ProcedurePerformerImpl extends BackboneElementImpl implements Proce
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case FhirPackage.PROCEDURE_PERFORMER__PERSON:
-				return getPerson();
+			case FhirPackage.PROCEDURE_PERFORMER__ACTOR:
+				return getActor();
 			case FhirPackage.PROCEDURE_PERFORMER__ROLE:
 				return getRole();
 		}
@@ -195,8 +195,8 @@ public class ProcedurePerformerImpl extends BackboneElementImpl implements Proce
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case FhirPackage.PROCEDURE_PERFORMER__PERSON:
-				setPerson((Reference)newValue);
+			case FhirPackage.PROCEDURE_PERFORMER__ACTOR:
+				setActor((Reference)newValue);
 				return;
 			case FhirPackage.PROCEDURE_PERFORMER__ROLE:
 				setRole((CodeableConcept)newValue);
@@ -213,8 +213,8 @@ public class ProcedurePerformerImpl extends BackboneElementImpl implements Proce
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case FhirPackage.PROCEDURE_PERFORMER__PERSON:
-				setPerson((Reference)null);
+			case FhirPackage.PROCEDURE_PERFORMER__ACTOR:
+				setActor((Reference)null);
 				return;
 			case FhirPackage.PROCEDURE_PERFORMER__ROLE:
 				setRole((CodeableConcept)null);
@@ -231,8 +231,8 @@ public class ProcedurePerformerImpl extends BackboneElementImpl implements Proce
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case FhirPackage.PROCEDURE_PERFORMER__PERSON:
-				return person != null;
+			case FhirPackage.PROCEDURE_PERFORMER__ACTOR:
+				return actor != null;
 			case FhirPackage.PROCEDURE_PERFORMER__ROLE:
 				return role != null;
 		}

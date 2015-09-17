@@ -21,14 +21,24 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum CarePlanStatusList implements Enumerator {
 	/**
-	 * The '<em><b>Planned</b></em>' literal object.
+	 * The '<em><b>Proposed</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #PLANNED_VALUE
+	 * @see #PROPOSED_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	PLANNED(0, "planned", "planned"),
+	PROPOSED(0, "proposed", "proposed"),
+
+	/**
+	 * The '<em><b>Draft</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #DRAFT_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	DRAFT(1, "draft", "draft"),
 
 	/**
 	 * The '<em><b>Active</b></em>' literal object.
@@ -38,7 +48,7 @@ public enum CarePlanStatusList implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	ACTIVE(1, "active", "active"),
+	ACTIVE(2, "active", "active"),
 
 	/**
 	 * The '<em><b>Completed</b></em>' literal object.
@@ -48,49 +58,87 @@ public enum CarePlanStatusList implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	COMPLETED(2, "completed", "completed");
+	COMPLETED(3, "completed", "completed"),
 
 	/**
-	 * The '<em><b>Planned</b></em>' literal value.
+	 * The '<em><b>Cancelled</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #CANCELLED_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	CANCELLED(4, "cancelled", "cancelled");
+
+	/**
+	 * The '<em><b>Proposed</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The plan has been suggested but no commitment to it has yet been made.
+	 * <!-- end-model-doc -->
+	 * @see #PROPOSED
+	 * @model name="proposed"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int PROPOSED_VALUE = 0;
+
+	/**
+	 * The '<em><b>Draft</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The plan is in development or awaiting use but is not yet intended to be acted upon.
 	 * <!-- end-model-doc -->
-	 * @see #PLANNED
-	 * @model name="planned"
+	 * @see #DRAFT
+	 * @model name="draft"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int PLANNED_VALUE = 0;
+	public static final int DRAFT_VALUE = 1;
 
 	/**
 	 * The '<em><b>Active</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The plan is intended to be followed and used as part of patient care
+	 * The plan is intended to be followed and used as part of patient care.
 	 * <!-- end-model-doc -->
 	 * @see #ACTIVE
 	 * @model name="active"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int ACTIVE_VALUE = 1;
+	public static final int ACTIVE_VALUE = 2;
 
 	/**
 	 * The '<em><b>Completed</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The plan is no longer in use and is not expected to be followed or used in patient care
+	 * The plan is no longer in use and is not expected to be followed or used in patient care.
 	 * <!-- end-model-doc -->
 	 * @see #COMPLETED
 	 * @model name="completed"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int COMPLETED_VALUE = 2;
+	public static final int COMPLETED_VALUE = 3;
+
+	/**
+	 * The '<em><b>Cancelled</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The plan has been terminated prior to reaching completion (though it may have been replaced by a new plan).
+	 * <!-- end-model-doc -->
+	 * @see #CANCELLED
+	 * @model name="cancelled"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int CANCELLED_VALUE = 4;
 
 	/**
 	 * An array of all the '<em><b>Care Plan Status List</b></em>' enumerators.
@@ -100,9 +148,11 @@ public enum CarePlanStatusList implements Enumerator {
 	 */
 	private static final CarePlanStatusList[] VALUES_ARRAY =
 		new CarePlanStatusList[] {
-			PLANNED,
+			PROPOSED,
+			DRAFT,
 			ACTIVE,
 			COMPLETED,
+			CANCELLED,
 		};
 
 	/**
@@ -159,9 +209,11 @@ public enum CarePlanStatusList implements Enumerator {
 	 */
 	public static CarePlanStatusList get(int value) {
 		switch (value) {
-			case PLANNED_VALUE: return PLANNED;
+			case PROPOSED_VALUE: return PROPOSED;
+			case DRAFT_VALUE: return DRAFT;
 			case ACTIVE_VALUE: return ACTIVE;
 			case COMPLETED_VALUE: return COMPLETED;
+			case CANCELLED_VALUE: return CANCELLED;
 		}
 		return null;
 	}

@@ -16,10 +16,11 @@ package org.hl7.fhir;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.hl7.fhir.FamilyMemberHistoryCondition#getType <em>Type</em>}</li>
+ *   <li>{@link org.hl7.fhir.FamilyMemberHistoryCondition#getCode <em>Code</em>}</li>
  *   <li>{@link org.hl7.fhir.FamilyMemberHistoryCondition#getOutcome <em>Outcome</em>}</li>
  *   <li>{@link org.hl7.fhir.FamilyMemberHistoryCondition#getOnsetQuantity <em>Onset Quantity</em>}</li>
  *   <li>{@link org.hl7.fhir.FamilyMemberHistoryCondition#getOnsetRange <em>Onset Range</em>}</li>
+ *   <li>{@link org.hl7.fhir.FamilyMemberHistoryCondition#getOnsetPeriod <em>Onset Period</em>}</li>
  *   <li>{@link org.hl7.fhir.FamilyMemberHistoryCondition#getOnsetString <em>Onset String</em>}</li>
  *   <li>{@link org.hl7.fhir.FamilyMemberHistoryCondition#getNote <em>Note</em>}</li>
  * </ul>
@@ -30,30 +31,30 @@ package org.hl7.fhir;
  */
 public interface FamilyMemberHistoryCondition extends BackboneElement {
 	/**
-	 * Returns the value of the '<em><b>Type</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Code</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The actual condition specified. Could be a coded condition (like MI or Diabetes) or a less specific string like 'cancer' depending on how much is known about the condition and the capabilities of the creating system.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Type</em>' containment reference.
-	 * @see #setType(CodeableConcept)
-	 * @see org.hl7.fhir.FhirPackage#getFamilyMemberHistoryCondition_Type()
+	 * @return the value of the '<em>Code</em>' containment reference.
+	 * @see #setCode(CodeableConcept)
+	 * @see org.hl7.fhir.FhirPackage#getFamilyMemberHistoryCondition_Code()
 	 * @model containment="true" required="true"
-	 *        extendedMetaData="kind='element' name='type' namespace='##targetNamespace'"
+	 *        extendedMetaData="kind='element' name='code' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	CodeableConcept getType();
+	CodeableConcept getCode();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.FamilyMemberHistoryCondition#getType <em>Type</em>}' containment reference.
+	 * Sets the value of the '{@link org.hl7.fhir.FamilyMemberHistoryCondition#getCode <em>Code</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Type</em>' containment reference.
-	 * @see #getType()
+	 * @param value the new value of the '<em>Code</em>' containment reference.
+	 * @see #getCode()
 	 * @generated
 	 */
-	void setType(CodeableConcept value);
+	void setCode(CodeableConcept value);
 
 	/**
 	 * Returns the value of the '<em><b>Outcome</b></em>' containment reference.
@@ -136,6 +137,33 @@ public interface FamilyMemberHistoryCondition extends BackboneElement {
 	void setOnsetRange(Range value);
 
 	/**
+	 * Returns the value of the '<em><b>Onset Period</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Onset Period</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Onset Period</em>' containment reference.
+	 * @see #setOnsetPeriod(Period)
+	 * @see org.hl7.fhir.FhirPackage#getFamilyMemberHistoryCondition_OnsetPeriod()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='onsetPeriod' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Period getOnsetPeriod();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.FamilyMemberHistoryCondition#getOnsetPeriod <em>Onset Period</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Onset Period</em>' containment reference.
+	 * @see #getOnsetPeriod()
+	 * @generated
+	 */
+	void setOnsetPeriod(Period value);
+
+	/**
 	 * Returns the value of the '<em><b>Onset String</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -170,13 +198,13 @@ public interface FamilyMemberHistoryCondition extends BackboneElement {
 	 * An area where general notes can be placed about this specific condition.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Note</em>' containment reference.
-	 * @see #setNote(org.hl7.fhir.String)
+	 * @see #setNote(Annotation)
 	 * @see org.hl7.fhir.FhirPackage#getFamilyMemberHistoryCondition_Note()
 	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='note' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	org.hl7.fhir.String getNote();
+	Annotation getNote();
 
 	/**
 	 * Sets the value of the '{@link org.hl7.fhir.FamilyMemberHistoryCondition#getNote <em>Note</em>}' containment reference.
@@ -186,6 +214,6 @@ public interface FamilyMemberHistoryCondition extends BackboneElement {
 	 * @see #getNote()
 	 * @generated
 	 */
-	void setNote(org.hl7.fhir.String value);
+	void setNote(Annotation value);
 
 } // FamilyMemberHistoryCondition

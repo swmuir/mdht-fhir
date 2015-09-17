@@ -13,7 +13,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.hl7.fhir.CodeableConcept;
 import org.hl7.fhir.FhirPackage;
 import org.hl7.fhir.Medication;
-import org.hl7.fhir.MedicationKind;
 import org.hl7.fhir.MedicationPackage;
 import org.hl7.fhir.MedicationProduct;
 import org.hl7.fhir.Reference;
@@ -29,7 +28,6 @@ import org.hl7.fhir.Reference;
  *   <li>{@link org.hl7.fhir.impl.MedicationImpl#getCode <em>Code</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.MedicationImpl#getIsBrand <em>Is Brand</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.MedicationImpl#getManufacturer <em>Manufacturer</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.MedicationImpl#getKind <em>Kind</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.MedicationImpl#getProduct <em>Product</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.MedicationImpl#getPackage <em>Package</em>}</li>
  * </ul>
@@ -66,16 +64,6 @@ public class MedicationImpl extends DomainResourceImpl implements Medication {
 	 * @ordered
 	 */
 	protected Reference manufacturer;
-
-	/**
-	 * The cached value of the '{@link #getKind() <em>Kind</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getKind()
-	 * @generated
-	 * @ordered
-	 */
-	protected MedicationKind kind;
 
 	/**
 	 * The cached value of the '{@link #getProduct() <em>Product</em>}' containment reference.
@@ -250,49 +238,6 @@ public class MedicationImpl extends DomainResourceImpl implements Medication {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public MedicationKind getKind() {
-		return kind;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetKind(MedicationKind newKind, NotificationChain msgs) {
-		MedicationKind oldKind = kind;
-		kind = newKind;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.MEDICATION__KIND, oldKind, newKind);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setKind(MedicationKind newKind) {
-		if (newKind != kind) {
-			NotificationChain msgs = null;
-			if (kind != null)
-				msgs = ((InternalEObject)kind).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.MEDICATION__KIND, null, msgs);
-			if (newKind != null)
-				msgs = ((InternalEObject)newKind).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.MEDICATION__KIND, null, msgs);
-			msgs = basicSetKind(newKind, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.MEDICATION__KIND, newKind, newKind));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public MedicationProduct getProduct() {
 		return product;
 	}
@@ -388,8 +333,6 @@ public class MedicationImpl extends DomainResourceImpl implements Medication {
 				return basicSetIsBrand(null, msgs);
 			case FhirPackage.MEDICATION__MANUFACTURER:
 				return basicSetManufacturer(null, msgs);
-			case FhirPackage.MEDICATION__KIND:
-				return basicSetKind(null, msgs);
 			case FhirPackage.MEDICATION__PRODUCT:
 				return basicSetProduct(null, msgs);
 			case FhirPackage.MEDICATION__PACKAGE:
@@ -412,8 +355,6 @@ public class MedicationImpl extends DomainResourceImpl implements Medication {
 				return getIsBrand();
 			case FhirPackage.MEDICATION__MANUFACTURER:
 				return getManufacturer();
-			case FhirPackage.MEDICATION__KIND:
-				return getKind();
 			case FhirPackage.MEDICATION__PRODUCT:
 				return getProduct();
 			case FhirPackage.MEDICATION__PACKAGE:
@@ -438,9 +379,6 @@ public class MedicationImpl extends DomainResourceImpl implements Medication {
 				return;
 			case FhirPackage.MEDICATION__MANUFACTURER:
 				setManufacturer((Reference)newValue);
-				return;
-			case FhirPackage.MEDICATION__KIND:
-				setKind((MedicationKind)newValue);
 				return;
 			case FhirPackage.MEDICATION__PRODUCT:
 				setProduct((MedicationProduct)newValue);
@@ -469,9 +407,6 @@ public class MedicationImpl extends DomainResourceImpl implements Medication {
 			case FhirPackage.MEDICATION__MANUFACTURER:
 				setManufacturer((Reference)null);
 				return;
-			case FhirPackage.MEDICATION__KIND:
-				setKind((MedicationKind)null);
-				return;
 			case FhirPackage.MEDICATION__PRODUCT:
 				setProduct((MedicationProduct)null);
 				return;
@@ -496,8 +431,6 @@ public class MedicationImpl extends DomainResourceImpl implements Medication {
 				return isBrand != null;
 			case FhirPackage.MEDICATION__MANUFACTURER:
 				return manufacturer != null;
-			case FhirPackage.MEDICATION__KIND:
-				return kind != null;
 			case FhirPackage.MEDICATION__PRODUCT:
 				return product != null;
 			case FhirPackage.MEDICATION__PACKAGE:

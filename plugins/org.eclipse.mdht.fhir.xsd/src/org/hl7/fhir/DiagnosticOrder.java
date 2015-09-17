@@ -237,7 +237,7 @@ public interface DiagnosticOrder extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A summary of the events of interest that have occurred as the request is processed. E.g. when the order was made, various processing steps (specimens received), when it was completed.
+	 * A summary of the events of interest that have occurred as the request is processed; e.g. when the order was made, various processing steps (specimens received), when it was completed.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Event</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getDiagnosticOrder_Event()
@@ -269,7 +269,7 @@ public interface DiagnosticOrder extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Any other notes associated with this patient or specimen or order (e.g. "patient hates needles").
+	 * Any other notes associated with this patient, specimen or order (e.g. "patient hates needles").
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Note</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getDiagnosticOrder_Note()

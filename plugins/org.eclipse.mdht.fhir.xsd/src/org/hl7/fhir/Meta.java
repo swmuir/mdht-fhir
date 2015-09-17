@@ -35,7 +35,7 @@ public interface Meta extends Element {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The version specific identifier, as it appears in the version portion of the url. This values changes when the resource is created, updated, or deleted.
+	 * The version specific identifier, as it appears in the version portion of the URL. This values changes when the resource is created, updated, or deleted.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Version Id</em>' containment reference.
 	 * @see #setVersionId(Id)

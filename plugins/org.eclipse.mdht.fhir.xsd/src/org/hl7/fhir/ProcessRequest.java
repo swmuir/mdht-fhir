@@ -46,7 +46,7 @@ public interface ProcessRequest extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The type of procesing action being requested, for example Reversal, Readjudication, StatusRequest,PendedRequest.
+	 * The type of processing action being requested, for example Reversal, Readjudication, StatusRequest,PendedRequest.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Action</em>' containment reference.
 	 * @see #setAction(ActionList)
@@ -73,7 +73,7 @@ public interface ProcessRequest extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The ProcessRequest Business Identifier.
+	 * The ProcessRequest business identifier.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Identifier</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getProcessRequest_Identifier()
@@ -166,7 +166,7 @@ public interface ProcessRequest extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The organization which is target  of the request.
+	 * The organization which is the target of the request.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Target</em>' containment reference.
 	 * @see #setTarget(Reference)

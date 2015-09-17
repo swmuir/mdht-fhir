@@ -58,16 +58,16 @@ public interface AuditEventSource extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Identifier of the source where the event originated.
+	 * Identifier of the source where the event was detected.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Identifier</em>' containment reference.
-	 * @see #setIdentifier(org.hl7.fhir.String)
+	 * @see #setIdentifier(Identifier)
 	 * @see org.hl7.fhir.FhirPackage#getAuditEventSource_Identifier()
 	 * @model containment="true" required="true"
 	 *        extendedMetaData="kind='element' name='identifier' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	org.hl7.fhir.String getIdentifier();
+	Identifier getIdentifier();
 
 	/**
 	 * Sets the value of the '{@link org.hl7.fhir.AuditEventSource#getIdentifier <em>Identifier</em>}' containment reference.
@@ -77,7 +77,7 @@ public interface AuditEventSource extends BackboneElement {
 	 * @see #getIdentifier()
 	 * @generated
 	 */
-	void setIdentifier(org.hl7.fhir.String value);
+	void setIdentifier(Identifier value);
 
 	/**
 	 * Returns the value of the '<em><b>Type</b></em>' containment reference list.

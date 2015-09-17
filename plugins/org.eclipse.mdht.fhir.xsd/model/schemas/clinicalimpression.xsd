@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Thu, Aug 20, 2015 14:13+0000 for FHIR v0.5.0 
+  Generated on Wed, Sep 16, 2015 13:28+0000 for FHIR v1.0.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -93,7 +93,7 @@
           </xs:choice>
           <xs:element name="investigations" type="ClinicalImpression.Investigations" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation>
-              <xs:documentation xml:lang="en">One or more sets of investigations (signs, symptions, etc). The actual grouping of investigations vary greatly depending on the type and context of the assessment. These investigations may include data generated during the assessment process, or data previously generated and recorded that is pertinent to the outcomes.</xs:documentation>
+              <xs:documentation xml:lang="en">One or more sets of investigations (signs, symptions, etc.). The actual grouping of investigations vary greatly depending on the type and context of the assessment. These investigations may include data generated during the assessment process, or data previously generated and recorded that is pertinent to the outcomes.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="protocol" minOccurs="0" maxOccurs="1" type="uri">
@@ -212,19 +212,19 @@
       </xs:enumeration>
       <xs:enumeration value="completed">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The assessment is done and the results are final</xs:documentation>
+          <xs:documentation xml:lang="en">The assessment is done and the results are final.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="entered-in-error">
         <xs:annotation>
-          <xs:documentation xml:lang="en">This assessment was never actually done and the record is erroneous (e.g. Wrong patient)</xs:documentation>
+          <xs:documentation xml:lang="en">This assessment was never actually done and the record is erroneous (e.g. Wrong patient).</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="ClinicalImpressionStatus">
     <xs:annotation>
-      <xs:documentation xml:lang="en">The workflow state of a clinical impression</xs:documentation>
+      <xs:documentation xml:lang="en">The workflow state of a clinical impression.</xs:documentation>
       <xs:documentation xml:lang="en">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>
     </xs:annotation>
     <xs:complexContent>

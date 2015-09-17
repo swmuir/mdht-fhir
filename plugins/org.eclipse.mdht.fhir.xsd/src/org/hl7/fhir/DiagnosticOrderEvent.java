@@ -110,7 +110,7 @@ public interface DiagnosticOrderEvent extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The person who was responsible for performing or recording the action.
+	 * The person responsible for performing or recording the action.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Actor</em>' containment reference.
 	 * @see #setActor(Reference)

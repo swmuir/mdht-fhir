@@ -27,8 +27,8 @@ import org.hl7.fhir.Uri;
  *   <li>{@link org.hl7.fhir.impl.BundleRequestImpl#getMethod <em>Method</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.BundleRequestImpl#getUrl <em>Url</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.BundleRequestImpl#getIfNoneMatch <em>If None Match</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.BundleRequestImpl#getIfMatch <em>If Match</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.BundleRequestImpl#getIfModifiedSince <em>If Modified Since</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.BundleRequestImpl#getIfMatch <em>If Match</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.BundleRequestImpl#getIfNoneExist <em>If None Exist</em>}</li>
  * </ul>
  *
@@ -66,16 +66,6 @@ public class BundleRequestImpl extends BackboneElementImpl implements BundleRequ
 	protected org.hl7.fhir.String ifNoneMatch;
 
 	/**
-	 * The cached value of the '{@link #getIfMatch() <em>If Match</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getIfMatch()
-	 * @generated
-	 * @ordered
-	 */
-	protected org.hl7.fhir.String ifMatch;
-
-	/**
 	 * The cached value of the '{@link #getIfModifiedSince() <em>If Modified Since</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -84,6 +74,16 @@ public class BundleRequestImpl extends BackboneElementImpl implements BundleRequ
 	 * @ordered
 	 */
 	protected Instant ifModifiedSince;
+
+	/**
+	 * The cached value of the '{@link #getIfMatch() <em>If Match</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIfMatch()
+	 * @generated
+	 * @ordered
+	 */
+	protected org.hl7.fhir.String ifMatch;
 
 	/**
 	 * The cached value of the '{@link #getIfNoneExist() <em>If None Exist</em>}' containment reference.
@@ -248,49 +248,6 @@ public class BundleRequestImpl extends BackboneElementImpl implements BundleRequ
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public org.hl7.fhir.String getIfMatch() {
-		return ifMatch;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetIfMatch(org.hl7.fhir.String newIfMatch, NotificationChain msgs) {
-		org.hl7.fhir.String oldIfMatch = ifMatch;
-		ifMatch = newIfMatch;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.BUNDLE_REQUEST__IF_MATCH, oldIfMatch, newIfMatch);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setIfMatch(org.hl7.fhir.String newIfMatch) {
-		if (newIfMatch != ifMatch) {
-			NotificationChain msgs = null;
-			if (ifMatch != null)
-				msgs = ((InternalEObject)ifMatch).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.BUNDLE_REQUEST__IF_MATCH, null, msgs);
-			if (newIfMatch != null)
-				msgs = ((InternalEObject)newIfMatch).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.BUNDLE_REQUEST__IF_MATCH, null, msgs);
-			msgs = basicSetIfMatch(newIfMatch, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.BUNDLE_REQUEST__IF_MATCH, newIfMatch, newIfMatch));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public Instant getIfModifiedSince() {
 		return ifModifiedSince;
 	}
@@ -327,6 +284,49 @@ public class BundleRequestImpl extends BackboneElementImpl implements BundleRequ
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.BUNDLE_REQUEST__IF_MODIFIED_SINCE, newIfModifiedSince, newIfModifiedSince));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public org.hl7.fhir.String getIfMatch() {
+		return ifMatch;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetIfMatch(org.hl7.fhir.String newIfMatch, NotificationChain msgs) {
+		org.hl7.fhir.String oldIfMatch = ifMatch;
+		ifMatch = newIfMatch;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.BUNDLE_REQUEST__IF_MATCH, oldIfMatch, newIfMatch);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setIfMatch(org.hl7.fhir.String newIfMatch) {
+		if (newIfMatch != ifMatch) {
+			NotificationChain msgs = null;
+			if (ifMatch != null)
+				msgs = ((InternalEObject)ifMatch).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.BUNDLE_REQUEST__IF_MATCH, null, msgs);
+			if (newIfMatch != null)
+				msgs = ((InternalEObject)newIfMatch).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.BUNDLE_REQUEST__IF_MATCH, null, msgs);
+			msgs = basicSetIfMatch(newIfMatch, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.BUNDLE_REQUEST__IF_MATCH, newIfMatch, newIfMatch));
 	}
 
 	/**
@@ -386,10 +386,10 @@ public class BundleRequestImpl extends BackboneElementImpl implements BundleRequ
 				return basicSetUrl(null, msgs);
 			case FhirPackage.BUNDLE_REQUEST__IF_NONE_MATCH:
 				return basicSetIfNoneMatch(null, msgs);
-			case FhirPackage.BUNDLE_REQUEST__IF_MATCH:
-				return basicSetIfMatch(null, msgs);
 			case FhirPackage.BUNDLE_REQUEST__IF_MODIFIED_SINCE:
 				return basicSetIfModifiedSince(null, msgs);
+			case FhirPackage.BUNDLE_REQUEST__IF_MATCH:
+				return basicSetIfMatch(null, msgs);
 			case FhirPackage.BUNDLE_REQUEST__IF_NONE_EXIST:
 				return basicSetIfNoneExist(null, msgs);
 		}
@@ -410,10 +410,10 @@ public class BundleRequestImpl extends BackboneElementImpl implements BundleRequ
 				return getUrl();
 			case FhirPackage.BUNDLE_REQUEST__IF_NONE_MATCH:
 				return getIfNoneMatch();
-			case FhirPackage.BUNDLE_REQUEST__IF_MATCH:
-				return getIfMatch();
 			case FhirPackage.BUNDLE_REQUEST__IF_MODIFIED_SINCE:
 				return getIfModifiedSince();
+			case FhirPackage.BUNDLE_REQUEST__IF_MATCH:
+				return getIfMatch();
 			case FhirPackage.BUNDLE_REQUEST__IF_NONE_EXIST:
 				return getIfNoneExist();
 		}
@@ -437,11 +437,11 @@ public class BundleRequestImpl extends BackboneElementImpl implements BundleRequ
 			case FhirPackage.BUNDLE_REQUEST__IF_NONE_MATCH:
 				setIfNoneMatch((org.hl7.fhir.String)newValue);
 				return;
-			case FhirPackage.BUNDLE_REQUEST__IF_MATCH:
-				setIfMatch((org.hl7.fhir.String)newValue);
-				return;
 			case FhirPackage.BUNDLE_REQUEST__IF_MODIFIED_SINCE:
 				setIfModifiedSince((Instant)newValue);
+				return;
+			case FhirPackage.BUNDLE_REQUEST__IF_MATCH:
+				setIfMatch((org.hl7.fhir.String)newValue);
 				return;
 			case FhirPackage.BUNDLE_REQUEST__IF_NONE_EXIST:
 				setIfNoneExist((org.hl7.fhir.String)newValue);
@@ -467,11 +467,11 @@ public class BundleRequestImpl extends BackboneElementImpl implements BundleRequ
 			case FhirPackage.BUNDLE_REQUEST__IF_NONE_MATCH:
 				setIfNoneMatch((org.hl7.fhir.String)null);
 				return;
-			case FhirPackage.BUNDLE_REQUEST__IF_MATCH:
-				setIfMatch((org.hl7.fhir.String)null);
-				return;
 			case FhirPackage.BUNDLE_REQUEST__IF_MODIFIED_SINCE:
 				setIfModifiedSince((Instant)null);
+				return;
+			case FhirPackage.BUNDLE_REQUEST__IF_MATCH:
+				setIfMatch((org.hl7.fhir.String)null);
 				return;
 			case FhirPackage.BUNDLE_REQUEST__IF_NONE_EXIST:
 				setIfNoneExist((org.hl7.fhir.String)null);
@@ -494,10 +494,10 @@ public class BundleRequestImpl extends BackboneElementImpl implements BundleRequ
 				return url != null;
 			case FhirPackage.BUNDLE_REQUEST__IF_NONE_MATCH:
 				return ifNoneMatch != null;
-			case FhirPackage.BUNDLE_REQUEST__IF_MATCH:
-				return ifMatch != null;
 			case FhirPackage.BUNDLE_REQUEST__IF_MODIFIED_SINCE:
 				return ifModifiedSince != null;
+			case FhirPackage.BUNDLE_REQUEST__IF_MATCH:
+				return ifMatch != null;
 			case FhirPackage.BUNDLE_REQUEST__IF_NONE_EXIST:
 				return ifNoneExist != null;
 		}

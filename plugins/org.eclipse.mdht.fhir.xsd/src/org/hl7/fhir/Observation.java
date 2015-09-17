@@ -102,7 +102,7 @@ public interface Observation extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A code that classifies the the general type of observation being made.  This is used  for searching, sorting and display purposes.
+	 * A code that classifies the general type of observation being made.  This is used  for searching, sorting and display purposes.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Category</em>' containment reference.
 	 * @see #setCategory(CodeableConcept)
@@ -180,7 +180,7 @@ public interface Observation extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The healthcare event  ( e.g. a patient and healthcare provider interaction ) during which this observation is made.
+	 * The healthcare event  (e.g. a patient and healthcare provider interaction) during which this observation is made.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Encounter</em>' containment reference.
 	 * @see #setEncounter(Reference)
@@ -650,7 +650,7 @@ public interface Observation extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Indicates the site on the subject's body where the observation was made ( i.e. the target site).
+	 * Indicates the site on the subject's body where the observation was made (i.e. the target site).
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Body Site</em>' containment reference.
 	 * @see #setBodySite(CodeableConcept)
@@ -771,7 +771,7 @@ public interface Observation extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A  reference to another resource ( usally another Observation but could  also be a QuestionnaireAnswer) whose relationship is defined by the relationship type code.
+	 * A  reference to another resource (usually another Observation but could  also be a QuestionnaireAnswer) whose relationship is defined by the relationship type code.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Related</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getObservation_Related()
@@ -787,7 +787,7 @@ public interface Observation extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Some observations have multiple component observations.  These component observations are expressed as separate code value pairs that share the same attributes.  Examples include systolic and diastolic component observations for blood pressure measurement and multiple component observations for for genetics observations.
+	 * Some observations have multiple component observations.  These component observations are expressed as separate code value pairs that share the same attributes.  Examples include systolic and diastolic component observations for blood pressure measurement and multiple component observations for genetics observations.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Component</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getObservation_Component()

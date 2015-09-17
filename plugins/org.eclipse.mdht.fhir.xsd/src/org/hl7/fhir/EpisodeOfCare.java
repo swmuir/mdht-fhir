@@ -22,10 +22,10 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.hl7.fhir.EpisodeOfCare#getStatus <em>Status</em>}</li>
  *   <li>{@link org.hl7.fhir.EpisodeOfCare#getStatusHistory <em>Status History</em>}</li>
  *   <li>{@link org.hl7.fhir.EpisodeOfCare#getType <em>Type</em>}</li>
+ *   <li>{@link org.hl7.fhir.EpisodeOfCare#getCondition <em>Condition</em>}</li>
  *   <li>{@link org.hl7.fhir.EpisodeOfCare#getPatient <em>Patient</em>}</li>
  *   <li>{@link org.hl7.fhir.EpisodeOfCare#getManagingOrganization <em>Managing Organization</em>}</li>
  *   <li>{@link org.hl7.fhir.EpisodeOfCare#getPeriod <em>Period</em>}</li>
- *   <li>{@link org.hl7.fhir.EpisodeOfCare#getCondition <em>Condition</em>}</li>
  *   <li>{@link org.hl7.fhir.EpisodeOfCare#getReferralRequest <em>Referral Request</em>}</li>
  *   <li>{@link org.hl7.fhir.EpisodeOfCare#getCareManager <em>Care Manager</em>}</li>
  *   <li>{@link org.hl7.fhir.EpisodeOfCare#getCareTeam <em>Care Team</em>}</li>
@@ -84,7 +84,7 @@ public interface EpisodeOfCare extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The status history for the EpisodeOfCare.
+	 * The history of statuses that the EpisodeOfCare has been through (without requiring processing the history of the resource).
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Status History</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getEpisodeOfCare_StatusHistory()
@@ -100,7 +100,7 @@ public interface EpisodeOfCare extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The type can be very important in processing as this could be used in determining if the EpisodeOfCare is relevant to specific government reporting, or other types of classifications.
+	 * A classification of the type of encounter; e.g. specialist referral, disease management, type of funded care.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Type</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getEpisodeOfCare_Type()
@@ -109,6 +109,22 @@ public interface EpisodeOfCare extends DomainResource {
 	 * @generated
 	 */
 	EList<CodeableConcept> getType();
+
+	/**
+	 * Returns the value of the '<em><b>Condition</b></em>' containment reference list.
+	 * The list contents are of type {@link org.hl7.fhir.Reference}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A list of conditions/problems/diagnoses that this episode of care is intended to be providing care for.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Condition</em>' containment reference list.
+	 * @see org.hl7.fhir.FhirPackage#getEpisodeOfCare_Condition()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='condition' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	EList<Reference> getCondition();
 
 	/**
 	 * Returns the value of the '<em><b>Patient</b></em>' containment reference.
@@ -187,22 +203,6 @@ public interface EpisodeOfCare extends DomainResource {
 	 * @generated
 	 */
 	void setPeriod(Period value);
-
-	/**
-	 * Returns the value of the '<em><b>Condition</b></em>' containment reference list.
-	 * The list contents are of type {@link org.hl7.fhir.Reference}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * A list of conditions/problems/diagnoses that this episode of care is intended to be providing care for.
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Condition</em>' containment reference list.
-	 * @see org.hl7.fhir.FhirPackage#getEpisodeOfCare_Condition()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='condition' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	EList<Reference> getCondition();
 
 	/**
 	 * Returns the value of the '<em><b>Referral Request</b></em>' containment reference list.

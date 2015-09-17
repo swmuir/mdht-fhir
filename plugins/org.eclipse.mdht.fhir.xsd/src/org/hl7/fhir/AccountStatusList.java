@@ -45,7 +45,7 @@ public enum AccountStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * This account is active and may be used
+	 * This account is active and may be used.
 	 * <!-- end-model-doc -->
 	 * @see #ACTIVE
 	 * @model name="active"
@@ -59,7 +59,7 @@ public enum AccountStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * This account is inactive and should not be used to track financial information
+	 * This account is inactive and should not be used to track financial information.
 	 * <!-- end-model-doc -->
 	 * @see #INACTIVE
 	 * @model name="inactive"

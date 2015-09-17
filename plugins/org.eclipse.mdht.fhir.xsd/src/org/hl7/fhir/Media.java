@@ -162,7 +162,7 @@ public interface Media extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The name of the imaging view e.g Lateral or Antero-posterior (AP).
+	 * The name of the imaging view e.g. Lateral or Antero-posterior (AP).
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>View</em>' containment reference.
 	 * @see #setView(CodeableConcept)
@@ -214,7 +214,7 @@ public interface Media extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Height of the image in pixels(photo/video).
+	 * Height of the image in pixels (photo/video).
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Height</em>' containment reference.
 	 * @see #setHeight(PositiveInt)

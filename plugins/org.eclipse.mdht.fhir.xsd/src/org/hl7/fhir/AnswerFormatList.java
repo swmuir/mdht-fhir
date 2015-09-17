@@ -175,7 +175,7 @@ public enum AnswerFormatList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Answer is a yes/no answer
+	 * Answer is a yes/no answer.
 	 * <!-- end-model-doc -->
 	 * @see #BOOLEAN
 	 * @model name="boolean"
@@ -189,7 +189,7 @@ public enum AnswerFormatList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Answer is a floating point number
+	 * Answer is a floating point number.
 	 * <!-- end-model-doc -->
 	 * @see #DECIMAL
 	 * @model name="decimal"
@@ -203,7 +203,7 @@ public enum AnswerFormatList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Answer is an integer
+	 * Answer is an integer.
 	 * <!-- end-model-doc -->
 	 * @see #INTEGER
 	 * @model name="integer"
@@ -217,7 +217,7 @@ public enum AnswerFormatList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Answer is a date
+	 * Answer is a date.
 	 * <!-- end-model-doc -->
 	 * @see #DATE
 	 * @model name="date"
@@ -231,7 +231,7 @@ public enum AnswerFormatList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Answer is a date and time
+	 * Answer is a date and time.
 	 * <!-- end-model-doc -->
 	 * @see #DATE_TIME
 	 * @model name="dateTime"
@@ -245,7 +245,7 @@ public enum AnswerFormatList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Answer is a system timestamp
+	 * Answer is a system timestamp.
 	 * <!-- end-model-doc -->
 	 * @see #INSTANT
 	 * @model name="instant"
@@ -259,7 +259,7 @@ public enum AnswerFormatList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Answer is a time (hour/minute/second) independent of date
+	 * Answer is a time (hour/minute/second) independent of date.
 	 * <!-- end-model-doc -->
 	 * @see #TIME
 	 * @model name="time"
@@ -273,7 +273,7 @@ public enum AnswerFormatList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Answer is a short (few words to short sentence) free-text entry
+	 * Answer is a short (few words to short sentence) free-text entry.
 	 * <!-- end-model-doc -->
 	 * @see #STRING
 	 * @model name="string"
@@ -287,7 +287,7 @@ public enum AnswerFormatList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Answer is a long (potentially multi-paragram) free-text entry (still captured as a string)
+	 * Answer is a long (potentially multi-paragraph) free-text entry (still captured as a string).
 	 * <!-- end-model-doc -->
 	 * @see #TEXT
 	 * @model name="text"
@@ -301,7 +301,7 @@ public enum AnswerFormatList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Answer is a url (website, FTP site, etc.)
+	 * Answer is a url (website, FTP site, etc.).
 	 * <!-- end-model-doc -->
 	 * @see #URL
 	 * @model name="url"
@@ -315,7 +315,7 @@ public enum AnswerFormatList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Answer is a Coding drawn from a list of options
+	 * Answer is a Coding drawn from a list of options.
 	 * <!-- end-model-doc -->
 	 * @see #CHOICE
 	 * @model name="choice"
@@ -357,7 +357,7 @@ public enum AnswerFormatList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Answer is a reference to another resource (practitioner, organization, etc.)
+	 * Answer is a reference to another resource (practitioner, organization, etc.).
 	 * <!-- end-model-doc -->
 	 * @see #REFERENCE
 	 * @model name="reference"
@@ -371,7 +371,7 @@ public enum AnswerFormatList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Answer is a combination of a numeric value and unit, potentially with a comparator (<, >, etc)
+	 * Answer is a combination of a numeric value and unit, potentially with a comparator (<, >, etc.).
 	 * <!-- end-model-doc -->
 	 * @see #QUANTITY
 	 * @model name="quantity"

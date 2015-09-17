@@ -20,7 +20,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.hl7.fhir.AuditEventAction;
 import org.hl7.fhir.AuditEventEvent;
 import org.hl7.fhir.AuditEventOutcome;
-import org.hl7.fhir.CodeableConcept;
 import org.hl7.fhir.Coding;
 import org.hl7.fhir.FhirPackage;
 import org.hl7.fhir.Instant;
@@ -53,7 +52,7 @@ public class AuditEventEventImpl extends BackboneElementImpl implements AuditEve
 	 * @generated
 	 * @ordered
 	 */
-	protected CodeableConcept type;
+	protected Coding type;
 
 	/**
 	 * The cached value of the '{@link #getSubtype() <em>Subtype</em>}' containment reference list.
@@ -63,7 +62,7 @@ public class AuditEventEventImpl extends BackboneElementImpl implements AuditEve
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<CodeableConcept> subtype;
+	protected EList<Coding> subtype;
 
 	/**
 	 * The cached value of the '{@link #getAction() <em>Action</em>}' containment reference.
@@ -139,7 +138,7 @@ public class AuditEventEventImpl extends BackboneElementImpl implements AuditEve
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CodeableConcept getType() {
+	public Coding getType() {
 		return type;
 	}
 
@@ -148,8 +147,8 @@ public class AuditEventEventImpl extends BackboneElementImpl implements AuditEve
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetType(CodeableConcept newType, NotificationChain msgs) {
-		CodeableConcept oldType = type;
+	public NotificationChain basicSetType(Coding newType, NotificationChain msgs) {
+		Coding oldType = type;
 		type = newType;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.AUDIT_EVENT_EVENT__TYPE, oldType, newType);
@@ -163,7 +162,7 @@ public class AuditEventEventImpl extends BackboneElementImpl implements AuditEve
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setType(CodeableConcept newType) {
+	public void setType(Coding newType) {
 		if (newType != type) {
 			NotificationChain msgs = null;
 			if (type != null)
@@ -182,9 +181,9 @@ public class AuditEventEventImpl extends BackboneElementImpl implements AuditEve
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<CodeableConcept> getSubtype() {
+	public EList<Coding> getSubtype() {
 		if (subtype == null) {
-			subtype = new EObjectContainmentEList<CodeableConcept>(CodeableConcept.class, this, FhirPackage.AUDIT_EVENT_EVENT__SUBTYPE);
+			subtype = new EObjectContainmentEList<Coding>(Coding.class, this, FhirPackage.AUDIT_EVENT_EVENT__SUBTYPE);
 		}
 		return subtype;
 	}
@@ -435,11 +434,11 @@ public class AuditEventEventImpl extends BackboneElementImpl implements AuditEve
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case FhirPackage.AUDIT_EVENT_EVENT__TYPE:
-				setType((CodeableConcept)newValue);
+				setType((Coding)newValue);
 				return;
 			case FhirPackage.AUDIT_EVENT_EVENT__SUBTYPE:
 				getSubtype().clear();
-				getSubtype().addAll((Collection<? extends CodeableConcept>)newValue);
+				getSubtype().addAll((Collection<? extends Coding>)newValue);
 				return;
 			case FhirPackage.AUDIT_EVENT_EVENT__ACTION:
 				setAction((AuditEventAction)newValue);
@@ -470,7 +469,7 @@ public class AuditEventEventImpl extends BackboneElementImpl implements AuditEve
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case FhirPackage.AUDIT_EVENT_EVENT__TYPE:
-				setType((CodeableConcept)null);
+				setType((Coding)null);
 				return;
 			case FhirPackage.AUDIT_EVENT_EVENT__SUBTYPE:
 				getSubtype().clear();

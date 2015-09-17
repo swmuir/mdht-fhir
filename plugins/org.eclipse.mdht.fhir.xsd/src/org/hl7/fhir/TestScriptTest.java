@@ -33,7 +33,7 @@ public interface TestScriptTest extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The name of this test.
+	 * The name of this test used for tracking/logging purposes by test engines.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Name</em>' containment reference.
 	 * @see #setName(org.hl7.fhir.String)
@@ -59,7 +59,7 @@ public interface TestScriptTest extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A short description of the test.
+	 * A short description of the test used by test engines for tracking and reporting purposes.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Description</em>' containment reference.
 	 * @see #setDescription(org.hl7.fhir.String)
@@ -85,7 +85,7 @@ public interface TestScriptTest extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Capabilties that must exist and is assumed to function correctly on the FHIR server being tested.
+	 * Capabilities that must exist and are assumed to function correctly on the FHIR server being tested.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Metadata</em>' containment reference.
 	 * @see #setMetadata(TestScriptMetadata)

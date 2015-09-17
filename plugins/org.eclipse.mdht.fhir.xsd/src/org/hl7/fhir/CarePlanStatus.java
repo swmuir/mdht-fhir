@@ -9,7 +9,7 @@ package org.hl7.fhir;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Indicates whether the plan is currently being acted upon, represents future intentions or is now just historical record.
+ * Indicates whether the plan is currently being acted upon, represents future intentions or is now a historical record.
  * If the element is present, it must have either a @value, an @id, or extensions
  * <!-- end-model-doc -->
  *

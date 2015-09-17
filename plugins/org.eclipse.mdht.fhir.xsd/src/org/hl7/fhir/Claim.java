@@ -581,7 +581,7 @@ public interface Claim extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Name of school for over-aged dependants.
+	 * Name of school for over-aged dependents.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>School</em>' containment reference.
 	 * @see #setSchool(org.hl7.fhir.String)

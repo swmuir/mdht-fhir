@@ -24,6 +24,7 @@ import org.hl7.fhir.CodeableConcept;
 import org.hl7.fhir.FhirPackage;
 import org.hl7.fhir.Identifier;
 import org.hl7.fhir.Instant;
+import org.hl7.fhir.PositiveInt;
 import org.hl7.fhir.Reference;
 import org.hl7.fhir.UnsignedInt;
 
@@ -43,9 +44,9 @@ import org.hl7.fhir.UnsignedInt;
  *   <li>{@link org.hl7.fhir.impl.AppointmentImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.AppointmentImpl#getStart <em>Start</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.AppointmentImpl#getEnd <em>End</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.AppointmentImpl#getMinutesDuration <em>Minutes Duration</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.AppointmentImpl#getSlot <em>Slot</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.AppointmentImpl#getComment <em>Comment</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.AppointmentImpl#getOrder <em>Order</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.AppointmentImpl#getParticipant <em>Participant</em>}</li>
  * </ul>
  *
@@ -133,6 +134,16 @@ public class AppointmentImpl extends DomainResourceImpl implements Appointment {
 	protected Instant end;
 
 	/**
+	 * The cached value of the '{@link #getMinutesDuration() <em>Minutes Duration</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMinutesDuration()
+	 * @generated
+	 * @ordered
+	 */
+	protected PositiveInt minutesDuration;
+
+	/**
 	 * The cached value of the '{@link #getSlot() <em>Slot</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -151,16 +162,6 @@ public class AppointmentImpl extends DomainResourceImpl implements Appointment {
 	 * @ordered
 	 */
 	protected org.hl7.fhir.String comment;
-
-	/**
-	 * The cached value of the '{@link #getOrder() <em>Order</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOrder()
-	 * @generated
-	 * @ordered
-	 */
-	protected Reference order;
 
 	/**
 	 * The cached value of the '{@link #getParticipant() <em>Participant</em>}' containment reference list.
@@ -509,6 +510,49 @@ public class AppointmentImpl extends DomainResourceImpl implements Appointment {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public PositiveInt getMinutesDuration() {
+		return minutesDuration;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetMinutesDuration(PositiveInt newMinutesDuration, NotificationChain msgs) {
+		PositiveInt oldMinutesDuration = minutesDuration;
+		minutesDuration = newMinutesDuration;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.APPOINTMENT__MINUTES_DURATION, oldMinutesDuration, newMinutesDuration);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMinutesDuration(PositiveInt newMinutesDuration) {
+		if (newMinutesDuration != minutesDuration) {
+			NotificationChain msgs = null;
+			if (minutesDuration != null)
+				msgs = ((InternalEObject)minutesDuration).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.APPOINTMENT__MINUTES_DURATION, null, msgs);
+			if (newMinutesDuration != null)
+				msgs = ((InternalEObject)newMinutesDuration).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.APPOINTMENT__MINUTES_DURATION, null, msgs);
+			msgs = basicSetMinutesDuration(newMinutesDuration, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.APPOINTMENT__MINUTES_DURATION, newMinutesDuration, newMinutesDuration));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList<Reference> getSlot() {
 		if (slot == null) {
 			slot = new EObjectContainmentEList<Reference>(Reference.class, this, FhirPackage.APPOINTMENT__SLOT);
@@ -564,49 +608,6 @@ public class AppointmentImpl extends DomainResourceImpl implements Appointment {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Reference getOrder() {
-		return order;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetOrder(Reference newOrder, NotificationChain msgs) {
-		Reference oldOrder = order;
-		order = newOrder;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.APPOINTMENT__ORDER, oldOrder, newOrder);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setOrder(Reference newOrder) {
-		if (newOrder != order) {
-			NotificationChain msgs = null;
-			if (order != null)
-				msgs = ((InternalEObject)order).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.APPOINTMENT__ORDER, null, msgs);
-			if (newOrder != null)
-				msgs = ((InternalEObject)newOrder).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.APPOINTMENT__ORDER, null, msgs);
-			msgs = basicSetOrder(newOrder, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.APPOINTMENT__ORDER, newOrder, newOrder));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EList<AppointmentParticipant> getParticipant() {
 		if (participant == null) {
 			participant = new EObjectContainmentEList<AppointmentParticipant>(AppointmentParticipant.class, this, FhirPackage.APPOINTMENT__PARTICIPANT);
@@ -638,12 +639,12 @@ public class AppointmentImpl extends DomainResourceImpl implements Appointment {
 				return basicSetStart(null, msgs);
 			case FhirPackage.APPOINTMENT__END:
 				return basicSetEnd(null, msgs);
+			case FhirPackage.APPOINTMENT__MINUTES_DURATION:
+				return basicSetMinutesDuration(null, msgs);
 			case FhirPackage.APPOINTMENT__SLOT:
 				return ((InternalEList<?>)getSlot()).basicRemove(otherEnd, msgs);
 			case FhirPackage.APPOINTMENT__COMMENT:
 				return basicSetComment(null, msgs);
-			case FhirPackage.APPOINTMENT__ORDER:
-				return basicSetOrder(null, msgs);
 			case FhirPackage.APPOINTMENT__PARTICIPANT:
 				return ((InternalEList<?>)getParticipant()).basicRemove(otherEnd, msgs);
 		}
@@ -674,12 +675,12 @@ public class AppointmentImpl extends DomainResourceImpl implements Appointment {
 				return getStart();
 			case FhirPackage.APPOINTMENT__END:
 				return getEnd();
+			case FhirPackage.APPOINTMENT__MINUTES_DURATION:
+				return getMinutesDuration();
 			case FhirPackage.APPOINTMENT__SLOT:
 				return getSlot();
 			case FhirPackage.APPOINTMENT__COMMENT:
 				return getComment();
-			case FhirPackage.APPOINTMENT__ORDER:
-				return getOrder();
 			case FhirPackage.APPOINTMENT__PARTICIPANT:
 				return getParticipant();
 		}
@@ -720,15 +721,15 @@ public class AppointmentImpl extends DomainResourceImpl implements Appointment {
 			case FhirPackage.APPOINTMENT__END:
 				setEnd((Instant)newValue);
 				return;
+			case FhirPackage.APPOINTMENT__MINUTES_DURATION:
+				setMinutesDuration((PositiveInt)newValue);
+				return;
 			case FhirPackage.APPOINTMENT__SLOT:
 				getSlot().clear();
 				getSlot().addAll((Collection<? extends Reference>)newValue);
 				return;
 			case FhirPackage.APPOINTMENT__COMMENT:
 				setComment((org.hl7.fhir.String)newValue);
-				return;
-			case FhirPackage.APPOINTMENT__ORDER:
-				setOrder((Reference)newValue);
 				return;
 			case FhirPackage.APPOINTMENT__PARTICIPANT:
 				getParticipant().clear();
@@ -770,14 +771,14 @@ public class AppointmentImpl extends DomainResourceImpl implements Appointment {
 			case FhirPackage.APPOINTMENT__END:
 				setEnd((Instant)null);
 				return;
+			case FhirPackage.APPOINTMENT__MINUTES_DURATION:
+				setMinutesDuration((PositiveInt)null);
+				return;
 			case FhirPackage.APPOINTMENT__SLOT:
 				getSlot().clear();
 				return;
 			case FhirPackage.APPOINTMENT__COMMENT:
 				setComment((org.hl7.fhir.String)null);
-				return;
-			case FhirPackage.APPOINTMENT__ORDER:
-				setOrder((Reference)null);
 				return;
 			case FhirPackage.APPOINTMENT__PARTICIPANT:
 				getParticipant().clear();
@@ -810,12 +811,12 @@ public class AppointmentImpl extends DomainResourceImpl implements Appointment {
 				return start != null;
 			case FhirPackage.APPOINTMENT__END:
 				return end != null;
+			case FhirPackage.APPOINTMENT__MINUTES_DURATION:
+				return minutesDuration != null;
 			case FhirPackage.APPOINTMENT__SLOT:
 				return slot != null && !slot.isEmpty();
 			case FhirPackage.APPOINTMENT__COMMENT:
 				return comment != null;
-			case FhirPackage.APPOINTMENT__ORDER:
-				return order != null;
 			case FhirPackage.APPOINTMENT__PARTICIPANT:
 				return participant != null && !participant.isEmpty();
 		}

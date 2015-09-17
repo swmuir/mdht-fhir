@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Thu, Aug 20, 2015 14:13+0000 for FHIR v0.5.0 
+  Generated on Wed, Sep 16, 2015 13:28+0000 for FHIR v1.0.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -38,12 +38,12 @@
   <xs:include schemaLocation="fhir-base.xsd"/>
   <xs:element name="Group" type="Group">
     <xs:annotation>
-      <xs:documentation xml:lang="en">Represents a defined collection of entities that may be discussed or acted upon collectively but which are not expected to act collectively and are not formally or legally recognized.  I.e. A collection of entities that isn't an Organization.</xs:documentation>
+      <xs:documentation xml:lang="en">Represents a defined collection of entities that may be discussed or acted upon collectively but which are not expected to act collectively and are not formally or legally recognized; i.e. a collection of entities that isn't an Organization.</xs:documentation>
     </xs:annotation>
   </xs:element>
   <xs:complexType name="Group">
     <xs:annotation>
-      <xs:documentation xml:lang="en">Represents a defined collection of entities that may be discussed or acted upon collectively but which are not expected to act collectively and are not formally or legally recognized.  I.e. A collection of entities that isn't an Organization.</xs:documentation>
+      <xs:documentation xml:lang="en">Represents a defined collection of entities that may be discussed or acted upon collectively but which are not expected to act collectively and are not formally or legally recognized; i.e. a collection of entities that isn't an Organization.</xs:documentation>
       <xs:documentation xml:lang="en">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
@@ -66,7 +66,7 @@
           </xs:element>
           <xs:element name="code" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Provides a specific type of resource the group includes.  E.g. &quot;cow&quot;, &quot;syringe&quot;, etc.</xs:documentation>
+              <xs:documentation xml:lang="en">Provides a specific type of resource the group includes; e.g. &quot;cow&quot;, &quot;syringe&quot;, etc.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="name" minOccurs="0" maxOccurs="1" type="string">
@@ -95,7 +95,7 @@
   </xs:complexType>
   <xs:complexType name="Group.Characteristic">
     <xs:annotation>
-      <xs:documentation xml:lang="en">Represents a defined collection of entities that may be discussed or acted upon collectively but which are not expected to act collectively and are not formally or legally recognized.  I.e. A collection of entities that isn't an Organization.</xs:documentation>
+      <xs:documentation xml:lang="en">Represents a defined collection of entities that may be discussed or acted upon collectively but which are not expected to act collectively and are not formally or legally recognized; i.e. a collection of entities that isn't an Organization.</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="BackboneElement">
@@ -121,7 +121,7 @@
           </xs:element>
           <xs:element name="period" minOccurs="0" maxOccurs="1" type="Period">
             <xs:annotation>
-              <xs:documentation xml:lang="en">The period over which the characteristic is tested. E.g. the patient had an operation during the month of June.</xs:documentation>
+              <xs:documentation xml:lang="en">The period over which the characteristic is tested; e.g. the patient had an operation during the month of June.</xs:documentation>
            </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -130,7 +130,7 @@
   </xs:complexType>
   <xs:complexType name="Group.Member">
     <xs:annotation>
-      <xs:documentation xml:lang="en">Represents a defined collection of entities that may be discussed or acted upon collectively but which are not expected to act collectively and are not formally or legally recognized.  I.e. A collection of entities that isn't an Organization.</xs:documentation>
+      <xs:documentation xml:lang="en">Represents a defined collection of entities that may be discussed or acted upon collectively but which are not expected to act collectively and are not formally or legally recognized; i.e. a collection of entities that isn't an Organization.</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="BackboneElement">

@@ -19,6 +19,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link org.hl7.fhir.Specimen#getIdentifier <em>Identifier</em>}</li>
+ *   <li>{@link org.hl7.fhir.Specimen#getStatus <em>Status</em>}</li>
  *   <li>{@link org.hl7.fhir.Specimen#getType <em>Type</em>}</li>
  *   <li>{@link org.hl7.fhir.Specimen#getParent <em>Parent</em>}</li>
  *   <li>{@link org.hl7.fhir.Specimen#getSubject <em>Subject</em>}</li>
@@ -49,6 +50,32 @@ public interface Specimen extends DomainResource {
 	 * @generated
 	 */
 	EList<Identifier> getIdentifier();
+
+	/**
+	 * Returns the value of the '<em><b>Status</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The availability of the specimen.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Status</em>' containment reference.
+	 * @see #setStatus(SpecimenStatus)
+	 * @see org.hl7.fhir.FhirPackage#getSpecimen_Status()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='status' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	SpecimenStatus getStatus();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.Specimen#getStatus <em>Status</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Status</em>' containment reference.
+	 * @see #getStatus()
+	 * @generated
+	 */
+	void setStatus(SpecimenStatus value);
 
 	/**
 	 * Returns the value of the '<em><b>Type</b></em>' containment reference.
@@ -82,7 +109,7 @@ public interface Specimen extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Reference to the parent (source) specimen which is used when the specimen was either derived from or a component of a another specimen.
+	 * Reference to the parent (source) specimen which is used when the specimen was either derived from or a component of another specimen.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Parent</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getSpecimen_Parent()

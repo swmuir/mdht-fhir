@@ -107,7 +107,7 @@ public enum ExtensionContextList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The context is a particular extension from a particular profile.  Expressed as uri#name, where uri identifies the profile and #name identifies the extension code
+	 * The context is a particular extension from a particular profile, a uri that identifies the extension definition
 	 * <!-- end-model-doc -->
 	 * @see #EXTENSION
 	 * @model name="extension"

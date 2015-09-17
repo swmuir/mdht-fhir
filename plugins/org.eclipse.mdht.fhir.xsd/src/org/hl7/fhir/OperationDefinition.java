@@ -153,7 +153,7 @@ public interface OperationDefinition extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Whether this is operation or named query.
+	 * Whether this is an operation or a named query.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Kind</em>' containment reference.
 	 * @see #setKind(OperationKind)
@@ -247,7 +247,7 @@ public interface OperationDefinition extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The date that this version of the profile was published. The date must change when the business version changes, if it does, and it must change if the status code changes. in addition, it should change when the substantiative content of the Operation Definition changes.
+	 * The date this version of the operation definition was published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the Operation Definition changes.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Date</em>' containment reference.
 	 * @see #setDate(DateTime)

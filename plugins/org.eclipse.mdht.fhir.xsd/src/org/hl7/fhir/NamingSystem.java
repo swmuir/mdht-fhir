@@ -69,7 +69,7 @@ public interface NamingSystem extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Indicates whether the namingsystem is "ready for use" or not.
+	 * Indicates whether the naming system is "ready for use" or not.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Status</em>' containment reference.
 	 * @see #setStatus(Code)
@@ -95,7 +95,7 @@ public interface NamingSystem extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Indicates the purpose for the namingsystem - what kinds of things does it make unique?
+	 * Indicates the purpose for the naming system - what kinds of things does it make unique?
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Kind</em>' containment reference.
 	 * @see #setKind(NamingSystemType)
@@ -189,7 +189,7 @@ public interface NamingSystem extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The date  (and optionally time) when the system was registered or published. The date must change when the business version changes, if it does, and it must change if the status code changes. in addition, it should change when the substantiative content of the registration changes.
+	 * The date  (and optionally time) when the system was registered or published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the registration changes.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Date</em>' containment reference.
 	 * @see #setDate(DateTime)
@@ -215,7 +215,7 @@ public interface NamingSystem extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Categorizes a namingsystem for easier search by grouping related namingsystems.
+	 * Categorizes a naming system for easier search by grouping related naming systems.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Type</em>' containment reference.
 	 * @see #setType(CodeableConcept)
@@ -325,7 +325,7 @@ public interface NamingSystem extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * For namingsystems that are retired, indicates the namingsystem that should be used in their place (if any).
+	 * For naming systems that are retired, indicates the naming system that should be used in their place (if any).
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Replaced By</em>' containment reference.
 	 * @see #setReplacedBy(Reference)

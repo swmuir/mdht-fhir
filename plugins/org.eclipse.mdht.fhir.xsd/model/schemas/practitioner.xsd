@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Thu, Aug 20, 2015 14:13+0000 for FHIR v0.5.0 
+  Generated on Wed, Sep 16, 2015 13:28+0000 for FHIR v1.0.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -52,6 +52,11 @@
           <xs:element name="identifier" minOccurs="0" maxOccurs="unbounded" type="Identifier">
             <xs:annotation>
               <xs:documentation xml:lang="en">An identifier that applies to this person in this role.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="active" minOccurs="0" maxOccurs="1" type="boolean">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">Whether this practitioner's record is in active use.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="name" minOccurs="0" maxOccurs="1" type="HumanName">
@@ -86,7 +91,7 @@
           </xs:element>
           <xs:element name="practitionerRole" type="Practitioner.PractitionerRole" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation>
-              <xs:documentation xml:lang="en">The list of Roles/Organizations that the Practitioner is associated with.</xs:documentation>
+              <xs:documentation xml:lang="en">The list of roles/organizations that the practitioner is associated with.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="qualification" type="Practitioner.Qualification" minOccurs="0" maxOccurs="unbounded">
@@ -112,7 +117,7 @@
         <xs:sequence>
           <xs:element name="managingOrganization" minOccurs="0" maxOccurs="1" type="Reference">
             <xs:annotation>
-              <xs:documentation xml:lang="en">The Organization where the Practitioner performs the roles associated.</xs:documentation>
+              <xs:documentation xml:lang="en">The organization where the Practitioner performs the roles associated.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="role" minOccurs="0" maxOccurs="1" type="CodeableConcept">

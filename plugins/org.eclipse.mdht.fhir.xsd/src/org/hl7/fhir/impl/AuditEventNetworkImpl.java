@@ -22,7 +22,7 @@ import org.hl7.fhir.FhirPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.hl7.fhir.impl.AuditEventNetworkImpl#getIdentifier <em>Identifier</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.AuditEventNetworkImpl#getAddress <em>Address</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.AuditEventNetworkImpl#getType <em>Type</em>}</li>
  * </ul>
  *
@@ -30,14 +30,14 @@ import org.hl7.fhir.FhirPackage;
  */
 public class AuditEventNetworkImpl extends BackboneElementImpl implements AuditEventNetwork {
 	/**
-	 * The cached value of the '{@link #getIdentifier() <em>Identifier</em>}' containment reference.
+	 * The cached value of the '{@link #getAddress() <em>Address</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getIdentifier()
+	 * @see #getAddress()
 	 * @generated
 	 * @ordered
 	 */
-	protected org.hl7.fhir.String identifier;
+	protected org.hl7.fhir.String address;
 
 	/**
 	 * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
@@ -73,8 +73,8 @@ public class AuditEventNetworkImpl extends BackboneElementImpl implements AuditE
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public org.hl7.fhir.String getIdentifier() {
-		return identifier;
+	public org.hl7.fhir.String getAddress() {
+		return address;
 	}
 
 	/**
@@ -82,11 +82,11 @@ public class AuditEventNetworkImpl extends BackboneElementImpl implements AuditE
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetIdentifier(org.hl7.fhir.String newIdentifier, NotificationChain msgs) {
-		org.hl7.fhir.String oldIdentifier = identifier;
-		identifier = newIdentifier;
+	public NotificationChain basicSetAddress(org.hl7.fhir.String newAddress, NotificationChain msgs) {
+		org.hl7.fhir.String oldAddress = address;
+		address = newAddress;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.AUDIT_EVENT_NETWORK__IDENTIFIER, oldIdentifier, newIdentifier);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.AUDIT_EVENT_NETWORK__ADDRESS, oldAddress, newAddress);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -97,18 +97,18 @@ public class AuditEventNetworkImpl extends BackboneElementImpl implements AuditE
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setIdentifier(org.hl7.fhir.String newIdentifier) {
-		if (newIdentifier != identifier) {
+	public void setAddress(org.hl7.fhir.String newAddress) {
+		if (newAddress != address) {
 			NotificationChain msgs = null;
-			if (identifier != null)
-				msgs = ((InternalEObject)identifier).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.AUDIT_EVENT_NETWORK__IDENTIFIER, null, msgs);
-			if (newIdentifier != null)
-				msgs = ((InternalEObject)newIdentifier).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.AUDIT_EVENT_NETWORK__IDENTIFIER, null, msgs);
-			msgs = basicSetIdentifier(newIdentifier, msgs);
+			if (address != null)
+				msgs = ((InternalEObject)address).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.AUDIT_EVENT_NETWORK__ADDRESS, null, msgs);
+			if (newAddress != null)
+				msgs = ((InternalEObject)newAddress).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.AUDIT_EVENT_NETWORK__ADDRESS, null, msgs);
+			msgs = basicSetAddress(newAddress, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.AUDIT_EVENT_NETWORK__IDENTIFIER, newIdentifier, newIdentifier));
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.AUDIT_EVENT_NETWORK__ADDRESS, newAddress, newAddress));
 	}
 
 	/**
@@ -162,8 +162,8 @@ public class AuditEventNetworkImpl extends BackboneElementImpl implements AuditE
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case FhirPackage.AUDIT_EVENT_NETWORK__IDENTIFIER:
-				return basicSetIdentifier(null, msgs);
+			case FhirPackage.AUDIT_EVENT_NETWORK__ADDRESS:
+				return basicSetAddress(null, msgs);
 			case FhirPackage.AUDIT_EVENT_NETWORK__TYPE:
 				return basicSetType(null, msgs);
 		}
@@ -178,8 +178,8 @@ public class AuditEventNetworkImpl extends BackboneElementImpl implements AuditE
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case FhirPackage.AUDIT_EVENT_NETWORK__IDENTIFIER:
-				return getIdentifier();
+			case FhirPackage.AUDIT_EVENT_NETWORK__ADDRESS:
+				return getAddress();
 			case FhirPackage.AUDIT_EVENT_NETWORK__TYPE:
 				return getType();
 		}
@@ -194,8 +194,8 @@ public class AuditEventNetworkImpl extends BackboneElementImpl implements AuditE
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case FhirPackage.AUDIT_EVENT_NETWORK__IDENTIFIER:
-				setIdentifier((org.hl7.fhir.String)newValue);
+			case FhirPackage.AUDIT_EVENT_NETWORK__ADDRESS:
+				setAddress((org.hl7.fhir.String)newValue);
 				return;
 			case FhirPackage.AUDIT_EVENT_NETWORK__TYPE:
 				setType((AuditEventParticipantNetworkType)newValue);
@@ -212,8 +212,8 @@ public class AuditEventNetworkImpl extends BackboneElementImpl implements AuditE
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case FhirPackage.AUDIT_EVENT_NETWORK__IDENTIFIER:
-				setIdentifier((org.hl7.fhir.String)null);
+			case FhirPackage.AUDIT_EVENT_NETWORK__ADDRESS:
+				setAddress((org.hl7.fhir.String)null);
 				return;
 			case FhirPackage.AUDIT_EVENT_NETWORK__TYPE:
 				setType((AuditEventParticipantNetworkType)null);
@@ -230,8 +230,8 @@ public class AuditEventNetworkImpl extends BackboneElementImpl implements AuditE
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case FhirPackage.AUDIT_EVENT_NETWORK__IDENTIFIER:
-				return identifier != null;
+			case FhirPackage.AUDIT_EVENT_NETWORK__ADDRESS:
+				return address != null;
 			case FhirPackage.AUDIT_EVENT_NETWORK__TYPE:
 				return type != null;
 		}

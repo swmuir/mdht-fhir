@@ -32,7 +32,7 @@ public interface TestScriptVariable extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Variable name.
+	 * Descriptive name for this variable.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Name</em>' containment reference.
 	 * @see #setName(org.hl7.fhir.String)
@@ -58,7 +58,7 @@ public interface TestScriptVariable extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Will be used to grab the header field value from the headers that sourceId is pointing to.
+	 * Will be used to grab the HTTP header field value from the headers that sourceId is pointing to.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Header Field</em>' containment reference.
 	 * @see #setHeaderField(org.hl7.fhir.String)
@@ -110,7 +110,7 @@ public interface TestScriptVariable extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Fixture to evaluate the XPath/JSONPath expression or the headerField  against.
+	 * Fixture to evaluate the XPath/JSONPath expression or the headerField  against within this variable.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Source Id</em>' containment reference.
 	 * @see #setSourceId(Id)

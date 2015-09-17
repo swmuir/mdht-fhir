@@ -141,7 +141,7 @@ public enum ObservationRelationshipTypeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The value of the target observation qualifies (refines) the semantics of the source observation (e.g. a lipaemia measure target from a plasma measure)
+	 * The value of the target observation qualifies (refines) the semantics of the source observation (e.g. a lipemia measure target from a plasma measure)
 	 * <!-- end-model-doc -->
 	 * @see #QUALIFIED_BY
 	 * @model name="qualifiedBy" literal="qualified-by"
@@ -155,7 +155,7 @@ public enum ObservationRelationshipTypeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The value of the target observation interferes (degardes quality, or prevents valid observation) with the semantics of the source observation (e.g. a hemolysis measure target from a plasma potassium measure which has no value)
+	 * The value of the target observation interferes (degrades quality, or prevents valid observation) with the semantics of the source observation (e.g. a hemolysis measure target from a plasma potassium measure which has no value)
 	 * <!-- end-model-doc -->
 	 * @see #INTERFERED_BY
 	 * @model name="interferedBy" literal="interfered-by"

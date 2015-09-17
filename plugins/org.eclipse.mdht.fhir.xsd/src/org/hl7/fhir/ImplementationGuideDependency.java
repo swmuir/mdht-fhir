@@ -56,7 +56,7 @@ public interface ImplementationGuideDependency extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Where the dependncy is located.
+	 * Where the dependency is located.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Uri</em>' containment reference.
 	 * @see #setUri(Uri)

@@ -184,7 +184,7 @@ public interface OrderResponse extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Links to resources that provide details of the outcome of performing the order. E.g. Diagnostic Reports in a response that is made to an order that referenced a diagnostic order.
+	 * Links to resources that provide details of the outcome of performing the order; e.g. Diagnostic Reports in a response that is made to an order that referenced a diagnostic order.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Fulfillment</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getOrderResponse_Fulfillment()

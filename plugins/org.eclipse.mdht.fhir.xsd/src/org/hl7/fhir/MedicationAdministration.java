@@ -359,7 +359,7 @@ public interface MedicationAdministration extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The device used in administering the medication to the patient.  E.g. a particular infusion pump.
+	 * The device used in administering the medication to the patient; e.g. a particular infusion pump.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Device</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getMedicationAdministration_Device()
@@ -400,7 +400,7 @@ public interface MedicationAdministration extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Indicates how the medication is/was used by the patient.
+	 * Describes the medication dosage information details e.g. dose, rate, site, route, etc.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Dosage</em>' containment reference.
 	 * @see #setDosage(MedicationAdministrationDosage)

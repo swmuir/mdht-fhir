@@ -9,7 +9,7 @@ package org.hl7.fhir;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Primarily used for identification and definition of Medication, but also covers ingredients and packaging.
+ * This resource is primarily used for the identification and definition of a medication. It covers the ingredients and the packaging for a medication.
  * <!-- end-model-doc -->
  *
  * <p>
@@ -56,7 +56,7 @@ public interface MedicationIngredient extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Specifies how many (or how much) of the items there are in this Medication.  E.g. 250 mg per tablet.
+	 * Specifies how many (or how much) of the items there are in this Medication; e.g. 250 mg per tablet.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Amount</em>' containment reference.
 	 * @see #setAmount(Ratio)

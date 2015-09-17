@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Thu, Aug 20, 2015 14:13+0000 for FHIR v0.5.0 
+  Generated on Wed, Sep 16, 2015 13:28+0000 for FHIR v1.0.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -38,12 +38,12 @@
   <xs:include schemaLocation="fhir-base.xsd"/>
   <xs:element name="Medication" type="Medication">
     <xs:annotation>
-      <xs:documentation xml:lang="en">Primarily used for identification and definition of Medication, but also covers ingredients and packaging.</xs:documentation>
+      <xs:documentation xml:lang="en">This resource is primarily used for the identification and definition of a medication. It covers the ingredients and the packaging for a medication.</xs:documentation>
     </xs:annotation>
   </xs:element>
   <xs:complexType name="Medication">
     <xs:annotation>
-      <xs:documentation xml:lang="en">Primarily used for identification and definition of Medication, but also covers ingredients and packaging.</xs:documentation>
+      <xs:documentation xml:lang="en">This resource is primarily used for the identification and definition of a medication. It covers the ingredients and the packaging for a medication.</xs:documentation>
       <xs:documentation xml:lang="en">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
@@ -64,11 +64,6 @@
               <xs:documentation xml:lang="en">Describes the details of the manufacturer.</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:element name="kind" minOccurs="0" maxOccurs="1" type="MedicationKind">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">Medications are either a single administrable product or a package that contains one or more products.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
           <xs:element name="product" type="Medication.Product" minOccurs="0" maxOccurs="1">
             <xs:annotation>
               <xs:documentation xml:lang="en">Information that only applies to products (not packages).</xs:documentation>
@@ -85,7 +80,7 @@
   </xs:complexType>
   <xs:complexType name="Medication.Product">
     <xs:annotation>
-      <xs:documentation xml:lang="en">Primarily used for identification and definition of Medication, but also covers ingredients and packaging.</xs:documentation>
+      <xs:documentation xml:lang="en">This resource is primarily used for the identification and definition of a medication. It covers the ingredients and the packaging for a medication.</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="BackboneElement">
@@ -111,7 +106,7 @@
   </xs:complexType>
   <xs:complexType name="Medication.Ingredient">
     <xs:annotation>
-      <xs:documentation xml:lang="en">Primarily used for identification and definition of Medication, but also covers ingredients and packaging.</xs:documentation>
+      <xs:documentation xml:lang="en">This resource is primarily used for the identification and definition of a medication. It covers the ingredients and the packaging for a medication.</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="BackboneElement">
@@ -123,7 +118,7 @@
           </xs:element>
           <xs:element name="amount" minOccurs="0" maxOccurs="1" type="Ratio">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Specifies how many (or how much) of the items there are in this Medication.  E.g. 250 mg per tablet.</xs:documentation>
+              <xs:documentation xml:lang="en">Specifies how many (or how much) of the items there are in this Medication; e.g. 250 mg per tablet.</xs:documentation>
            </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -132,7 +127,7 @@
   </xs:complexType>
   <xs:complexType name="Medication.Batch">
     <xs:annotation>
-      <xs:documentation xml:lang="en">Primarily used for identification and definition of Medication, but also covers ingredients and packaging.</xs:documentation>
+      <xs:documentation xml:lang="en">This resource is primarily used for the identification and definition of a medication. It covers the ingredients and the packaging for a medication.</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="BackboneElement">
@@ -153,7 +148,7 @@
   </xs:complexType>
   <xs:complexType name="Medication.Package">
     <xs:annotation>
-      <xs:documentation xml:lang="en">Primarily used for identification and definition of Medication, but also covers ingredients and packaging.</xs:documentation>
+      <xs:documentation xml:lang="en">This resource is primarily used for the identification and definition of a medication. It covers the ingredients and the packaging for a medication.</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="BackboneElement">
@@ -174,7 +169,7 @@
   </xs:complexType>
   <xs:complexType name="Medication.Content">
     <xs:annotation>
-      <xs:documentation xml:lang="en">Primarily used for identification and definition of Medication, but also covers ingredients and packaging.</xs:documentation>
+      <xs:documentation xml:lang="en">This resource is primarily used for the identification and definition of a medication. It covers the ingredients and the packaging for a medication.</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="BackboneElement">
@@ -190,31 +185,6 @@
            </xs:annotation>
           </xs:element>
         </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:simpleType name="MedicationKind-list">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="product">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The medication is a product</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="package">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">The medication is a package - a contained group of one of more products</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:complexType name="MedicationKind">
-    <xs:annotation>
-      <xs:documentation xml:lang="en">Whether the medication is a product or a package</xs:documentation>
-      <xs:documentation xml:lang="en">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>
-    </xs:annotation>
-    <xs:complexContent>
-      <xs:extension base="Element">
-        <xs:attribute name="value" type="MedicationKind-list" use="optional"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>

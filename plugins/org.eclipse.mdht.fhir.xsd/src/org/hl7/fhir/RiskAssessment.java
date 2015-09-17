@@ -21,6 +21,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.hl7.fhir.RiskAssessment#getSubject <em>Subject</em>}</li>
  *   <li>{@link org.hl7.fhir.RiskAssessment#getDate <em>Date</em>}</li>
  *   <li>{@link org.hl7.fhir.RiskAssessment#getCondition <em>Condition</em>}</li>
+ *   <li>{@link org.hl7.fhir.RiskAssessment#getEncounter <em>Encounter</em>}</li>
  *   <li>{@link org.hl7.fhir.RiskAssessment#getPerformer <em>Performer</em>}</li>
  *   <li>{@link org.hl7.fhir.RiskAssessment#getIdentifier <em>Identifier</em>}</li>
  *   <li>{@link org.hl7.fhir.RiskAssessment#getMethod <em>Method</em>}</li>
@@ -113,6 +114,32 @@ public interface RiskAssessment extends DomainResource {
 	void setCondition(Reference value);
 
 	/**
+	 * Returns the value of the '<em><b>Encounter</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The encounter where the assessment was performed.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Encounter</em>' containment reference.
+	 * @see #setEncounter(Reference)
+	 * @see org.hl7.fhir.FhirPackage#getRiskAssessment_Encounter()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='encounter' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Reference getEncounter();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.RiskAssessment#getEncounter <em>Encounter</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Encounter</em>' containment reference.
+	 * @see #getEncounter()
+	 * @generated
+	 */
+	void setEncounter(Reference value);
+
+	/**
 	 * Returns the value of the '<em><b>Performer</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -169,7 +196,7 @@ public interface RiskAssessment extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The algorithm, processs or mechanism used to evaluate the risk.
+	 * The algorithm, process or mechanism used to evaluate the risk.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Method</em>' containment reference.
 	 * @see #setMethod(CodeableConcept)

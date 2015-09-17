@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Thu, Aug 20, 2015 14:13+0000 for FHIR v0.5.0 
+  Generated on Wed, Sep 16, 2015 13:28+0000 for FHIR v1.0.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -91,7 +91,7 @@
           </xs:element>
           <xs:element name="date" minOccurs="0" maxOccurs="1" type="dateTime">
             <xs:annotation>
-              <xs:documentation xml:lang="en">The date that the value set status was last changed. The date must change when the business version changes, if it does, and it must change if the status code changes. in addition, it should change when the substantiative content of the implementation guide changes (e.g. the 'content logical definition').</xs:documentation>
+              <xs:documentation xml:lang="en">The date that the value set status was last changed. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the implementation guide changes (e.g. the 'content logical definition').</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="lockedDate" minOccurs="0" maxOccurs="1" type="date">
@@ -193,7 +193,7 @@
           </xs:element>
           <xs:element name="concept" type="ValueSet.Concept" minOccurs="1" maxOccurs="unbounded">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Concepts that are in the code system. The concept definitions are inherently heirarchical, but the definitions must be consulted to determine what the meaning of the heirachical relationships are.</xs:documentation>
+              <xs:documentation xml:lang="en">Concepts that are in the code system. The concept definitions are inherently hierarchical, but the definitions must be consulted to determine what the meaning of the heirachical relationships are.</xs:documentation>
            </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -234,7 +234,7 @@
           </xs:element>
           <xs:element name="concept" type="ValueSet.Concept" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Child Concepts - a heirarchy of concepts. The nature of the relationships is variable (is-a / contains / categorises) and can only be determined by examining the definitions of the concepts.</xs:documentation>
+              <xs:documentation xml:lang="en">Child Concepts - a hierarchy of concepts. The nature of the relationships is variable (is-a / contains / categorises) and can only be determined by examining the definitions of the concepts.</xs:documentation>
            </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -468,7 +468,7 @@
           </xs:element>
           <xs:element name="code" minOccurs="0" maxOccurs="1" type="code">
             <xs:annotation>
-              <xs:documentation xml:lang="en">The code for this item in the expansion heirarchy. If this code is missing the entry in the heirarchy is a place holder (abstract) and doesn't represent a valid code in the value set.</xs:documentation>
+              <xs:documentation xml:lang="en">The code for this item in the expansion hierarchy. If this code is missing the entry in the hierarchy is a place holder (abstract) and doesn't represent a valid code in the value set.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="display" minOccurs="0" maxOccurs="1" type="string">
@@ -478,7 +478,7 @@
           </xs:element>
           <xs:element name="contains" type="ValueSet.Contains" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Other codes and entries contained under this entry in the heirarchy.</xs:documentation>
+              <xs:documentation xml:lang="en">Other codes and entries contained under this entry in the hierarchy.</xs:documentation>
            </xs:annotation>
           </xs:element>
         </xs:sequence>

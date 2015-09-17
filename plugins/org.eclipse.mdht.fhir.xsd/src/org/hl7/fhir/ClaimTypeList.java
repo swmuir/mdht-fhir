@@ -131,7 +131,7 @@ public enum ClaimTypeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A claim for Vision (Opthamologist, Optometrist and Optician) goods and services.
+	 * A claim for Vision (Ophthamologist, Optometrist and Optician) goods and services.
 	 * <!-- end-model-doc -->
 	 * @see #VISION
 	 * @model name="vision"

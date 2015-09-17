@@ -32,7 +32,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.hl7.fhir.MedicationOrder#getMedicationCodeableConcept <em>Medication Codeable Concept</em>}</li>
  *   <li>{@link org.hl7.fhir.MedicationOrder#getMedicationReference <em>Medication Reference</em>}</li>
  *   <li>{@link org.hl7.fhir.MedicationOrder#getDosageInstruction <em>Dosage Instruction</em>}</li>
- *   <li>{@link org.hl7.fhir.MedicationOrder#getDispense <em>Dispense</em>}</li>
+ *   <li>{@link org.hl7.fhir.MedicationOrder#getDispenseRequest <em>Dispense Request</em>}</li>
  *   <li>{@link org.hl7.fhir.MedicationOrder#getSubstitution <em>Substitution</em>}</li>
  *   <li>{@link org.hl7.fhir.MedicationOrder#getPriorPrescription <em>Prior Prescription</em>}</li>
  * </ul>
@@ -391,30 +391,30 @@ public interface MedicationOrder extends DomainResource {
 	EList<MedicationOrderDosageInstruction> getDosageInstruction();
 
 	/**
-	 * Returns the value of the '<em><b>Dispense</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Dispense Request</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Deals with details of the dispense part of the order.
+	 * Indicates the specific details for the dispense or medication supply part of a medication order (also known as a Medication Prescription).  Note that this information is NOT always sent with the order.  There may be in some settings (e.g. hospitals) institutional or system support for completing the dispense details in the pharmacy department.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Dispense</em>' containment reference.
-	 * @see #setDispense(MedicationOrderDispense)
-	 * @see org.hl7.fhir.FhirPackage#getMedicationOrder_Dispense()
+	 * @return the value of the '<em>Dispense Request</em>' containment reference.
+	 * @see #setDispenseRequest(MedicationOrderDispenseRequest)
+	 * @see org.hl7.fhir.FhirPackage#getMedicationOrder_DispenseRequest()
 	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='dispense' namespace='##targetNamespace'"
+	 *        extendedMetaData="kind='element' name='dispenseRequest' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	MedicationOrderDispense getDispense();
+	MedicationOrderDispenseRequest getDispenseRequest();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.MedicationOrder#getDispense <em>Dispense</em>}' containment reference.
+	 * Sets the value of the '{@link org.hl7.fhir.MedicationOrder#getDispenseRequest <em>Dispense Request</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Dispense</em>' containment reference.
-	 * @see #getDispense()
+	 * @param value the new value of the '<em>Dispense Request</em>' containment reference.
+	 * @see #getDispenseRequest()
 	 * @generated
 	 */
-	void setDispense(MedicationOrderDispense value);
+	void setDispenseRequest(MedicationOrderDispenseRequest value);
 
 	/**
 	 * Returns the value of the '<em><b>Substitution</b></em>' containment reference.

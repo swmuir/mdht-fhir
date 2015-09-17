@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Thu, Aug 20, 2015 14:13+0000 for FHIR v0.5.0 
+  Generated on Wed, Sep 16, 2015 13:28+0000 for FHIR v1.0.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -102,12 +102,12 @@
         <xs:sequence>
           <xs:element name="type" minOccurs="1" maxOccurs="1" type="SubscriptionChannelType">
             <xs:annotation>
-              <xs:documentation xml:lang="en">The type of channel to send notififcations on.</xs:documentation>
+              <xs:documentation xml:lang="en">The type of channel to send notifications on.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="endpoint" minOccurs="0" maxOccurs="1" type="uri">
             <xs:annotation>
-              <xs:documentation xml:lang="en">The uri that describes tha actual end point to send messages to.</xs:documentation>
+              <xs:documentation xml:lang="en">The uri that describes the actual end-point to send messages to.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="payload" minOccurs="1" maxOccurs="1" type="string">
@@ -183,7 +183,7 @@
       </xs:enumeration>
       <xs:enumeration value="message">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The channel Is executed by sending a message (e.g. a Bundle with a MessageHeader resource etc) to the application identified in the URI</xs:documentation>
+          <xs:documentation xml:lang="en">The channel Is executed by sending a message (e.g. a Bundle with a MessageHeader resource etc.) to the application identified in the URI</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>

@@ -139,13 +139,13 @@ public interface FhirFactory extends EFactory {
 	AllergyIntoleranceCriticality createAllergyIntoleranceCriticality();
 
 	/**
-	 * Returns a new object of class '<em>Allergy Intolerance Event</em>'.
+	 * Returns a new object of class '<em>Allergy Intolerance Reaction</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Allergy Intolerance Event</em>'.
+	 * @return a new object of class '<em>Allergy Intolerance Reaction</em>'.
 	 * @generated
 	 */
-	AllergyIntoleranceEvent createAllergyIntoleranceEvent();
+	AllergyIntoleranceReaction createAllergyIntoleranceReaction();
 
 	/**
 	 * Returns a new object of class '<em>Allergy Intolerance Severity</em>'.
@@ -317,33 +317,6 @@ public interface FhirFactory extends EFactory {
 	 * @generated
 	 */
 	AuditEventObject createAuditEventObject();
-
-	/**
-	 * Returns a new object of class '<em>Audit Event Object Lifecycle</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Audit Event Object Lifecycle</em>'.
-	 * @generated
-	 */
-	AuditEventObjectLifecycle createAuditEventObjectLifecycle();
-
-	/**
-	 * Returns a new object of class '<em>Audit Event Object Role</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Audit Event Object Role</em>'.
-	 * @generated
-	 */
-	AuditEventObjectRole createAuditEventObjectRole();
-
-	/**
-	 * Returns a new object of class '<em>Audit Event Object Type</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Audit Event Object Type</em>'.
-	 * @generated
-	 */
-	AuditEventObjectType createAuditEventObjectType();
 
 	/**
 	 * Returns a new object of class '<em>Audit Event Outcome</em>'.
@@ -526,15 +499,6 @@ public interface FhirFactory extends EFactory {
 	CarePlanActivity createCarePlanActivity();
 
 	/**
-	 * Returns a new object of class '<em>Care Plan Activity Category</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Care Plan Activity Category</em>'.
-	 * @generated
-	 */
-	CarePlanActivityCategory createCarePlanActivityCategory();
-
-	/**
 	 * Returns a new object of class '<em>Care Plan Activity Status</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -560,6 +524,24 @@ public interface FhirFactory extends EFactory {
 	 * @generated
 	 */
 	CarePlanParticipant createCarePlanParticipant();
+
+	/**
+	 * Returns a new object of class '<em>Care Plan Related Plan</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Care Plan Related Plan</em>'.
+	 * @generated
+	 */
+	CarePlanRelatedPlan createCarePlanRelatedPlan();
+
+	/**
+	 * Returns a new object of class '<em>Care Plan Relationship</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Care Plan Relationship</em>'.
+	 * @generated
+	 */
+	CarePlanRelationship createCarePlanRelationship();
 
 	/**
 	 * Returns a new object of class '<em>Care Plan Status</em>'.
@@ -1372,33 +1354,6 @@ public interface FhirFactory extends EFactory {
 	ContractValuedItem1 createContractValuedItem1();
 
 	/**
-	 * Returns a new object of class '<em>Contraindication</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Contraindication</em>'.
-	 * @generated
-	 */
-	Contraindication createContraindication();
-
-	/**
-	 * Returns a new object of class '<em>Contraindication Mitigation</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Contraindication Mitigation</em>'.
-	 * @generated
-	 */
-	ContraindicationMitigation createContraindicationMitigation();
-
-	/**
-	 * Returns a new object of class '<em>Contraindication Severity</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Contraindication Severity</em>'.
-	 * @generated
-	 */
-	ContraindicationSeverity createContraindicationSeverity();
-
-	/**
 	 * Returns a new object of class '<em>Count</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1487,6 +1442,33 @@ public interface FhirFactory extends EFactory {
 	 * @generated
 	 */
 	Decimal createDecimal();
+
+	/**
+	 * Returns a new object of class '<em>Detected Issue</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Detected Issue</em>'.
+	 * @generated
+	 */
+	DetectedIssue createDetectedIssue();
+
+	/**
+	 * Returns a new object of class '<em>Detected Issue Mitigation</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Detected Issue Mitigation</em>'.
+	 * @generated
+	 */
+	DetectedIssueMitigation createDetectedIssueMitigation();
+
+	/**
+	 * Returns a new object of class '<em>Detected Issue Severity</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Detected Issue Severity</em>'.
+	 * @generated
+	 */
+	DetectedIssueSeverity createDetectedIssueSeverity();
 
 	/**
 	 * Returns a new object of class '<em>Device</em>'.
@@ -1757,6 +1739,15 @@ public interface FhirFactory extends EFactory {
 	 * @generated
 	 */
 	DocumentReference createDocumentReference();
+
+	/**
+	 * Returns a new object of class '<em>Document Reference Content</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Document Reference Content</em>'.
+	 * @generated
+	 */
+	DocumentReferenceContent createDocumentReferenceContent();
 
 	/**
 	 * Returns a new object of class '<em>Document Reference Context</em>'.
@@ -2081,6 +2072,15 @@ public interface FhirFactory extends EFactory {
 	 * @generated
 	 */
 	ExtensionContext createExtensionContext();
+
+	/**
+	 * Returns a new object of class '<em>Family History Status</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Family History Status</em>'.
+	 * @generated
+	 */
+	FamilyHistoryStatus createFamilyHistoryStatus();
 
 	/**
 	 * Returns a new object of class '<em>Family Member History</em>'.
@@ -2767,15 +2767,6 @@ public interface FhirFactory extends EFactory {
 	MedicationIngredient createMedicationIngredient();
 
 	/**
-	 * Returns a new object of class '<em>Medication Kind</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Medication Kind</em>'.
-	 * @generated
-	 */
-	MedicationKind createMedicationKind();
-
-	/**
 	 * Returns a new object of class '<em>Medication Order</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2785,13 +2776,13 @@ public interface FhirFactory extends EFactory {
 	MedicationOrder createMedicationOrder();
 
 	/**
-	 * Returns a new object of class '<em>Medication Order Dispense</em>'.
+	 * Returns a new object of class '<em>Medication Order Dispense Request</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Medication Order Dispense</em>'.
+	 * @return a new object of class '<em>Medication Order Dispense Request</em>'.
 	 * @generated
 	 */
-	MedicationOrderDispense createMedicationOrderDispense();
+	MedicationOrderDispenseRequest createMedicationOrderDispenseRequest();
 
 	/**
 	 * Returns a new object of class '<em>Medication Order Dosage Instruction</em>'.
@@ -3469,22 +3460,13 @@ public interface FhirFactory extends EFactory {
 	Procedure createProcedure();
 
 	/**
-	 * Returns a new object of class '<em>Procedure Body Site</em>'.
+	 * Returns a new object of class '<em>Procedure Focal Device</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Procedure Body Site</em>'.
+	 * @return a new object of class '<em>Procedure Focal Device</em>'.
 	 * @generated
 	 */
-	ProcedureBodySite createProcedureBodySite();
-
-	/**
-	 * Returns a new object of class '<em>Procedure Device</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Procedure Device</em>'.
-	 * @generated
-	 */
-	ProcedureDevice createProcedureDevice();
+	ProcedureFocalDevice createProcedureFocalDevice();
 
 	/**
 	 * Returns a new object of class '<em>Procedure Performer</em>'.
@@ -3496,24 +3478,6 @@ public interface FhirFactory extends EFactory {
 	ProcedurePerformer createProcedurePerformer();
 
 	/**
-	 * Returns a new object of class '<em>Procedure Related Item</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Procedure Related Item</em>'.
-	 * @generated
-	 */
-	ProcedureRelatedItem createProcedureRelatedItem();
-
-	/**
-	 * Returns a new object of class '<em>Procedure Relationship Type</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Procedure Relationship Type</em>'.
-	 * @generated
-	 */
-	ProcedureRelationshipType createProcedureRelationshipType();
-
-	/**
 	 * Returns a new object of class '<em>Procedure Request</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3521,15 +3485,6 @@ public interface FhirFactory extends EFactory {
 	 * @generated
 	 */
 	ProcedureRequest createProcedureRequest();
-
-	/**
-	 * Returns a new object of class '<em>Procedure Request Body Site</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Procedure Request Body Site</em>'.
-	 * @generated
-	 */
-	ProcedureRequestBodySite createProcedureRequestBodySite();
 
 	/**
 	 * Returns a new object of class '<em>Procedure Request Priority</em>'.
@@ -3638,6 +3593,15 @@ public interface FhirFactory extends EFactory {
 	 * @generated
 	 */
 	ProvenanceEntityRole createProvenanceEntityRole();
+
+	/**
+	 * Returns a new object of class '<em>Provenance Related Agent</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Provenance Related Agent</em>'.
+	 * @generated
+	 */
+	ProvenanceRelatedAgent createProvenanceRelatedAgent();
 
 	/**
 	 * Returns a new object of class '<em>Quantity</em>'.
@@ -4009,6 +3973,15 @@ public interface FhirFactory extends EFactory {
 	SpecimenContainer createSpecimenContainer();
 
 	/**
+	 * Returns a new object of class '<em>Specimen Status</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Specimen Status</em>'.
+	 * @generated
+	 */
+	SpecimenStatus createSpecimenStatus();
+
+	/**
 	 * Returns a new object of class '<em>Specimen Treatment</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4243,13 +4216,13 @@ public interface FhirFactory extends EFactory {
 	TestScriptAssert createTestScriptAssert();
 
 	/**
-	 * Returns a new object of class '<em>Test Script Capabilities</em>'.
+	 * Returns a new object of class '<em>Test Script Capability</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Test Script Capabilities</em>'.
+	 * @return a new object of class '<em>Test Script Capability</em>'.
 	 * @generated
 	 */
-	TestScriptCapabilities createTestScriptCapabilities();
+	TestScriptCapability createTestScriptCapability();
 
 	/**
 	 * Returns a new object of class '<em>Test Script Contact</em>'.

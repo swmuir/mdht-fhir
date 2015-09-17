@@ -19,11 +19,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.hl7.fhir.AuditEventDetail;
 import org.hl7.fhir.AuditEventObject;
-import org.hl7.fhir.AuditEventObjectLifecycle;
-import org.hl7.fhir.AuditEventObjectRole;
-import org.hl7.fhir.AuditEventObjectType;
 import org.hl7.fhir.Base64Binary;
-import org.hl7.fhir.CodeableConcept;
+import org.hl7.fhir.Coding;
 import org.hl7.fhir.FhirPackage;
 import org.hl7.fhir.Identifier;
 import org.hl7.fhir.Reference;
@@ -41,7 +38,7 @@ import org.hl7.fhir.Reference;
  *   <li>{@link org.hl7.fhir.impl.AuditEventObjectImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.AuditEventObjectImpl#getRole <em>Role</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.AuditEventObjectImpl#getLifecycle <em>Lifecycle</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.AuditEventObjectImpl#getSensitivity <em>Sensitivity</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.AuditEventObjectImpl#getSecurityLabel <em>Security Label</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.AuditEventObjectImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.AuditEventObjectImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.AuditEventObjectImpl#getQuery <em>Query</em>}</li>
@@ -79,7 +76,7 @@ public class AuditEventObjectImpl extends BackboneElementImpl implements AuditEv
 	 * @generated
 	 * @ordered
 	 */
-	protected AuditEventObjectType type;
+	protected Coding type;
 
 	/**
 	 * The cached value of the '{@link #getRole() <em>Role</em>}' containment reference.
@@ -89,7 +86,7 @@ public class AuditEventObjectImpl extends BackboneElementImpl implements AuditEv
 	 * @generated
 	 * @ordered
 	 */
-	protected AuditEventObjectRole role;
+	protected Coding role;
 
 	/**
 	 * The cached value of the '{@link #getLifecycle() <em>Lifecycle</em>}' containment reference.
@@ -99,17 +96,17 @@ public class AuditEventObjectImpl extends BackboneElementImpl implements AuditEv
 	 * @generated
 	 * @ordered
 	 */
-	protected AuditEventObjectLifecycle lifecycle;
+	protected Coding lifecycle;
 
 	/**
-	 * The cached value of the '{@link #getSensitivity() <em>Sensitivity</em>}' containment reference.
+	 * The cached value of the '{@link #getSecurityLabel() <em>Security Label</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSensitivity()
+	 * @see #getSecurityLabel()
 	 * @generated
 	 * @ordered
 	 */
-	protected CodeableConcept sensitivity;
+	protected EList<Coding> securityLabel;
 
 	/**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' containment reference.
@@ -261,7 +258,7 @@ public class AuditEventObjectImpl extends BackboneElementImpl implements AuditEv
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public AuditEventObjectType getType() {
+	public Coding getType() {
 		return type;
 	}
 
@@ -270,8 +267,8 @@ public class AuditEventObjectImpl extends BackboneElementImpl implements AuditEv
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetType(AuditEventObjectType newType, NotificationChain msgs) {
-		AuditEventObjectType oldType = type;
+	public NotificationChain basicSetType(Coding newType, NotificationChain msgs) {
+		Coding oldType = type;
 		type = newType;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.AUDIT_EVENT_OBJECT__TYPE, oldType, newType);
@@ -285,7 +282,7 @@ public class AuditEventObjectImpl extends BackboneElementImpl implements AuditEv
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setType(AuditEventObjectType newType) {
+	public void setType(Coding newType) {
 		if (newType != type) {
 			NotificationChain msgs = null;
 			if (type != null)
@@ -304,7 +301,7 @@ public class AuditEventObjectImpl extends BackboneElementImpl implements AuditEv
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public AuditEventObjectRole getRole() {
+	public Coding getRole() {
 		return role;
 	}
 
@@ -313,8 +310,8 @@ public class AuditEventObjectImpl extends BackboneElementImpl implements AuditEv
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetRole(AuditEventObjectRole newRole, NotificationChain msgs) {
-		AuditEventObjectRole oldRole = role;
+	public NotificationChain basicSetRole(Coding newRole, NotificationChain msgs) {
+		Coding oldRole = role;
 		role = newRole;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.AUDIT_EVENT_OBJECT__ROLE, oldRole, newRole);
@@ -328,7 +325,7 @@ public class AuditEventObjectImpl extends BackboneElementImpl implements AuditEv
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setRole(AuditEventObjectRole newRole) {
+	public void setRole(Coding newRole) {
 		if (newRole != role) {
 			NotificationChain msgs = null;
 			if (role != null)
@@ -347,7 +344,7 @@ public class AuditEventObjectImpl extends BackboneElementImpl implements AuditEv
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public AuditEventObjectLifecycle getLifecycle() {
+	public Coding getLifecycle() {
 		return lifecycle;
 	}
 
@@ -356,8 +353,8 @@ public class AuditEventObjectImpl extends BackboneElementImpl implements AuditEv
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetLifecycle(AuditEventObjectLifecycle newLifecycle, NotificationChain msgs) {
-		AuditEventObjectLifecycle oldLifecycle = lifecycle;
+	public NotificationChain basicSetLifecycle(Coding newLifecycle, NotificationChain msgs) {
+		Coding oldLifecycle = lifecycle;
 		lifecycle = newLifecycle;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.AUDIT_EVENT_OBJECT__LIFECYCLE, oldLifecycle, newLifecycle);
@@ -371,7 +368,7 @@ public class AuditEventObjectImpl extends BackboneElementImpl implements AuditEv
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setLifecycle(AuditEventObjectLifecycle newLifecycle) {
+	public void setLifecycle(Coding newLifecycle) {
 		if (newLifecycle != lifecycle) {
 			NotificationChain msgs = null;
 			if (lifecycle != null)
@@ -390,42 +387,11 @@ public class AuditEventObjectImpl extends BackboneElementImpl implements AuditEv
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CodeableConcept getSensitivity() {
-		return sensitivity;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetSensitivity(CodeableConcept newSensitivity, NotificationChain msgs) {
-		CodeableConcept oldSensitivity = sensitivity;
-		sensitivity = newSensitivity;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.AUDIT_EVENT_OBJECT__SENSITIVITY, oldSensitivity, newSensitivity);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+	public EList<Coding> getSecurityLabel() {
+		if (securityLabel == null) {
+			securityLabel = new EObjectContainmentEList<Coding>(Coding.class, this, FhirPackage.AUDIT_EVENT_OBJECT__SECURITY_LABEL);
 		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setSensitivity(CodeableConcept newSensitivity) {
-		if (newSensitivity != sensitivity) {
-			NotificationChain msgs = null;
-			if (sensitivity != null)
-				msgs = ((InternalEObject)sensitivity).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.AUDIT_EVENT_OBJECT__SENSITIVITY, null, msgs);
-			if (newSensitivity != null)
-				msgs = ((InternalEObject)newSensitivity).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.AUDIT_EVENT_OBJECT__SENSITIVITY, null, msgs);
-			msgs = basicSetSensitivity(newSensitivity, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.AUDIT_EVENT_OBJECT__SENSITIVITY, newSensitivity, newSensitivity));
+		return securityLabel;
 	}
 
 	/**
@@ -587,8 +553,8 @@ public class AuditEventObjectImpl extends BackboneElementImpl implements AuditEv
 				return basicSetRole(null, msgs);
 			case FhirPackage.AUDIT_EVENT_OBJECT__LIFECYCLE:
 				return basicSetLifecycle(null, msgs);
-			case FhirPackage.AUDIT_EVENT_OBJECT__SENSITIVITY:
-				return basicSetSensitivity(null, msgs);
+			case FhirPackage.AUDIT_EVENT_OBJECT__SECURITY_LABEL:
+				return ((InternalEList<?>)getSecurityLabel()).basicRemove(otherEnd, msgs);
 			case FhirPackage.AUDIT_EVENT_OBJECT__NAME:
 				return basicSetName(null, msgs);
 			case FhirPackage.AUDIT_EVENT_OBJECT__DESCRIPTION:
@@ -619,8 +585,8 @@ public class AuditEventObjectImpl extends BackboneElementImpl implements AuditEv
 				return getRole();
 			case FhirPackage.AUDIT_EVENT_OBJECT__LIFECYCLE:
 				return getLifecycle();
-			case FhirPackage.AUDIT_EVENT_OBJECT__SENSITIVITY:
-				return getSensitivity();
+			case FhirPackage.AUDIT_EVENT_OBJECT__SECURITY_LABEL:
+				return getSecurityLabel();
 			case FhirPackage.AUDIT_EVENT_OBJECT__NAME:
 				return getName();
 			case FhirPackage.AUDIT_EVENT_OBJECT__DESCRIPTION:
@@ -649,16 +615,17 @@ public class AuditEventObjectImpl extends BackboneElementImpl implements AuditEv
 				setReference((Reference)newValue);
 				return;
 			case FhirPackage.AUDIT_EVENT_OBJECT__TYPE:
-				setType((AuditEventObjectType)newValue);
+				setType((Coding)newValue);
 				return;
 			case FhirPackage.AUDIT_EVENT_OBJECT__ROLE:
-				setRole((AuditEventObjectRole)newValue);
+				setRole((Coding)newValue);
 				return;
 			case FhirPackage.AUDIT_EVENT_OBJECT__LIFECYCLE:
-				setLifecycle((AuditEventObjectLifecycle)newValue);
+				setLifecycle((Coding)newValue);
 				return;
-			case FhirPackage.AUDIT_EVENT_OBJECT__SENSITIVITY:
-				setSensitivity((CodeableConcept)newValue);
+			case FhirPackage.AUDIT_EVENT_OBJECT__SECURITY_LABEL:
+				getSecurityLabel().clear();
+				getSecurityLabel().addAll((Collection<? extends Coding>)newValue);
 				return;
 			case FhirPackage.AUDIT_EVENT_OBJECT__NAME:
 				setName((org.hl7.fhir.String)newValue);
@@ -692,16 +659,16 @@ public class AuditEventObjectImpl extends BackboneElementImpl implements AuditEv
 				setReference((Reference)null);
 				return;
 			case FhirPackage.AUDIT_EVENT_OBJECT__TYPE:
-				setType((AuditEventObjectType)null);
+				setType((Coding)null);
 				return;
 			case FhirPackage.AUDIT_EVENT_OBJECT__ROLE:
-				setRole((AuditEventObjectRole)null);
+				setRole((Coding)null);
 				return;
 			case FhirPackage.AUDIT_EVENT_OBJECT__LIFECYCLE:
-				setLifecycle((AuditEventObjectLifecycle)null);
+				setLifecycle((Coding)null);
 				return;
-			case FhirPackage.AUDIT_EVENT_OBJECT__SENSITIVITY:
-				setSensitivity((CodeableConcept)null);
+			case FhirPackage.AUDIT_EVENT_OBJECT__SECURITY_LABEL:
+				getSecurityLabel().clear();
 				return;
 			case FhirPackage.AUDIT_EVENT_OBJECT__NAME:
 				setName((org.hl7.fhir.String)null);
@@ -737,8 +704,8 @@ public class AuditEventObjectImpl extends BackboneElementImpl implements AuditEv
 				return role != null;
 			case FhirPackage.AUDIT_EVENT_OBJECT__LIFECYCLE:
 				return lifecycle != null;
-			case FhirPackage.AUDIT_EVENT_OBJECT__SENSITIVITY:
-				return sensitivity != null;
+			case FhirPackage.AUDIT_EVENT_OBJECT__SECURITY_LABEL:
+				return securityLabel != null && !securityLabel.isEmpty();
 			case FhirPackage.AUDIT_EVENT_OBJECT__NAME:
 				return name != null;
 			case FhirPackage.AUDIT_EVENT_OBJECT__DESCRIPTION:

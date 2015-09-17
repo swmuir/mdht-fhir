@@ -47,6 +47,7 @@ import org.hl7.fhir.Reference;
  *   <li>{@link org.hl7.fhir.impl.MedicationStatementImpl#getEffectiveDateTime <em>Effective Date Time</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.MedicationStatementImpl#getEffectivePeriod <em>Effective Period</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.MedicationStatementImpl#getNote <em>Note</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.MedicationStatementImpl#getSupportingInformation <em>Supporting Information</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.MedicationStatementImpl#getMedicationCodeableConcept <em>Medication Codeable Concept</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.MedicationStatementImpl#getMedicationReference <em>Medication Reference</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.MedicationStatementImpl#getDosage <em>Dosage</em>}</li>
@@ -174,6 +175,16 @@ public class MedicationStatementImpl extends DomainResourceImpl implements Medic
 	 * @ordered
 	 */
 	protected org.hl7.fhir.String note;
+
+	/**
+	 * The cached value of the '{@link #getSupportingInformation() <em>Supporting Information</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSupportingInformation()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Reference> supportingInformation;
 
 	/**
 	 * The cached value of the '{@link #getMedicationCodeableConcept() <em>Medication Codeable Concept</em>}' containment reference.
@@ -683,6 +694,18 @@ public class MedicationStatementImpl extends DomainResourceImpl implements Medic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Reference> getSupportingInformation() {
+		if (supportingInformation == null) {
+			supportingInformation = new EObjectContainmentEList<Reference>(Reference.class, this, FhirPackage.MEDICATION_STATEMENT__SUPPORTING_INFORMATION);
+		}
+		return supportingInformation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public CodeableConcept getMedicationCodeableConcept() {
 		return medicationCodeableConcept;
 	}
@@ -808,6 +831,8 @@ public class MedicationStatementImpl extends DomainResourceImpl implements Medic
 				return basicSetEffectivePeriod(null, msgs);
 			case FhirPackage.MEDICATION_STATEMENT__NOTE:
 				return basicSetNote(null, msgs);
+			case FhirPackage.MEDICATION_STATEMENT__SUPPORTING_INFORMATION:
+				return ((InternalEList<?>)getSupportingInformation()).basicRemove(otherEnd, msgs);
 			case FhirPackage.MEDICATION_STATEMENT__MEDICATION_CODEABLE_CONCEPT:
 				return basicSetMedicationCodeableConcept(null, msgs);
 			case FhirPackage.MEDICATION_STATEMENT__MEDICATION_REFERENCE:
@@ -850,6 +875,8 @@ public class MedicationStatementImpl extends DomainResourceImpl implements Medic
 				return getEffectivePeriod();
 			case FhirPackage.MEDICATION_STATEMENT__NOTE:
 				return getNote();
+			case FhirPackage.MEDICATION_STATEMENT__SUPPORTING_INFORMATION:
+				return getSupportingInformation();
 			case FhirPackage.MEDICATION_STATEMENT__MEDICATION_CODEABLE_CONCEPT:
 				return getMedicationCodeableConcept();
 			case FhirPackage.MEDICATION_STATEMENT__MEDICATION_REFERENCE:
@@ -906,6 +933,10 @@ public class MedicationStatementImpl extends DomainResourceImpl implements Medic
 				return;
 			case FhirPackage.MEDICATION_STATEMENT__NOTE:
 				setNote((org.hl7.fhir.String)newValue);
+				return;
+			case FhirPackage.MEDICATION_STATEMENT__SUPPORTING_INFORMATION:
+				getSupportingInformation().clear();
+				getSupportingInformation().addAll((Collection<? extends Reference>)newValue);
 				return;
 			case FhirPackage.MEDICATION_STATEMENT__MEDICATION_CODEABLE_CONCEPT:
 				setMedicationCodeableConcept((CodeableConcept)newValue);
@@ -965,6 +996,9 @@ public class MedicationStatementImpl extends DomainResourceImpl implements Medic
 			case FhirPackage.MEDICATION_STATEMENT__NOTE:
 				setNote((org.hl7.fhir.String)null);
 				return;
+			case FhirPackage.MEDICATION_STATEMENT__SUPPORTING_INFORMATION:
+				getSupportingInformation().clear();
+				return;
 			case FhirPackage.MEDICATION_STATEMENT__MEDICATION_CODEABLE_CONCEPT:
 				setMedicationCodeableConcept((CodeableConcept)null);
 				return;
@@ -1010,6 +1044,8 @@ public class MedicationStatementImpl extends DomainResourceImpl implements Medic
 				return effectivePeriod != null;
 			case FhirPackage.MEDICATION_STATEMENT__NOTE:
 				return note != null;
+			case FhirPackage.MEDICATION_STATEMENT__SUPPORTING_INFORMATION:
+				return supportingInformation != null && !supportingInformation.isEmpty();
 			case FhirPackage.MEDICATION_STATEMENT__MEDICATION_CODEABLE_CONCEPT:
 				return medicationCodeableConcept != null;
 			case FhirPackage.MEDICATION_STATEMENT__MEDICATION_REFERENCE:

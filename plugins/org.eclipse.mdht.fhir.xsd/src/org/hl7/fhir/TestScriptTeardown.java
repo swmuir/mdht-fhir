@@ -31,7 +31,7 @@ public interface TestScriptTeardown extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Action would contain either an operation or an assertion.
+	 * The teardown action will only contain an operation.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Action</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getTestScriptTeardown_Action()

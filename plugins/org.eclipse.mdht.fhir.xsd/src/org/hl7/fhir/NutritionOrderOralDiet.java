@@ -100,7 +100,7 @@ public interface NutritionOrderOralDiet extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The required consistency (e.g., honey-thick, nectar-thick, thin, thickened.) of liquids or fluids served to the patient.
+	 * The required consistency (e.g. honey-thick, nectar-thick, thin, thickened.) of liquids or fluids served to the patient.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Fluid Consistency Type</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getNutritionOrderOralDiet_FluidConsistencyType()

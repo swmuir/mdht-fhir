@@ -10,7 +10,7 @@ import org.eclipse.emf.common.util.EList;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * The details of a Healthcare Service available at a location.
+ * The details of a healthcare service available at a location.
  * <!-- end-model-doc -->
  *
  * <p>
@@ -58,7 +58,7 @@ public interface HealthcareServiceServiceType extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Collection of Specialties handled by the Service Site. This is more of a Medical Term.
+	 * Collection of specialties handled by the service site. This is more of a medical term.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Specialty</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getHealthcareServiceServiceType_Specialty()

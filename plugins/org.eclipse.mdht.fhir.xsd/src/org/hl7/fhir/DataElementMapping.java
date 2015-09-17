@@ -32,7 +32,7 @@ public interface DataElementMapping extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * An Internal id that is used to identify this mapping set when specific mappings are made on a per-element basis.
+	 * An internal id that is used to identify this mapping set when specific mappings are made on a per-element basis.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Identity</em>' containment reference.
 	 * @see #setIdentity(Id)

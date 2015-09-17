@@ -10,7 +10,7 @@ import org.eclipse.emf.common.util.EList;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A conformance statement is a set of requirements for a desired implementation or a description of how a target application fulfills those requirements in a particular implementation.
+ * A conformance statement is a set of capabilities of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.
  * <!-- end-model-doc -->
  *
  * <p>
@@ -25,7 +25,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.hl7.fhir.ConformanceRest#getTransactionMode <em>Transaction Mode</em>}</li>
  *   <li>{@link org.hl7.fhir.ConformanceRest#getSearchParam <em>Search Param</em>}</li>
  *   <li>{@link org.hl7.fhir.ConformanceRest#getOperation <em>Operation</em>}</li>
- *   <li>{@link org.hl7.fhir.ConformanceRest#getDocumentMailbox <em>Document Mailbox</em>}</li>
  *   <li>{@link org.hl7.fhir.ConformanceRest#getCompartment <em>Compartment</em>}</li>
  * </ul>
  *
@@ -201,22 +200,6 @@ public interface ConformanceRest extends BackboneElement {
 	 * @generated
 	 */
 	EList<ConformanceOperation> getOperation();
-
-	/**
-	 * Returns the value of the '<em><b>Document Mailbox</b></em>' containment reference list.
-	 * The list contents are of type {@link org.hl7.fhir.Uri}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * A list of absolute URIs that identify profiles that this server implements for accepting documents in the mailbox. If this list is empty, then documents are not accepted. The base specification has the profile identifier "http://hl7.org/fhir/documents/mailbox". Other specifications can declare their own identifier for this purpose.
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Document Mailbox</em>' containment reference list.
-	 * @see org.hl7.fhir.FhirPackage#getConformanceRest_DocumentMailbox()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='documentMailbox' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	EList<Uri> getDocumentMailbox();
 
 	/**
 	 * Returns the value of the '<em><b>Compartment</b></em>' containment reference list.

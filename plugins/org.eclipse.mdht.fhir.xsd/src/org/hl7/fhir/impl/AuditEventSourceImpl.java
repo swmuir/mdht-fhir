@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.hl7.fhir.AuditEventSource;
 import org.hl7.fhir.Coding;
 import org.hl7.fhir.FhirPackage;
+import org.hl7.fhir.Identifier;
 
 /**
  * <!-- begin-user-doc -->
@@ -55,7 +56,7 @@ public class AuditEventSourceImpl extends BackboneElementImpl implements AuditEv
 	 * @generated
 	 * @ordered
 	 */
-	protected org.hl7.fhir.String identifier;
+	protected Identifier identifier;
 
 	/**
 	 * The cached value of the '{@link #getType() <em>Type</em>}' containment reference list.
@@ -134,7 +135,7 @@ public class AuditEventSourceImpl extends BackboneElementImpl implements AuditEv
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public org.hl7.fhir.String getIdentifier() {
+	public Identifier getIdentifier() {
 		return identifier;
 	}
 
@@ -143,8 +144,8 @@ public class AuditEventSourceImpl extends BackboneElementImpl implements AuditEv
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetIdentifier(org.hl7.fhir.String newIdentifier, NotificationChain msgs) {
-		org.hl7.fhir.String oldIdentifier = identifier;
+	public NotificationChain basicSetIdentifier(Identifier newIdentifier, NotificationChain msgs) {
+		Identifier oldIdentifier = identifier;
 		identifier = newIdentifier;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.AUDIT_EVENT_SOURCE__IDENTIFIER, oldIdentifier, newIdentifier);
@@ -158,7 +159,7 @@ public class AuditEventSourceImpl extends BackboneElementImpl implements AuditEv
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setIdentifier(org.hl7.fhir.String newIdentifier) {
+	public void setIdentifier(Identifier newIdentifier) {
 		if (newIdentifier != identifier) {
 			NotificationChain msgs = null;
 			if (identifier != null)
@@ -233,7 +234,7 @@ public class AuditEventSourceImpl extends BackboneElementImpl implements AuditEv
 				setSite((org.hl7.fhir.String)newValue);
 				return;
 			case FhirPackage.AUDIT_EVENT_SOURCE__IDENTIFIER:
-				setIdentifier((org.hl7.fhir.String)newValue);
+				setIdentifier((Identifier)newValue);
 				return;
 			case FhirPackage.AUDIT_EVENT_SOURCE__TYPE:
 				getType().clear();
@@ -255,7 +256,7 @@ public class AuditEventSourceImpl extends BackboneElementImpl implements AuditEv
 				setSite((org.hl7.fhir.String)null);
 				return;
 			case FhirPackage.AUDIT_EVENT_SOURCE__IDENTIFIER:
-				setIdentifier((org.hl7.fhir.String)null);
+				setIdentifier((Identifier)null);
 				return;
 			case FhirPackage.AUDIT_EVENT_SOURCE__TYPE:
 				getType().clear();

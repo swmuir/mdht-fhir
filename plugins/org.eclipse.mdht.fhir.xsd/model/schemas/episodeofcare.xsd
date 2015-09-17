@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Thu, Aug 20, 2015 14:13+0000 for FHIR v0.5.0 
+  Generated on Wed, Sep 16, 2015 13:28+0000 for FHIR v1.0.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -61,12 +61,17 @@
           </xs:element>
           <xs:element name="statusHistory" type="EpisodeOfCare.StatusHistory" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation>
-              <xs:documentation xml:lang="en">The status history for the EpisodeOfCare.</xs:documentation>
+              <xs:documentation xml:lang="en">The history of statuses that the EpisodeOfCare has been through (without requiring processing the history of the resource).</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="type" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
             <xs:annotation>
-              <xs:documentation xml:lang="en">The type can be very important in processing as this could be used in determining if the EpisodeOfCare is relevant to specific government reporting, or other types of classifications.</xs:documentation>
+              <xs:documentation xml:lang="en">A classification of the type of encounter; e.g. specialist referral, disease management, type of funded care.</xs:documentation>
+           </xs:annotation>
+          </xs:element>
+          <xs:element name="condition" minOccurs="0" maxOccurs="unbounded" type="Reference">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">A list of conditions/problems/diagnoses that this episode of care is intended to be providing care for.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="patient" minOccurs="1" maxOccurs="1" type="Reference">
@@ -82,11 +87,6 @@
           <xs:element name="period" minOccurs="0" maxOccurs="1" type="Period">
             <xs:annotation>
               <xs:documentation xml:lang="en">The interval during which the managing organization assumes the defined responsibility.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
-          <xs:element name="condition" minOccurs="0" maxOccurs="unbounded" type="Reference">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">A list of conditions/problems/diagnoses that this episode of care is intended to be providing care for.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="referralRequest" minOccurs="0" maxOccurs="unbounded" type="Reference">
@@ -138,12 +138,12 @@
         <xs:sequence>
           <xs:element name="role" minOccurs="0" maxOccurs="unbounded" type="CodeableConcept">
             <xs:annotation>
-              <xs:documentation xml:lang="en">The role that this team member is taking within this episode of care.</xs:documentation>
+              <xs:documentation xml:lang="en">The role this team member is taking within this episode of care.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="period" minOccurs="0" maxOccurs="1" type="Period">
             <xs:annotation>
-              <xs:documentation xml:lang="en">The period of time that this practitioner is performing some role within the episode of care.</xs:documentation>
+              <xs:documentation xml:lang="en">The period of time this practitioner is performing some role within the episode of care.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="member" minOccurs="0" maxOccurs="1" type="Reference">
@@ -159,39 +159,39 @@
     <xs:restriction base="xs:string">
       <xs:enumeration value="planned">
         <xs:annotation>
-          <xs:documentation xml:lang="en">This episode of care is planned to start at the date specified in the period.start. During this status an organization may perform assessments to determine if they are eligible to receive services, or be organizing to make resources available to provide care services</xs:documentation>
+          <xs:documentation xml:lang="en">This episode of care is planned to start at the date specified in the period.start. During this status an organization may perform assessments to determine if they are eligible to receive services, or be organizing to make resources available to provide care services.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="waitlist">
         <xs:annotation>
-          <xs:documentation xml:lang="en">This episode has been placed on a waitlist, pending the episode being made active (or cancelled)</xs:documentation>
+          <xs:documentation xml:lang="en">This episode has been placed on a waitlist, pending the episode being made active (or cancelled).</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="active">
         <xs:annotation>
-          <xs:documentation xml:lang="en">This episode of care is current</xs:documentation>
+          <xs:documentation xml:lang="en">This episode of care is current.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="onhold">
         <xs:annotation>
-          <xs:documentation xml:lang="en">This episode of care is on hold, the organization has limited responsibility for the patient (such as while on respite)</xs:documentation>
+          <xs:documentation xml:lang="en">This episode of care is on hold, the organization has limited responsibility for the patient (such as while on respite).</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="finished">
         <xs:annotation>
-          <xs:documentation xml:lang="en">This episode of care is finished at the organization is not expecting to be providing care to the patient. Can also be known as &quot;closed&quot;, &quot;completed&quot; or other similar terms</xs:documentation>
+          <xs:documentation xml:lang="en">This episode of care is finished at the organization is not expecting to be providing care to the patient. Can also be known as &quot;closed&quot;, &quot;completed&quot; or other similar terms.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="cancelled">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The episode of care was cancelled, or withdrawn from service, often selected during the planned stage as the patient may have gone elsewhere, or the circumstances have changed and the organization is unable to provide the care. It indicates that services terminated outside the planned/expected workflow</xs:documentation>
+          <xs:documentation xml:lang="en">The episode of care was cancelled, or withdrawn from service, often selected during the planned stage as the patient may have gone elsewhere, or the circumstances have changed and the organization is unable to provide the care. It indicates that services terminated outside the planned/expected workflow.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="EpisodeOfCareStatus">
     <xs:annotation>
-      <xs:documentation xml:lang="en">The status of the encounter</xs:documentation>
+      <xs:documentation xml:lang="en">The status of the encounter.</xs:documentation>
       <xs:documentation xml:lang="en">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>
     </xs:annotation>
     <xs:complexContent>

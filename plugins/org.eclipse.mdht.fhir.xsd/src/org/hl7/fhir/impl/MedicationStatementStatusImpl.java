@@ -34,7 +34,7 @@ public class MedicationStatementStatusImpl extends ElementImpl implements Medica
 	 * @generated
 	 * @ordered
 	 */
-	protected static final MedicationStatementStatusList VALUE_EDEFAULT = MedicationStatementStatusList.IN_PROGRESS;
+	protected static final MedicationStatementStatusList VALUE_EDEFAULT = MedicationStatementStatusList.ACTIVE;
 
 	/**
 	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.

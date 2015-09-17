@@ -2,20 +2,13 @@
  */
 package org.hl7.fhir.impl;
 
-import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.hl7.fhir.CodeableConcept;
 import org.hl7.fhir.DateTime;
@@ -41,14 +34,14 @@ import org.hl7.fhir.Reference;
  */
 public class ListEntryImpl extends BackboneElementImpl implements ListEntry {
 	/**
-	 * The cached value of the '{@link #getFlag() <em>Flag</em>}' containment reference list.
+	 * The cached value of the '{@link #getFlag() <em>Flag</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getFlag()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<CodeableConcept> flag;
+	protected CodeableConcept flag;
 
 	/**
 	 * The cached value of the '{@link #getDeleted() <em>Deleted</em>}' containment reference.
@@ -104,11 +97,42 @@ public class ListEntryImpl extends BackboneElementImpl implements ListEntry {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<CodeableConcept> getFlag() {
-		if (flag == null) {
-			flag = new EObjectContainmentEList<CodeableConcept>(CodeableConcept.class, this, FhirPackage.LIST_ENTRY__FLAG);
-		}
+	public CodeableConcept getFlag() {
 		return flag;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetFlag(CodeableConcept newFlag, NotificationChain msgs) {
+		CodeableConcept oldFlag = flag;
+		flag = newFlag;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.LIST_ENTRY__FLAG, oldFlag, newFlag);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setFlag(CodeableConcept newFlag) {
+		if (newFlag != flag) {
+			NotificationChain msgs = null;
+			if (flag != null)
+				msgs = ((InternalEObject)flag).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.LIST_ENTRY__FLAG, null, msgs);
+			if (newFlag != null)
+				msgs = ((InternalEObject)newFlag).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.LIST_ENTRY__FLAG, null, msgs);
+			msgs = basicSetFlag(newFlag, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.LIST_ENTRY__FLAG, newFlag, newFlag));
 	}
 
 	/**
@@ -249,7 +273,7 @@ public class ListEntryImpl extends BackboneElementImpl implements ListEntry {
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case FhirPackage.LIST_ENTRY__FLAG:
-				return ((InternalEList<?>)getFlag()).basicRemove(otherEnd, msgs);
+				return basicSetFlag(null, msgs);
 			case FhirPackage.LIST_ENTRY__DELETED:
 				return basicSetDeleted(null, msgs);
 			case FhirPackage.LIST_ENTRY__DATE:
@@ -285,13 +309,11 @@ public class ListEntryImpl extends BackboneElementImpl implements ListEntry {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case FhirPackage.LIST_ENTRY__FLAG:
-				getFlag().clear();
-				getFlag().addAll((Collection<? extends CodeableConcept>)newValue);
+				setFlag((CodeableConcept)newValue);
 				return;
 			case FhirPackage.LIST_ENTRY__DELETED:
 				setDeleted((org.hl7.fhir.Boolean)newValue);
@@ -315,7 +337,7 @@ public class ListEntryImpl extends BackboneElementImpl implements ListEntry {
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case FhirPackage.LIST_ENTRY__FLAG:
-				getFlag().clear();
+				setFlag((CodeableConcept)null);
 				return;
 			case FhirPackage.LIST_ENTRY__DELETED:
 				setDeleted((org.hl7.fhir.Boolean)null);
@@ -339,7 +361,7 @@ public class ListEntryImpl extends BackboneElementImpl implements ListEntry {
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case FhirPackage.LIST_ENTRY__FLAG:
-				return flag != null && !flag.isEmpty();
+				return flag != null;
 			case FhirPackage.LIST_ENTRY__DELETED:
 				return deleted != null;
 			case FhirPackage.LIST_ENTRY__DATE:

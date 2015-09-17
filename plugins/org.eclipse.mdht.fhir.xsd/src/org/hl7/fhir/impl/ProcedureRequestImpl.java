@@ -17,13 +17,13 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.hl7.fhir.Annotation;
 import org.hl7.fhir.CodeableConcept;
 import org.hl7.fhir.DateTime;
 import org.hl7.fhir.FhirPackage;
 import org.hl7.fhir.Identifier;
 import org.hl7.fhir.Period;
 import org.hl7.fhir.ProcedureRequest;
-import org.hl7.fhir.ProcedureRequestBodySite;
 import org.hl7.fhir.ProcedureRequestPriority;
 import org.hl7.fhir.ProcedureRequestStatus;
 import org.hl7.fhir.Reference;
@@ -39,12 +39,13 @@ import org.hl7.fhir.Timing;
  * <ul>
  *   <li>{@link org.hl7.fhir.impl.ProcedureRequestImpl#getIdentifier <em>Identifier</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ProcedureRequestImpl#getSubject <em>Subject</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ProcedureRequestImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ProcedureRequestImpl#getCode <em>Code</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ProcedureRequestImpl#getBodySite <em>Body Site</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ProcedureRequestImpl#getIndication <em>Indication</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ProcedureRequestImpl#getTimingDateTime <em>Timing Date Time</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ProcedureRequestImpl#getTimingPeriod <em>Timing Period</em>}</li>
- *   <li>{@link org.hl7.fhir.impl.ProcedureRequestImpl#getTimingTiming <em>Timing Timing</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ProcedureRequestImpl#getReasonCodeableConcept <em>Reason Codeable Concept</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ProcedureRequestImpl#getReasonReference <em>Reason Reference</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ProcedureRequestImpl#getScheduledDateTime <em>Scheduled Date Time</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ProcedureRequestImpl#getScheduledPeriod <em>Scheduled Period</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.ProcedureRequestImpl#getScheduledTiming <em>Scheduled Timing</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ProcedureRequestImpl#getEncounter <em>Encounter</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ProcedureRequestImpl#getPerformer <em>Performer</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.ProcedureRequestImpl#getStatus <em>Status</em>}</li>
@@ -80,14 +81,14 @@ public class ProcedureRequestImpl extends DomainResourceImpl implements Procedur
 	protected Reference subject;
 
 	/**
-	 * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
+	 * The cached value of the '{@link #getCode() <em>Code</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getType()
+	 * @see #getCode()
 	 * @generated
 	 * @ordered
 	 */
-	protected CodeableConcept type;
+	protected CodeableConcept code;
 
 	/**
 	 * The cached value of the '{@link #getBodySite() <em>Body Site</em>}' containment reference list.
@@ -97,47 +98,57 @@ public class ProcedureRequestImpl extends DomainResourceImpl implements Procedur
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ProcedureRequestBodySite> bodySite;
+	protected EList<CodeableConcept> bodySite;
 
 	/**
-	 * The cached value of the '{@link #getIndication() <em>Indication</em>}' containment reference list.
+	 * The cached value of the '{@link #getReasonCodeableConcept() <em>Reason Codeable Concept</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getIndication()
+	 * @see #getReasonCodeableConcept()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<CodeableConcept> indication;
+	protected CodeableConcept reasonCodeableConcept;
 
 	/**
-	 * The cached value of the '{@link #getTimingDateTime() <em>Timing Date Time</em>}' containment reference.
+	 * The cached value of the '{@link #getReasonReference() <em>Reason Reference</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTimingDateTime()
+	 * @see #getReasonReference()
 	 * @generated
 	 * @ordered
 	 */
-	protected DateTime timingDateTime;
+	protected Reference reasonReference;
 
 	/**
-	 * The cached value of the '{@link #getTimingPeriod() <em>Timing Period</em>}' containment reference.
+	 * The cached value of the '{@link #getScheduledDateTime() <em>Scheduled Date Time</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTimingPeriod()
+	 * @see #getScheduledDateTime()
 	 * @generated
 	 * @ordered
 	 */
-	protected Period timingPeriod;
+	protected DateTime scheduledDateTime;
 
 	/**
-	 * The cached value of the '{@link #getTimingTiming() <em>Timing Timing</em>}' containment reference.
+	 * The cached value of the '{@link #getScheduledPeriod() <em>Scheduled Period</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTimingTiming()
+	 * @see #getScheduledPeriod()
 	 * @generated
 	 * @ordered
 	 */
-	protected Timing timingTiming;
+	protected Period scheduledPeriod;
+
+	/**
+	 * The cached value of the '{@link #getScheduledTiming() <em>Scheduled Timing</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getScheduledTiming()
+	 * @generated
+	 * @ordered
+	 */
+	protected Timing scheduledTiming;
 
 	/**
 	 * The cached value of the '{@link #getEncounter() <em>Encounter</em>}' containment reference.
@@ -177,7 +188,7 @@ public class ProcedureRequestImpl extends DomainResourceImpl implements Procedur
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<org.hl7.fhir.String> notes;
+	protected EList<Annotation> notes;
 
 	/**
 	 * The cached value of the '{@link #getAsNeededBoolean() <em>As Needed Boolean</em>}' containment reference.
@@ -308,8 +319,8 @@ public class ProcedureRequestImpl extends DomainResourceImpl implements Procedur
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CodeableConcept getType() {
-		return type;
+	public CodeableConcept getCode() {
+		return code;
 	}
 
 	/**
@@ -317,11 +328,11 @@ public class ProcedureRequestImpl extends DomainResourceImpl implements Procedur
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetType(CodeableConcept newType, NotificationChain msgs) {
-		CodeableConcept oldType = type;
-		type = newType;
+	public NotificationChain basicSetCode(CodeableConcept newCode, NotificationChain msgs) {
+		CodeableConcept oldCode = code;
+		code = newCode;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.PROCEDURE_REQUEST__TYPE, oldType, newType);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.PROCEDURE_REQUEST__CODE, oldCode, newCode);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -332,18 +343,18 @@ public class ProcedureRequestImpl extends DomainResourceImpl implements Procedur
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setType(CodeableConcept newType) {
-		if (newType != type) {
+	public void setCode(CodeableConcept newCode) {
+		if (newCode != code) {
 			NotificationChain msgs = null;
-			if (type != null)
-				msgs = ((InternalEObject)type).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PROCEDURE_REQUEST__TYPE, null, msgs);
-			if (newType != null)
-				msgs = ((InternalEObject)newType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PROCEDURE_REQUEST__TYPE, null, msgs);
-			msgs = basicSetType(newType, msgs);
+			if (code != null)
+				msgs = ((InternalEObject)code).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PROCEDURE_REQUEST__CODE, null, msgs);
+			if (newCode != null)
+				msgs = ((InternalEObject)newCode).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PROCEDURE_REQUEST__CODE, null, msgs);
+			msgs = basicSetCode(newCode, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.PROCEDURE_REQUEST__TYPE, newType, newType));
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.PROCEDURE_REQUEST__CODE, newCode, newCode));
 	}
 
 	/**
@@ -351,9 +362,9 @@ public class ProcedureRequestImpl extends DomainResourceImpl implements Procedur
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<ProcedureRequestBodySite> getBodySite() {
+	public EList<CodeableConcept> getBodySite() {
 		if (bodySite == null) {
-			bodySite = new EObjectContainmentEList<ProcedureRequestBodySite>(ProcedureRequestBodySite.class, this, FhirPackage.PROCEDURE_REQUEST__BODY_SITE);
+			bodySite = new EObjectContainmentEList<CodeableConcept>(CodeableConcept.class, this, FhirPackage.PROCEDURE_REQUEST__BODY_SITE);
 		}
 		return bodySite;
 	}
@@ -363,11 +374,8 @@ public class ProcedureRequestImpl extends DomainResourceImpl implements Procedur
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<CodeableConcept> getIndication() {
-		if (indication == null) {
-			indication = new EObjectContainmentEList<CodeableConcept>(CodeableConcept.class, this, FhirPackage.PROCEDURE_REQUEST__INDICATION);
-		}
-		return indication;
+	public CodeableConcept getReasonCodeableConcept() {
+		return reasonCodeableConcept;
 	}
 
 	/**
@@ -375,20 +383,11 @@ public class ProcedureRequestImpl extends DomainResourceImpl implements Procedur
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DateTime getTimingDateTime() {
-		return timingDateTime;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetTimingDateTime(DateTime newTimingDateTime, NotificationChain msgs) {
-		DateTime oldTimingDateTime = timingDateTime;
-		timingDateTime = newTimingDateTime;
+	public NotificationChain basicSetReasonCodeableConcept(CodeableConcept newReasonCodeableConcept, NotificationChain msgs) {
+		CodeableConcept oldReasonCodeableConcept = reasonCodeableConcept;
+		reasonCodeableConcept = newReasonCodeableConcept;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.PROCEDURE_REQUEST__TIMING_DATE_TIME, oldTimingDateTime, newTimingDateTime);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.PROCEDURE_REQUEST__REASON_CODEABLE_CONCEPT, oldReasonCodeableConcept, newReasonCodeableConcept);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -399,18 +398,18 @@ public class ProcedureRequestImpl extends DomainResourceImpl implements Procedur
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setTimingDateTime(DateTime newTimingDateTime) {
-		if (newTimingDateTime != timingDateTime) {
+	public void setReasonCodeableConcept(CodeableConcept newReasonCodeableConcept) {
+		if (newReasonCodeableConcept != reasonCodeableConcept) {
 			NotificationChain msgs = null;
-			if (timingDateTime != null)
-				msgs = ((InternalEObject)timingDateTime).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PROCEDURE_REQUEST__TIMING_DATE_TIME, null, msgs);
-			if (newTimingDateTime != null)
-				msgs = ((InternalEObject)newTimingDateTime).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PROCEDURE_REQUEST__TIMING_DATE_TIME, null, msgs);
-			msgs = basicSetTimingDateTime(newTimingDateTime, msgs);
+			if (reasonCodeableConcept != null)
+				msgs = ((InternalEObject)reasonCodeableConcept).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PROCEDURE_REQUEST__REASON_CODEABLE_CONCEPT, null, msgs);
+			if (newReasonCodeableConcept != null)
+				msgs = ((InternalEObject)newReasonCodeableConcept).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PROCEDURE_REQUEST__REASON_CODEABLE_CONCEPT, null, msgs);
+			msgs = basicSetReasonCodeableConcept(newReasonCodeableConcept, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.PROCEDURE_REQUEST__TIMING_DATE_TIME, newTimingDateTime, newTimingDateTime));
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.PROCEDURE_REQUEST__REASON_CODEABLE_CONCEPT, newReasonCodeableConcept, newReasonCodeableConcept));
 	}
 
 	/**
@@ -418,8 +417,8 @@ public class ProcedureRequestImpl extends DomainResourceImpl implements Procedur
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Period getTimingPeriod() {
-		return timingPeriod;
+	public Reference getReasonReference() {
+		return reasonReference;
 	}
 
 	/**
@@ -427,11 +426,11 @@ public class ProcedureRequestImpl extends DomainResourceImpl implements Procedur
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetTimingPeriod(Period newTimingPeriod, NotificationChain msgs) {
-		Period oldTimingPeriod = timingPeriod;
-		timingPeriod = newTimingPeriod;
+	public NotificationChain basicSetReasonReference(Reference newReasonReference, NotificationChain msgs) {
+		Reference oldReasonReference = reasonReference;
+		reasonReference = newReasonReference;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.PROCEDURE_REQUEST__TIMING_PERIOD, oldTimingPeriod, newTimingPeriod);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.PROCEDURE_REQUEST__REASON_REFERENCE, oldReasonReference, newReasonReference);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -442,18 +441,18 @@ public class ProcedureRequestImpl extends DomainResourceImpl implements Procedur
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setTimingPeriod(Period newTimingPeriod) {
-		if (newTimingPeriod != timingPeriod) {
+	public void setReasonReference(Reference newReasonReference) {
+		if (newReasonReference != reasonReference) {
 			NotificationChain msgs = null;
-			if (timingPeriod != null)
-				msgs = ((InternalEObject)timingPeriod).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PROCEDURE_REQUEST__TIMING_PERIOD, null, msgs);
-			if (newTimingPeriod != null)
-				msgs = ((InternalEObject)newTimingPeriod).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PROCEDURE_REQUEST__TIMING_PERIOD, null, msgs);
-			msgs = basicSetTimingPeriod(newTimingPeriod, msgs);
+			if (reasonReference != null)
+				msgs = ((InternalEObject)reasonReference).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PROCEDURE_REQUEST__REASON_REFERENCE, null, msgs);
+			if (newReasonReference != null)
+				msgs = ((InternalEObject)newReasonReference).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PROCEDURE_REQUEST__REASON_REFERENCE, null, msgs);
+			msgs = basicSetReasonReference(newReasonReference, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.PROCEDURE_REQUEST__TIMING_PERIOD, newTimingPeriod, newTimingPeriod));
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.PROCEDURE_REQUEST__REASON_REFERENCE, newReasonReference, newReasonReference));
 	}
 
 	/**
@@ -461,8 +460,8 @@ public class ProcedureRequestImpl extends DomainResourceImpl implements Procedur
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Timing getTimingTiming() {
-		return timingTiming;
+	public DateTime getScheduledDateTime() {
+		return scheduledDateTime;
 	}
 
 	/**
@@ -470,11 +469,11 @@ public class ProcedureRequestImpl extends DomainResourceImpl implements Procedur
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetTimingTiming(Timing newTimingTiming, NotificationChain msgs) {
-		Timing oldTimingTiming = timingTiming;
-		timingTiming = newTimingTiming;
+	public NotificationChain basicSetScheduledDateTime(DateTime newScheduledDateTime, NotificationChain msgs) {
+		DateTime oldScheduledDateTime = scheduledDateTime;
+		scheduledDateTime = newScheduledDateTime;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.PROCEDURE_REQUEST__TIMING_TIMING, oldTimingTiming, newTimingTiming);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.PROCEDURE_REQUEST__SCHEDULED_DATE_TIME, oldScheduledDateTime, newScheduledDateTime);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -485,18 +484,104 @@ public class ProcedureRequestImpl extends DomainResourceImpl implements Procedur
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setTimingTiming(Timing newTimingTiming) {
-		if (newTimingTiming != timingTiming) {
+	public void setScheduledDateTime(DateTime newScheduledDateTime) {
+		if (newScheduledDateTime != scheduledDateTime) {
 			NotificationChain msgs = null;
-			if (timingTiming != null)
-				msgs = ((InternalEObject)timingTiming).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PROCEDURE_REQUEST__TIMING_TIMING, null, msgs);
-			if (newTimingTiming != null)
-				msgs = ((InternalEObject)newTimingTiming).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PROCEDURE_REQUEST__TIMING_TIMING, null, msgs);
-			msgs = basicSetTimingTiming(newTimingTiming, msgs);
+			if (scheduledDateTime != null)
+				msgs = ((InternalEObject)scheduledDateTime).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PROCEDURE_REQUEST__SCHEDULED_DATE_TIME, null, msgs);
+			if (newScheduledDateTime != null)
+				msgs = ((InternalEObject)newScheduledDateTime).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PROCEDURE_REQUEST__SCHEDULED_DATE_TIME, null, msgs);
+			msgs = basicSetScheduledDateTime(newScheduledDateTime, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.PROCEDURE_REQUEST__TIMING_TIMING, newTimingTiming, newTimingTiming));
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.PROCEDURE_REQUEST__SCHEDULED_DATE_TIME, newScheduledDateTime, newScheduledDateTime));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Period getScheduledPeriod() {
+		return scheduledPeriod;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetScheduledPeriod(Period newScheduledPeriod, NotificationChain msgs) {
+		Period oldScheduledPeriod = scheduledPeriod;
+		scheduledPeriod = newScheduledPeriod;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.PROCEDURE_REQUEST__SCHEDULED_PERIOD, oldScheduledPeriod, newScheduledPeriod);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setScheduledPeriod(Period newScheduledPeriod) {
+		if (newScheduledPeriod != scheduledPeriod) {
+			NotificationChain msgs = null;
+			if (scheduledPeriod != null)
+				msgs = ((InternalEObject)scheduledPeriod).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PROCEDURE_REQUEST__SCHEDULED_PERIOD, null, msgs);
+			if (newScheduledPeriod != null)
+				msgs = ((InternalEObject)newScheduledPeriod).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PROCEDURE_REQUEST__SCHEDULED_PERIOD, null, msgs);
+			msgs = basicSetScheduledPeriod(newScheduledPeriod, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.PROCEDURE_REQUEST__SCHEDULED_PERIOD, newScheduledPeriod, newScheduledPeriod));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Timing getScheduledTiming() {
+		return scheduledTiming;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetScheduledTiming(Timing newScheduledTiming, NotificationChain msgs) {
+		Timing oldScheduledTiming = scheduledTiming;
+		scheduledTiming = newScheduledTiming;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.PROCEDURE_REQUEST__SCHEDULED_TIMING, oldScheduledTiming, newScheduledTiming);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setScheduledTiming(Timing newScheduledTiming) {
+		if (newScheduledTiming != scheduledTiming) {
+			NotificationChain msgs = null;
+			if (scheduledTiming != null)
+				msgs = ((InternalEObject)scheduledTiming).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PROCEDURE_REQUEST__SCHEDULED_TIMING, null, msgs);
+			if (newScheduledTiming != null)
+				msgs = ((InternalEObject)newScheduledTiming).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.PROCEDURE_REQUEST__SCHEDULED_TIMING, null, msgs);
+			msgs = basicSetScheduledTiming(newScheduledTiming, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.PROCEDURE_REQUEST__SCHEDULED_TIMING, newScheduledTiming, newScheduledTiming));
 	}
 
 	/**
@@ -633,9 +718,9 @@ public class ProcedureRequestImpl extends DomainResourceImpl implements Procedur
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<org.hl7.fhir.String> getNotes() {
+	public EList<Annotation> getNotes() {
 		if (notes == null) {
-			notes = new EObjectContainmentEList<org.hl7.fhir.String>(org.hl7.fhir.String.class, this, FhirPackage.PROCEDURE_REQUEST__NOTES);
+			notes = new EObjectContainmentEList<Annotation>(Annotation.class, this, FhirPackage.PROCEDURE_REQUEST__NOTES);
 		}
 		return notes;
 	}
@@ -867,18 +952,20 @@ public class ProcedureRequestImpl extends DomainResourceImpl implements Procedur
 				return ((InternalEList<?>)getIdentifier()).basicRemove(otherEnd, msgs);
 			case FhirPackage.PROCEDURE_REQUEST__SUBJECT:
 				return basicSetSubject(null, msgs);
-			case FhirPackage.PROCEDURE_REQUEST__TYPE:
-				return basicSetType(null, msgs);
+			case FhirPackage.PROCEDURE_REQUEST__CODE:
+				return basicSetCode(null, msgs);
 			case FhirPackage.PROCEDURE_REQUEST__BODY_SITE:
 				return ((InternalEList<?>)getBodySite()).basicRemove(otherEnd, msgs);
-			case FhirPackage.PROCEDURE_REQUEST__INDICATION:
-				return ((InternalEList<?>)getIndication()).basicRemove(otherEnd, msgs);
-			case FhirPackage.PROCEDURE_REQUEST__TIMING_DATE_TIME:
-				return basicSetTimingDateTime(null, msgs);
-			case FhirPackage.PROCEDURE_REQUEST__TIMING_PERIOD:
-				return basicSetTimingPeriod(null, msgs);
-			case FhirPackage.PROCEDURE_REQUEST__TIMING_TIMING:
-				return basicSetTimingTiming(null, msgs);
+			case FhirPackage.PROCEDURE_REQUEST__REASON_CODEABLE_CONCEPT:
+				return basicSetReasonCodeableConcept(null, msgs);
+			case FhirPackage.PROCEDURE_REQUEST__REASON_REFERENCE:
+				return basicSetReasonReference(null, msgs);
+			case FhirPackage.PROCEDURE_REQUEST__SCHEDULED_DATE_TIME:
+				return basicSetScheduledDateTime(null, msgs);
+			case FhirPackage.PROCEDURE_REQUEST__SCHEDULED_PERIOD:
+				return basicSetScheduledPeriod(null, msgs);
+			case FhirPackage.PROCEDURE_REQUEST__SCHEDULED_TIMING:
+				return basicSetScheduledTiming(null, msgs);
 			case FhirPackage.PROCEDURE_REQUEST__ENCOUNTER:
 				return basicSetEncounter(null, msgs);
 			case FhirPackage.PROCEDURE_REQUEST__PERFORMER:
@@ -913,18 +1000,20 @@ public class ProcedureRequestImpl extends DomainResourceImpl implements Procedur
 				return getIdentifier();
 			case FhirPackage.PROCEDURE_REQUEST__SUBJECT:
 				return getSubject();
-			case FhirPackage.PROCEDURE_REQUEST__TYPE:
-				return getType();
+			case FhirPackage.PROCEDURE_REQUEST__CODE:
+				return getCode();
 			case FhirPackage.PROCEDURE_REQUEST__BODY_SITE:
 				return getBodySite();
-			case FhirPackage.PROCEDURE_REQUEST__INDICATION:
-				return getIndication();
-			case FhirPackage.PROCEDURE_REQUEST__TIMING_DATE_TIME:
-				return getTimingDateTime();
-			case FhirPackage.PROCEDURE_REQUEST__TIMING_PERIOD:
-				return getTimingPeriod();
-			case FhirPackage.PROCEDURE_REQUEST__TIMING_TIMING:
-				return getTimingTiming();
+			case FhirPackage.PROCEDURE_REQUEST__REASON_CODEABLE_CONCEPT:
+				return getReasonCodeableConcept();
+			case FhirPackage.PROCEDURE_REQUEST__REASON_REFERENCE:
+				return getReasonReference();
+			case FhirPackage.PROCEDURE_REQUEST__SCHEDULED_DATE_TIME:
+				return getScheduledDateTime();
+			case FhirPackage.PROCEDURE_REQUEST__SCHEDULED_PERIOD:
+				return getScheduledPeriod();
+			case FhirPackage.PROCEDURE_REQUEST__SCHEDULED_TIMING:
+				return getScheduledTiming();
 			case FhirPackage.PROCEDURE_REQUEST__ENCOUNTER:
 				return getEncounter();
 			case FhirPackage.PROCEDURE_REQUEST__PERFORMER:
@@ -963,25 +1052,27 @@ public class ProcedureRequestImpl extends DomainResourceImpl implements Procedur
 			case FhirPackage.PROCEDURE_REQUEST__SUBJECT:
 				setSubject((Reference)newValue);
 				return;
-			case FhirPackage.PROCEDURE_REQUEST__TYPE:
-				setType((CodeableConcept)newValue);
+			case FhirPackage.PROCEDURE_REQUEST__CODE:
+				setCode((CodeableConcept)newValue);
 				return;
 			case FhirPackage.PROCEDURE_REQUEST__BODY_SITE:
 				getBodySite().clear();
-				getBodySite().addAll((Collection<? extends ProcedureRequestBodySite>)newValue);
+				getBodySite().addAll((Collection<? extends CodeableConcept>)newValue);
 				return;
-			case FhirPackage.PROCEDURE_REQUEST__INDICATION:
-				getIndication().clear();
-				getIndication().addAll((Collection<? extends CodeableConcept>)newValue);
+			case FhirPackage.PROCEDURE_REQUEST__REASON_CODEABLE_CONCEPT:
+				setReasonCodeableConcept((CodeableConcept)newValue);
 				return;
-			case FhirPackage.PROCEDURE_REQUEST__TIMING_DATE_TIME:
-				setTimingDateTime((DateTime)newValue);
+			case FhirPackage.PROCEDURE_REQUEST__REASON_REFERENCE:
+				setReasonReference((Reference)newValue);
 				return;
-			case FhirPackage.PROCEDURE_REQUEST__TIMING_PERIOD:
-				setTimingPeriod((Period)newValue);
+			case FhirPackage.PROCEDURE_REQUEST__SCHEDULED_DATE_TIME:
+				setScheduledDateTime((DateTime)newValue);
 				return;
-			case FhirPackage.PROCEDURE_REQUEST__TIMING_TIMING:
-				setTimingTiming((Timing)newValue);
+			case FhirPackage.PROCEDURE_REQUEST__SCHEDULED_PERIOD:
+				setScheduledPeriod((Period)newValue);
+				return;
+			case FhirPackage.PROCEDURE_REQUEST__SCHEDULED_TIMING:
+				setScheduledTiming((Timing)newValue);
 				return;
 			case FhirPackage.PROCEDURE_REQUEST__ENCOUNTER:
 				setEncounter((Reference)newValue);
@@ -994,7 +1085,7 @@ public class ProcedureRequestImpl extends DomainResourceImpl implements Procedur
 				return;
 			case FhirPackage.PROCEDURE_REQUEST__NOTES:
 				getNotes().clear();
-				getNotes().addAll((Collection<? extends org.hl7.fhir.String>)newValue);
+				getNotes().addAll((Collection<? extends Annotation>)newValue);
 				return;
 			case FhirPackage.PROCEDURE_REQUEST__AS_NEEDED_BOOLEAN:
 				setAsNeededBoolean((org.hl7.fhir.Boolean)newValue);
@@ -1029,23 +1120,26 @@ public class ProcedureRequestImpl extends DomainResourceImpl implements Procedur
 			case FhirPackage.PROCEDURE_REQUEST__SUBJECT:
 				setSubject((Reference)null);
 				return;
-			case FhirPackage.PROCEDURE_REQUEST__TYPE:
-				setType((CodeableConcept)null);
+			case FhirPackage.PROCEDURE_REQUEST__CODE:
+				setCode((CodeableConcept)null);
 				return;
 			case FhirPackage.PROCEDURE_REQUEST__BODY_SITE:
 				getBodySite().clear();
 				return;
-			case FhirPackage.PROCEDURE_REQUEST__INDICATION:
-				getIndication().clear();
+			case FhirPackage.PROCEDURE_REQUEST__REASON_CODEABLE_CONCEPT:
+				setReasonCodeableConcept((CodeableConcept)null);
 				return;
-			case FhirPackage.PROCEDURE_REQUEST__TIMING_DATE_TIME:
-				setTimingDateTime((DateTime)null);
+			case FhirPackage.PROCEDURE_REQUEST__REASON_REFERENCE:
+				setReasonReference((Reference)null);
 				return;
-			case FhirPackage.PROCEDURE_REQUEST__TIMING_PERIOD:
-				setTimingPeriod((Period)null);
+			case FhirPackage.PROCEDURE_REQUEST__SCHEDULED_DATE_TIME:
+				setScheduledDateTime((DateTime)null);
 				return;
-			case FhirPackage.PROCEDURE_REQUEST__TIMING_TIMING:
-				setTimingTiming((Timing)null);
+			case FhirPackage.PROCEDURE_REQUEST__SCHEDULED_PERIOD:
+				setScheduledPeriod((Period)null);
+				return;
+			case FhirPackage.PROCEDURE_REQUEST__SCHEDULED_TIMING:
+				setScheduledTiming((Timing)null);
 				return;
 			case FhirPackage.PROCEDURE_REQUEST__ENCOUNTER:
 				setEncounter((Reference)null);
@@ -1090,18 +1184,20 @@ public class ProcedureRequestImpl extends DomainResourceImpl implements Procedur
 				return identifier != null && !identifier.isEmpty();
 			case FhirPackage.PROCEDURE_REQUEST__SUBJECT:
 				return subject != null;
-			case FhirPackage.PROCEDURE_REQUEST__TYPE:
-				return type != null;
+			case FhirPackage.PROCEDURE_REQUEST__CODE:
+				return code != null;
 			case FhirPackage.PROCEDURE_REQUEST__BODY_SITE:
 				return bodySite != null && !bodySite.isEmpty();
-			case FhirPackage.PROCEDURE_REQUEST__INDICATION:
-				return indication != null && !indication.isEmpty();
-			case FhirPackage.PROCEDURE_REQUEST__TIMING_DATE_TIME:
-				return timingDateTime != null;
-			case FhirPackage.PROCEDURE_REQUEST__TIMING_PERIOD:
-				return timingPeriod != null;
-			case FhirPackage.PROCEDURE_REQUEST__TIMING_TIMING:
-				return timingTiming != null;
+			case FhirPackage.PROCEDURE_REQUEST__REASON_CODEABLE_CONCEPT:
+				return reasonCodeableConcept != null;
+			case FhirPackage.PROCEDURE_REQUEST__REASON_REFERENCE:
+				return reasonReference != null;
+			case FhirPackage.PROCEDURE_REQUEST__SCHEDULED_DATE_TIME:
+				return scheduledDateTime != null;
+			case FhirPackage.PROCEDURE_REQUEST__SCHEDULED_PERIOD:
+				return scheduledPeriod != null;
+			case FhirPackage.PROCEDURE_REQUEST__SCHEDULED_TIMING:
+				return scheduledTiming != null;
 			case FhirPackage.PROCEDURE_REQUEST__ENCOUNTER:
 				return encounter != null;
 			case FhirPackage.PROCEDURE_REQUEST__PERFORMER:

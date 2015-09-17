@@ -18,7 +18,6 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.hl7.fhir.MessageHeader#getIdentifier <em>Identifier</em>}</li>
  *   <li>{@link org.hl7.fhir.MessageHeader#getTimestamp <em>Timestamp</em>}</li>
  *   <li>{@link org.hl7.fhir.MessageHeader#getEvent <em>Event</em>}</li>
  *   <li>{@link org.hl7.fhir.MessageHeader#getResponse <em>Response</em>}</li>
@@ -37,32 +36,6 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface MessageHeader extends DomainResource {
-	/**
-	 * Returns the value of the '<em><b>Identifier</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The identifier of this message.
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Identifier</em>' containment reference.
-	 * @see #setIdentifier(Id)
-	 * @see org.hl7.fhir.FhirPackage#getMessageHeader_Identifier()
-	 * @model containment="true" required="true"
-	 *        extendedMetaData="kind='element' name='identifier' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	Id getIdentifier();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.MessageHeader#getIdentifier <em>Identifier</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Identifier</em>' containment reference.
-	 * @see #getIdentifier()
-	 * @generated
-	 */
-	void setIdentifier(Id value);
-
 	/**
 	 * Returns the value of the '<em><b>Timestamp</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
@@ -292,7 +265,7 @@ public interface MessageHeader extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Coded indication of the cause for the event - indicates  a reason for the occurance of the event that is a focus of this message.
+	 * Coded indication of the cause for the event - indicates  a reason for the occurrence of the event that is a focus of this message.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Reason</em>' containment reference.
 	 * @see #setReason(CodeableConcept)

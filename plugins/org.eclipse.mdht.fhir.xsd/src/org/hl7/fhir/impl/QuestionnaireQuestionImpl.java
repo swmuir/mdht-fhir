@@ -39,6 +39,7 @@ import org.hl7.fhir.Reference;
  *   <li>{@link org.hl7.fhir.impl.QuestionnaireQuestionImpl#getRequired <em>Required</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.QuestionnaireQuestionImpl#getRepeats <em>Repeats</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.QuestionnaireQuestionImpl#getOptions <em>Options</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.QuestionnaireQuestionImpl#getOption <em>Option</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.QuestionnaireQuestionImpl#getGroup <em>Group</em>}</li>
  * </ul>
  *
@@ -114,6 +115,16 @@ public class QuestionnaireQuestionImpl extends BackboneElementImpl implements Qu
 	 * @ordered
 	 */
 	protected Reference options;
+
+	/**
+	 * The cached value of the '{@link #getOption() <em>Option</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOption()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Coding> option;
 
 	/**
 	 * The cached value of the '{@link #getGroup() <em>Group</em>}' containment reference list.
@@ -419,6 +430,18 @@ public class QuestionnaireQuestionImpl extends BackboneElementImpl implements Qu
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Coding> getOption() {
+		if (option == null) {
+			option = new EObjectContainmentEList<Coding>(Coding.class, this, FhirPackage.QUESTIONNAIRE_QUESTION__OPTION);
+		}
+		return option;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList<QuestionnaireGroup> getGroup() {
 		if (group == null) {
 			group = new EObjectContainmentEList<QuestionnaireGroup>(QuestionnaireGroup.class, this, FhirPackage.QUESTIONNAIRE_QUESTION__GROUP);
@@ -448,6 +471,8 @@ public class QuestionnaireQuestionImpl extends BackboneElementImpl implements Qu
 				return basicSetRepeats(null, msgs);
 			case FhirPackage.QUESTIONNAIRE_QUESTION__OPTIONS:
 				return basicSetOptions(null, msgs);
+			case FhirPackage.QUESTIONNAIRE_QUESTION__OPTION:
+				return ((InternalEList<?>)getOption()).basicRemove(otherEnd, msgs);
 			case FhirPackage.QUESTIONNAIRE_QUESTION__GROUP:
 				return ((InternalEList<?>)getGroup()).basicRemove(otherEnd, msgs);
 		}
@@ -476,6 +501,8 @@ public class QuestionnaireQuestionImpl extends BackboneElementImpl implements Qu
 				return getRepeats();
 			case FhirPackage.QUESTIONNAIRE_QUESTION__OPTIONS:
 				return getOptions();
+			case FhirPackage.QUESTIONNAIRE_QUESTION__OPTION:
+				return getOption();
 			case FhirPackage.QUESTIONNAIRE_QUESTION__GROUP:
 				return getGroup();
 		}
@@ -512,6 +539,10 @@ public class QuestionnaireQuestionImpl extends BackboneElementImpl implements Qu
 				return;
 			case FhirPackage.QUESTIONNAIRE_QUESTION__OPTIONS:
 				setOptions((Reference)newValue);
+				return;
+			case FhirPackage.QUESTIONNAIRE_QUESTION__OPTION:
+				getOption().clear();
+				getOption().addAll((Collection<? extends Coding>)newValue);
 				return;
 			case FhirPackage.QUESTIONNAIRE_QUESTION__GROUP:
 				getGroup().clear();
@@ -550,6 +581,9 @@ public class QuestionnaireQuestionImpl extends BackboneElementImpl implements Qu
 			case FhirPackage.QUESTIONNAIRE_QUESTION__OPTIONS:
 				setOptions((Reference)null);
 				return;
+			case FhirPackage.QUESTIONNAIRE_QUESTION__OPTION:
+				getOption().clear();
+				return;
 			case FhirPackage.QUESTIONNAIRE_QUESTION__GROUP:
 				getGroup().clear();
 				return;
@@ -579,6 +613,8 @@ public class QuestionnaireQuestionImpl extends BackboneElementImpl implements Qu
 				return repeats != null;
 			case FhirPackage.QUESTIONNAIRE_QUESTION__OPTIONS:
 				return options != null;
+			case FhirPackage.QUESTIONNAIRE_QUESTION__OPTION:
+				return option != null && !option.isEmpty();
 			case FhirPackage.QUESTIONNAIRE_QUESTION__GROUP:
 				return group != null && !group.isEmpty();
 		}

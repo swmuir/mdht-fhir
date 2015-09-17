@@ -85,7 +85,7 @@ public interface ImplementationGuidePackage extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A resource that is part of the implementation guide. Conformance resources (value set, structure definition, conformance statements etc) are obvious candidates for inclusion, but any kind of resource can be included as an example resource.
+	 * A resource that is part of the implementation guide. Conformance resources (value set, structure definition, conformance statements etc.) are obvious candidates for inclusion, but any kind of resource can be included as an example resource.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Resource</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getImplementationGuidePackage_Resource()

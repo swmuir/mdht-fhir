@@ -9,7 +9,7 @@ package org.hl7.fhir;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A code that indicates whether an application accepts unknown elements or extensions when reading resources
+ * A code that indicates whether an application accepts unknown elements or extensions when reading resources.
  * If the element is present, it must have either a @value, an @id, or extensions
  * <!-- end-model-doc -->
  *

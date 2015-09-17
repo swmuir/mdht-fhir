@@ -22,6 +22,7 @@ import org.hl7.fhir.AuditEventParticipant;
 import org.hl7.fhir.CodeableConcept;
 import org.hl7.fhir.Coding;
 import org.hl7.fhir.FhirPackage;
+import org.hl7.fhir.Identifier;
 import org.hl7.fhir.Reference;
 import org.hl7.fhir.Uri;
 
@@ -77,7 +78,7 @@ public class AuditEventParticipantImpl extends BackboneElementImpl implements Au
 	 * @generated
 	 * @ordered
 	 */
-	protected org.hl7.fhir.String userId;
+	protected Identifier userId;
 
 	/**
 	 * The cached value of the '{@link #getAltId() <em>Alt Id</em>}' containment reference.
@@ -238,7 +239,7 @@ public class AuditEventParticipantImpl extends BackboneElementImpl implements Au
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public org.hl7.fhir.String getUserId() {
+	public Identifier getUserId() {
 		return userId;
 	}
 
@@ -247,8 +248,8 @@ public class AuditEventParticipantImpl extends BackboneElementImpl implements Au
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetUserId(org.hl7.fhir.String newUserId, NotificationChain msgs) {
-		org.hl7.fhir.String oldUserId = userId;
+	public NotificationChain basicSetUserId(Identifier newUserId, NotificationChain msgs) {
+		Identifier oldUserId = userId;
 		userId = newUserId;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.AUDIT_EVENT_PARTICIPANT__USER_ID, oldUserId, newUserId);
@@ -262,7 +263,7 @@ public class AuditEventParticipantImpl extends BackboneElementImpl implements Au
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setUserId(org.hl7.fhir.String newUserId) {
+	public void setUserId(Identifier newUserId) {
 		if (newUserId != userId) {
 			NotificationChain msgs = null;
 			if (userId != null)
@@ -643,7 +644,7 @@ public class AuditEventParticipantImpl extends BackboneElementImpl implements Au
 				setReference((Reference)newValue);
 				return;
 			case FhirPackage.AUDIT_EVENT_PARTICIPANT__USER_ID:
-				setUserId((org.hl7.fhir.String)newValue);
+				setUserId((Identifier)newValue);
 				return;
 			case FhirPackage.AUDIT_EVENT_PARTICIPANT__ALT_ID:
 				setAltId((org.hl7.fhir.String)newValue);
@@ -690,7 +691,7 @@ public class AuditEventParticipantImpl extends BackboneElementImpl implements Au
 				setReference((Reference)null);
 				return;
 			case FhirPackage.AUDIT_EVENT_PARTICIPANT__USER_ID:
-				setUserId((org.hl7.fhir.String)null);
+				setUserId((Identifier)null);
 				return;
 			case FhirPackage.AUDIT_EVENT_PARTICIPANT__ALT_ID:
 				setAltId((org.hl7.fhir.String)null);

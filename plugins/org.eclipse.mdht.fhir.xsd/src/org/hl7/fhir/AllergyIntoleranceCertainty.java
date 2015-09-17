@@ -9,7 +9,7 @@ package org.hl7.fhir;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Statement about the degree of clinical certainty that a Specific Substance was the cause of the Manifestation in an reaction event
+ * Statement about the degree of clinical certainty that a Specific Substance was the cause of the Manifestation in an reaction event.
  * If the element is present, it must have either a @value, an @id, or extensions
  * <!-- end-model-doc -->
  *

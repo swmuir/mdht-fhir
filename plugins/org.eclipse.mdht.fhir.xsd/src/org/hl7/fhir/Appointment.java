@@ -26,9 +26,9 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.hl7.fhir.Appointment#getDescription <em>Description</em>}</li>
  *   <li>{@link org.hl7.fhir.Appointment#getStart <em>Start</em>}</li>
  *   <li>{@link org.hl7.fhir.Appointment#getEnd <em>End</em>}</li>
+ *   <li>{@link org.hl7.fhir.Appointment#getMinutesDuration <em>Minutes Duration</em>}</li>
  *   <li>{@link org.hl7.fhir.Appointment#getSlot <em>Slot</em>}</li>
  *   <li>{@link org.hl7.fhir.Appointment#getComment <em>Comment</em>}</li>
- *   <li>{@link org.hl7.fhir.Appointment#getOrder <em>Order</em>}</li>
  *   <li>{@link org.hl7.fhir.Appointment#getParticipant <em>Participant</em>}</li>
  * </ul>
  *
@@ -43,7 +43,7 @@ public interface Appointment extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * This records identifiers associated with this appointment concern that are defined by business processed and/ or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation).
+	 * This records identifiers associated with this appointment concern that are defined by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation).
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Identifier</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getAppointment_Identifier()
@@ -110,7 +110,7 @@ public interface Appointment extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The reason that this appointment is being scheduled, this is more clinical than administrative.
+	 * The reason that this appointment is being scheduled. This is more clinical than administrative.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Reason</em>' containment reference.
 	 * @see #setReason(CodeableConcept)
@@ -193,7 +193,7 @@ public interface Appointment extends DomainResource {
 	 * @return the value of the '<em>Start</em>' containment reference.
 	 * @see #setStart(Instant)
 	 * @see org.hl7.fhir.FhirPackage#getAppointment_Start()
-	 * @model containment="true" required="true"
+	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='start' namespace='##targetNamespace'"
 	 * @generated
 	 */
@@ -219,7 +219,7 @@ public interface Appointment extends DomainResource {
 	 * @return the value of the '<em>End</em>' containment reference.
 	 * @see #setEnd(Instant)
 	 * @see org.hl7.fhir.FhirPackage#getAppointment_End()
-	 * @model containment="true" required="true"
+	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='end' namespace='##targetNamespace'"
 	 * @generated
 	 */
@@ -234,6 +234,32 @@ public interface Appointment extends DomainResource {
 	 * @generated
 	 */
 	void setEnd(Instant value);
+
+	/**
+	 * Returns the value of the '<em><b>Minutes Duration</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Number of minutes that the appointment is to take. This can be less than the duration between the start and end times (where actual time of appointment is only an estimate or is a planned appointment request).
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Minutes Duration</em>' containment reference.
+	 * @see #setMinutesDuration(PositiveInt)
+	 * @see org.hl7.fhir.FhirPackage#getAppointment_MinutesDuration()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='minutesDuration' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	PositiveInt getMinutesDuration();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.Appointment#getMinutesDuration <em>Minutes Duration</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Minutes Duration</em>' containment reference.
+	 * @see #getMinutesDuration()
+	 * @generated
+	 */
+	void setMinutesDuration(PositiveInt value);
 
 	/**
 	 * Returns the value of the '<em><b>Slot</b></em>' containment reference list.
@@ -276,32 +302,6 @@ public interface Appointment extends DomainResource {
 	 * @generated
 	 */
 	void setComment(org.hl7.fhir.String value);
-
-	/**
-	 * Returns the value of the '<em><b>Order</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * An Order that lead to the creation of this appointment.
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Order</em>' containment reference.
-	 * @see #setOrder(Reference)
-	 * @see org.hl7.fhir.FhirPackage#getAppointment_Order()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='order' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	Reference getOrder();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.Appointment#getOrder <em>Order</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Order</em>' containment reference.
-	 * @see #getOrder()
-	 * @generated
-	 */
-	void setOrder(Reference value);
 
 	/**
 	 * Returns the value of the '<em><b>Participant</b></em>' containment reference list.

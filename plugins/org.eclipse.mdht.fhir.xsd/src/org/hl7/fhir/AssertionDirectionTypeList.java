@@ -45,7 +45,7 @@ public enum AssertionDirectionTypeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Default value. Assertion is evaluated on the response.
+	 * The assertion is evaluated on the response. This is the default value.
 	 * <!-- end-model-doc -->
 	 * @see #RESPONSE
 	 * @model name="response"
@@ -59,7 +59,7 @@ public enum AssertionDirectionTypeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Not equals comparison.
+	 * The assertion is evaluated on the request.
 	 * <!-- end-model-doc -->
 	 * @see #REQUEST
 	 * @model name="request"

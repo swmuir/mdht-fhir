@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Thu, Aug 20, 2015 14:13+0000 for FHIR v0.5.0 
+  Generated on Wed, Sep 16, 2015 13:28+0000 for FHIR v1.0.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -49,11 +49,6 @@
     <xs:complexContent>
       <xs:extension base="DomainResource">
         <xs:sequence>
-          <xs:element name="identifier" minOccurs="1" maxOccurs="1" type="id">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">The identifier of this message.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
           <xs:element name="timestamp" minOccurs="1" maxOccurs="1" type="instant">
             <xs:annotation>
               <xs:documentation xml:lang="en">The time that the message was sent.</xs:documentation>
@@ -101,7 +96,7 @@
           </xs:element>
           <xs:element name="reason" minOccurs="0" maxOccurs="1" type="CodeableConcept">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Coded indication of the cause for the event - indicates  a reason for the occurance of the event that is a focus of this message.</xs:documentation>
+              <xs:documentation xml:lang="en">Coded indication of the cause for the event - indicates  a reason for the occurrence of the event that is a focus of this message.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="data" minOccurs="0" maxOccurs="unbounded" type="Reference">

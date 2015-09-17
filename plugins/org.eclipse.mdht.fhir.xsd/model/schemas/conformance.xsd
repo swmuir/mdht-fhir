@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Thu, Aug 20, 2015 14:13+0000 for FHIR v0.5.0 
+  Generated on Wed, Sep 16, 2015 13:28+0000 for FHIR v1.0.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -38,12 +38,12 @@
   <xs:include schemaLocation="fhir-base.xsd"/>
   <xs:element name="Conformance" type="Conformance">
     <xs:annotation>
-      <xs:documentation xml:lang="en">A conformance statement is a set of requirements for a desired implementation or a description of how a target application fulfills those requirements in a particular implementation.</xs:documentation>
+      <xs:documentation xml:lang="en">A conformance statement is a set of capabilities of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.</xs:documentation>
     </xs:annotation>
   </xs:element>
   <xs:complexType name="Conformance">
     <xs:annotation>
-      <xs:documentation xml:lang="en">A conformance statement is a set of requirements for a desired implementation or a description of how a target application fulfills those requirements in a particular implementation.</xs:documentation>
+      <xs:documentation xml:lang="en">A conformance statement is a set of capabilities of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.</xs:documentation>
       <xs:documentation xml:lang="en">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
@@ -86,7 +86,7 @@
           </xs:element>
           <xs:element name="date" minOccurs="1" maxOccurs="1" type="dateTime">
             <xs:annotation>
-              <xs:documentation xml:lang="en">The date  (and optionally time) when the conformance statement was published. The date must change when the business version changes, if it does, and it must change if the status code changes. in addition, it should change when the substantiative content of the conformance statement changes.</xs:documentation>
+              <xs:documentation xml:lang="en">The date  (and optionally time) when the conformance statement was published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the conformance statement changes.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="description" minOccurs="0" maxOccurs="1" type="string">
@@ -101,7 +101,7 @@
           </xs:element>
           <xs:element name="copyright" minOccurs="0" maxOccurs="1" type="string">
             <xs:annotation>
-              <xs:documentation xml:lang="en">A copyright statement relating to the conformamce statement and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the details of the system described by the conformance statement.</xs:documentation>
+              <xs:documentation xml:lang="en">A copyright statement relating to the conformance statement and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the details of the system described by the conformance statement.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="kind" minOccurs="1" maxOccurs="1" type="ConformanceStatementKind">
@@ -160,7 +160,7 @@
   </xs:complexType>
   <xs:complexType name="Conformance.Contact">
     <xs:annotation>
-      <xs:documentation xml:lang="en">A conformance statement is a set of requirements for a desired implementation or a description of how a target application fulfills those requirements in a particular implementation.</xs:documentation>
+      <xs:documentation xml:lang="en">A conformance statement is a set of capabilities of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="BackboneElement">
@@ -181,7 +181,7 @@
   </xs:complexType>
   <xs:complexType name="Conformance.Software">
     <xs:annotation>
-      <xs:documentation xml:lang="en">A conformance statement is a set of requirements for a desired implementation or a description of how a target application fulfills those requirements in a particular implementation.</xs:documentation>
+      <xs:documentation xml:lang="en">A conformance statement is a set of capabilities of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="BackboneElement">
@@ -207,7 +207,7 @@
   </xs:complexType>
   <xs:complexType name="Conformance.Implementation">
     <xs:annotation>
-      <xs:documentation xml:lang="en">A conformance statement is a set of requirements for a desired implementation or a description of how a target application fulfills those requirements in a particular implementation.</xs:documentation>
+      <xs:documentation xml:lang="en">A conformance statement is a set of capabilities of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="BackboneElement">
@@ -228,7 +228,7 @@
   </xs:complexType>
   <xs:complexType name="Conformance.Rest">
     <xs:annotation>
-      <xs:documentation xml:lang="en">A conformance statement is a set of requirements for a desired implementation or a description of how a target application fulfills those requirements in a particular implementation.</xs:documentation>
+      <xs:documentation xml:lang="en">A conformance statement is a set of capabilities of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="BackboneElement">
@@ -273,11 +273,6 @@
               <xs:documentation xml:lang="en">Definition of an operation or a named query and with its parameters and their meaning and type.</xs:documentation>
            </xs:annotation>
           </xs:element>
-          <xs:element name="documentMailbox" minOccurs="0" maxOccurs="unbounded" type="uri">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">A list of absolute URIs that identify profiles that this server implements for accepting documents in the mailbox. If this list is empty, then documents are not accepted. The base specification has the profile identifier &quot;http://hl7.org/fhir/documents/mailbox&quot;. Other specifications can declare their own identifier for this purpose.</xs:documentation>
-           </xs:annotation>
-          </xs:element>
           <xs:element name="compartment" minOccurs="0" maxOccurs="unbounded" type="uri">
             <xs:annotation>
               <xs:documentation xml:lang="en">An absolute URI which is a reference to the definition of a compartment hosted by the system.</xs:documentation>
@@ -289,7 +284,7 @@
   </xs:complexType>
   <xs:complexType name="Conformance.Security">
     <xs:annotation>
-      <xs:documentation xml:lang="en">A conformance statement is a set of requirements for a desired implementation or a description of how a target application fulfills those requirements in a particular implementation.</xs:documentation>
+      <xs:documentation xml:lang="en">A conformance statement is a set of capabilities of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="BackboneElement">
@@ -320,7 +315,7 @@
   </xs:complexType>
   <xs:complexType name="Conformance.Certificate">
     <xs:annotation>
-      <xs:documentation xml:lang="en">A conformance statement is a set of requirements for a desired implementation or a description of how a target application fulfills those requirements in a particular implementation.</xs:documentation>
+      <xs:documentation xml:lang="en">A conformance statement is a set of capabilities of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="BackboneElement">
@@ -341,7 +336,7 @@
   </xs:complexType>
   <xs:complexType name="Conformance.Resource">
     <xs:annotation>
-      <xs:documentation xml:lang="en">A conformance statement is a set of requirements for a desired implementation or a description of how a target application fulfills those requirements in a particular implementation.</xs:documentation>
+      <xs:documentation xml:lang="en">A conformance statement is a set of capabilities of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="BackboneElement">
@@ -363,7 +358,7 @@
           </xs:element>
           <xs:element name="versioning" minOccurs="0" maxOccurs="1" type="ResourceVersionPolicy">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Thi field is set to true to specify that the system does not support (server) or use (client) versioning for this resource type. If this is not set to true, the server must at least correctly track and populate the versionId meta-property on resources.</xs:documentation>
+              <xs:documentation xml:lang="en">This field is set to no-version to specify that the system does not support (server) or use (client) versioning for this resource type. If this has some other value, the server must at least correctly track and populate the versionId meta-property on resources. If the value is 'versioned-update', then the server supports all the versioning features, including using e-tags for version integrity in the API.</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="readHistory" minOccurs="0" maxOccurs="1" type="boolean">
@@ -412,7 +407,7 @@
   </xs:complexType>
   <xs:complexType name="Conformance.Interaction">
     <xs:annotation>
-      <xs:documentation xml:lang="en">A conformance statement is a set of requirements for a desired implementation or a description of how a target application fulfills those requirements in a particular implementation.</xs:documentation>
+      <xs:documentation xml:lang="en">A conformance statement is a set of capabilities of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="BackboneElement">
@@ -433,7 +428,7 @@
   </xs:complexType>
   <xs:complexType name="Conformance.SearchParam">
     <xs:annotation>
-      <xs:documentation xml:lang="en">A conformance statement is a set of requirements for a desired implementation or a description of how a target application fulfills those requirements in a particular implementation.</xs:documentation>
+      <xs:documentation xml:lang="en">A conformance statement is a set of capabilities of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="BackboneElement">
@@ -479,7 +474,7 @@
   </xs:complexType>
   <xs:complexType name="Conformance.Interaction1">
     <xs:annotation>
-      <xs:documentation xml:lang="en">A conformance statement is a set of requirements for a desired implementation or a description of how a target application fulfills those requirements in a particular implementation.</xs:documentation>
+      <xs:documentation xml:lang="en">A conformance statement is a set of capabilities of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="BackboneElement">
@@ -500,7 +495,7 @@
   </xs:complexType>
   <xs:complexType name="Conformance.Operation">
     <xs:annotation>
-      <xs:documentation xml:lang="en">A conformance statement is a set of requirements for a desired implementation or a description of how a target application fulfills those requirements in a particular implementation.</xs:documentation>
+      <xs:documentation xml:lang="en">A conformance statement is a set of capabilities of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="BackboneElement">
@@ -521,7 +516,7 @@
   </xs:complexType>
   <xs:complexType name="Conformance.Messaging">
     <xs:annotation>
-      <xs:documentation xml:lang="en">A conformance statement is a set of requirements for a desired implementation or a description of how a target application fulfills those requirements in a particular implementation.</xs:documentation>
+      <xs:documentation xml:lang="en">A conformance statement is a set of capabilities of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="BackboneElement">
@@ -543,7 +538,7 @@
           </xs:element>
           <xs:element name="event" type="Conformance.Event" minOccurs="1" maxOccurs="unbounded">
             <xs:annotation>
-              <xs:documentation xml:lang="en">A description of the solution's support for an event at this end point.</xs:documentation>
+              <xs:documentation xml:lang="en">A description of the solution's support for an event at this end-point.</xs:documentation>
            </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -552,7 +547,7 @@
   </xs:complexType>
   <xs:complexType name="Conformance.Endpoint">
     <xs:annotation>
-      <xs:documentation xml:lang="en">A conformance statement is a set of requirements for a desired implementation or a description of how a target application fulfills those requirements in a particular implementation.</xs:documentation>
+      <xs:documentation xml:lang="en">A conformance statement is a set of capabilities of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="BackboneElement">
@@ -573,7 +568,7 @@
   </xs:complexType>
   <xs:complexType name="Conformance.Event">
     <xs:annotation>
-      <xs:documentation xml:lang="en">A conformance statement is a set of requirements for a desired implementation or a description of how a target application fulfills those requirements in a particular implementation.</xs:documentation>
+      <xs:documentation xml:lang="en">A conformance statement is a set of capabilities of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="BackboneElement">
@@ -619,7 +614,7 @@
   </xs:complexType>
   <xs:complexType name="Conformance.Document">
     <xs:annotation>
-      <xs:documentation xml:lang="en">A conformance statement is a set of requirements for a desired implementation or a description of how a target application fulfills those requirements in a particular implementation.</xs:documentation>
+      <xs:documentation xml:lang="en">A conformance statement is a set of capabilities of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="BackboneElement">
@@ -647,24 +642,24 @@
     <xs:restriction base="xs:string">
       <xs:enumeration value="no-version">
         <xs:annotation>
-          <xs:documentation xml:lang="en">VersionId meta-property is not suppoerted (server) or used (client)</xs:documentation>
+          <xs:documentation xml:lang="en">VersionId meta-property is not suppoerted (server) or used (client).</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="versioned">
         <xs:annotation>
-          <xs:documentation xml:lang="en">VersionId meta-property is suppoerted (server) or used (client)</xs:documentation>
+          <xs:documentation xml:lang="en">VersionId meta-property is suppoerted (server) or used (client).</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="versioned-update">
         <xs:annotation>
-          <xs:documentation xml:lang="en">VersionId is must be correct for updates (server) or will be specified (If-match header) for updates (client)</xs:documentation>
+          <xs:documentation xml:lang="en">VersionId is must be correct for updates (server) or will be specified (If-match header) for updates (client).</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="ResourceVersionPolicy">
     <xs:annotation>
-      <xs:documentation xml:lang="en">How the system supports versioning for a resource</xs:documentation>
+      <xs:documentation xml:lang="en">How the system supports versioning for a resource.</xs:documentation>
       <xs:documentation xml:lang="en">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
@@ -677,24 +672,24 @@
     <xs:restriction base="xs:string">
       <xs:enumeration value="Consequence">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The message represents/requests a change that should not be processed more than once. E.g. Making a booking for an appointment</xs:documentation>
+          <xs:documentation xml:lang="en">The message represents/requests a change that should not be processed more than once; e.g. Making a booking for an appointment.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="Currency">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The message represents a response to query for current information. Retrospective processing is wrong and/or wasteful</xs:documentation>
+          <xs:documentation xml:lang="en">The message represents a response to query for current information. Retrospective processing is wrong and/or wasteful.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="Notification">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The content is not necessarily intended to be current, and it can be reprocessed, though there may be version issues created by processing old notifications</xs:documentation>
+          <xs:documentation xml:lang="en">The content is not necessarily intended to be current, and it can be reprocessed, though there may be version issues created by processing old notifications.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="MessageSignificanceCategory">
     <xs:annotation>
-      <xs:documentation xml:lang="en">The impact of the content of a message</xs:documentation>
+      <xs:documentation xml:lang="en">The impact of the content of a message.</xs:documentation>
       <xs:documentation xml:lang="en">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
@@ -707,29 +702,29 @@
     <xs:restriction base="xs:string">
       <xs:enumeration value="not-supported">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Neither Batch or Transaction supported</xs:documentation>
+          <xs:documentation xml:lang="en">Neither batch or transaction is supported.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="batch">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Batches supported</xs:documentation>
+          <xs:documentation xml:lang="en">Batches are  supported.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="transaction">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Transactions Supported</xs:documentation>
+          <xs:documentation xml:lang="en">Transactions are supported.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="both">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Both Batches and Transactions Supported</xs:documentation>
+          <xs:documentation xml:lang="en">Both batches and transactions are supported.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="TransactionMode">
     <xs:annotation>
-      <xs:documentation xml:lang="en">A code that indicates how transactions are supported</xs:documentation>
+      <xs:documentation xml:lang="en">A code that indicates how transactions are supported.</xs:documentation>
       <xs:documentation xml:lang="en">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
@@ -742,19 +737,19 @@
     <xs:restriction base="xs:string">
       <xs:enumeration value="producer">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The application produces documents of the specified type</xs:documentation>
+          <xs:documentation xml:lang="en">The application produces documents of the specified type.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="consumer">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The application consumes documents of the specified type</xs:documentation>
+          <xs:documentation xml:lang="en">The application consumes documents of the specified type.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="DocumentMode">
     <xs:annotation>
-      <xs:documentation xml:lang="en">Whether the application produces or consumes documents</xs:documentation>
+      <xs:documentation xml:lang="en">Whether the application produces or consumes documents.</xs:documentation>
       <xs:documentation xml:lang="en">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
@@ -767,7 +762,7 @@
     <xs:restriction base="xs:string">
       <xs:enumeration value="instance">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The Conformance instance represents the present capabilities of a specific system instance.  This is the kind returned by OPTIONS for a FHIR server end-point</xs:documentation>
+          <xs:documentation xml:lang="en">The Conformance instance represents the present capabilities of a specific system instance.  This is the kind returned by OPTIONS for a FHIR server end-point.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="capability">
@@ -777,14 +772,14 @@
       </xs:enumeration>
       <xs:enumeration value="requirements">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The Conformance instance represents a set of requirements for other systems to meet.  E.g. as part of an implementation guide or 'request for proposal'</xs:documentation>
+          <xs:documentation xml:lang="en">The Conformance instance represents a set of requirements for other systems to meet; e.g. as part of an implementation guide or 'request for proposal'.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="ConformanceStatementKind">
     <xs:annotation>
-      <xs:documentation xml:lang="en">How a conformance statement is intended to be used</xs:documentation>
+      <xs:documentation xml:lang="en">How a conformance statement is intended to be used.</xs:documentation>
       <xs:documentation xml:lang="en">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
@@ -797,27 +792,27 @@
     <xs:restriction base="xs:string">
       <xs:enumeration value="missing">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The search parameter returns resources that have a value or not</xs:documentation>
+          <xs:documentation xml:lang="en">The search parameter returns resources that have a value or not.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="exact">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The search parameter returns resources that have a value that exactly matches the supplied parameter (the whole string, including casing and accents)</xs:documentation>
+          <xs:documentation xml:lang="en">The search parameter returns resources that have a value that exactly matches the supplied parameter (the whole string, including casing and accents).</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="contains">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The search parameter returns resources that include the supplied parameter value anywhere within the field being searched</xs:documentation>
+          <xs:documentation xml:lang="en">The search parameter returns resources that include the supplied parameter value anywhere within the field being searched.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="not">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The search parameter returns resources that do not contain a match</xs:documentation>
+          <xs:documentation xml:lang="en">The search parameter returns resources that do not contain a match .</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="text">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The search parameter is processed as a string that searches text associated with the code/value - either CodeableConcept.text, Coding.display, or Identifier.type.text</xs:documentation>
+          <xs:documentation xml:lang="en">The search parameter is processed as a string that searches text associated with the code/value - either CodeableConcept.text, Coding.display, or Identifier.type.text.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="in">
@@ -827,29 +822,29 @@
       </xs:enumeration>
       <xs:enumeration value="not-in">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The search parameter is a URI (relative or absolute) that identifies a value set, and the search parameter tests whether the coding is not in the specified value set</xs:documentation>
+          <xs:documentation xml:lang="en">The search parameter is a URI (relative or absolute) that identifies a value set, and the search parameter tests whether the coding is not in the specified value set.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="below">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The search parameter tests whether the value in a resource is subsumed by the specified value (is-a, or heirarchical relationships)</xs:documentation>
+          <xs:documentation xml:lang="en">The search parameter tests whether the value in a resource is subsumed by the specified value (is-a, or hierarchical relationships).</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="above">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The search parameter tests whether the value in a resource subsumes the specified value (is-a, or heirarchical relationships)</xs:documentation>
+          <xs:documentation xml:lang="en">The search parameter tests whether the value in a resource subsumes the specified value (is-a, or hierarchical relationships).</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="type">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The search parameter only applies to the Resource Type specified as a modifier (e.g. the modifier is not actually :type, but :Patient etc)</xs:documentation>
+          <xs:documentation xml:lang="en">The search parameter only applies to the Resource Type specified as a modifier (e.g. the modifier is not actually :type, but :Patient etc.).</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="SearchModifierCode">
     <xs:annotation>
-      <xs:documentation xml:lang="en">A supported modifier for a search parameter</xs:documentation>
+      <xs:documentation xml:lang="en">A supported modifier for a search parameter.</xs:documentation>
       <xs:documentation xml:lang="en">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
@@ -862,29 +857,29 @@
     <xs:restriction base="xs:string">
       <xs:enumeration value="no">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The application does not accept either unknown elements or extensions</xs:documentation>
+          <xs:documentation xml:lang="en">The application does not accept either unknown elements or extensions.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="extensions">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The application accepts unknown extensions, but not unknown elements</xs:documentation>
+          <xs:documentation xml:lang="en">The application accepts unknown extensions, but not unknown elements.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="elements">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The application accepts unknown elements, but not unknown extensions</xs:documentation>
+          <xs:documentation xml:lang="en">The application accepts unknown elements, but not unknown extensions.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="both">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The application accepts unknown elements and extensions</xs:documentation>
+          <xs:documentation xml:lang="en">The application accepts unknown elements and extensions.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="UnknownContentCode">
     <xs:annotation>
-      <xs:documentation xml:lang="en">A code that indicates whether an application accepts unknown elements or extensions when reading resources</xs:documentation>
+      <xs:documentation xml:lang="en">A code that indicates whether an application accepts unknown elements or extensions when reading resources.</xs:documentation>
       <xs:documentation xml:lang="en">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
@@ -944,7 +939,7 @@
   </xs:simpleType>
   <xs:complexType name="TypeRestfulInteraction">
     <xs:annotation>
-      <xs:documentation xml:lang="en">Operations supported by REST at the type or instance level</xs:documentation>
+      <xs:documentation xml:lang="en">Operations supported by REST at the type or instance level.</xs:documentation>
       <xs:documentation xml:lang="en">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
@@ -957,19 +952,19 @@
     <xs:restriction base="xs:string">
       <xs:enumeration value="sender">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The application sends requests and receives responses</xs:documentation>
+          <xs:documentation xml:lang="en">The application sends requests and receives responses.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="receiver">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The application receives requests and sends responses</xs:documentation>
+          <xs:documentation xml:lang="en">The application receives requests and sends responses.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="ConformanceEventMode">
     <xs:annotation>
-      <xs:documentation xml:lang="en">The mode of a message conformance statement</xs:documentation>
+      <xs:documentation xml:lang="en">The mode of a message conformance statement.</xs:documentation>
       <xs:documentation xml:lang="en">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
@@ -999,7 +994,7 @@
   </xs:simpleType>
   <xs:complexType name="SystemRestfulInteraction">
     <xs:annotation>
-      <xs:documentation xml:lang="en">Operations supported by REST at the system level</xs:documentation>
+      <xs:documentation xml:lang="en">Operations supported by REST at the system level.</xs:documentation>
       <xs:documentation xml:lang="en">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
@@ -1012,19 +1007,19 @@
     <xs:restriction base="xs:string">
       <xs:enumeration value="client">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The application acts as a client for this resource</xs:documentation>
+          <xs:documentation xml:lang="en">The application acts as a client for this resource.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="server">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The application acts as a server for this resource</xs:documentation>
+          <xs:documentation xml:lang="en">The application acts as a server for this resource.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="RestfulConformanceMode">
     <xs:annotation>
-      <xs:documentation xml:lang="en">The mode of a RESTful conformance statement</xs:documentation>
+      <xs:documentation xml:lang="en">The mode of a RESTful conformance statement.</xs:documentation>
       <xs:documentation xml:lang="en">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
@@ -1037,24 +1032,24 @@
     <xs:restriction base="xs:string">
       <xs:enumeration value="not-supported">
         <xs:annotation>
-          <xs:documentation xml:lang="en">No support for conditional deletes</xs:documentation>
+          <xs:documentation xml:lang="en">No support for conditional deletes.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="single">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Conditional deletes are supported, but only single resources at a time</xs:documentation>
+          <xs:documentation xml:lang="en">Conditional deletes are supported, but only single resources at a time.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="multiple">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Conditional deletes are supported, and multiple resources can be deleted in a single interaction</xs:documentation>
+          <xs:documentation xml:lang="en">Conditional deletes are supported, and multiple resources can be deleted in a single interaction.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="ConditionalDeleteStatus">
     <xs:annotation>
-      <xs:documentation xml:lang="en">A code that indicates how the server supports conditional delete</xs:documentation>
+      <xs:documentation xml:lang="en">A code that indicates how the server supports conditional delete.</xs:documentation>
       <xs:documentation xml:lang="en">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>
     </xs:annotation>
     <xs:complexContent>

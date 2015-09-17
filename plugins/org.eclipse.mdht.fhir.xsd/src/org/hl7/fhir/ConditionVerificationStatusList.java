@@ -85,7 +85,7 @@ public enum ConditionVerificationStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * This is a tentative diagnosis - still a candidate that is under consideration
+	 * This is a tentative diagnosis - still a candidate that is under consideration.
 	 * <!-- end-model-doc -->
 	 * @see #PROVISIONAL
 	 * @model name="provisional"
@@ -99,7 +99,7 @@ public enum ConditionVerificationStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * One of a set of potential (and typically mutually exclusive) diagnosis asserted to further guide the diagnostic process and preliminary treatment
+	 * One of a set of potential (and typically mutually exclusive) diagnosis asserted to further guide the diagnostic process and preliminary treatment.
 	 * <!-- end-model-doc -->
 	 * @see #DIFFERENTIAL
 	 * @model name="differential"
@@ -113,7 +113,7 @@ public enum ConditionVerificationStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * There is sufficient diagnostic and/or clinical evidence to treat this as a confirmed condition
+	 * There is sufficient diagnostic and/or clinical evidence to treat this as a confirmed condition.
 	 * <!-- end-model-doc -->
 	 * @see #CONFIRMED
 	 * @model name="confirmed"
@@ -127,7 +127,7 @@ public enum ConditionVerificationStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * This condition has been ruled out by diagnostic and clinical evidence
+	 * This condition has been ruled out by diagnostic and clinical evidence.
 	 * <!-- end-model-doc -->
 	 * @see #REFUTED
 	 * @model name="refuted"
@@ -141,7 +141,7 @@ public enum ConditionVerificationStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The statement was entered in error and Is not valid
+	 * The statement was entered in error and Is not valid.
 	 * <!-- end-model-doc -->
 	 * @see #ENTERED_IN_ERROR
 	 * @model name="enteredInError" literal="entered-in-error"
@@ -155,7 +155,7 @@ public enum ConditionVerificationStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The condition status is unknown.  Note that "unknown" is a value of last resort and every attempt should be made to provide a meaningful value other than "unknown"
+	 * The condition status is unknown.  Note that "unknown" is a value of last resort and every attempt should be made to provide a meaningful value other than "unknown".
 	 * <!-- end-model-doc -->
 	 * @see #UNKNOWN
 	 * @model name="unknown"

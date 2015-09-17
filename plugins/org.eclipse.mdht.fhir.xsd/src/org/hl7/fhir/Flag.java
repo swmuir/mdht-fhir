@@ -54,7 +54,7 @@ public interface Flag extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Allows an flag to be divided into different categories like clinical, administrative etc.
+	 * Allows an flag to be divided into different categories like clinical, administrative etc. Intended to be used as a means of filtering which flags are displayed to particular user or in a given context.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Category</em>' containment reference.
 	 * @see #setCategory(CodeableConcept)
@@ -184,7 +184,7 @@ public interface Flag extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The person or device that created the flag.
+	 * The person, organization or device that created the flag.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Author</em>' containment reference.
 	 * @see #setAuthor(Reference)

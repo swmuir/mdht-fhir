@@ -11,6 +11,7 @@ import org.eclipse.emf.common.util.EList;
  *
  * <!-- begin-model-doc -->
  * This special resource type is used to represent [operation](operations.html] request and response. It has no other use, and there is no RESTful end=point associated with it.
+ * If the element is present, it must have either a @value, an @id, or extensions
  * <!-- end-model-doc -->
  *
  * <p>

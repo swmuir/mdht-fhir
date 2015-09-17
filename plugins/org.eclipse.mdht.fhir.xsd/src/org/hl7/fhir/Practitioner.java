@@ -19,6 +19,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link org.hl7.fhir.Practitioner#getIdentifier <em>Identifier</em>}</li>
+ *   <li>{@link org.hl7.fhir.Practitioner#getActive <em>Active</em>}</li>
  *   <li>{@link org.hl7.fhir.Practitioner#getName <em>Name</em>}</li>
  *   <li>{@link org.hl7.fhir.Practitioner#getTelecom <em>Telecom</em>}</li>
  *   <li>{@link org.hl7.fhir.Practitioner#getAddress <em>Address</em>}</li>
@@ -50,6 +51,32 @@ public interface Practitioner extends DomainResource {
 	 * @generated
 	 */
 	EList<Identifier> getIdentifier();
+
+	/**
+	 * Returns the value of the '<em><b>Active</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Whether this practitioner's record is in active use.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Active</em>' containment reference.
+	 * @see #setActive(org.hl7.fhir.Boolean)
+	 * @see org.hl7.fhir.FhirPackage#getPractitioner_Active()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='active' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	org.hl7.fhir.Boolean getActive();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.Practitioner#getActive <em>Active</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Active</em>' containment reference.
+	 * @see #getActive()
+	 * @generated
+	 */
+	void setActive(org.hl7.fhir.Boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' containment reference.
@@ -183,7 +210,7 @@ public interface Practitioner extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The list of Roles/Organizations that the Practitioner is associated with.
+	 * The list of roles/organizations that the practitioner is associated with.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Practitioner Role</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getPractitioner_PractitionerRole()

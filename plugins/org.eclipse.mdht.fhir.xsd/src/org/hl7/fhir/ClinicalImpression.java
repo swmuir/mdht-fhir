@@ -275,7 +275,7 @@ public interface ClinicalImpression extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * One or more sets of investigations (signs, symptions, etc). The actual grouping of investigations vary greatly depending on the type and context of the assessment. These investigations may include data generated during the assessment process, or data previously generated and recorded that is pertinent to the outcomes.
+	 * One or more sets of investigations (signs, symptions, etc.). The actual grouping of investigations vary greatly depending on the type and context of the assessment. These investigations may include data generated during the assessment process, or data previously generated and recorded that is pertinent to the outcomes.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Investigations</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getClinicalImpression_Investigations()

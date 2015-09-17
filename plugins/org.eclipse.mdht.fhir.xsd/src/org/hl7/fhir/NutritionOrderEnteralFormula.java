@@ -142,7 +142,7 @@ public interface NutritionOrderEnteralFormula extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The amount of energy (Calories) that the formula should provide per specified volume, typically per mL or fluid oz.  For example, an infant may require a formula the provides 24 Calories per fluid ounce or an adult may require an enteral formula that provides 1.5 Calorie/mL.
+	 * The amount of energy (Calories) that the formula should provide per specified volume, typically per mL or fluid oz.  For example, an infant may require a formula that provides 24 Calories per fluid ounce or an adult may require an enteral formula that provides 1.5 Calorie/mL.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Caloric Density</em>' containment reference.
 	 * @see #setCaloricDensity(SimpleQuantity)
@@ -168,7 +168,7 @@ public interface NutritionOrderEnteralFormula extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The route or physiological path of administration into the patient 's gastrointestinal  tract for purposes of providing the formula feeding, e.g., nasogastric tube.
+	 * The route or physiological path of administration into the patient's gastrointestinal  tract for purposes of providing the formula feeding, e.g. nasogastric tube.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Routeof Administration</em>' containment reference.
 	 * @see #setRouteofAdministration(CodeableConcept)
@@ -210,7 +210,7 @@ public interface NutritionOrderEnteralFormula extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The maximum total quantity of formula that may be administered to a subject over the period of time, e.g., 1440 mL over 24 hours.
+	 * The maximum total quantity of formula that may be administered to a subject over the period of time, e.g. 1440 mL over 24 hours.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Max Volume To Deliver</em>' containment reference.
 	 * @see #setMaxVolumeToDeliver(SimpleQuantity)

@@ -9,7 +9,7 @@ package org.hl7.fhir;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * How a search parameter relates to the set of elements returned by evaluating the it's xpath query
+ * How a search parameter relates to the set of elements returned by evaluating the its xpath query
  * If the element is present, it must have either a @value, an @id, or extensions
  * <!-- end-model-doc -->
  *

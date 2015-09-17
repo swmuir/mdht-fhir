@@ -113,7 +113,7 @@ public interface ValueSetContains extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The code for this item in the expansion heirarchy. If this code is missing the entry in the heirarchy is a place holder (abstract) and doesn't represent a valid code in the value set.
+	 * The code for this item in the expansion hierarchy. If this code is missing the entry in the hierarchy is a place holder (abstract) and doesn't represent a valid code in the value set.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Code</em>' containment reference.
 	 * @see #setCode(Code)
@@ -166,7 +166,7 @@ public interface ValueSetContains extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Other codes and entries contained under this entry in the heirarchy.
+	 * Other codes and entries contained under this entry in the hierarchy.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Contains</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getValueSetContains_Contains()

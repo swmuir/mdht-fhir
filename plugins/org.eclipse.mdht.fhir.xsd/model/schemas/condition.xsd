@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Thu, Aug 20, 2015 14:13+0000 for FHIR v0.5.0 
+  Generated on Wed, Sep 16, 2015 13:28+0000 for FHIR v1.0.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -51,7 +51,7 @@
         <xs:sequence>
           <xs:element name="identifier" minOccurs="0" maxOccurs="unbounded" type="Identifier">
             <xs:annotation>
-              <xs:documentation xml:lang="en">This records identifiers associated with this condition that are defined by business processed and/ or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation).</xs:documentation>
+              <xs:documentation xml:lang="en">This records identifiers associated with this condition that are defined by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation).</xs:documentation>
            </xs:annotation>
           </xs:element>
           <xs:element name="patient" minOccurs="1" maxOccurs="1" type="Reference">
@@ -190,32 +190,32 @@
     <xs:restriction base="xs:string">
       <xs:enumeration value="provisional">
         <xs:annotation>
-          <xs:documentation xml:lang="en">This is a tentative diagnosis - still a candidate that is under consideration</xs:documentation>
+          <xs:documentation xml:lang="en">This is a tentative diagnosis - still a candidate that is under consideration.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="differential">
         <xs:annotation>
-          <xs:documentation xml:lang="en">One of a set of potential (and typically mutually exclusive) diagnosis asserted to further guide the diagnostic process and preliminary treatment</xs:documentation>
+          <xs:documentation xml:lang="en">One of a set of potential (and typically mutually exclusive) diagnosis asserted to further guide the diagnostic process and preliminary treatment.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="confirmed">
         <xs:annotation>
-          <xs:documentation xml:lang="en">There is sufficient diagnostic and/or clinical evidence to treat this as a confirmed condition</xs:documentation>
+          <xs:documentation xml:lang="en">There is sufficient diagnostic and/or clinical evidence to treat this as a confirmed condition.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="refuted">
         <xs:annotation>
-          <xs:documentation xml:lang="en">This condition has been ruled out by diagnostic and clinical evidence</xs:documentation>
+          <xs:documentation xml:lang="en">This condition has been ruled out by diagnostic and clinical evidence.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="entered-in-error">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The statement was entered in error and Is not valid</xs:documentation>
+          <xs:documentation xml:lang="en">The statement was entered in error and Is not valid.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="unknown">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The condition status is unknown.  Note that &quot;unknown&quot; is a value of last resort and every attempt should be made to provide a meaningful value other than &quot;unknown&quot;</xs:documentation>
+          <xs:documentation xml:lang="en">The condition status is unknown.  Note that &quot;unknown&quot; is a value of last resort and every attempt should be made to provide a meaningful value other than &quot;unknown&quot;.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>

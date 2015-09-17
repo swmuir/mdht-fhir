@@ -182,7 +182,7 @@ public interface Person extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The Organization that is the custodian of the person record.
+	 * The organization that is the custodian of the person record.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Managing Organization</em>' containment reference.
 	 * @see #setManagingOrganization(Reference)

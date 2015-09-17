@@ -2,6 +2,7 @@
  */
 package org.hl7.fhir;
 
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -9,7 +10,7 @@ package org.hl7.fhir;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Immunization event information.
+ * Describes the event of a patient being administered a vaccination or a record of a vaccination as reported by a patient, a clinician or another party and may include vaccine reaction information and what vaccination protocol was followed.
  * <!-- end-model-doc -->
  *
  * <p>
@@ -21,7 +22,7 @@ package org.hl7.fhir;
  *   <li>{@link org.hl7.fhir.ImmunizationVaccinationProtocol#getAuthority <em>Authority</em>}</li>
  *   <li>{@link org.hl7.fhir.ImmunizationVaccinationProtocol#getSeries <em>Series</em>}</li>
  *   <li>{@link org.hl7.fhir.ImmunizationVaccinationProtocol#getSeriesDoses <em>Series Doses</em>}</li>
- *   <li>{@link org.hl7.fhir.ImmunizationVaccinationProtocol#getDoseTarget <em>Dose Target</em>}</li>
+ *   <li>{@link org.hl7.fhir.ImmunizationVaccinationProtocol#getTargetDisease <em>Target Disease</em>}</li>
  *   <li>{@link org.hl7.fhir.ImmunizationVaccinationProtocol#getDoseStatus <em>Dose Status</em>}</li>
  *   <li>{@link org.hl7.fhir.ImmunizationVaccinationProtocol#getDoseStatusReason <em>Dose Status Reason</em>}</li>
  * </ul>
@@ -162,30 +163,20 @@ public interface ImmunizationVaccinationProtocol extends BackboneElement {
 	void setSeriesDoses(PositiveInt value);
 
 	/**
-	 * Returns the value of the '<em><b>Dose Target</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Target Disease</b></em>' containment reference list.
+	 * The list contents are of type {@link org.hl7.fhir.CodeableConcept}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The targeted disease.
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Dose Target</em>' containment reference.
-	 * @see #setDoseTarget(CodeableConcept)
-	 * @see org.hl7.fhir.FhirPackage#getImmunizationVaccinationProtocol_DoseTarget()
+	 * @return the value of the '<em>Target Disease</em>' containment reference list.
+	 * @see org.hl7.fhir.FhirPackage#getImmunizationVaccinationProtocol_TargetDisease()
 	 * @model containment="true" required="true"
-	 *        extendedMetaData="kind='element' name='doseTarget' namespace='##targetNamespace'"
+	 *        extendedMetaData="kind='element' name='targetDisease' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	CodeableConcept getDoseTarget();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.ImmunizationVaccinationProtocol#getDoseTarget <em>Dose Target</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Dose Target</em>' containment reference.
-	 * @see #getDoseTarget()
-	 * @generated
-	 */
-	void setDoseTarget(CodeableConcept value);
+	EList<CodeableConcept> getTargetDisease();
 
 	/**
 	 * Returns the value of the '<em><b>Dose Status</b></em>' containment reference.

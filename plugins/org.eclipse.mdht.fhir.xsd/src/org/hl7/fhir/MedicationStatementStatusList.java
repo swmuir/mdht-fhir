@@ -21,14 +21,14 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum MedicationStatementStatusList implements Enumerator {
 	/**
-	 * The '<em><b>In Progress</b></em>' literal object.
+	 * The '<em><b>Active</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #IN_PROGRESS_VALUE
+	 * @see #ACTIVE_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	IN_PROGRESS(0, "inProgress", "in-progress"),
+	ACTIVE(0, "active", "active"),
 
 	/**
 	 * The '<em><b>Completed</b></em>' literal object.
@@ -48,28 +48,38 @@ public enum MedicationStatementStatusList implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	ENTERED_IN_ERROR(2, "enteredInError", "entered-in-error");
+	ENTERED_IN_ERROR(2, "enteredInError", "entered-in-error"),
 
 	/**
-	 * The '<em><b>In Progress</b></em>' literal value.
+	 * The '<em><b>Intended</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #INTENDED_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	INTENDED(3, "intended", "intended");
+
+	/**
+	 * The '<em><b>Active</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The medication is still being taken.
 	 * <!-- end-model-doc -->
-	 * @see #IN_PROGRESS
-	 * @model name="inProgress" literal="in-progress"
+	 * @see #ACTIVE
+	 * @model name="active"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int IN_PROGRESS_VALUE = 0;
+	public static final int ACTIVE_VALUE = 0;
 
 	/**
 	 * The '<em><b>Completed</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * All actions that are implied by the statement have occurred.
+	 * The medication is no longer being taken.
 	 * <!-- end-model-doc -->
 	 * @see #COMPLETED
 	 * @model name="completed"
@@ -83,7 +93,7 @@ public enum MedicationStatementStatusList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The statement was entered in error and therefore nullified.
+	 * The statement was entered in error.
 	 * <!-- end-model-doc -->
 	 * @see #ENTERED_IN_ERROR
 	 * @model name="enteredInError" literal="entered-in-error"
@@ -93,6 +103,20 @@ public enum MedicationStatementStatusList implements Enumerator {
 	public static final int ENTERED_IN_ERROR_VALUE = 2;
 
 	/**
+	 * The '<em><b>Intended</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The medication may be taken at some time in the future.
+	 * <!-- end-model-doc -->
+	 * @see #INTENDED
+	 * @model name="intended"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int INTENDED_VALUE = 3;
+
+	/**
 	 * An array of all the '<em><b>Medication Statement Status List</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -100,9 +124,10 @@ public enum MedicationStatementStatusList implements Enumerator {
 	 */
 	private static final MedicationStatementStatusList[] VALUES_ARRAY =
 		new MedicationStatementStatusList[] {
-			IN_PROGRESS,
+			ACTIVE,
 			COMPLETED,
 			ENTERED_IN_ERROR,
+			INTENDED,
 		};
 
 	/**
@@ -159,9 +184,10 @@ public enum MedicationStatementStatusList implements Enumerator {
 	 */
 	public static MedicationStatementStatusList get(int value) {
 		switch (value) {
-			case IN_PROGRESS_VALUE: return IN_PROGRESS;
+			case ACTIVE_VALUE: return ACTIVE;
 			case COMPLETED_VALUE: return COMPLETED;
 			case ENTERED_IN_ERROR_VALUE: return ENTERED_IN_ERROR;
+			case INTENDED_VALUE: return INTENDED;
 		}
 		return null;
 	}

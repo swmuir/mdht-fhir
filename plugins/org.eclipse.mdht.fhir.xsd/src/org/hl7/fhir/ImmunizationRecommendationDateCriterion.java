@@ -9,7 +9,7 @@ package org.hl7.fhir;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * A patient's point-of-time immunization status and recommendation with optional supporting justification.
+ * A patient’s point-in-time immunization and recommendation (i.e. forecasting a patient’s immunization eligibility according to a published schedule) with optional supporting justification.
  * <!-- end-model-doc -->
  *
  * <p>

@@ -23,7 +23,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.hl7.fhir.DocumentReference#getSubject <em>Subject</em>}</li>
  *   <li>{@link org.hl7.fhir.DocumentReference#getType <em>Type</em>}</li>
  *   <li>{@link org.hl7.fhir.DocumentReference#getClass_ <em>Class</em>}</li>
- *   <li>{@link org.hl7.fhir.DocumentReference#getFormat <em>Format</em>}</li>
  *   <li>{@link org.hl7.fhir.DocumentReference#getAuthor <em>Author</em>}</li>
  *   <li>{@link org.hl7.fhir.DocumentReference#getCustodian <em>Custodian</em>}</li>
  *   <li>{@link org.hl7.fhir.DocumentReference#getAuthenticator <em>Authenticator</em>}</li>
@@ -116,7 +115,7 @@ public interface DocumentReference extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Specifies the particular kind of document. This usually equates to the purpose of making the document. It is recommended that the value Set be drawn from a coding scheme providing a fine level of granularity such as LOINC.  (e.g. Patient Summary, Discharge Summary, Prescription, etc.).
+	 * Specifies the particular kind of document referenced  (e.g. History and Physical, Discharge Summary, Progress Note). This usually equates to the purpose of making the document referenced.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Type</em>' containment reference.
 	 * @see #setType(CodeableConcept)
@@ -142,7 +141,7 @@ public interface DocumentReference extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A categorization for the type of document - helps for indexing and searching. This may be implied by or derived from the code specified in the Composition Type.
+	 * A categorization for the type of document referenced - helps for indexing and searching. This may be implied by or derived from the code specified in the DocumentReference.type.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Class</em>' containment reference.
 	 * @see #setClass(CodeableConcept)
@@ -162,22 +161,6 @@ public interface DocumentReference extends DomainResource {
 	 * @generated
 	 */
 	void setClass(CodeableConcept value);
-
-	/**
-	 * Returns the value of the '<em><b>Format</b></em>' containment reference list.
-	 * The list contents are of type {@link org.hl7.fhir.Coding}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * An identifier of the document encoding, structure, and template that the document conforms to beyond the base format indicated in the mimeType.
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Format</em>' containment reference list.
-	 * @see org.hl7.fhir.FhirPackage#getDocumentReference_Format()
-	 * @model containment="true"
-	 *        extendedMetaData="kind='element' name='format' namespace='##targetNamespace'"
-	 * @generated
-	 */
-	EList<Coding> getFormat();
 
 	/**
 	 * Returns the value of the '<em><b>Author</b></em>' containment reference list.
@@ -411,11 +394,11 @@ public interface DocumentReference extends DomainResource {
 
 	/**
 	 * Returns the value of the '<em><b>Content</b></em>' containment reference list.
-	 * The list contents are of type {@link org.hl7.fhir.Attachment}.
+	 * The list contents are of type {@link org.hl7.fhir.DocumentReferenceContent}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The document or url to the document along with critical metadata to prove content has integrity.
+	 * The document and format referenced. May be multiple content each with a different format.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Content</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getDocumentReference_Content()
@@ -423,7 +406,7 @@ public interface DocumentReference extends DomainResource {
 	 *        extendedMetaData="kind='element' name='content' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	EList<Attachment> getContent();
+	EList<DocumentReferenceContent> getContent();
 
 	/**
 	 * Returns the value of the '<em><b>Context</b></em>' containment reference.

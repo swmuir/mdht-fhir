@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Thu, Aug 20, 2015 14:13+0000 for FHIR v0.5.0 
+  Generated on Wed, Sep 16, 2015 13:28+0000 for FHIR v1.0.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -149,7 +149,7 @@
   </xs:simpleType>
   <xs:complexType name="DeviceUseRequestPriority">
     <xs:annotation>
-      <xs:documentation xml:lang="en">Codes representing the priority of the request</xs:documentation>
+      <xs:documentation xml:lang="en">Codes representing the priority of the request.</xs:documentation>
       <xs:documentation xml:lang="en">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
@@ -162,59 +162,59 @@
     <xs:restriction base="xs:string">
       <xs:enumeration value="proposed">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The request has been proposed</xs:documentation>
+          <xs:documentation xml:lang="en">The request has been proposed.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="planned">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The request has been planned</xs:documentation>
+          <xs:documentation xml:lang="en">The request has been planned.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="requested">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The request has been placed</xs:documentation>
+          <xs:documentation xml:lang="en">The request has been placed.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="received">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The receiving system has received the request but not yet decided whether it will be performed</xs:documentation>
+          <xs:documentation xml:lang="en">The receiving system has received the request but not yet decided whether it will be performed.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="accepted">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The receiving system has accepted the request but work has not yet commenced</xs:documentation>
+          <xs:documentation xml:lang="en">The receiving system has accepted the request but work has not yet commenced.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="in-progress">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The work to fulfill the order is happening</xs:documentation>
+          <xs:documentation xml:lang="en">The work to fulfill the order is happening.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="completed">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The work has been complete, the report(s) released, and no further work is planned</xs:documentation>
+          <xs:documentation xml:lang="en">The work has been complete, the report(s) released, and no further work is planned.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="suspended">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The request has been held by originating system/user request</xs:documentation>
+          <xs:documentation xml:lang="en">The request has been held by originating system/user request.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="rejected">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The receiving system has declined to fulfill the request</xs:documentation>
+          <xs:documentation xml:lang="en">The receiving system has declined to fulfill the request.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="aborted">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The request was attempted, but due to some procedural error, it could not be completed</xs:documentation>
+          <xs:documentation xml:lang="en">The request was attempted, but due to some procedural error, it could not be completed.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="DeviceUseRequestStatus">
     <xs:annotation>
-      <xs:documentation xml:lang="en">Codes representing the status of the request</xs:documentation>
+      <xs:documentation xml:lang="en">Codes representing the status of the request.</xs:documentation>
       <xs:documentation xml:lang="en">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>
     </xs:annotation>
     <xs:complexContent>

@@ -189,7 +189,7 @@ public interface NutritionOrder extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A link to a record of allergies or Intolerances  which should be included in the nutrition order.
+	 * A link to a record of allergies or intolerances  which should be included in the nutrition order.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Allergy Intolerance</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getNutritionOrder_AllergyIntolerance()
@@ -221,7 +221,7 @@ public interface NutritionOrder extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * This modifier is used to convey order-specific modifiers about the type of food that should NOT be given. These can be derived from patient allergies, intolerances, or preferences such as No Red Meat, No Soy or No Wheat or  Gluten-Free. This modifier applies to the entire nutrition order inclusive of the oral diet, nutritional supplements and enteral formula feedings.
+	 * This modifier is used to convey order-specific modifiers about the type of food that should NOT be given. These can be derived from patient allergies, intolerances, or preferences such as No Red Meat, No Soy or No Wheat or  Gluten-Free.  While it should not be necessary to repeat allergy or intolerance information captured in the referenced allergyIntolerance resource in the excludeFoodModifier, this element may be used to convey additional specificity related to foods that should be eliminated from the patient’s diet for any reason.  This modifier applies to the entire nutrition order inclusive of the oral diet, nutritional supplements and enteral formula feedings.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Exclude Food Modifier</em>' containment reference list.
 	 * @see org.hl7.fhir.FhirPackage#getNutritionOrder_ExcludeFoodModifier()

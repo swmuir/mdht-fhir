@@ -90,7 +90,7 @@ public interface DiagnosticReport extends DomainResource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * A code that classifies the dlinical discipline, department or diagnostic service that created the report (e.g. cardiology, biochemistry, hematology, MRI). This is used for searching, sorting and display purposes.
+	 * A code that classifies the clinical discipline, department or diagnostic service that created the report (e.g. cardiology, biochemistry, hematology, MRI). This is used for searching, sorting and display purposes.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Category</em>' containment reference.
 	 * @see #setCategory(CodeableConcept)

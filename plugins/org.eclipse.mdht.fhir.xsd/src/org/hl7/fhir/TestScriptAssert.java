@@ -202,7 +202,7 @@ public interface TestScriptAssert extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The header field e.g. 'Content-Location'.
+	 * The HTTP header field name e.g. 'Location'.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Header Field</em>' containment reference.
 	 * @see #setHeaderField(org.hl7.fhir.String)
@@ -254,7 +254,7 @@ public interface TestScriptAssert extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Navigation Links.
+	 * Whether or not the test execution performs validation on the bundle navigation links.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Navigation Links</em>' containment reference.
 	 * @see #setNavigationLinks(org.hl7.fhir.Boolean)
@@ -384,7 +384,7 @@ public interface TestScriptAssert extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * HTTP Response Code.
+	 * The value of the HTTP response code to be tested.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Response Code</em>' containment reference.
 	 * @see #setResponseCode(org.hl7.fhir.String)
@@ -488,7 +488,7 @@ public interface TestScriptAssert extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Warning Only.
+	 * Whether or not the test execution will produce a warning only on error for this assert.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Warning Only</em>' containment reference.
 	 * @see #setWarningOnly(org.hl7.fhir.Boolean)

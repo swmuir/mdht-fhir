@@ -21,6 +21,16 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum AppointmentStatusList implements Enumerator {
 	/**
+	 * The '<em><b>Proposed</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #PROPOSED_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	PROPOSED(0, "proposed", "proposed"),
+
+	/**
 	 * The '<em><b>Pending</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -28,7 +38,7 @@ public enum AppointmentStatusList implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	PENDING(0, "pending", "pending"),
+	PENDING(1, "pending", "pending"),
 
 	/**
 	 * The '<em><b>Booked</b></em>' literal object.
@@ -38,7 +48,7 @@ public enum AppointmentStatusList implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	BOOKED(1, "booked", "booked"),
+	BOOKED(2, "booked", "booked"),
 
 	/**
 	 * The '<em><b>Arrived</b></em>' literal object.
@@ -48,7 +58,7 @@ public enum AppointmentStatusList implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	ARRIVED(2, "arrived", "arrived"),
+	ARRIVED(3, "arrived", "arrived"),
 
 	/**
 	 * The '<em><b>Fulfilled</b></em>' literal object.
@@ -58,7 +68,7 @@ public enum AppointmentStatusList implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	FULFILLED(3, "fulfilled", "fulfilled"),
+	FULFILLED(4, "fulfilled", "fulfilled"),
 
 	/**
 	 * The '<em><b>Cancelled</b></em>' literal object.
@@ -68,7 +78,7 @@ public enum AppointmentStatusList implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	CANCELLED(4, "cancelled", "cancelled"),
+	CANCELLED(5, "cancelled", "cancelled"),
 
 	/**
 	 * The '<em><b>Noshow</b></em>' literal object.
@@ -78,91 +88,105 @@ public enum AppointmentStatusList implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	NOSHOW(5, "noshow", "noshow");
+	NOSHOW(6, "noshow", "noshow");
+
+	/**
+	 * The '<em><b>Proposed</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * None of the participant(s) have finalized their acceptance of the appointment request, and the start/end time may not be set yet.
+	 * <!-- end-model-doc -->
+	 * @see #PROPOSED
+	 * @model name="proposed"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int PROPOSED_VALUE = 0;
 
 	/**
 	 * The '<em><b>Pending</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Some or all of the participant(s) have not finalized their acceptance of the appointment request
+	 * Some or all of the participant(s) have not finalized their acceptance of the appointment request.
 	 * <!-- end-model-doc -->
 	 * @see #PENDING
 	 * @model name="pending"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int PENDING_VALUE = 0;
+	public static final int PENDING_VALUE = 1;
 
 	/**
 	 * The '<em><b>Booked</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * All participant(s) have been considered and the appointment is confirmed to go ahead at the date/times specified
+	 * All participant(s) have been considered and the appointment is confirmed to go ahead at the date/times specified.
 	 * <!-- end-model-doc -->
 	 * @see #BOOKED
 	 * @model name="booked"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int BOOKED_VALUE = 1;
+	public static final int BOOKED_VALUE = 2;
 
 	/**
 	 * The '<em><b>Arrived</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Some of the patients have arrived
+	 * Some of the patients have arrived.
 	 * <!-- end-model-doc -->
 	 * @see #ARRIVED
 	 * @model name="arrived"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int ARRIVED_VALUE = 2;
+	public static final int ARRIVED_VALUE = 3;
 
 	/**
 	 * The '<em><b>Fulfilled</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * This appointment has completed and may have resulted in an encounter
+	 * This appointment has completed and may have resulted in an encounter.
 	 * <!-- end-model-doc -->
 	 * @see #FULFILLED
 	 * @model name="fulfilled"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int FULFILLED_VALUE = 3;
+	public static final int FULFILLED_VALUE = 4;
 
 	/**
 	 * The '<em><b>Cancelled</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The appointment has been cancelled
+	 * The appointment has been cancelled.
 	 * <!-- end-model-doc -->
 	 * @see #CANCELLED
 	 * @model name="cancelled"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int CANCELLED_VALUE = 4;
+	public static final int CANCELLED_VALUE = 5;
 
 	/**
 	 * The '<em><b>Noshow</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Some or all of the participant(s) have not/did not appear for the appointment (usually the patient)
+	 * Some or all of the participant(s) have not/did not appear for the appointment (usually the patient).
 	 * <!-- end-model-doc -->
 	 * @see #NOSHOW
 	 * @model name="noshow"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int NOSHOW_VALUE = 5;
+	public static final int NOSHOW_VALUE = 6;
 
 	/**
 	 * An array of all the '<em><b>Appointment Status List</b></em>' enumerators.
@@ -172,6 +196,7 @@ public enum AppointmentStatusList implements Enumerator {
 	 */
 	private static final AppointmentStatusList[] VALUES_ARRAY =
 		new AppointmentStatusList[] {
+			PROPOSED,
 			PENDING,
 			BOOKED,
 			ARRIVED,
@@ -234,6 +259,7 @@ public enum AppointmentStatusList implements Enumerator {
 	 */
 	public static AppointmentStatusList get(int value) {
 		switch (value) {
+			case PROPOSED_VALUE: return PROPOSED;
 			case PENDING_VALUE: return PENDING;
 			case BOOKED_VALUE: return BOOKED;
 			case ARRIVED_VALUE: return ARRIVED;

@@ -36,6 +36,7 @@ import org.hl7.fhir.RiskAssessmentPrediction;
  *   <li>{@link org.hl7.fhir.impl.RiskAssessmentImpl#getSubject <em>Subject</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.RiskAssessmentImpl#getDate <em>Date</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.RiskAssessmentImpl#getCondition <em>Condition</em>}</li>
+ *   <li>{@link org.hl7.fhir.impl.RiskAssessmentImpl#getEncounter <em>Encounter</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.RiskAssessmentImpl#getPerformer <em>Performer</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.RiskAssessmentImpl#getIdentifier <em>Identifier</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.RiskAssessmentImpl#getMethod <em>Method</em>}</li>
@@ -76,6 +77,16 @@ public class RiskAssessmentImpl extends DomainResourceImpl implements RiskAssess
 	 * @ordered
 	 */
 	protected Reference condition;
+
+	/**
+	 * The cached value of the '{@link #getEncounter() <em>Encounter</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEncounter()
+	 * @generated
+	 * @ordered
+	 */
+	protected Reference encounter;
 
 	/**
 	 * The cached value of the '{@link #getPerformer() <em>Performer</em>}' containment reference.
@@ -290,6 +301,49 @@ public class RiskAssessmentImpl extends DomainResourceImpl implements RiskAssess
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Reference getEncounter() {
+		return encounter;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetEncounter(Reference newEncounter, NotificationChain msgs) {
+		Reference oldEncounter = encounter;
+		encounter = newEncounter;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.RISK_ASSESSMENT__ENCOUNTER, oldEncounter, newEncounter);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setEncounter(Reference newEncounter) {
+		if (newEncounter != encounter) {
+			NotificationChain msgs = null;
+			if (encounter != null)
+				msgs = ((InternalEObject)encounter).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.RISK_ASSESSMENT__ENCOUNTER, null, msgs);
+			if (newEncounter != null)
+				msgs = ((InternalEObject)newEncounter).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.RISK_ASSESSMENT__ENCOUNTER, null, msgs);
+			msgs = basicSetEncounter(newEncounter, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.RISK_ASSESSMENT__ENCOUNTER, newEncounter, newEncounter));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Reference getPerformer() {
 		return performer;
 	}
@@ -495,6 +549,8 @@ public class RiskAssessmentImpl extends DomainResourceImpl implements RiskAssess
 				return basicSetDate(null, msgs);
 			case FhirPackage.RISK_ASSESSMENT__CONDITION:
 				return basicSetCondition(null, msgs);
+			case FhirPackage.RISK_ASSESSMENT__ENCOUNTER:
+				return basicSetEncounter(null, msgs);
 			case FhirPackage.RISK_ASSESSMENT__PERFORMER:
 				return basicSetPerformer(null, msgs);
 			case FhirPackage.RISK_ASSESSMENT__IDENTIFIER:
@@ -525,6 +581,8 @@ public class RiskAssessmentImpl extends DomainResourceImpl implements RiskAssess
 				return getDate();
 			case FhirPackage.RISK_ASSESSMENT__CONDITION:
 				return getCondition();
+			case FhirPackage.RISK_ASSESSMENT__ENCOUNTER:
+				return getEncounter();
 			case FhirPackage.RISK_ASSESSMENT__PERFORMER:
 				return getPerformer();
 			case FhirPackage.RISK_ASSESSMENT__IDENTIFIER:
@@ -558,6 +616,9 @@ public class RiskAssessmentImpl extends DomainResourceImpl implements RiskAssess
 				return;
 			case FhirPackage.RISK_ASSESSMENT__CONDITION:
 				setCondition((Reference)newValue);
+				return;
+			case FhirPackage.RISK_ASSESSMENT__ENCOUNTER:
+				setEncounter((Reference)newValue);
 				return;
 			case FhirPackage.RISK_ASSESSMENT__PERFORMER:
 				setPerformer((Reference)newValue);
@@ -600,6 +661,9 @@ public class RiskAssessmentImpl extends DomainResourceImpl implements RiskAssess
 			case FhirPackage.RISK_ASSESSMENT__CONDITION:
 				setCondition((Reference)null);
 				return;
+			case FhirPackage.RISK_ASSESSMENT__ENCOUNTER:
+				setEncounter((Reference)null);
+				return;
 			case FhirPackage.RISK_ASSESSMENT__PERFORMER:
 				setPerformer((Reference)null);
 				return;
@@ -636,6 +700,8 @@ public class RiskAssessmentImpl extends DomainResourceImpl implements RiskAssess
 				return date != null;
 			case FhirPackage.RISK_ASSESSMENT__CONDITION:
 				return condition != null;
+			case FhirPackage.RISK_ASSESSMENT__ENCOUNTER:
+				return encounter != null;
 			case FhirPackage.RISK_ASSESSMENT__PERFORMER:
 				return performer != null;
 			case FhirPackage.RISK_ASSESSMENT__IDENTIFIER:

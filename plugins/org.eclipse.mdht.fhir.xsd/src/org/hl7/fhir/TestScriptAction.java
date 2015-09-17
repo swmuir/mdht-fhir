@@ -30,7 +30,7 @@ public interface TestScriptAction extends BackboneElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * An operation.
+	 * The operation to perform.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Operation</em>' containment reference.
 	 * @see #setOperation(TestScriptOperation)

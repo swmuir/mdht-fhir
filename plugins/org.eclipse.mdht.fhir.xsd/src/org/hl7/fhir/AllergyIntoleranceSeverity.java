@@ -9,7 +9,7 @@ package org.hl7.fhir;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Clinical assessment of the severity of a reaction event as a whole, potentially considering multiple different manifestations
+ * Clinical assessment of the severity of a reaction event as a whole, potentially considering multiple different manifestations.
  * If the element is present, it must have either a @value, an @id, or extensions
  * <!-- end-model-doc -->
  *

@@ -27,7 +27,7 @@
   POSSIBILITY OF SUCH DAMAGE.
   
 
-  Generated on Thu, Aug 20, 2015 14:13+0000 for FHIR v0.5.0 
+  Generated on Wed, Sep 16, 2015 13:28+0000 for FHIR v1.0.0 
 
   Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources
   valid. Implementers will still need to be familiar with the content of the specification and with
@@ -185,7 +185,7 @@
   <xs:complexType name="instant">
     <xs:annotation>
       <xs:documentation xml:lang="en">An instant in time - known at least to the second</xs:documentation>
-      <xs:documentation xml:lang="en">Note: This is intended for precisely observed times, typically system logs etc, and not human-reported times - for them, see date and dateTime below. Time zone is always required</xs:documentation>
+      <xs:documentation xml:lang="en">Note: This is intended for precisely observed times, typically system logs etc., and not human-reported times - for them, see date and dateTime below. Time zone is always required</xs:documentation>
       <xs:documentation xml:lang="en">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
@@ -346,9 +346,9 @@
       <xs:element ref="Condition"/>
       <xs:element ref="Conformance"/>
       <xs:element ref="Contract"/>
-      <xs:element ref="Contraindication"/>
       <xs:element ref="Coverage"/>
       <xs:element ref="DataElement"/>
+      <xs:element ref="DetectedIssue"/>
       <xs:element ref="Device"/>
       <xs:element ref="DeviceComponent"/>
       <xs:element ref="DeviceMetric"/>
@@ -812,12 +812,12 @@
           </xs:element>
           <xs:element name="comparator" type="QuantityComparator" minOccurs="0" maxOccurs="1">
             <xs:annotation>
-              <xs:documentation xml:lang="en">How the value should be understood and represented - whether the actual value is greater or less than the stated value due to measurement issues. E.g. if the comparator is &quot;&lt;&quot; , then the real value is &lt; stated value.</xs:documentation>
+              <xs:documentation xml:lang="en">How the value should be understood and represented - whether the actual value is greater or less than the stated value due to measurement issues; e.g. if the comparator is &quot;&lt;&quot; , then the real value is &lt; stated value.</xs:documentation>
             </xs:annotation>
           </xs:element>
           <xs:element name="unit" type="string" minOccurs="0" maxOccurs="1">
             <xs:annotation>
-              <xs:documentation xml:lang="en">A human-readable form of the units.</xs:documentation>
+              <xs:documentation xml:lang="en">A human-readable form of the unit.</xs:documentation>
             </xs:annotation>
           </xs:element>
           <xs:element name="system" type="uri" minOccurs="0" maxOccurs="1">
@@ -827,7 +827,7 @@
           </xs:element>
           <xs:element name="code" type="code" minOccurs="0" maxOccurs="1">
             <xs:annotation>
-              <xs:documentation xml:lang="en">A computer processable form of the units in some unit representation system.</xs:documentation>
+              <xs:documentation xml:lang="en">A computer processable form of the unit in some unit representation system.</xs:documentation>
             </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -1054,12 +1054,12 @@
           </xs:element>
           <xs:element name="comparator" type="QuantityComparator" minOccurs="0" maxOccurs="1">
             <xs:annotation>
-              <xs:documentation xml:lang="en">How the value should be understood and represented - whether the actual value is greater or less than the stated value due to measurement issues. E.g. if the comparator is &quot;&lt;&quot; , then the real value is &lt; stated value.</xs:documentation>
+              <xs:documentation xml:lang="en">How the value should be understood and represented - whether the actual value is greater or less than the stated value due to measurement issues; e.g. if the comparator is &quot;&lt;&quot; , then the real value is &lt; stated value.</xs:documentation>
             </xs:annotation>
           </xs:element>
           <xs:element name="unit" type="string" minOccurs="0" maxOccurs="1">
             <xs:annotation>
-              <xs:documentation xml:lang="en">A human-readable form of the units.</xs:documentation>
+              <xs:documentation xml:lang="en">A human-readable form of the unit.</xs:documentation>
             </xs:annotation>
           </xs:element>
           <xs:element name="system" type="uri" minOccurs="0" maxOccurs="1">
@@ -1069,7 +1069,7 @@
           </xs:element>
           <xs:element name="code" type="code" minOccurs="0" maxOccurs="1">
             <xs:annotation>
-              <xs:documentation xml:lang="en">A computer processable form of the units in some unit representation system.</xs:documentation>
+              <xs:documentation xml:lang="en">A computer processable form of the unit in some unit representation system.</xs:documentation>
             </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -1098,7 +1098,7 @@
           </xs:element>
           <xs:element name="unit" type="string" minOccurs="0" maxOccurs="1">
             <xs:annotation>
-              <xs:documentation xml:lang="en">A human-readable form of the units.</xs:documentation>
+              <xs:documentation xml:lang="en">A human-readable form of the unit.</xs:documentation>
             </xs:annotation>
           </xs:element>
           <xs:element name="system" type="uri" minOccurs="0" maxOccurs="1">
@@ -1108,7 +1108,7 @@
           </xs:element>
           <xs:element name="code" type="code" minOccurs="0" maxOccurs="1">
             <xs:annotation>
-              <xs:documentation xml:lang="en">A computer processable form of the units in some unit representation system.</xs:documentation>
+              <xs:documentation xml:lang="en">A computer processable form of the unit in some unit representation system.</xs:documentation>
             </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -1132,12 +1132,12 @@
           </xs:element>
           <xs:element name="comparator" type="QuantityComparator" minOccurs="0" maxOccurs="1">
             <xs:annotation>
-              <xs:documentation xml:lang="en">How the value should be understood and represented - whether the actual value is greater or less than the stated value due to measurement issues. E.g. if the comparator is &quot;&lt;&quot; , then the real value is &lt; stated value.</xs:documentation>
+              <xs:documentation xml:lang="en">How the value should be understood and represented - whether the actual value is greater or less than the stated value due to measurement issues; e.g. if the comparator is &quot;&lt;&quot; , then the real value is &lt; stated value.</xs:documentation>
             </xs:annotation>
           </xs:element>
           <xs:element name="unit" type="string" minOccurs="0" maxOccurs="1">
             <xs:annotation>
-              <xs:documentation xml:lang="en">A human-readable form of the units.</xs:documentation>
+              <xs:documentation xml:lang="en">A human-readable form of the unit.</xs:documentation>
             </xs:annotation>
           </xs:element>
           <xs:element name="system" type="uri" minOccurs="0" maxOccurs="1">
@@ -1147,7 +1147,7 @@
           </xs:element>
           <xs:element name="code" type="code" minOccurs="0" maxOccurs="1">
             <xs:annotation>
-              <xs:documentation xml:lang="en">A computer processable form of the units in some unit representation system.</xs:documentation>
+              <xs:documentation xml:lang="en">A computer processable form of the unit in some unit representation system.</xs:documentation>
             </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -1171,12 +1171,12 @@
           </xs:element>
           <xs:element name="comparator" type="QuantityComparator" minOccurs="0" maxOccurs="1">
             <xs:annotation>
-              <xs:documentation xml:lang="en">How the value should be understood and represented - whether the actual value is greater or less than the stated value due to measurement issues. E.g. if the comparator is &quot;&lt;&quot; , then the real value is &lt; stated value.</xs:documentation>
+              <xs:documentation xml:lang="en">How the value should be understood and represented - whether the actual value is greater or less than the stated value due to measurement issues; e.g. if the comparator is &quot;&lt;&quot; , then the real value is &lt; stated value.</xs:documentation>
             </xs:annotation>
           </xs:element>
           <xs:element name="unit" type="string" minOccurs="0" maxOccurs="1">
             <xs:annotation>
-              <xs:documentation xml:lang="en">A human-readable form of the units.</xs:documentation>
+              <xs:documentation xml:lang="en">A human-readable form of the unit.</xs:documentation>
             </xs:annotation>
           </xs:element>
           <xs:element name="system" type="uri" minOccurs="0" maxOccurs="1">
@@ -1186,7 +1186,7 @@
           </xs:element>
           <xs:element name="code" type="code" minOccurs="0" maxOccurs="1">
             <xs:annotation>
-              <xs:documentation xml:lang="en">A computer processable form of the units in some unit representation system.</xs:documentation>
+              <xs:documentation xml:lang="en">A computer processable form of the unit in some unit representation system.</xs:documentation>
             </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -1210,12 +1210,12 @@
           </xs:element>
           <xs:element name="comparator" type="QuantityComparator" minOccurs="0" maxOccurs="1">
             <xs:annotation>
-              <xs:documentation xml:lang="en">How the value should be understood and represented - whether the actual value is greater or less than the stated value due to measurement issues. E.g. if the comparator is &quot;&lt;&quot; , then the real value is &lt; stated value.</xs:documentation>
+              <xs:documentation xml:lang="en">How the value should be understood and represented - whether the actual value is greater or less than the stated value due to measurement issues; e.g. if the comparator is &quot;&lt;&quot; , then the real value is &lt; stated value.</xs:documentation>
             </xs:annotation>
           </xs:element>
           <xs:element name="unit" type="string" minOccurs="0" maxOccurs="1">
             <xs:annotation>
-              <xs:documentation xml:lang="en">A human-readable form of the units.</xs:documentation>
+              <xs:documentation xml:lang="en">A human-readable form of the unit.</xs:documentation>
             </xs:annotation>
           </xs:element>
           <xs:element name="system" type="uri" minOccurs="0" maxOccurs="1">
@@ -1225,7 +1225,7 @@
           </xs:element>
           <xs:element name="code" type="code" minOccurs="0" maxOccurs="1">
             <xs:annotation>
-              <xs:documentation xml:lang="en">A computer processable form of the units in some unit representation system.</xs:documentation>
+              <xs:documentation xml:lang="en">A computer processable form of the unit in some unit representation system.</xs:documentation>
             </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -1249,12 +1249,12 @@
           </xs:element>
           <xs:element name="comparator" type="QuantityComparator" minOccurs="0" maxOccurs="1">
             <xs:annotation>
-              <xs:documentation xml:lang="en">How the value should be understood and represented - whether the actual value is greater or less than the stated value due to measurement issues. E.g. if the comparator is &quot;&lt;&quot; , then the real value is &lt; stated value.</xs:documentation>
+              <xs:documentation xml:lang="en">How the value should be understood and represented - whether the actual value is greater or less than the stated value due to measurement issues; e.g. if the comparator is &quot;&lt;&quot; , then the real value is &lt; stated value.</xs:documentation>
             </xs:annotation>
           </xs:element>
           <xs:element name="unit" type="string" minOccurs="0" maxOccurs="1">
             <xs:annotation>
-              <xs:documentation xml:lang="en">A human-readable form of the units.</xs:documentation>
+              <xs:documentation xml:lang="en">A human-readable form of the unit.</xs:documentation>
             </xs:annotation>
           </xs:element>
           <xs:element name="system" type="uri" minOccurs="0" maxOccurs="1">
@@ -1264,7 +1264,7 @@
           </xs:element>
           <xs:element name="code" type="code" minOccurs="0" maxOccurs="1">
             <xs:annotation>
-              <xs:documentation xml:lang="en">A computer processable form of the units in some unit representation system.</xs:documentation>
+              <xs:documentation xml:lang="en">A computer processable form of the unit in some unit representation system.</xs:documentation>
             </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -1496,7 +1496,7 @@
         <xs:sequence>
           <xs:element name="versionId" type="id" minOccurs="0" maxOccurs="1">
             <xs:annotation>
-              <xs:documentation xml:lang="en">The version specific identifier, as it appears in the version portion of the url. This values changes when the resource is created, updated, or deleted.</xs:documentation>
+              <xs:documentation xml:lang="en">The version specific identifier, as it appears in the version portion of the URL. This values changes when the resource is created, updated, or deleted.</xs:documentation>
             </xs:annotation>
           </xs:element>
           <xs:element name="lastUpdated" type="instant" minOccurs="0" maxOccurs="1">
@@ -1589,22 +1589,22 @@
     <xs:restriction base="xs:string">
       <xs:enumeration value="home">
         <xs:annotation>
-          <xs:documentation xml:lang="en">A communication address at a home</xs:documentation>
+          <xs:documentation xml:lang="en">A communication address at a home.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="work">
         <xs:annotation>
-          <xs:documentation xml:lang="en">An office address. First choice for business related contacts during business hours</xs:documentation>
+          <xs:documentation xml:lang="en">An office address. First choice for business related contacts during business hours.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="temp">
         <xs:annotation>
-          <xs:documentation xml:lang="en">A temporary address. The period can provide more detailed information</xs:documentation>
+          <xs:documentation xml:lang="en">A temporary address. The period can provide more detailed information.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="old">
         <xs:annotation>
-          <xs:documentation xml:lang="en">This address is no longer in use (or was never correct, but retained for records)</xs:documentation>
+          <xs:documentation xml:lang="en">This address is no longer in use (or was never correct, but retained for records).</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
@@ -1624,17 +1624,17 @@
     <xs:restriction base="xs:string">
       <xs:enumeration value="postal">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Mailing addresses - PO Boxes and care-of addresses</xs:documentation>
+          <xs:documentation xml:lang="en">Mailing addresses - PO Boxes and care-of addresses.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="physical">
         <xs:annotation>
-          <xs:documentation xml:lang="en">A physical address that can be visited</xs:documentation>
+          <xs:documentation xml:lang="en">A physical address that can be visited.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="both">
         <xs:annotation>
-          <xs:documentation xml:lang="en">An address that is both physical and postal</xs:documentation>
+          <xs:documentation xml:lang="en">An address that is both physical and postal.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
@@ -1670,7 +1670,7 @@
           </xs:element>
           <xs:element name="code" type="CodeableConcept" minOccurs="0" maxOccurs="1">
             <xs:annotation>
-              <xs:documentation xml:lang="en">A code for the timing pattern. Some codes such as BID are uniquitious, but many instutions define their own additional codes.</xs:documentation>
+              <xs:documentation xml:lang="en">A code for the timing pattern. Some codes such as BID are ubiquitious, but many institutions define their own additional codes.</xs:documentation>
             </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -1725,7 +1725,7 @@
           </xs:element>
           <xs:element name="period" type="decimal" minOccurs="0" maxOccurs="1">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Indicates the duration of time over which repetitions are to occur.  E.g. to express &quot;3 times per day&quot;, 3 would be the frequency and &quot;1 day&quot; would be the period.</xs:documentation>
+              <xs:documentation xml:lang="en">Indicates the duration of time over which repetitions are to occur; e.g. to express &quot;3 times per day&quot;, 3 would be the frequency and &quot;1 day&quot; would be the period.</xs:documentation>
             </xs:annotation>
           </xs:element>
           <xs:element name="periodMax" type="decimal" minOccurs="0" maxOccurs="1">
@@ -1917,12 +1917,12 @@
           </xs:element>
           <xs:element name="slicing" type="ElementDefinition.Slicing" minOccurs="0" maxOccurs="1">
             <xs:annotation>
-              <xs:documentation xml:lang="en">Indicates that the element is sliced into a set of alternative definitions (i.e. in a structure definition, there are multiple different constraints on a single element in the base resource). The set of slices is any elements that come after this in the element sequence that have the same path, until a shorter path occurs (the shorter path terminates the set).</xs:documentation>
+              <xs:documentation xml:lang="en">Indicates that the element is sliced into a set of alternative definitions (i.e. in a structure definition, there are multiple different constraints on a single element in the base resource). Slicing can be used in any resource that has cardinality ..* on the base resource, or any resource with a choice of types. The set of slices is any elements that come after this in the element sequence that have the same path, until a shorter path occurs (the shorter path terminates the set).</xs:documentation>
             </xs:annotation>
           </xs:element>
           <xs:element name="short" type="string" minOccurs="0" maxOccurs="1">
             <xs:annotation>
-              <xs:documentation xml:lang="en">A concise description of what this element means (e.g. for use in auto-generated summaries).</xs:documentation>
+              <xs:documentation xml:lang="en">A concise description of what this element means (e.g. for use in autogenerated summaries).</xs:documentation>
             </xs:annotation>
           </xs:element>
           <xs:element name="definition" type="markdown" minOccurs="0" maxOccurs="1">
@@ -2436,14 +2436,14 @@
     <xs:restriction base="xs:string">
       <xs:enumeration value="xmlAttr">
         <xs:annotation>
-          <xs:documentation xml:lang="en">In XML, this property is represented as an attribute not an element</xs:documentation>
+          <xs:documentation xml:lang="en">In XML, this property is represented as an attribute not an element.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="PropertyRepresentation">
     <xs:annotation>
-      <xs:documentation xml:lang="en">How a property is represented on the wire</xs:documentation>
+      <xs:documentation xml:lang="en">How a property is represented on the wire.</xs:documentation>
       <xs:documentation xml:lang="en">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
@@ -2456,7 +2456,7 @@
     <xs:restriction base="xs:string">
       <xs:enumeration value="error">
         <xs:annotation>
-          <xs:documentation xml:lang="en">If the constraint is violated, the resource is not conformant</xs:documentation>
+          <xs:documentation xml:lang="en">If the constraint is violated, the resource is not conformant.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="warning">
@@ -2481,24 +2481,24 @@
     <xs:restriction base="xs:string">
       <xs:enumeration value="contained">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The reference is a local reference to a contained resource</xs:documentation>
+          <xs:documentation xml:lang="en">The reference is a local reference to a contained resource.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="referenced">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The reference to a resource that has to be resolved externally to the resource that includes the reference</xs:documentation>
+          <xs:documentation xml:lang="en">The reference to a resource that has to be resolved externally to the resource that includes the reference.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="bundled">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The resource the reference points to will be found in the same bundle as the resource that includes the reference</xs:documentation>
+          <xs:documentation xml:lang="en">The resource the reference points to will be found in the same bundle as the resource that includes the reference.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="AggregationMode">
     <xs:annotation>
-      <xs:documentation xml:lang="en">How resource references can be aggregated</xs:documentation>
+      <xs:documentation xml:lang="en">How resource references can be aggregated.</xs:documentation>
       <xs:documentation xml:lang="en">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
@@ -2511,24 +2511,24 @@
     <xs:restriction base="xs:string">
       <xs:enumeration value="closed">
         <xs:annotation>
-          <xs:documentation xml:lang="en">No additional content is allowed other than that described by the slices in this profile</xs:documentation>
+          <xs:documentation xml:lang="en">No additional content is allowed other than that described by the slices in this profile.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="open">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Additional content is allowed anywhere in the list</xs:documentation>
+          <xs:documentation xml:lang="en">Additional content is allowed anywhere in the list.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="openAtEnd">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Additional content is allowed, but only at the end of the list. Note that using this requires that the slices be ordered, which makes it hard to share uses. This should only be done where absolutely required</xs:documentation>
+          <xs:documentation xml:lang="en">Additional content is allowed, but only at the end of the list. Note that using this requires that the slices be ordered, which makes it hard to share uses. This should only be done where absolutely required.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="SlicingRules">
     <xs:annotation>
-      <xs:documentation xml:lang="en">How slices are interpreted when evaluating an instance</xs:documentation>
+      <xs:documentation xml:lang="en">How slices are interpreted when evaluating an instance.</xs:documentation>
       <xs:documentation xml:lang="en">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
@@ -2541,7 +2541,7 @@
     <xs:restriction base="xs:string">
       <xs:enumeration value="required">
         <xs:annotation>
-          <xs:documentation xml:lang="en">To be conformant, instances of this element SHALL include a code from the specified value set</xs:documentation>
+          <xs:documentation xml:lang="en">To be conformant, instances of this element SHALL include a code from the specified value set.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="extensible">
@@ -2551,19 +2551,19 @@
       </xs:enumeration>
       <xs:enumeration value="preferred">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Instances are encouraged to draw from the specified codes for interoperability purposes but are not required to do so to be considered conformant</xs:documentation>
+          <xs:documentation xml:lang="en">Instances are encouraged to draw from the specified codes for interoperability purposes but are not required to do so to be considered conformant.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="example">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Instances are not expected or even encouraged to draw from the specified value set.  The value set merely provides examples of the types of concepts intended to be included</xs:documentation>
+          <xs:documentation xml:lang="en">Instances are not expected or even encouraged to draw from the specified value set.  The value set merely provides examples of the types of concepts intended to be included.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="BindingStrength">
     <xs:annotation>
-      <xs:documentation xml:lang="en">Indication of the degree of conformance expectations associated with a binding</xs:documentation>
+      <xs:documentation xml:lang="en">Indication of the degree of conformance expectations associated with a binding.</xs:documentation>
       <xs:documentation xml:lang="en">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>
     </xs:annotation>
     <xs:complexContent>
@@ -2603,93 +2603,6 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="Parameters">
-    <xs:annotation>
-      <xs:documentation xml:lang="en">This special resource type is used to represent [operation](operations.html] request and response. It has no other use, and there is no RESTful end=point associated with it.</xs:documentation>
-    </xs:annotation>
-    <xs:complexContent>
-      <xs:extension base="Resource">
-        <xs:sequence>
-          <xs:element name="parameter" type="Parameters.Parameter" minOccurs="0" maxOccurs="unbounded">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">A parameter passed to or received from the operation.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="Parameters.Parameter">
-    <xs:annotation>
-      <xs:documentation xml:lang="en">This special resource type is used to represent [operation](operations.html] request and response. It has no other use, and there is no RESTful end=point associated with it.</xs:documentation>
-      <xs:documentation xml:lang="en">If the element is present, it must have a value for at least one of the defined elements, an @id referenced from the Narrative, or extensions</xs:documentation>
-    </xs:annotation>
-    <xs:complexContent>
-      <xs:extension base="Element">
-        <xs:sequence>
-          <xs:element name="name" type="string" minOccurs="1" maxOccurs="1">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">The name of the parameter (reference to the operation definition).</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-        <xs:choice minOccurs="0" maxOccurs="1">
-           <xs:annotation>
-             <xs:documentation xml:lang="en">If the parameter is a data type.</xs:documentation>
-           </xs:annotation>
-           <xs:element name="valueBoolean" type="boolean"/>
-           <xs:element name="valueInteger" type="integer"/>
-           <xs:element name="valueDecimal" type="decimal"/>
-           <xs:element name="valueBase64Binary" type="base64Binary"/>
-           <xs:element name="valueInstant" type="instant"/>
-           <xs:element name="valueString" type="string"/>
-           <xs:element name="valueUri" type="uri"/>
-           <xs:element name="valueDate" type="date"/>
-           <xs:element name="valueDateTime" type="dateTime"/>
-           <xs:element name="valueTime" type="time"/>
-           <xs:element name="valueCode" type="code"/>
-           <xs:element name="valueOid" type="oid"/>
-           <xs:element name="valueUuid" type="uuid"/>
-           <xs:element name="valueId" type="id"/>
-           <xs:element name="valueUnsignedInt" type="unsignedInt"/>
-           <xs:element name="valuePositiveInt" type="positiveInt"/>
-           <xs:element name="valueMarkdown" type="markdown"/>
-           <xs:element name="valueAnnotation" type="Annotation"/>
-           <xs:element name="valueAttachment" type="Attachment"/>
-           <xs:element name="valueIdentifier" type="Identifier"/>
-           <xs:element name="valueCodeableConcept" type="CodeableConcept"/>
-           <xs:element name="valueCoding" type="Coding"/>
-           <xs:element name="valueQuantity" type="Quantity"/>
-           <xs:element name="valueRange" type="Range"/>
-           <xs:element name="valuePeriod" type="Period"/>
-           <xs:element name="valueRatio" type="Ratio"/>
-           <xs:element name="valueReference" type="Reference"/>
-           <xs:element name="valueSampledData" type="SampledData"/>
-           <xs:element name="valueSignature" type="Signature"/>
-           <xs:element name="valueHumanName" type="HumanName"/>
-           <xs:element name="valueAddress" type="Address"/>
-           <xs:element name="valueContactPoint" type="ContactPoint"/>
-           <xs:element name="valueTiming" type="Timing"/>
-           <xs:element name="valueMeta" type="Meta"/>
-         </xs:choice>
-          <xs:element name="resource" type="ResourceContainer" minOccurs="0" maxOccurs="1">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">If the parameter is a whole resource.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="part" type="Parameters.Parameter" minOccurs="0" maxOccurs="unbounded">
-            <xs:annotation>
-              <xs:documentation xml:lang="en">A named part of a parameter. In many implementation context, a set of named parts is known as a &quot;Tuple&quot;.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="Parameters" type="Parameters">
-    <xs:annotation>
-      <xs:documentation xml:lang="en">This special resource type is used to represent [operation](operations.html] request and response. It has no other use, and there is no RESTful end=point associated with it.</xs:documentation>
-    </xs:annotation>
-  </xs:element>
   <xs:complexType name="Resource">
     <xs:annotation>
       <xs:documentation xml:lang="en">Base Resource for everything.</xs:documentation>
@@ -2697,7 +2610,7 @@
         <xs:sequence>
           <xs:element name="id" type="id" minOccurs="0" maxOccurs="1">
             <xs:annotation>
-              <xs:documentation xml:lang="en">The logical id of the resource, as used in the url for the resource. Once assigned, this value never changes.</xs:documentation>
+              <xs:documentation xml:lang="en">The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes.</xs:documentation>
             </xs:annotation>
           </xs:element>
           <xs:element name="meta" type="Meta" minOccurs="0" maxOccurs="1">
@@ -2721,21 +2634,21 @@
     <xs:restriction base="xs:string">
       <xs:enumeration value="draft">
         <xs:annotation>
-          <xs:documentation xml:lang="en">This resource is still under development</xs:documentation>
+          <xs:documentation xml:lang="en">This resource is still under development.</xs:documentation>
           <xs:documentation xml:lang="ru">черновик</xs:documentation>
           <xs:documentation xml:lang="nl">ontwerp</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="active">
         <xs:annotation>
-          <xs:documentation xml:lang="en">This resource is ready for normal use</xs:documentation>
+          <xs:documentation xml:lang="en">This resource is ready for normal use.</xs:documentation>
           <xs:documentation xml:lang="ru">активный</xs:documentation>
           <xs:documentation xml:lang="nl">actief</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="retired">
         <xs:annotation>
-          <xs:documentation xml:lang="en">This resource has been withdrawn or superseded and should no longer be used</xs:documentation>
+          <xs:documentation xml:lang="en">This resource has been withdrawn or superseded and should no longer be used.</xs:documentation>
           <xs:documentation xml:lang="ru">удалён</xs:documentation>
           <xs:documentation xml:lang="nl">verouderd</xs:documentation>
         </xs:annotation>
@@ -2757,42 +2670,42 @@
     <xs:restriction base="xs:string">
       <xs:enumeration value="number">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Search parameter SHALL be a number (a whole number, or a decimal)</xs:documentation>
+          <xs:documentation xml:lang="en">Search parameter SHALL be a number (a whole number, or a decimal).</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="date">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Search parameter is on a date/time. The date format is the standard XML format, though other formats may be supported</xs:documentation>
+          <xs:documentation xml:lang="en">Search parameter is on a date/time. The date format is the standard XML format, though other formats may be supported.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="string">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Search parameter is a simple string, like a name part. Search is case-insensitive and accent-insensitive. May match just the start of a string. String parameters may contain spaces</xs:documentation>
+          <xs:documentation xml:lang="en">Search parameter is a simple string, like a name part. Search is case-insensitive and accent-insensitive. May match just the start of a string. String parameters may contain spaces.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="token">
         <xs:annotation>
-          <xs:documentation xml:lang="en">Search parameter on a coded element or identifier. May be used to search through the text, displayname, code and code/codesystem (for codes) and label, system and key (for identifier). Its value is either a string or a pair of namespace and value, separated by a &quot;|&quot;, depending on the modifier used</xs:documentation>
+          <xs:documentation xml:lang="en">Search parameter on a coded element or identifier. May be used to search through the text, displayname, code and code/codesystem (for codes) and label, system and key (for identifier). Its value is either a string or a pair of namespace and value, separated by a &quot;|&quot;, depending on the modifier used.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="reference">
         <xs:annotation>
-          <xs:documentation xml:lang="en">A reference to another resource</xs:documentation>
+          <xs:documentation xml:lang="en">A reference to another resource.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="composite">
         <xs:annotation>
-          <xs:documentation xml:lang="en">A composite search parameter that combines a search on two values together</xs:documentation>
+          <xs:documentation xml:lang="en">A composite search parameter that combines a search on two values together.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="quantity">
         <xs:annotation>
-          <xs:documentation xml:lang="en">A search parameter that searches on a quantity</xs:documentation>
+          <xs:documentation xml:lang="en">A search parameter that searches on a quantity.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="uri">
         <xs:annotation>
-          <xs:documentation xml:lang="en">A search parameter that searches on a URI (RFC 3986)</xs:documentation>
+          <xs:documentation xml:lang="en">A search parameter that searches on a URI (RFC 3986).</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
@@ -2902,47 +2815,47 @@
     <xs:restriction base="xs:string">
       <xs:enumeration value="equivalent">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The definitions of the concepts mean the same thing (including when structural implications of meaning are considered) (i.e. extensionally identical)</xs:documentation>
+          <xs:documentation xml:lang="en">The definitions of the concepts mean the same thing (including when structural implications of meaning are considered) (i.e. extensionally identical).</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="equal">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The definitions of the concepts are exactly the same (i.e. only grammatical differences) and structural implications of meaning are identifical or irrelevant (i.e. intensionally identical)</xs:documentation>
+          <xs:documentation xml:lang="en">The definitions of the concepts are exactly the same (i.e. only grammatical differences) and structural implications of meaning are identical or irrelevant (i.e. intentionally identical).</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="wider">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The target mapping is wider in meaning than the source concept</xs:documentation>
+          <xs:documentation xml:lang="en">The target mapping is wider in meaning than the source concept.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="subsumes">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The target mapping subsumes the meaning of the source concept (e.g. the source is-a target)</xs:documentation>
+          <xs:documentation xml:lang="en">The target mapping subsumes the meaning of the source concept (e.g. the source is-a target).</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="narrower">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The target mapping is narrower in meaning that the source concept. The sense in which the mapping is narrower SHALL be described in the comments in this case, and applications should be careful when atempting to use these mappings operationally</xs:documentation>
+          <xs:documentation xml:lang="en">The target mapping is narrower in meaning that the source concept. The sense in which the mapping is narrower SHALL be described in the comments in this case, and applications should be careful when atempting to use these mappings operationally.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="specializes">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The target mapping specializes the meaning of the source concept (e.g. the target is-a source)</xs:documentation>
+          <xs:documentation xml:lang="en">The target mapping specializes the meaning of the source concept (e.g. the target is-a source).</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="inexact">
         <xs:annotation>
-          <xs:documentation xml:lang="en">The target mapping overlaps with the source concept, but both source and target cover additional meaning, or the definitions are imprecise and it is uncertain whether they have the same boundaries to their meaning. The sense in which the mapping is narrower SHALL be described in the comments in this case, and applications should be careful when atempting to use these mappings operationally</xs:documentation>
+          <xs:documentation xml:lang="en">The target mapping overlaps with the source concept, but both source and target cover additional meaning, or the definitions are imprecise and it is uncertain whether they have the same boundaries to their meaning. The sense in which the mapping is narrower SHALL be described in the comments in this case, and applications should be careful when atempting to use these mappings operationally.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="unmatched">
         <xs:annotation>
-          <xs:documentation xml:lang="en">There is no match for this concept in the destination concept system</xs:documentation>
+          <xs:documentation xml:lang="en">There is no match for this concept in the destination concept system.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="disjoint">
         <xs:annotation>
-          <xs:documentation xml:lang="en">This is an explicit assertion that there is no mapping between the source and target concept</xs:documentation>
+          <xs:documentation xml:lang="en">This is an explicit assertion that there is no mapping between the source and target concept.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
@@ -2962,17 +2875,17 @@
     <xs:restriction base="xs:string">
       <xs:enumeration value="current">
         <xs:annotation>
-          <xs:documentation xml:lang="en">This is the current reference for this document</xs:documentation>
+          <xs:documentation xml:lang="en">This is the current reference for this document.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="superseded">
         <xs:annotation>
-          <xs:documentation xml:lang="en">This reference has been superseded by another reference</xs:documentation>
+          <xs:documentation xml:lang="en">This reference has been superseded by another reference.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="entered-in-error">
         <xs:annotation>
-          <xs:documentation xml:lang="en">This reference was created in error</xs:documentation>
+          <xs:documentation xml:lang="en">This reference was created in error.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>

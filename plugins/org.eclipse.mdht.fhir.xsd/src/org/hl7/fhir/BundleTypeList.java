@@ -115,7 +115,7 @@ public enum BundleTypeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The bundle is a document. The first resource is a Composition
+	 * The bundle is a document. The first resource is a Composition.
 	 * <!-- end-model-doc -->
 	 * @see #DOCUMENT
 	 * @model name="document"
@@ -129,7 +129,7 @@ public enum BundleTypeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The bundle is a message. The first resource is a MessageHeader
+	 * The bundle is a message. The first resource is a MessageHeader.
 	 * <!-- end-model-doc -->
 	 * @see #MESSAGE
 	 * @model name="message"
@@ -143,7 +143,7 @@ public enum BundleTypeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The bundle is a transaction - intended to be processed by a server as an atomic commit
+	 * The bundle is a transaction - intended to be processed by a server as an atomic commit.
 	 * <!-- end-model-doc -->
 	 * @see #TRANSACTION
 	 * @model name="transaction"
@@ -157,7 +157,7 @@ public enum BundleTypeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The bundle is a transaction response. Because the response is a transaction response, the transactionhas succeeded, and all responses are error free
+	 * The bundle is a transaction response. Because the response is a transaction response, the transactionhas succeeded, and all responses are error free.
 	 * <!-- end-model-doc -->
 	 * @see #TRANSACTION_RESPONSE
 	 * @model name="transactionResponse" literal="transaction-response"
@@ -171,7 +171,7 @@ public enum BundleTypeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The bundle is a transaction - intended to be processed by a server as a group of actions
+	 * The bundle is a transaction - intended to be processed by a server as a group of actions.
 	 * <!-- end-model-doc -->
 	 * @see #BATCH
 	 * @model name="batch"
@@ -185,7 +185,7 @@ public enum BundleTypeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The bundle is a batch response. Note that as a batch, some responses may indicate failure and others success
+	 * The bundle is a batch response. Note that as a batch, some responses may indicate failure and others success.
 	 * <!-- end-model-doc -->
 	 * @see #BATCH_RESPONSE
 	 * @model name="batchResponse" literal="batch-response"
@@ -199,7 +199,7 @@ public enum BundleTypeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The bundle is a list of resources from a _history interaction on a server
+	 * The bundle is a list of resources from a history interaction on a server.
 	 * <!-- end-model-doc -->
 	 * @see #HISTORY
 	 * @model name="history"
@@ -213,7 +213,7 @@ public enum BundleTypeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The bundle is a list of resources returned as a result of a search/query interaction, operation, or message
+	 * The bundle is a list of resources returned as a result of a search/query interaction, operation, or message.
 	 * <!-- end-model-doc -->
 	 * @see #SEARCHSET
 	 * @model name="searchset"
@@ -227,7 +227,7 @@ public enum BundleTypeList implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The bundle is a set of resources collected into a single document for ease of distribution
+	 * The bundle is a set of resources collected into a single document for ease of distribution.
 	 * <!-- end-model-doc -->
 	 * @see #COLLECTION
 	 * @model name="collection"

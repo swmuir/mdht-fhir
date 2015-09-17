@@ -20,7 +20,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.hl7.fhir.CodeableConcept;
 import org.hl7.fhir.Coding;
 import org.hl7.fhir.FhirPackage;
-import org.hl7.fhir.Id;
 import org.hl7.fhir.Instant;
 import org.hl7.fhir.MessageHeader;
 import org.hl7.fhir.MessageHeaderDestination;
@@ -36,7 +35,6 @@ import org.hl7.fhir.Reference;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.hl7.fhir.impl.MessageHeaderImpl#getIdentifier <em>Identifier</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.MessageHeaderImpl#getTimestamp <em>Timestamp</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.MessageHeaderImpl#getEvent <em>Event</em>}</li>
  *   <li>{@link org.hl7.fhir.impl.MessageHeaderImpl#getResponse <em>Response</em>}</li>
@@ -53,16 +51,6 @@ import org.hl7.fhir.Reference;
  * @generated
  */
 public class MessageHeaderImpl extends DomainResourceImpl implements MessageHeader {
-	/**
-	 * The cached value of the '{@link #getIdentifier() <em>Identifier</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getIdentifier()
-	 * @generated
-	 * @ordered
-	 */
-	protected Id identifier;
-
 	/**
 	 * The cached value of the '{@link #getTimestamp() <em>Timestamp</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -190,49 +178,6 @@ public class MessageHeaderImpl extends DomainResourceImpl implements MessageHead
 	@Override
 	protected EClass eStaticClass() {
 		return FhirPackage.eINSTANCE.getMessageHeader();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Id getIdentifier() {
-		return identifier;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetIdentifier(Id newIdentifier, NotificationChain msgs) {
-		Id oldIdentifier = identifier;
-		identifier = newIdentifier;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.MESSAGE_HEADER__IDENTIFIER, oldIdentifier, newIdentifier);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setIdentifier(Id newIdentifier) {
-		if (newIdentifier != identifier) {
-			NotificationChain msgs = null;
-			if (identifier != null)
-				msgs = ((InternalEObject)identifier).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.MESSAGE_HEADER__IDENTIFIER, null, msgs);
-			if (newIdentifier != null)
-				msgs = ((InternalEObject)newIdentifier).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.MESSAGE_HEADER__IDENTIFIER, null, msgs);
-			msgs = basicSetIdentifier(newIdentifier, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.MESSAGE_HEADER__IDENTIFIER, newIdentifier, newIdentifier));
 	}
 
 	/**
@@ -654,8 +599,6 @@ public class MessageHeaderImpl extends DomainResourceImpl implements MessageHead
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case FhirPackage.MESSAGE_HEADER__IDENTIFIER:
-				return basicSetIdentifier(null, msgs);
 			case FhirPackage.MESSAGE_HEADER__TIMESTAMP:
 				return basicSetTimestamp(null, msgs);
 			case FhirPackage.MESSAGE_HEADER__EVENT:
@@ -690,8 +633,6 @@ public class MessageHeaderImpl extends DomainResourceImpl implements MessageHead
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case FhirPackage.MESSAGE_HEADER__IDENTIFIER:
-				return getIdentifier();
 			case FhirPackage.MESSAGE_HEADER__TIMESTAMP:
 				return getTimestamp();
 			case FhirPackage.MESSAGE_HEADER__EVENT:
@@ -727,9 +668,6 @@ public class MessageHeaderImpl extends DomainResourceImpl implements MessageHead
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case FhirPackage.MESSAGE_HEADER__IDENTIFIER:
-				setIdentifier((Id)newValue);
-				return;
 			case FhirPackage.MESSAGE_HEADER__TIMESTAMP:
 				setTimestamp((Instant)newValue);
 				return;
@@ -777,9 +715,6 @@ public class MessageHeaderImpl extends DomainResourceImpl implements MessageHead
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case FhirPackage.MESSAGE_HEADER__IDENTIFIER:
-				setIdentifier((Id)null);
-				return;
 			case FhirPackage.MESSAGE_HEADER__TIMESTAMP:
 				setTimestamp((Instant)null);
 				return;
@@ -825,8 +760,6 @@ public class MessageHeaderImpl extends DomainResourceImpl implements MessageHead
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case FhirPackage.MESSAGE_HEADER__IDENTIFIER:
-				return identifier != null;
 			case FhirPackage.MESSAGE_HEADER__TIMESTAMP:
 				return timestamp != null;
 			case FhirPackage.MESSAGE_HEADER__EVENT:

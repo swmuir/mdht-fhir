@@ -1,0 +1,848 @@
+<?xml version="1.0" encoding="ASCII"?>
+<fhir:StructureDefinition xmlns:fhir="http://hl7.org/fhir">
+  <fhir:id value="ValueSet"/>
+  <fhir:url value="http://hl7.org/fhir/StructureDefinition/ValueSet"/>
+  <fhir:name value="ValueSet"/>
+  <fhir:status value="draft"/>
+  <fhir:publisher value="Health Level Seven International (Vocabulary)"/>
+  <fhir:date value="2015-09-15T17:32:56.720-06:00"/>
+  <fhir:description value="Base StructureDefinition for ValueSet Resource"/>
+  <fhir:kind value="resource"/>
+  <fhir:abstract value="false"/>
+  <fhir:base value="http://hl7.org/fhir/StructureDefinition/DomainResource"/>
+  <fhir:differential>
+    <fhir:element>
+      <fhir:path value="ValueSet"/>
+      <fhir:min value="0"/>
+      <fhir:max value="*"/>
+      <fhir:type>
+        <fhir:code value="ValueSet"/>
+      </fhir:type>
+      <fhir:constraint>
+        <fhir:key value="vsd-7"/>
+        <fhir:severity value="error"/>
+        <fhir:human value="A defined code system (if present) SHALL have a different identifier to the value set itself"/>
+        <fhir:xpath value="not(f:codeSystem/f:system/@value = f:identifier/@value)"/>
+      </fhir:constraint>
+      <fhir:constraint>
+        <fhir:key value="vsd-2"/>
+        <fhir:severity value="error"/>
+        <fhir:human value="A value set with only one import SHALL also have an include and/or an exclude unless the value set includes and inline code system"/>
+        <fhir:xpath value="not(exists(f:compose)) or (count(f:compose/f:import)!=1 or exists(f:compose/f:include) or exists(f:compose/f:exclude) or exists(f:codeSystem))"/>
+      </fhir:constraint>
+      <fhir:constraint>
+        <fhir:key value="vsd-5"/>
+        <fhir:severity value="error"/>
+        <fhir:human value="Value set SHALL contain at least one of a codeSystem, a compose, or an expansion element"/>
+        <fhir:xpath value="exists(f:codeSystem) or exists(f:compose) or exists(f:expansion)"/>
+      </fhir:constraint>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.url"/>
+      <fhir:short value="Globally unique logical id for  value set"/>
+      <fhir:definition value="An absolute URL that is used to identify this value set when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this value set is (or will be) published."/>
+      <fhir:min value="0"/>
+      <fhir:max value="1"/>
+      <fhir:type>
+        <fhir:code value="uri"/>
+      </fhir:type>
+      <fhir:isSummary value="true"/>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.identifier"/>
+      <fhir:short value="Additional identifier for the value set (v2 / CDA)"/>
+      <fhir:definition value="Formal identifier that is used to identify this value set when it is represented in other formats, or referenced in a specification, model, design or an instance."/>
+      <fhir:min value="0"/>
+      <fhir:max value="1"/>
+      <fhir:type>
+        <fhir:code value="Identifier"/>
+      </fhir:type>
+      <fhir:isSummary value="true"/>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.version"/>
+      <fhir:short value="Logical id for this version of the value set"/>
+      <fhir:definition value="Used to identify this version of the value set when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the profile author manually and the value should be a timestamp."/>
+      <fhir:min value="0"/>
+      <fhir:max value="1"/>
+      <fhir:type>
+        <fhir:code value="string"/>
+      </fhir:type>
+      <fhir:isSummary value="true"/>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.name"/>
+      <fhir:short value="Informal name for this value set"/>
+      <fhir:definition value="A free text natural language name describing the value set."/>
+      <fhir:requirements value="Support human navigation."/>
+      <fhir:min value="0"/>
+      <fhir:max value="1"/>
+      <fhir:type>
+        <fhir:code value="string"/>
+      </fhir:type>
+      <fhir:isSummary value="true"/>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.status"/>
+      <fhir:short value="draft | active | retired"/>
+      <fhir:definition value="The status of the value set."/>
+      <fhir:requirements value="Identify when/if the value set should be used."/>
+      <fhir:min value="1"/>
+      <fhir:max value="1"/>
+      <fhir:type>
+        <fhir:code value="code"/>
+      </fhir:type>
+      <fhir:isModifier value="true"/>
+      <fhir:isSummary value="true"/>
+      <fhir:binding>
+        <fhir:strength value="required"/>
+        <fhir:description value="The lifecycle status of a Value Set or Concept Map"/>
+        <fhir:valueSetReference>
+          <fhir:reference value="http://hl7.org/fhir/ValueSet/conformance-resource-status"/>
+        </fhir:valueSetReference>
+      </fhir:binding>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.experimental"/>
+      <fhir:short value="If for testing purposes, not real usage"/>
+      <fhir:definition value="This valueset was authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage."/>
+      <fhir:min value="0"/>
+      <fhir:max value="1"/>
+      <fhir:type>
+        <fhir:code value="boolean"/>
+      </fhir:type>
+      <fhir:isSummary value="true"/>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.publisher"/>
+      <fhir:short value="Name of the publisher (Organization or individual)"/>
+      <fhir:definition value="The name of the individual or organization that published the value set."/>
+      <fhir:requirements value="Helps establish the &quot;authority/credibility&quot; of the value set.  May also allow for contact."/>
+      <fhir:min value="0"/>
+      <fhir:max value="1"/>
+      <fhir:type>
+        <fhir:code value="string"/>
+      </fhir:type>
+      <fhir:isSummary value="true"/>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.contact"/>
+      <fhir:short value="Contact details of the publisher"/>
+      <fhir:definition value="Contacts to assist a user in finding and communicating with the publisher."/>
+      <fhir:min value="0"/>
+      <fhir:max value="*"/>
+      <fhir:isSummary value="true"/>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.contact.name"/>
+      <fhir:short value="Name of a individual to contact"/>
+      <fhir:definition value="The name of an individual to contact regarding the value set."/>
+      <fhir:min value="0"/>
+      <fhir:max value="1"/>
+      <fhir:type>
+        <fhir:code value="string"/>
+      </fhir:type>
+      <fhir:isSummary value="true"/>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.contact.telecom"/>
+      <fhir:short value="Contact details for individual or publisher"/>
+      <fhir:definition value="Contact details for individual (if a name was provided) or the publisher."/>
+      <fhir:min value="0"/>
+      <fhir:max value="*"/>
+      <fhir:type>
+        <fhir:code value="ContactPoint"/>
+      </fhir:type>
+      <fhir:isSummary value="true"/>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.date"/>
+      <fhir:short value="Date for given status"/>
+      <fhir:definition value="The date that the value set status was last changed. The date must change when the business version changes, if it does, and it must change if the status code changes. in addition, it should change when the substantiative content of the implementation guide changes (e.g. the 'content logical definition')."/>
+      <fhir:requirements value="Need to know when a value set was first legal for use or became withdrawn or replaced."/>
+      <fhir:min value="0"/>
+      <fhir:max value="1"/>
+      <fhir:type>
+        <fhir:code value="dateTime"/>
+      </fhir:type>
+      <fhir:isSummary value="true"/>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.lockedDate"/>
+      <fhir:short value="Fixed date for all referenced code systems and value sets"/>
+      <fhir:definition value="If a Locked Date is defined, then the Content Logical Definition must be evaluated using the current version of all referenced code system(s) and value sets as of the Locked Date."/>
+      <fhir:min value="0"/>
+      <fhir:max value="1"/>
+      <fhir:type>
+        <fhir:code value="date"/>
+      </fhir:type>
+      <fhir:isSummary value="true"/>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.description"/>
+      <fhir:short value="Human language description of the value set"/>
+      <fhir:definition value="A free text natural language description of the use of the value set - reason for definition, &quot;the semantic space&quot; to be included in the value set, conditions of use, etc. The description may include a list of expected usages for the value set and can also describe the approach taken to build the value set."/>
+      <fhir:requirements value="Human understandability."/>
+      <fhir:min value="0"/>
+      <fhir:max value="1"/>
+      <fhir:type>
+        <fhir:code value="string"/>
+      </fhir:type>
+      <fhir:isSummary value="true"/>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.useContext"/>
+      <fhir:short value="Content intends to support these contexts"/>
+      <fhir:definition value="The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching of value set definitions."/>
+      <fhir:requirements value="Assist in searching for appropriate content."/>
+      <fhir:min value="0"/>
+      <fhir:max value="*"/>
+      <fhir:type>
+        <fhir:code value="CodeableConcept"/>
+      </fhir:type>
+      <fhir:isSummary value="true"/>
+      <fhir:binding>
+        <fhir:strength value="extensible"/>
+        <fhir:description value="Indicates the countries, regions, disciplines and other aspects of use this artifact is targeted for use within"/>
+        <fhir:valueSetReference>
+          <fhir:reference value="http://hl7.org/fhir/ValueSet/use-context"/>
+        </fhir:valueSetReference>
+      </fhir:binding>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.immutable"/>
+      <fhir:short value="Indicates whether or not any change to the content logical definition may occur"/>
+      <fhir:definition value="If this is set to 'true', then no new versions of the content logical definition can be created.  Note: Other metadata might still change."/>
+      <fhir:min value="0"/>
+      <fhir:max value="1"/>
+      <fhir:type>
+        <fhir:code value="boolean"/>
+      </fhir:type>
+      <fhir:isSummary value="true"/>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.requirements"/>
+      <fhir:short value="Why is this needed?"/>
+      <fhir:definition value="Explains why this value set is needed and why it's been constrained as it has."/>
+      <fhir:min value="0"/>
+      <fhir:max value="1"/>
+      <fhir:type>
+        <fhir:code value="string"/>
+      </fhir:type>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.copyright"/>
+      <fhir:short value="Use and/or Publishing restrictions"/>
+      <fhir:definition value="A copyright statement relating to the value set and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the value set."/>
+      <fhir:min value="0"/>
+      <fhir:max value="1"/>
+      <fhir:type>
+        <fhir:code value="string"/>
+      </fhir:type>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.extensible"/>
+      <fhir:short value="Whether this is intended to be used with an extensible binding"/>
+      <fhir:definition value="Whether this is intended to be used with an extensible binding or not."/>
+      <fhir:requirements value="It is not required to say whether this intent applies."/>
+      <fhir:min value="0"/>
+      <fhir:max value="1"/>
+      <fhir:type>
+        <fhir:code value="boolean"/>
+      </fhir:type>
+      <fhir:isSummary value="true"/>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.codeSystem"/>
+      <fhir:short value="An inline code system - part of this value set"/>
+      <fhir:definition value="A definition of an code system, inlined into the value set (as a packaging convenience). Note that the inline code system may be used from other value sets by referring to it's (codeSystem.system) directly."/>
+      <fhir:min value="0"/>
+      <fhir:max value="1"/>
+      <fhir:condition value="vsd-5"/>
+      <fhir:constraint>
+        <fhir:key value="vsd-8"/>
+        <fhir:severity value="error"/>
+        <fhir:human value="Codes must be unique"/>
+        <fhir:xpath value="count(descendant::f:concept)=count(distinct-values(descendant::f:concept/f:code/@value))"/>
+      </fhir:constraint>
+      <fhir:constraint>
+        <fhir:key value="vsd-3"/>
+        <fhir:severity value="error"/>
+        <fhir:human value="Within a code system definition, all the codes SHALL be unique"/>
+        <fhir:xpath value="count(distinct-values(descendant::f:concept/f:code/@value))=count(descendant::f:concept)"/>
+      </fhir:constraint>
+      <fhir:isSummary value="true"/>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.codeSystem.system"/>
+      <fhir:short value="URI to identify the code system (e.g. in Coding.system)"/>
+      <fhir:definition value="An absolute URI that is used to reference this code system, including in [Coding]{datatypes.html#Coding}.system."/>
+      <fhir:min value="1"/>
+      <fhir:max value="1"/>
+      <fhir:type>
+        <fhir:code value="uri"/>
+      </fhir:type>
+      <fhir:isSummary value="true"/>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.codeSystem.version"/>
+      <fhir:short value="Version (for use in Coding.version)"/>
+      <fhir:definition value="The version of this code system that defines the codes. Note that the version is optional because a well maintained code system does not suffer from versioning, and therefore the version does not need to be maintained. However many code systems are not well maintained, and the version needs to be defined and tracked."/>
+      <fhir:min value="0"/>
+      <fhir:max value="1"/>
+      <fhir:type>
+        <fhir:code value="string"/>
+      </fhir:type>
+      <fhir:isSummary value="true"/>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.codeSystem.caseSensitive"/>
+      <fhir:short value="If code comparison is case sensitive"/>
+      <fhir:definition value="If code comparison is case sensitive when codes within this system are compared to each other."/>
+      <fhir:min value="0"/>
+      <fhir:max value="1"/>
+      <fhir:type>
+        <fhir:code value="boolean"/>
+      </fhir:type>
+      <fhir:isSummary value="true"/>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.codeSystem.concept"/>
+      <fhir:name value="concept"/>
+      <fhir:short value="Concepts in the code system"/>
+      <fhir:definition value="Concepts that are in the code system. The concept definitions are inherently heirarchical, but the definitions must be consulted to determine what the meaning of the heirachical relationships are."/>
+      <fhir:min value="1"/>
+      <fhir:max value="*"/>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.codeSystem.concept.code"/>
+      <fhir:short value="Code that identifies concept"/>
+      <fhir:definition value="A code - a text symbol - that uniquely identifies the concept within the code system."/>
+      <fhir:min value="1"/>
+      <fhir:max value="1"/>
+      <fhir:type>
+        <fhir:code value="code"/>
+      </fhir:type>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.codeSystem.concept.abstract"/>
+      <fhir:short value="If this code is not for use as a real concept"/>
+      <fhir:definition value="If this code is not for use as a real concept."/>
+      <fhir:min value="0"/>
+      <fhir:max value="1"/>
+      <fhir:type>
+        <fhir:code value="boolean"/>
+      </fhir:type>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.codeSystem.concept.display"/>
+      <fhir:short value="Text to Display to the user"/>
+      <fhir:definition value="A human readable string that is the recommended default way to present this concept to a user."/>
+      <fhir:min value="0"/>
+      <fhir:max value="1"/>
+      <fhir:type>
+        <fhir:code value="string"/>
+      </fhir:type>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.codeSystem.concept.definition"/>
+      <fhir:short value="Formal Definition"/>
+      <fhir:definition value="The formal definition of the concept. The value set resource does not make formal definitions required, because of the prevalence of legacy systems. However, but they are highly recommended, as without them there is no formal meaning associated with the concept."/>
+      <fhir:min value="0"/>
+      <fhir:max value="1"/>
+      <fhir:type>
+        <fhir:code value="string"/>
+      </fhir:type>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.codeSystem.concept.designation"/>
+      <fhir:name value="designation"/>
+      <fhir:short value="Additional representations for the concept"/>
+      <fhir:definition value="Additional representations for the concept - other languages, aliases, specialized purposes, used for particular purposes, etc."/>
+      <fhir:requirements value="many concept definition systems support mltiple representations, in multiple languages, and for mltiple purposes."/>
+      <fhir:min value="0"/>
+      <fhir:max value="*"/>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.codeSystem.concept.designation.language"/>
+      <fhir:short value="Human language of the designation"/>
+      <fhir:definition value="The language this designation is defined for."/>
+      <fhir:min value="0"/>
+      <fhir:max value="1"/>
+      <fhir:type>
+        <fhir:code value="code"/>
+      </fhir:type>
+      <fhir:binding>
+        <fhir:strength value="required"/>
+        <fhir:description value="A human language"/>
+        <fhir:valueSetUri value="http://tools.ietf.org/html/bcp47"/>
+      </fhir:binding>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.codeSystem.concept.designation.use"/>
+      <fhir:short value="Details how this designation would be used"/>
+      <fhir:definition value="A code that details how this designation would be used."/>
+      <fhir:min value="0"/>
+      <fhir:max value="1"/>
+      <fhir:type>
+        <fhir:code value="Coding"/>
+      </fhir:type>
+      <fhir:binding>
+        <fhir:strength value="extensible"/>
+        <fhir:description value="Details of how a designation would be used"/>
+        <fhir:valueSetReference>
+          <fhir:reference value="http://hl7.org/fhir/ValueSet/designation-use"/>
+        </fhir:valueSetReference>
+      </fhir:binding>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.codeSystem.concept.designation.value"/>
+      <fhir:short value="The text value for this designation"/>
+      <fhir:definition value="The text value for this designation."/>
+      <fhir:min value="1"/>
+      <fhir:max value="1"/>
+      <fhir:type>
+        <fhir:code value="string"/>
+      </fhir:type>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.codeSystem.concept.concept"/>
+      <fhir:name value="concept"/>
+      <fhir:short value="Child Concepts (is-a / contains / categorises)"/>
+      <fhir:definition value="Child Concepts - a heirarchy of concepts. The nature of the relationships is variable (is-a / contains / categorises) and can only be determined by examining the definitions of the concepts."/>
+      <fhir:min value="0"/>
+      <fhir:max value="*"/>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.compose"/>
+      <fhir:short value="When value set includes codes from elsewhere"/>
+      <fhir:definition value="A set of criteria that provide the content logical definition of the value set by including or excluding codes from outside this value set."/>
+      <fhir:min value="0"/>
+      <fhir:max value="1"/>
+      <fhir:condition value="vsd-5"/>
+      <fhir:constraint>
+        <fhir:key value="vsd-1"/>
+        <fhir:severity value="error"/>
+        <fhir:human value="A value set composition SHALL have an include or an import"/>
+        <fhir:xpath value="exists(f:include) or exists(f:import)"/>
+      </fhir:constraint>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.compose.import"/>
+      <fhir:short value="Import the contents of another value set"/>
+      <fhir:definition value="Includes the contents of the referenced value set as a part of the contents of this value set. This is an absolute URI that is a reference to ValueSet.uri."/>
+      <fhir:min value="0"/>
+      <fhir:max value="*"/>
+      <fhir:type>
+        <fhir:code value="uri"/>
+      </fhir:type>
+      <fhir:condition value="vsd-1"/>
+      <fhir:isSummary value="true"/>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.compose.include"/>
+      <fhir:name value="include"/>
+      <fhir:short value="Include one or more codes from a code system"/>
+      <fhir:definition value="Include one or more codes from a code system."/>
+      <fhir:min value="0"/>
+      <fhir:max value="*"/>
+      <fhir:condition value="vsd-1"/>
+      <fhir:constraint>
+        <fhir:key value="vsd-11"/>
+        <fhir:severity value="error"/>
+        <fhir:human value="Cannot have both concept and filter"/>
+        <fhir:xpath value="not(exists(f:concept)) or not(exists(f:filter))"/>
+      </fhir:constraint>
+      <fhir:isSummary value="true"/>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.compose.include.system"/>
+      <fhir:short value="The system the codes come from"/>
+      <fhir:definition value="An absolute URI which is the code system from which the selected codes come from."/>
+      <fhir:min value="1"/>
+      <fhir:max value="1"/>
+      <fhir:type>
+        <fhir:code value="uri"/>
+      </fhir:type>
+      <fhir:isSummary value="true"/>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.compose.include.version"/>
+      <fhir:short value="Specific version of the code system referred to"/>
+      <fhir:definition value="The version of the code system that the codes are selected from."/>
+      <fhir:min value="0"/>
+      <fhir:max value="1"/>
+      <fhir:type>
+        <fhir:code value="string"/>
+      </fhir:type>
+      <fhir:isSummary value="true"/>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.compose.include.concept"/>
+      <fhir:short value="A concept defined in the system"/>
+      <fhir:definition value="Specifies a concept to be included or excluded."/>
+      <fhir:min value="0"/>
+      <fhir:max value="*"/>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.compose.include.concept.code"/>
+      <fhir:short value="Code or expression from system"/>
+      <fhir:definition value="Specifies a code for the concept to be included or excluded."/>
+      <fhir:min value="1"/>
+      <fhir:max value="1"/>
+      <fhir:type>
+        <fhir:code value="code"/>
+      </fhir:type>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.compose.include.concept.display"/>
+      <fhir:short value="Test to display for this code for this value set"/>
+      <fhir:definition value="The text to display to the user for this concept in the context of this valueset. If no display is provided, then applications using the value set use the display specified for the code by the system."/>
+      <fhir:min value="0"/>
+      <fhir:max value="1"/>
+      <fhir:type>
+        <fhir:code value="string"/>
+      </fhir:type>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.compose.include.concept.designation"/>
+      <fhir:name value="designation"/>
+      <fhir:short value="Additional representations for this valueset"/>
+      <fhir:definition value="Additional representations for this concept when used in this value set - other languages, aliases, specialized purposes, used for particular purposes, etc."/>
+      <fhir:min value="0"/>
+      <fhir:max value="*"/>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.compose.include.filter"/>
+      <fhir:short value="Select codes/concepts by their properties (including relationships)"/>
+      <fhir:definition value="Select concepts by specify a matching criteria based on the properties (including relationships) defined by the system. If multiple filters are specified, they SHALL all be true."/>
+      <fhir:min value="0"/>
+      <fhir:max value="*"/>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.compose.include.filter.property"/>
+      <fhir:short value="A property defined by the code system"/>
+      <fhir:definition value="A code that identifies a property defined in the code system."/>
+      <fhir:min value="1"/>
+      <fhir:max value="1"/>
+      <fhir:type>
+        <fhir:code value="code"/>
+      </fhir:type>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.compose.include.filter.op"/>
+      <fhir:short value="= | is-a | is-not-a | regex | in | not-in"/>
+      <fhir:definition value="The kind of operation to perform as a part of the filter criteria."/>
+      <fhir:min value="1"/>
+      <fhir:max value="1"/>
+      <fhir:type>
+        <fhir:code value="code"/>
+      </fhir:type>
+      <fhir:binding>
+        <fhir:strength value="required"/>
+        <fhir:description value="The kind of operation to perform as a part of a property based filter"/>
+        <fhir:valueSetReference>
+          <fhir:reference value="http://hl7.org/fhir/ValueSet/filter-operator"/>
+        </fhir:valueSetReference>
+      </fhir:binding>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.compose.include.filter.value"/>
+      <fhir:short value="Code from the system, or regex criteria"/>
+      <fhir:definition value="The match value may be either a code defined by the system, or a string value which is used a regex match on the literal string of the property value."/>
+      <fhir:min value="1"/>
+      <fhir:max value="1"/>
+      <fhir:type>
+        <fhir:code value="code"/>
+      </fhir:type>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.compose.exclude"/>
+      <fhir:name value="include"/>
+      <fhir:short value="Explicitly exclude codes"/>
+      <fhir:definition value="Exclude one or more codes from the value set."/>
+      <fhir:min value="0"/>
+      <fhir:max value="*"/>
+      <fhir:condition value="vsd-2"/>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.compose.include.system"/>
+      <fhir:short value="The system the codes come from"/>
+      <fhir:definition value="An absolute URI which is the code system from which the selected codes come from."/>
+      <fhir:min value="1"/>
+      <fhir:max value="1"/>
+      <fhir:type>
+        <fhir:code value="uri"/>
+      </fhir:type>
+      <fhir:isSummary value="true"/>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.compose.include.version"/>
+      <fhir:short value="Specific version of the code system referred to"/>
+      <fhir:definition value="The version of the code system that the codes are selected from."/>
+      <fhir:min value="0"/>
+      <fhir:max value="1"/>
+      <fhir:type>
+        <fhir:code value="string"/>
+      </fhir:type>
+      <fhir:isSummary value="true"/>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.compose.include.concept"/>
+      <fhir:short value="A concept defined in the system"/>
+      <fhir:definition value="Specifies a concept to be included or excluded."/>
+      <fhir:min value="0"/>
+      <fhir:max value="*"/>
+      <fhir:condition value="vsd-11"/>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.compose.include.concept.code"/>
+      <fhir:short value="Code or expression from system"/>
+      <fhir:definition value="Specifies a code for the concept to be included or excluded."/>
+      <fhir:min value="1"/>
+      <fhir:max value="1"/>
+      <fhir:type>
+        <fhir:code value="code"/>
+      </fhir:type>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.compose.include.concept.display"/>
+      <fhir:short value="Test to display for this code for this value set"/>
+      <fhir:definition value="The text to display to the user for this concept in the context of this valueset. If no display is provided, then applications using the value set use the display specified for the code by the system."/>
+      <fhir:min value="0"/>
+      <fhir:max value="1"/>
+      <fhir:type>
+        <fhir:code value="string"/>
+      </fhir:type>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.compose.include.concept.designation"/>
+      <fhir:name value="designation"/>
+      <fhir:short value="Additional representations for this valueset"/>
+      <fhir:definition value="Additional representations for this concept when used in this value set - other languages, aliases, specialized purposes, used for particular purposes, etc."/>
+      <fhir:min value="0"/>
+      <fhir:max value="*"/>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.compose.include.filter"/>
+      <fhir:short value="Select codes/concepts by their properties (including relationships)"/>
+      <fhir:definition value="Select concepts by specify a matching criteria based on the properties (including relationships) defined by the system. If multiple filters are specified, they SHALL all be true."/>
+      <fhir:min value="0"/>
+      <fhir:max value="*"/>
+      <fhir:condition value="vsd-11"/>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.compose.include.filter.property"/>
+      <fhir:short value="A property defined by the code system"/>
+      <fhir:definition value="A code that identifies a property defined in the code system."/>
+      <fhir:min value="1"/>
+      <fhir:max value="1"/>
+      <fhir:type>
+        <fhir:code value="code"/>
+      </fhir:type>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.compose.include.filter.op"/>
+      <fhir:short value="= | is-a | is-not-a | regex | in | not-in"/>
+      <fhir:definition value="The kind of operation to perform as a part of the filter criteria."/>
+      <fhir:min value="1"/>
+      <fhir:max value="1"/>
+      <fhir:type>
+        <fhir:code value="code"/>
+      </fhir:type>
+      <fhir:binding>
+        <fhir:strength value="required"/>
+        <fhir:description value="The kind of operation to perform as a part of a property based filter"/>
+        <fhir:valueSetReference>
+          <fhir:reference value="http://hl7.org/fhir/ValueSet/filter-operator"/>
+        </fhir:valueSetReference>
+      </fhir:binding>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.compose.include.filter.value"/>
+      <fhir:short value="Code from the system, or regex criteria"/>
+      <fhir:definition value="The match value may be either a code defined by the system, or a string value which is used a regex match on the literal string of the property value."/>
+      <fhir:min value="1"/>
+      <fhir:max value="1"/>
+      <fhir:type>
+        <fhir:code value="code"/>
+      </fhir:type>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.expansion"/>
+      <fhir:short value="Used when the value set is &quot;expanded&quot;"/>
+      <fhir:definition value="A value set can also be &quot;expanded&quot;, where the value set is turned into a simple collection of enumerated codes. This element holds the expansion, if it has been performed."/>
+      <fhir:min value="0"/>
+      <fhir:max value="1"/>
+      <fhir:condition value="vsd-5"/>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.expansion.identifier"/>
+      <fhir:short value="Uniquely identifies this expansion"/>
+      <fhir:definition value="An identifier that uniquely identifies this expansion of the valueset. Systems may re-use the same identifier as long as the expansion and the definition remain the same, but are not required to do so."/>
+      <fhir:min value="1"/>
+      <fhir:max value="1"/>
+      <fhir:type>
+        <fhir:code value="uri"/>
+      </fhir:type>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.expansion.timestamp"/>
+      <fhir:short value="Time valueset expansion happened"/>
+      <fhir:definition value="The time at which the expansion was produced by the expanding system."/>
+      <fhir:min value="1"/>
+      <fhir:max value="1"/>
+      <fhir:type>
+        <fhir:code value="dateTime"/>
+      </fhir:type>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.expansion.total"/>
+      <fhir:short value="Total number of codes in the expansion"/>
+      <fhir:definition value="The total nober of concepts in the expansion. If the number of concept nodes in this resource is less than the stated number, then the server can return more using the offset parameter."/>
+      <fhir:min value="0"/>
+      <fhir:max value="1"/>
+      <fhir:type>
+        <fhir:code value="integer"/>
+      </fhir:type>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.expansion.offset"/>
+      <fhir:short value="Offset at which this resource starts"/>
+      <fhir:definition value="If paging is being used, the offset at which this resource starts - e.g. this resource is a partial view into the expansion. If paging is not being used, this element SHALL not be present."/>
+      <fhir:min value="0"/>
+      <fhir:max value="1"/>
+      <fhir:type>
+        <fhir:code value="integer"/>
+      </fhir:type>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.expansion.parameter"/>
+      <fhir:short value="Parameter that controlled the expansion process"/>
+      <fhir:definition value="A Parameter that controlled the expansion process. These parameters may be used by users of expanded value sets to check whether the expansion is suitable for a particular purpose, or to pick the correct expansion."/>
+      <fhir:min value="0"/>
+      <fhir:max value="*"/>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.expansion.parameter.name"/>
+      <fhir:short value="Name as assigned by server"/>
+      <fhir:definition value="The name of the parameter."/>
+      <fhir:min value="1"/>
+      <fhir:max value="1"/>
+      <fhir:type>
+        <fhir:code value="string"/>
+      </fhir:type>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.expansion.parameter.value[x]"/>
+      <fhir:short value="Value of the named parameter"/>
+      <fhir:definition value="The value of the parameter."/>
+      <fhir:min value="0"/>
+      <fhir:max value="1"/>
+      <fhir:type>
+        <fhir:code value="string"/>
+      </fhir:type>
+      <fhir:type>
+        <fhir:code value="boolean"/>
+      </fhir:type>
+      <fhir:type>
+        <fhir:code value="integer"/>
+      </fhir:type>
+      <fhir:type>
+        <fhir:code value="decimal"/>
+      </fhir:type>
+      <fhir:type>
+        <fhir:code value="uri"/>
+      </fhir:type>
+      <fhir:type>
+        <fhir:code value="code"/>
+      </fhir:type>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.expansion.contains"/>
+      <fhir:name value="contains"/>
+      <fhir:short value="Codes in the value set"/>
+      <fhir:definition value="The codes that are contained in the value set expansion."/>
+      <fhir:min value="0"/>
+      <fhir:max value="*"/>
+      <fhir:constraint>
+        <fhir:key value="vsd-6"/>
+        <fhir:severity value="error"/>
+        <fhir:human value="SHALL have a code or a display"/>
+        <fhir:xpath value="exists(f:code) or exists(f:display)"/>
+      </fhir:constraint>
+      <fhir:constraint>
+        <fhir:key value="vsd-9"/>
+        <fhir:severity value="error"/>
+        <fhir:human value="Must have a code if not abstract"/>
+        <fhir:xpath value="exists(f:code) or (f:abstract/@value = 'true')"/>
+      </fhir:constraint>
+      <fhir:constraint>
+        <fhir:key value="vsd-10"/>
+        <fhir:severity value="error"/>
+        <fhir:human value="Must have a system if a code is present"/>
+        <fhir:xpath value="exists(f:system) or not(exists(f:code))"/>
+      </fhir:constraint>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.expansion.contains.system"/>
+      <fhir:short value="System value for the code"/>
+      <fhir:definition value="An absolute URI which is the code system in which the code for this item in the expansion is defined."/>
+      <fhir:min value="0"/>
+      <fhir:max value="1"/>
+      <fhir:type>
+        <fhir:code value="uri"/>
+      </fhir:type>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.expansion.contains.abstract"/>
+      <fhir:short value="If user cannot select this entry"/>
+      <fhir:definition value="If true, this entry is included in the expansion for navigational purposes, and the user cannot select the code directly as a proper value."/>
+      <fhir:min value="0"/>
+      <fhir:max value="1"/>
+      <fhir:type>
+        <fhir:code value="boolean"/>
+      </fhir:type>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.expansion.contains.version"/>
+      <fhir:short value="Version in which this code / display is defined"/>
+      <fhir:definition value="The version of this code system that defined this code and/or display. This should only be used with code systems that do not enforce concept permanence."/>
+      <fhir:min value="0"/>
+      <fhir:max value="1"/>
+      <fhir:type>
+        <fhir:code value="string"/>
+      </fhir:type>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.expansion.contains.code"/>
+      <fhir:short value="Code - if blank, this is not a choosable code"/>
+      <fhir:definition value="The code for this item in the expansion heirarchy. If this code is missing the entry in the heirarchy is a place holder (abstract) and doesn't represent a valid code in the value set."/>
+      <fhir:min value="0"/>
+      <fhir:max value="1"/>
+      <fhir:type>
+        <fhir:code value="code"/>
+      </fhir:type>
+      <fhir:condition value="vsd-6"/>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.expansion.contains.display"/>
+      <fhir:short value="User display for the concept"/>
+      <fhir:definition value="The recommended display for this item in the expansion."/>
+      <fhir:min value="0"/>
+      <fhir:max value="1"/>
+      <fhir:type>
+        <fhir:code value="string"/>
+      </fhir:type>
+      <fhir:condition value="vsd-6"/>
+    </fhir:element>
+    <fhir:element>
+      <fhir:path value="ValueSet.expansion.contains.contains"/>
+      <fhir:name value="contains"/>
+      <fhir:short value="Codes contained under this entry"/>
+      <fhir:definition value="Other codes and entries contained under this entry in the heirarchy."/>
+      <fhir:min value="0"/>
+      <fhir:max value="*"/>
+    </fhir:element>
+  </fhir:differential>
+</fhir:StructureDefinition>
