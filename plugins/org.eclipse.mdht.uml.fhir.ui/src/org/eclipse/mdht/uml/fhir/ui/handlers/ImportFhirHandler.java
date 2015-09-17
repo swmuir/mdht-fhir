@@ -18,9 +18,9 @@ import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.commands.operations.IUndoableOperation;
 import org.eclipse.core.resources.IContainer;
+import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
-import org.eclipse.core.resources.IWorkspace;
-import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
@@ -48,18 +48,10 @@ public class ImportFhirHandler extends AbstractHandler {
 
 	private IContainer getProfileFolder(IWorkbenchPart activePart) {
 		IContainer profileFolder = null;
-		IWorkspace workspace = ResourcesPlugin.getWorkspace();
-		IResource resource = workspace.getRoot().findMember("FHIR-DSTU2/current");
-		if (resource instanceof IContainer) {
-			profileFolder = (IContainer) resource;
-		}
-		
-		if (profileFolder == null) {
-			IContainer[] containers = WorkspaceResourceDialog.openFolderSelection(activePart.getSite().getShell(), 
-					"Select Profile Folder", "Folder containing reference profiles", false, null, null);
-			if (containers.length > 0) {
-				profileFolder = containers[0];
-			}
+		IContainer[] containers = WorkspaceResourceDialog.openFolderSelection(activePart.getSite().getShell(), 
+				"Select Profile Folder", "Folder containing FHIR profiles", false, null, null);
+		if (containers.length > 0) {
+			profileFolder = containers[0];
 		}
 		
 		return profileFolder;
@@ -82,30 +74,17 @@ public class ImportFhirHandler extends AbstractHandler {
 		
 		TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(umlPackage);
 
-		IUndoableOperation operation = new AbstractEMFOperation(editingDomain, "Export FHIR definition") {
+		IUndoableOperation operation = new AbstractEMFOperation(editingDomain, "Import FHIR definition") {
 			@Override
 			protected IStatus doExecute(IProgressMonitor monitor, IAdaptable info) {
 				if (profileFolder != null) {
-					ModelImporter umlImporter = new ModelImporter(umlPackage, profileFolder);
+					ModelImporter umlImporter = new ModelImporter(umlPackage);
 //					for (URI profileURI : profiles) {
 //						umlImporter.importProfile(profileURI);
 //					}
-
-					umlImporter.importStructureDefinition("extension-definitions");
-//					umlImporter.indexBundle("valuesets");
 					
-//					umlImporter.importStructureDefinition("Condition");
-//					umlImporter.importStructureDefinition("StructureDefinition");
-//					umlImporter.importStructureDefinition("Conformance");
-//					umlImporter.importStructureDefinition("ImplementationGuide");
-//					umlImporter.importStructureDefinition("observation-daf-results-dafresultobsquantity");
-//					umlImporter.importStructureDefinition("observation-hspc-standardlabobs-quantitative-stdqty");
-//					umlImporter.importStructureDefinition("observation-hspc-heartrate-hspcheartrate");
-//
-//					umlImporter.importStructureDefinition("lipidprofile");
-					
-					
-					umlImporter.importAllFiles();
+					indexAllFiles(umlImporter, profileFolder);
+					umlImporter.importIndexedResources();
 					
 					return Status.OK_STATUS;
 				}
@@ -119,6 +98,30 @@ public class ImportFhirHandler extends AbstractHandler {
 		commandStack.getOperationHistory().execute(operation, new NullProgressMonitor(), null);
 
 		return null;
+	}
+
+	protected void indexAllFiles(ModelImporter umlImporter, IContainer profileFolder) {
+		try {
+			for (IResource resource : profileFolder.members()) {
+				if (resource instanceof IFile) {
+					IFile file = (IFile) resource;
+					
+					// skip file names that contain 'example'
+					if (file.getName().contains("example")) {
+						continue;
+					}
+
+					String fileExt = file.getFileExtension();
+					if ("xml".equals(fileExt)) {
+						URI fileURI = URI.createFileURI(file.getLocation().toString());
+						umlImporter.indexResource(fileURI);
+					}
+				}
+			}
+		} catch (CoreException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

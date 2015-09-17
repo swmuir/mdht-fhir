@@ -9,11 +9,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.eclipse.core.resources.IContainer;
-import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IResource;
-import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -44,7 +39,6 @@ import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.util.UMLUtil;
-import org.hl7.fhir.Bundle;
 import org.hl7.fhir.ConstraintSeverityList;
 import org.hl7.fhir.DomainResource;
 import org.hl7.fhir.ElementDefinition;
@@ -53,6 +47,7 @@ import org.hl7.fhir.ElementDefinitionConstraint;
 import org.hl7.fhir.ElementDefinitionType;
 import org.hl7.fhir.Extension;
 import org.hl7.fhir.Id;
+import org.hl7.fhir.ImplementationGuide;
 import org.hl7.fhir.StructureDefinition;
 import org.hl7.fhir.StructureDefinitionKindList;
 import org.hl7.fhir.Uri;
@@ -70,9 +65,7 @@ public class ModelImporter implements ModelConstants {
 	private ModelIndexer modelIndexer = new ModelIndexer();
 	
 	// key = id, value = DomainResource
-	private Map<String,DomainResource> bundleMap = new HashMap<String,DomainResource>();
-
-	private IContainer fhirProfileFolder;
+	private Map<String,DomainResource> resourceIdMap = new HashMap<String,DomainResource>();
 	
 	private Package model;
 	private Package xmlPrimitiveTypes;
@@ -82,14 +75,15 @@ public class ModelImporter implements ModelConstants {
 	private Class elementClass;
 	private Class resourceClass;
 
-	public ModelImporter(Package model, IContainer fhirFolder) {
+	public ModelImporter(Package model) {
 		this.model = model;
-		this.fhirProfileFolder = fhirFolder;
-
-		modelIndexer.indexMembers(model);
-		
 		initializeLibraries(model);
-		initValueSets(model);
+		
+		modelIndexer.indexMembers(model);
+	}
+	
+	private void initModel(Package model) {
+		initValueSets();
 		initAbstractTypes(model);
 	}
 	
@@ -160,48 +154,44 @@ public class ModelImporter implements ModelConstants {
 			dataTypeClass.setPackage(elementClass.getNearestPackage());
 		}
 	}
-	
-	private void initValueSets(Package umlPackage) {
-		if (modelIndexer.getValueSetForURI(FHIR_VALUESET_URI_BASE + VALUESET_ID_RESOURCE_TYPES) == null) {
-			importResource(URI.createURI(TERMINOLOGY_SERVER + "ValueSet/" + VALUESET_ID_RESOURCE_TYPES + "?_format=xml"));
-			importResource(URI.createURI(TERMINOLOGY_SERVER + "ValueSet/" + VALUESET_ID_DATA_TYPES + "?_format=xml"));
-			importResource(URI.createURI(TERMINOLOGY_SERVER + "ValueSet/" + VALUESET_ID_DEFINED_TYPES + "/$expand" + "?_format=xml"));
-		}
-	}
-	
-	public void importAllFiles() {
-		try {
-			for (IResource resource : fhirProfileFolder.members()) {
-				if (resource instanceof IFile) {
-					String fileExt = ((IFile)resource).getFileExtension();
-					// skip file names that contain 'example'
-					if (((IFile)resource).toString().contains("example")) {
-						continue;
-					}
-					if ("xml".equals(fileExt)) {
-						importResource((IFile)resource);
-					}
-				}
-			}
-		} catch (CoreException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
 
-	public Classifier importResource(IFile profileFile) {
-		String profileName = profileFile.getName();
-		profileName = profileName.substring(0, profileName.lastIndexOf("."));
-		
-		//TODO does not search nested packages.  Should search by definition id or uri (via indexed map)
-		Classifier classifier = (Classifier) model.getOwnedType(profileName, false, UMLPackage.eINSTANCE.getClassifier(), false);
-		
-		if (classifier == null) {
-			URI profileURI = URI.createFileURI(profileFile.getLocation().toString());
-			classifier = importResource(profileURI);
+	private void initValueSets() {
+		if (modelIndexer.getValueSetForURI(FHIR_VALUESET_URI_BASE + VALUESET_ID_RESOURCE_TYPES) == null) {
+			DomainResource resource = resourceIdMap.get(VALUESET_ID_DATA_TYPES);
+			if (resource instanceof ValueSet) {
+				importValueSet((ValueSet)resource);
+			}
+			resource = resourceIdMap.get(VALUESET_ID_RESOURCE_TYPES);
+			if (resource instanceof ValueSet) {
+				importValueSet((ValueSet)resource);
+			}
+			resourceIdMap.get(VALUESET_ID_DEFINED_TYPES);
+			if (resource instanceof ValueSet) {
+				importValueSet((ValueSet)resource);
+			}
 		}
 		
-		return classifier;
+		if (modelIndexer.getValueSetForURI(FHIR_VALUESET_URI_BASE + VALUESET_ID_RESOURCE_TYPES) == null) {
+			importValueSetFromServer(VALUESET_ID_DATA_TYPES, false);
+			importValueSetFromServer(VALUESET_ID_RESOURCE_TYPES, false);
+			importValueSetFromServer(VALUESET_ID_DEFINED_TYPES, true);
+		}
+	}
+	
+	public Classifier importStructureDefinitionFromServer(String resourceId) {
+		String uriString = REGISTRY_SERVER + "StructureDefinition/" + resourceId + "?_format=xml";
+		return importResource(URI.createURI(uriString));
+	}
+	
+	public Classifier importValueSetFromServer(String resourceId, boolean expand) {
+		String uriString = TERMINOLOGY_SERVER + "ValueSet/" + resourceId;
+		if (expand) {
+			uriString += "/$expand" + "?_format=xml";
+		}
+		else {
+			uriString += "?_format=xml";
+		}
+		return importResource(URI.createURI(uriString));
 	}
 	
 	public Classifier importResource(URI resourceURI) {
@@ -220,10 +210,6 @@ public class ModelImporter implements ModelConstants {
 
 		while (iterator != null && iterator.hasNext()) {
 			Object child = iterator.next();
-			if (child instanceof Bundle) {
-				importBundle((Bundle)child);
-				iterator.prune();
-			}
 			if (child instanceof StructureDefinition) {
 				umlClassifier = importStructureDefinition((StructureDefinition)child);
 				iterator.prune();
@@ -237,30 +223,57 @@ public class ModelImporter implements ModelConstants {
 		return umlClassifier;
 	}
 
-	public void importBundle(Bundle bundle) {
-		bundleMap.clear();
-		TreeIterator<?> iterator = EcoreUtil.getAllContents(Collections.singletonList(bundle));
+	public void indexResource(URI resourceURI) {
+		ResourceFactoryImpl resourceFactory = new FhirResourceFactoryImpl();
+		Resource resource = resourceFactory.createResource(resourceURI);
+		try {
+			resource.load(new HashMap<String,String>());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
-		// map all resources in the bundle, to allow forward references
+		TreeIterator<?> iterator = EcoreUtil.getAllContents(Collections.singletonList(resource));
+
 		while (iterator != null && iterator.hasNext()) {
 			Object child = iterator.next();
-			if (child instanceof DomainResource) {
-				if (((DomainResource)child).getId() != null) {
-					bundleMap.put(((DomainResource)child).getId().getValue(), ((DomainResource)child));
-				}
-				else {
-					System.err.println("Bundle entry missing id, URL=" + ((DomainResource)child));
-				}
+			if (child instanceof StructureDefinition) {
+				indexResource((StructureDefinition)child);
+				iterator.prune();
+			}
+			else if (child instanceof ValueSet) {
+				indexResource((ValueSet)child);
+				iterator.prune();
+			}
+			else if (child instanceof ImplementationGuide) {
+				indexResource((ValueSet)child);
 				iterator.prune();
 			}
 		}
-		
-		// import each structure definition
-		for (DomainResource resource : bundleMap.values()) {
-			if (resource instanceof StructureDefinition)
-			importStructureDefinition((StructureDefinition)resource);
+	}
+
+	public void indexResource(DomainResource resource) {
+		if (resource.getId() != null) {
+			resourceIdMap.put(resource.getId().getValue(), resource);
 		}
-		bundleMap.clear();
+		else {
+			System.err.println("Bundle entry missing id, URL=" + resource);
+		}
+	}
+	
+	public void importIndexedResources() {
+		initModel(model);
+		
+		// import each FHIR resource that was previously indexed
+		for (DomainResource resource : resourceIdMap.values()) {
+			if (resource instanceof StructureDefinition) {
+				importStructureDefinition((StructureDefinition)resource);
+			}
+//			else if (resource instanceof ValueSet) {
+//				importValueSet((ValueSet)resource);
+//			}
+		}
+		resourceIdMap.clear();
 	}
 	
 	public Enumeration importValueSet(ValueSet valueSet) {
@@ -319,58 +332,37 @@ public class ModelImporter implements ModelConstants {
 	public Class importProfileForURI(String profileURI) {
 		Class umlClass = modelIndexer.getStructureDefinitionForURI(profileURI);
 		if (umlClass == null) {
-			/*
-			 * TODO not all URIs can be resolved to a file this way, e.g. 
-			 * 
-			 * http://hl7.org/fhir/StructureDefinition/observation-bodyPosition
-			 * extension-observation-bodyposition.xml
-			 * - extension prefix, no .profile.xml
-			 * 
-			 * During import, keep list of pending profiles.
-			 */
-			String profileName = profileURI.substring(profileURI.lastIndexOf("/") + 1);
-			umlClass = importStructureDefinition(profileName);
+			String profileId = profileURI.substring(profileURI.lastIndexOf("/") + 1);
+			umlClass = importStructureDefinition(profileId);
 		}
 		
 		return umlClass;
 	}
 	
-	public Class importStructureDefinition(String profileName) {
-		Class umlClass = modelIndexer.getStructureDefinitionForName(profileName);
+	public Class importStructureDefinition(String profileId) {
+		Class umlClass = modelIndexer.getStructureDefinitionForName(profileId);
 		if (umlClass == null) {
 			// this is for a few profiles that have error, using String instead of string.
-			umlClass = modelIndexer.getStructureDefinitionForName(profileName.toLowerCase());
+			umlClass = modelIndexer.getStructureDefinitionForName(profileId.toLowerCase());
 		}
 
 		if (umlClass == null) {
 			// look in the indexed bundle(s)
-			DomainResource resource = bundleMap.get(profileName);
+			DomainResource resource = resourceIdMap.get(profileId);
 			if (resource instanceof StructureDefinition) {
 				umlClass = importStructureDefinition((StructureDefinition)resource);
 			}
-			else {
-				Classifier importedResource = null;
-				
-				// look for a file
-				IFile profileFile = fhirProfileFolder.getFile(new Path(profileName.toLowerCase() + ".xml"));
-				if (profileFile.exists()) {
-					importedResource = importResource(profileFile);
-				}
-				else {
-					profileFile = fhirProfileFolder.getFile(new Path(profileName.toLowerCase() + ".profile.xml"));
-					if (profileFile.exists()) {
-						importedResource = importResource(profileFile);
-					}
-				}
-
-				if (importedResource instanceof Class) {
-					umlClass = (Class) importedResource;
-				}
-			}
 		}
+
+		/*
+		if (umlClass == null) {
+			// Try reading from Registry Server
+			umlClass = (Class) importStructureDefinitionFromServer(profileName);
+		}
+		*/
 		
 		if (umlClass == null) {
-			System.err.println("Cannot find Profile: " + profileName);
+			System.err.println("Cannot find Profile: " + profileId);
 		}
 		
 		return umlClass;
@@ -466,14 +458,19 @@ public class ModelImporter implements ModelConstants {
 				baseProfileClass = importStructureDefinition(base);
 			}
 			
-			// Add "DataType" abstract superclass for all data types
-			if (StructureDefinitionKindList.DATATYPE == structureKind
-					&& ELEMENT_CLASS_NAME.equals(baseProfileClass.getName())) {
-				baseProfileClass = dataTypeClass;
-			}
-			
 			if (baseProfileClass != null) {
-				profileClass.createGeneralization(baseProfileClass);
+				// Add "DataType" abstract superclass for all data types
+				if (StructureDefinitionKindList.DATATYPE == structureKind
+						&& ELEMENT_CLASS_NAME.equals(baseProfileClass.getName())) {
+					baseProfileClass = dataTypeClass;
+				}
+				
+				if (baseProfileClass != null) {
+					profileClass.createGeneralization(baseProfileClass);
+				}
+			}
+			else {
+				System.err.println("Cannot find base class: " + base + " in: " + structureDef.getUrl().getValue());
 			}
 		}
 		

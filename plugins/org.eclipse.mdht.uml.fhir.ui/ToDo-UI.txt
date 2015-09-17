@@ -30,8 +30,6 @@ FHIR UI Tooling
   -- New menu: Expand References (true by default)
      --- use to collapse Resource associations
   -- Add to default preferences
-  
-- Improve UI for importing profiles
 
 - UI Add Extension
   -- auto add 'uri' and 'value[x]', do not prompt

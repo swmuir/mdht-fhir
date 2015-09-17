@@ -48,13 +48,6 @@ Model Mapping
   -- If nested class, display all inherited, but not from base resource
      --- how to determine if a class is base resource (from reference model)?
 
-- Import profiles: prompt user to select profile file or folder (all)
-  -- filter by file name regex?  e.g. *daf*
-
-- Import filter to include only core spec
-  -- in current build, base = null
-  -- include any constraint profiles referenced by another, e.g. Age
-  
 - Use DITA to publish FHIR model as Help plugin
 
 - Add XML serialization metadata on import, e.g. ElementDefinition <representation value="xmlAttr"/>
@@ -69,14 +62,6 @@ Model Mapping
 - Import ElementDef elements: 
   -- default, fixed, pattern, example
   -- minValue, maxValue, maxLength
-
-- Import constraints
-  -- condition: refers to another Constraint key
-     -- In text: Invariant affects this element
-     -- Research UML Constraint constrainedElement.  Can I have all "affected" properties in constrainedElement list?
-  -- condition == Constraint.constrainedElements()
-     -- can UML constraintedElements list refer to properties not owned by the context namespace (different class)?
-     -- find referenced UML Constraint, add current Property to constrainedElements() list
 
 - Slicing, used in Conformance
   -- property subsetting in UML
@@ -99,4 +84,3 @@ EXPORT FHIR
 
 - ElementDefinition name, if not in stereotype and if name is redefined (Extensions)
 
-- Constraints

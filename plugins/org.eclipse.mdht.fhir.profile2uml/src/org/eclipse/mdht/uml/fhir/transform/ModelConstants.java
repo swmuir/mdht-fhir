@@ -33,8 +33,9 @@ public interface ModelConstants {
 	// Non-specification class DataType, abstract parent for all 'datatype' StructureDefinitions, using MDHT_STRUCTURE_URI_BASE
 	public static final String DATATYPE_CLASS_NAME = "DataType";
 
-	//TODO Make this a variable preference setting
+	//TODO Make these server URLs variable preference settings
 	public static final String TERMINOLOGY_SERVER = "http://fhir-dev.healthintersections.com.au/open/";
+	public static final String REGISTRY_SERVER = "http://fhir-dev.healthintersections.com.au/open/";
 	
 	public static final String VALUESET_ID_RESOURCE_TYPES = "resource-types";
 	public static final String VALUESET_ID_DATA_TYPES = "data-types";
