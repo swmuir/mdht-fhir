@@ -44,11 +44,11 @@ public class ModelIndexer implements ModelConstants {
 	private Map<String,Constraint> constraintMap = new HashMap<String,Constraint>();
 
 	/*
-	 * Reference by name can be used only for members of 'defined-types' value set.
+	 * Reference by id can be used only for members of 'defined-types' value set.
 	 * Add FHIR_STRUCTURE_URI_BASE prefix and redirect to structureDefinitionUriMap.
 	 */
-	public Class getStructureDefinitionForName(String name) {
-		return structureDefinitionUriMap.get(FHIR_STRUCTURE_URI_BASE + name);
+	public Class getStructureDefinitionForId(String id) {
+		return structureDefinitionUriMap.get(FHIR_STRUCTURE_URI_BASE + id);
 	}
 
 	public Class getStructureDefinitionForURI(String uri) {
@@ -118,7 +118,7 @@ public class ModelIndexer implements ModelConstants {
 	 * Classifier is subclass of a FHIR Extension type.
 	 */
 	public boolean isExtension(Classifier classifier) {
-		return FhirModelUtil.isSubclassOf(classifier, EXTENSION_CLASS_NAME);
+		return FhirModelUtil.isKindOf(classifier, EXTENSION_CLASS_NAME);
 	}
 
 	public void indexMembers(Package umlPackage) {

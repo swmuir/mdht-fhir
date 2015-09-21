@@ -371,7 +371,7 @@ public class ModelExporter implements ModelConstants {
 			elementType = type;
 		}
 		else if (FhirModelUtil.isKindOf(type, RESOURCE_CLASS_NAME)) {
-			elementType = modelIndexer.getStructureDefinitionForName(REFERENCE_CLASS_NAME);
+			elementType = modelIndexer.getStructureDefinitionForId(REFERENCE_CLASS_NAME);
 		}
 		else {
 			elementType = getConstrainedType(type);

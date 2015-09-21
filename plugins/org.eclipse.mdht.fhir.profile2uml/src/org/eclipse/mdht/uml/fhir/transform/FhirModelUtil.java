@@ -16,6 +16,7 @@ import java.util.List;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.mdht.uml.fhir.FHIRPackage;
 import org.eclipse.mdht.uml.fhir.StructureDefinition;
+import org.eclipse.mdht.uml.fhir.TypeChoice;
 import org.eclipse.mdht.uml.fhir.ValueSet;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Classifier;
@@ -47,7 +48,48 @@ public class FhirModelUtil {
 				umlEnum.getStereotypeApplications(), FHIRPackage.eINSTANCE.getValueSet());
 	}
 
+	public static TypeChoice getTypeChoice(Property property) {
+		return (TypeChoice) EcoreUtil.getObjectByType(
+				property.getStereotypeApplications(), FHIRPackage.eINSTANCE.getTypeChoice());
+	}
+
+	/**
+	 * Classifier is subclass of a FHIR Extension type.
+	 */
+	public static boolean isExtension(Classifier classifier) {
+		return FhirModelUtil.isKindOf(classifier, ModelConstants.EXTENSION_CLASS_NAME);
+	}
+
+	/**
+	 * Classifier is subclass of a FHIR Extension type, and has extension attributes.
+	 */
+	public static boolean isComplexExtension(Classifier classifier) {
+		boolean isComplex = false;
+		if (isExtension(classifier)) {
+			for (Property property : classifier.getAttributes()) {
+				if (property.getType() instanceof Classifier && isExtension((Classifier)property.getType())) {
+					isComplex = true;
+					break;
+				}
+			}
+		}
+
+		return isComplex;
+	}
+
+	public static boolean isNestedType(Classifier classifier) {
+		return classifier.getOwner() instanceof Class;
+	}
+
 	public static boolean hasNestedType(Property property) {
+		return property.getType() != null && property.getType().getOwner() instanceof Class;
+	}
+
+	public static boolean isSliced(Property property) {
+		return !property.getSubsettedProperties().isEmpty();
+	}
+
+	public static boolean hasTypeChoice(Property property) {
 		return property.getType() != null && property.getType().getOwner() instanceof Class;
 	}
 

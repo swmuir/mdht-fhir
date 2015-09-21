@@ -59,6 +59,14 @@ Model Mapping
     
 - Import all *required* value sets (use expansion)
 
+- Import errors:
+  - indexing: separate maps for SD vs VS (overlapping IDs)
+  - Cannot find Profile: goal-target#measure
+  
+- Generalize import of value*, etc
+  -- e.g. USLab-ObsCode.valueCodeableConcept
+  -- DAF-MedicationOrder.medication[x] and .medicationCodeableConcept slices
+
 - Import ElementDef elements: 
   -- default, fixed, pattern, example
   -- minValue, maxValue, maxLength
@@ -77,7 +85,6 @@ Model Mapping
 - Import operations
 
 - Import ElementDef mapping
-
 
 ---------------------------------------------------
 EXPORT FHIR

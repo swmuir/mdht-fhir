@@ -40,7 +40,6 @@ import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.util.UMLUtil;
 import org.hl7.fhir.ConstraintSeverityList;
-import org.hl7.fhir.DomainResource;
 import org.hl7.fhir.ElementDefinition;
 import org.hl7.fhir.ElementDefinitionBinding;
 import org.hl7.fhir.ElementDefinitionConstraint;
@@ -64,16 +63,20 @@ public class ModelImporter implements ModelConstants {
 	
 	private ModelIndexer modelIndexer = new ModelIndexer();
 	
-	// key = id, value = DomainResource
-	private Map<String,DomainResource> resourceIdMap = new HashMap<String,DomainResource>();
+	// key = id, value = StructureDefinition
+	private Map<String,StructureDefinition> structureDefinitionMap = new HashMap<String,StructureDefinition>();
+
+	// key = id, value = ValueSet
+	private Map<String,ValueSet> valueSetMap = new HashMap<String,ValueSet>();
+
+	// key = id, value = ImplementationGuide
+	private Map<String,ImplementationGuide> implementationGuideMap = new HashMap<String,ImplementationGuide>();
 	
 	private Package model;
 	private Package xmlPrimitiveTypes;
 	
 	private Class baseClass;
 	private Class dataTypeClass;
-	private Class elementClass;
-	private Class resourceClass;
 
 	public ModelImporter(Package model) {
 		this.model = model;
@@ -138,36 +141,21 @@ public class ModelImporter implements ModelConstants {
 				structureDefStereotype.setUri(MDHT_STRUCTURE_URI_BASE + DATATYPE_CLASS_NAME);
 			}
 		}
-		elementClass = importStructureDefinition(ELEMENT_CLASS_NAME);
-		resourceClass = importStructureDefinition(RESOURCE_CLASS_NAME);
-		
-		if (elementClass != null && elementClass.getGeneralizations().isEmpty()) {
-			elementClass.createGeneralization(baseClass);
-		}
-		if (resourceClass != null && resourceClass.getGeneralizations().isEmpty()) {
-			resourceClass.createGeneralization(baseClass);
-		}
-	
-		if (elementClass != null && dataTypeClass.getGeneralizations().isEmpty()) {
-			dataTypeClass.createGeneralization(elementClass);
-			// move DataType class to types package
-			dataTypeClass.setPackage(elementClass.getNearestPackage());
-		}
 	}
 
 	private void initValueSets() {
 		if (modelIndexer.getValueSetForURI(FHIR_VALUESET_URI_BASE + VALUESET_ID_RESOURCE_TYPES) == null) {
-			DomainResource resource = resourceIdMap.get(VALUESET_ID_DATA_TYPES);
-			if (resource instanceof ValueSet) {
-				importValueSet((ValueSet)resource);
+			ValueSet valueSet = valueSetMap.get(VALUESET_ID_DATA_TYPES);
+			if (valueSet != null) {
+				importValueSet((ValueSet)valueSet);
 			}
-			resource = resourceIdMap.get(VALUESET_ID_RESOURCE_TYPES);
-			if (resource instanceof ValueSet) {
-				importValueSet((ValueSet)resource);
+			valueSet = valueSetMap.get(VALUESET_ID_RESOURCE_TYPES);
+			if (valueSet != null) {
+				importValueSet((ValueSet)valueSet);
 			}
-			resourceIdMap.get(VALUESET_ID_DEFINED_TYPES);
-			if (resource instanceof ValueSet) {
-				importValueSet((ValueSet)resource);
+			valueSetMap.get(VALUESET_ID_DEFINED_TYPES);
+			if (valueSet != null) {
+				importValueSet((ValueSet)valueSet);
 			}
 		}
 		
@@ -238,42 +226,48 @@ public class ModelImporter implements ModelConstants {
 		while (iterator != null && iterator.hasNext()) {
 			Object child = iterator.next();
 			if (child instanceof StructureDefinition) {
-				indexResource((StructureDefinition)child);
+				StructureDefinition structureDef = (StructureDefinition) child;
+				structureDefinitionMap.put(structureDef.getId().getValue(), structureDef);
 				iterator.prune();
 			}
 			else if (child instanceof ValueSet) {
-				indexResource((ValueSet)child);
+				ValueSet valueSet = (ValueSet) child;
+				valueSetMap.put(valueSet.getId().getValue(), valueSet);
 				iterator.prune();
 			}
 			else if (child instanceof ImplementationGuide) {
-				indexResource((ValueSet)child);
+				ImplementationGuide implGuide = (ImplementationGuide) child;
+				implementationGuideMap.put(implGuide.getId().getValue(), implGuide);
 				iterator.prune();
 			}
 		}
 	}
 
-	public void indexResource(DomainResource resource) {
-		if (resource.getId() != null) {
-			resourceIdMap.put(resource.getId().getValue(), resource);
-		}
-		else {
-			System.err.println("Bundle entry missing id, URL=" + resource);
-		}
-	}
-	
 	public void importIndexedResources() {
 		initModel(model);
+		importStructureDefinition(ELEMENT_CLASS_NAME);
+		importStructureDefinition(RESOURCE_CLASS_NAME);
 		
 		// import each FHIR resource that was previously indexed
-		for (DomainResource resource : resourceIdMap.values()) {
-			if (resource instanceof StructureDefinition) {
-				importStructureDefinition((StructureDefinition)resource);
-			}
-//			else if (resource instanceof ValueSet) {
-//				importValueSet((ValueSet)resource);
-//			}
+		for (ValueSet valueSet : valueSetMap.values()) {
+			importValueSet(valueSet);
 		}
-		resourceIdMap.clear();
+		for (StructureDefinition structureDef : structureDefinitionMap.values()) {
+			importStructureDefinition(structureDef);
+		}
+		for (ImplementationGuide guide : implementationGuideMap.values()) {
+			importImplementationGuide(guide);
+		}
+		
+		valueSetMap.clear();
+		structureDefinitionMap.clear();
+		implementationGuideMap.clear();
+	}
+	
+	public Package importImplementationGuide(ImplementationGuide guide) {
+		Package umlGuide = null;
+		System.out.println("Implementation Guide: " + guide.getId().getValue() + ", " + guide.getName().getValue());
+		return umlGuide;
 	}
 	
 	public Enumeration importValueSet(ValueSet valueSet) {
@@ -310,7 +304,10 @@ public class ModelImporter implements ModelConstants {
 
 		if (valueSet.getExpansion() != null) {
 			for (ValueSetContains contains : valueSet.getExpansion().getContains()) {
-				valueSetEnum.createOwnedLiteral(contains.getCode().getValue());
+				// TODO code was null in some cases, investigate
+				if (contains.getCode() != null) {
+					valueSetEnum.createOwnedLiteral(contains.getCode().getValue());
+				}
 			}
 		}
 		else if (valueSet.getCodeSystem() != null) {
@@ -340,17 +337,17 @@ public class ModelImporter implements ModelConstants {
 	}
 	
 	public Class importStructureDefinition(String profileId) {
-		Class umlClass = modelIndexer.getStructureDefinitionForName(profileId);
+		Class umlClass = modelIndexer.getStructureDefinitionForId(profileId);
 		if (umlClass == null) {
 			// this is for a few profiles that have error, using String instead of string.
-			umlClass = modelIndexer.getStructureDefinitionForName(profileId.toLowerCase());
+			umlClass = modelIndexer.getStructureDefinitionForId(profileId.toLowerCase());
 		}
 
 		if (umlClass == null) {
 			// look in the indexed bundle(s)
-			DomainResource resource = resourceIdMap.get(profileId);
-			if (resource instanceof StructureDefinition) {
-				umlClass = importStructureDefinition((StructureDefinition)resource);
+			StructureDefinition structureDef = structureDefinitionMap.get(profileId);
+			if (structureDef != null) {
+				umlClass = importStructureDefinition(structureDef);
 			}
 		}
 
@@ -443,10 +440,19 @@ public class ModelImporter implements ModelConstants {
 			requirements.setBody(structureDef.getRequirements().getValue());
 			UMLUtil.safeApplyStereotype(requirements, fhirUmlProfile.getOwnedStereotype(org.eclipse.mdht.uml.fhir.FHIRPackage.eINSTANCE.getRequirements().getName()));
 		}
-		
+
 		// Primitive types have unique representation and "known by magic" from reading specification.
 		if (primitiveType != null) {
 			profileClass.createGeneralization(dataTypeClass);
+		}
+		else if (ELEMENT_CLASS_NAME.equals(profileClassName)) {
+			profileClass.createGeneralization(baseClass);
+			dataTypeClass.createGeneralization(profileClass);
+			// move DataType class to types package
+			dataTypeClass.setPackage(profileClass.getNearestPackage());
+		}
+		else if (RESOURCE_CLASS_NAME.equals(profileClassName)) {
+			profileClass.createGeneralization(baseClass);
 		}
 		else if (structureDef.getBase() != null) {
 			String base = structureDef.getBase().getValue();
@@ -578,7 +584,8 @@ public class ModelImporter implements ModelConstants {
 			boolean isProhibitedElement = elementDef.getMax() != null && "0".equals(elementDef.getMax().getValue());
 			String propertyName = getPropertyName(elementDef);
 			
-			//TODO this is a temporary hack until a more general solution is available
+			//TODO discover all wildcard elements from all inherited properties, endsWith "[x]"
+			//TODO this is a temporary hack until a more general solution is available, test for wildcard prefix
 			if ("valueQuantity".equals(propertyName)) {
 				propertyName = "value[x]";
 				Class quantityType = importStructureDefinition("Quantity");
@@ -622,8 +629,9 @@ public class ModelImporter implements ModelConstants {
 			}
 			else if (typeList.size() > 1) {
 				// All types must be same kind, some elements mix Resource and CodeableConcept
+				Class resourceType = importStructureDefinition(RESOURCE_CLASS_NAME);
 				if (FhirModelUtil.allSubclassOf(typeList, RESOURCE_CLASS_NAME)) {
-					propertyType = resourceClass;
+					propertyType = resourceType;
 				}
 				else if (FhirModelUtil.allSubclassOf(typeList, DATATYPE_CLASS_NAME)) {
 					propertyType = dataTypeClass;
@@ -698,9 +706,13 @@ public class ModelImporter implements ModelConstants {
 				}
 			}
 			
-			//redefined or subsetted from a core resource property
-			if (isSliced) {
-				Property subsettedProperty = org.openhealthtools.mdht.uml.common.util.UMLUtil.getInheritedProperty(property.getClass_(), pathSegments[pathSegments.length - 1]);
+			/*
+			 * Redefined or subsetted (sliced) from an inherited property
+			 */
+			// extension attributes within an extension (complex extension) don't specify slicing
+			String inheritedName = pathSegments[pathSegments.length - 1];
+			if (!isProhibitedElement && (isSliced || "extension".equals(inheritedName))) {
+				Property subsettedProperty = org.openhealthtools.mdht.uml.common.util.UMLUtil.getInheritedProperty(property.getClass_(), inheritedName);
 				if (subsettedProperty != null) {
 					property.getSubsettedProperties().add(subsettedProperty);
 				}
@@ -943,7 +955,7 @@ public class ModelImporter implements ModelConstants {
 	 */
 	private boolean isAssociation(Property property) {
 		if (property.getType() instanceof Classifier 
-				&& (FhirModelUtil.isSubclassOf((Classifier)property.getType(), RESOURCE_CLASS_NAME) 
+				&& (FhirModelUtil.isKindOf((Classifier)property.getType(), RESOURCE_CLASS_NAME) 
 						|| FhirModelUtil.isSubclassOf((Classifier)property.getType(), BACKBONE_ELEMENT_CLASS_NAME))) {
 			return true;
 		}

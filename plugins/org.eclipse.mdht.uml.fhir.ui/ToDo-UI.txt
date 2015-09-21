@@ -12,19 +12,30 @@ FHIR UI Tooling
      -- Terminology Server
   -- Output folder for generated profiles
    
+- Flatten inheritance
+  -- merge inherited stereotype metadata (e.g. mustSupport, typeChoice, binding)
+  -- merge logic must be DSL profile specific
+   
 - Commands
   -- Deploy to Server
      -- context menu on profile class, generate and deploy
      
 - UML Table Editor
-  -- FHIR icons in Annotation column
-     -- See http://hl7-fhir.github.io/formats.html#table
+  -- Name column, assign/show stereotype icon
+     -- StructureDefinition
+     -- kind of BackboneElement
+  -- FHIR icons
+     -- Extensions
+        -- complex (allow expand), or simple
   -- Description column
      -- Add getDescription() to notation extension point
 
 - 0..0 multiplicity
   -- display strike-through font for class attribute in table, and in SubClass dialog list
   -- strike-through font in dynagram
+
+- Dynagram
+  -- use getShortAnnotation() for association property names
 
 - Dynagram option to collapse shared associations by default
   -- New menu: Expand References (true by default)
