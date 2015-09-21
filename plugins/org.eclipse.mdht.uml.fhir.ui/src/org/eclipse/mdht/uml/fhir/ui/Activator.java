@@ -1,5 +1,6 @@
 package org.eclipse.mdht.uml.fhir.ui;
 
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
@@ -46,5 +47,24 @@ public class Activator extends AbstractUIPlugin {
 	public static Activator getDefault() {
 		return plugin;
 	}
+
+	/**
+	 * Returns an image for the image file at the given plug-in relative path.
+	 * Client do not need to dispose this image. Images will be disposed automatically.
+	 * 
+	 * @generated
+	 * @param path
+	 *            the path
+	 * @return image instance
+	 */
+	public Image getBundledImage(String path) {
+		Image image = getImageRegistry().get(path);
+		if (image == null) {
+			getImageRegistry().put(path, Activator.imageDescriptorFromPlugin(PLUGIN_ID, path));
+			image = getImageRegistry().get(path);
+		}
+		return image;
+	}
+
 
 }

@@ -23,11 +23,17 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.mdht.uml.fhir.FHIRPackage;
+import org.eclipse.mdht.uml.fhir.ShortDescription;
 import org.eclipse.mdht.uml.fhir.TypeChoice;
+import org.eclipse.mdht.uml.fhir.transform.FhirModelUtil;
+import org.eclipse.mdht.uml.fhir.transform.ModelConstants;
+import org.eclipse.mdht.uml.fhir.ui.Activator;
 import org.eclipse.mdht.uml.fhir.util.ProfileUtil;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Classifier;
+import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Enumeration;
 import org.eclipse.uml2.uml.EnumerationLiteral;
@@ -42,6 +48,34 @@ public class FHIRAnnotationProvider implements IExtendedNotationProvider, IExecu
 	public final static int PROPERTY_ANNOTATION = INotationConstants.DISP_VOCABULARY |
 			INotationConstants.DISP_MOFIFIERS | INotationConstants.DISP_TYPE_CHOICE;
 	
+	@Override
+	public String getDescription(Element element) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getShortDescription(Element element) {
+		String text = null;
+
+		// For associations, use the navigable end.
+		if (element instanceof Association) {
+			Property navigableEnd = UMLUtil.getNavigableEnd((Association) element);
+			if (navigableEnd != null) {
+				element = navigableEnd;
+			}
+		}
+		
+		for (Comment comment : element.getOwnedComments()) {
+			ShortDescription shortDescription = (ShortDescription) ProfileUtil.getStereotypeApplication(comment, FHIRPackage.eINSTANCE.getShortDescription());
+			if (shortDescription != null && shortDescription.getBase_Comment() != null) {
+				text = shortDescription.getBase_Comment().getBody();
+				break;
+			}
+		}
+		return text;
+	}
+
 	public String getAnnotation(Element element) {
 		String annotation = null;
 
@@ -77,25 +111,97 @@ public class FHIRAnnotationProvider implements IExtendedNotationProvider, IExecu
 	}
 
 	public Object getAnnotationImage(Element element) {
-		return getStereotypeImage(element);
+		Image image = null;
+		// For associations, use image for the navigable end.
+		if (element instanceof Association) {
+			Property navigableEnd = UMLUtil.getNavigableEnd((Association) element);
+			if (navigableEnd != null) {
+				element = navigableEnd;
+			}
+		}
+		
+		if (element instanceof Property) {
+			Property property = (Property) element;
+			if (getTypeChoice(property).size() > 0) {
+				image = Activator.getDefault().getBundledImage("icons/fhir-type/icon_choice.gif");
+			}
+			else if (FhirModelUtil.isSliced(property)) {
+				image = Activator.getDefault().getBundledImage("icons/fhir-type/icon_slice.png");
+			}
+		}
+		
+		return (image != null) ? image : getStereotypeImage(element);
 	}
 
 	public Object getElementImage(Element element) {
+//		if (element instanceof Class) {
+//			return getModelImage((Class) element);
+//		}
+
+		Image image = null;
+		// For associations, use image for the navigable end.
+//		if (element instanceof Association) {
+//			Property navigableEnd = UMLUtil.getNavigableEnd((Association) element);
+//			if (navigableEnd != null) {
+//				element = navigableEnd;
+//			}
+//		}
+//		if (element instanceof Property) {
+//			Property property = (Property) element;
+//			if (property.getType() instanceof Classifier) {
+//				element = property.getType();
+//			}
+//		}
+		
 		if (element instanceof Class) {
-			return getModelImage((Class) element);
+			Class umlClass = (Class) element;
 
-		} else if (element instanceof Property) {
+			if (FhirModelUtil.isKindOf(umlClass, ModelConstants.BACKBONE_ELEMENT_CLASS_NAME)) {
+				image = Activator.getDefault().getBundledImage("icons/fhir-type/icon_element.gif");
+			}
+			else if (FhirModelUtil.isExtension(umlClass)) {
+				if (FhirModelUtil.isComplexExtension(umlClass)) {
+					image = Activator.getDefault().getBundledImage("icons/fhir-type/icon_extension_complex.png");
+				}
+				else {
+					image = Activator.getDefault().getBundledImage("icons/fhir-type/icon_extension_simple.png");
+				}
+			}
+//			else if (FhirModelUtil.isKindOf(umlClass, ModelConstants.RESOURCE_CLASS_NAME)) {
+//				image = Activator.getDefault().getBundledImage("icons/fhir-type/icon_reference.png");
+//			}
+			else if (FhirModelUtil.isKindOf(umlClass, ModelConstants.DATATYPE_CLASS_NAME)) {
+				// Is primitive type if DataType has a 'value' attribute
+				boolean isPrimitive = umlClass.getAttribute("value", null) != null || umlClass.getInheritedMember("value") != null;
+				if (isPrimitive) {
+					image = Activator.getDefault().getBundledImage("icons/fhir-type/icon_primitive.png");
+				}
+				else {
+					image = Activator.getDefault().getBundledImage("icons/fhir-type/icon_datatype.gif");
+				}
+			}
 
-			// TODO ELEMENT move to aml.cimi.ui notation provider
-			// TODO this is incomplete logic, also selects attributes within a DataType
-			// Property property = (Property) element;
-			// if (AMLUtil.containingArchetype(property) != null && property.getType() != null &&
-			// AMLUtil.dataModelType(property.getType()) != null) {
-			// return Activator.getDefault().getBundledImage("icons/full/obj16/Element.png");
-			// }
+			else if (FhirModelUtil.getStructureDefinition(umlClass) != null) {
+				image = Activator.getDefault().getBundledImage("icons/fhir-type/icon_profile.png");
+			}
+			
 		}
-
-		return null;
+		
+//		else if (element instanceof Property) {
+//			Property property = (Property) element;
+//			if (property.getType() != null && FhirModelUtil.isExtension((Classifier) property.getType())) {
+//				image = Activator.getDefault().getBundledImage("icons/fhir-type/icon_extension.png");
+//			}
+//			else if (property.getType() != null && FhirModelUtil.isKindOf((Classifier)property.getType(), ModelConstants.RESOURCE_CLASS_NAME)) {
+//				image = Activator.getDefault().getBundledImage("icons/fhir-type/icon_reference.png");
+//			}
+//			else {
+//				// Is primitive type if subclass of type from XML library
+//				image = Activator.getDefault().getBundledImage("icons/fhir-type/icon_primitive.png");
+//			}
+//		}
+		
+		return (image != null) ? image : null;
 	}
 
 	public List<Classifier> getTypeChoice(Property property) {
@@ -113,7 +219,7 @@ public class FHIRAnnotationProvider implements IExtendedNotationProvider, IExecu
 		Object image = null;
 
 		if (element instanceof Class) {
-			Class umlClass = (Class) element;
+//			Class umlClass = (Class) element;
 
 //			if (MDRProfileUtil.getConcept(umlClass) != null) {
 //				image = Activator.getDefault().getBundledImage("icons/full/obj16/Concept.gif");

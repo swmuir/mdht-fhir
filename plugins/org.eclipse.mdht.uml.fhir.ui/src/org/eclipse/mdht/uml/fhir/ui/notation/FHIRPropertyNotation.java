@@ -11,6 +11,8 @@
  *******************************************************************************/
 package org.eclipse.mdht.uml.fhir.ui.notation;
 
+import java.util.Iterator;
+
 import org.eclipse.mdht.uml.fhir.BindingStrengthKind;
 import org.eclipse.mdht.uml.fhir.ElementDefinition;
 import org.eclipse.mdht.uml.fhir.FHIRPackage;
@@ -101,7 +103,8 @@ public class FHIRPropertyNotation extends PropertyNotationUtil {
 		
 		if ((style & IUMLNotation.DISP_MOFIFIERS) != 0) {
 			// property modifiers
-			String modifiers = PropertyNotationUtil.getModifiersAsString(property, multiLine);
+//			String modifiers = PropertyNotationUtil.getModifiersAsString(property, multiLine);
+			String modifiers = getModifiersAsString(property, multiLine);
 			if (!modifiers.equals("")) {
 				annotations.append(annotations.length() > 0 ? " ": "");
 				annotations.append(modifiers);
@@ -176,7 +179,83 @@ public class FHIRPropertyNotation extends PropertyNotationUtil {
 		}
 		return false;
 	}
-	
+
+	protected static String getModifiersAsString(Property property, boolean multiLine) {
+		StringBuffer buffer = new StringBuffer();
+		boolean needsComma = false;
+		String NL = (multiLine)
+				? "\n"
+				: "";
+
+		// Return property modifiers
+		if (property.isReadOnly()) {
+			buffer.append("readOnly");
+			needsComma = true;
+		}
+		if (property.isDerivedUnion()) {
+			if (needsComma) {
+				buffer.append(",");
+				buffer.append(NL);
+			}
+			buffer.append("union");
+			needsComma = true;
+		}
+		if (!property.isOrdered() && property.upperBound() != 1 && property.upperBound() != 0) {
+			if (needsComma) {
+				buffer.append(",");
+				buffer.append(NL);
+			}
+			buffer.append("unordered");
+			needsComma = true;
+		}
+		if (property.isUnique() && property.getUpper() > 1) {
+			if (needsComma) {
+				buffer.append(",");
+				buffer.append(NL);
+			}
+			buffer.append("unique");
+			needsComma = true;
+		}
+
+		// is the property redefining another property ?
+		Iterator<org.eclipse.uml2.uml.Property> it;
+		it = property.getRedefinedProperties().iterator();
+		while (it.hasNext()) {
+			org.eclipse.uml2.uml.Property redefinedProperty = it.next();
+			// display only if redefined property has a different name (i.e., not "implicit")
+			if (!redefinedProperty.eIsProxy()) {
+				if (needsComma) {
+					buffer.append(", ");
+					buffer.append(NL);
+				}
+				needsComma = true;
+
+				if (redefinedProperty.getName().equals(property.getName())) {
+//					buffer.append("redefined");
+				} else {
+					buffer.append("redefines ");
+					buffer.append(redefinedProperty.getName());
+				}
+			}
+		}
+
+		// is the property subsetting another property ?
+//		it = property.getSubsettedProperties().iterator();
+//		while (it.hasNext()) {
+//			Property current = it.next();
+//			if (!current.eIsProxy()) {
+//				if (needsComma) {
+//					buffer.append(", ");
+//					buffer.append(NL);
+//				}
+//				buffer.append("subsets ");
+//				buffer.append(current.getName());
+//				needsComma = true;
+//			}
+//		}
+
+		return buffer.toString();
+	}
 	protected static String getPropertyTypeChoice(Property property) {
 		StringBuffer typeLabel = new StringBuffer();
 		TypeChoice typeChoice = (TypeChoice) ProfileUtil.getStereotypeApplication(property, FHIRPackage.eINSTANCE.getTypeChoice());
